@@ -10,6 +10,8 @@ import { Reveal } from '@/components/primitives/Reveal';
 import { HeroVideo } from '@/components/sections/HeroVideo';
 import { ServiceIndex } from '@/components/sections/ServiceIndex';
 import { ContactPanel } from '@/components/sections/ContactPanel';
+import { Testimonial } from '@/components/sections/Testimonial';
+import { homeTestimonial } from '@/lib/testimonials';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo/JsonLd';
 import styles from './home.module.css';
 
@@ -325,7 +327,12 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================================
-          10. CONVERSION — the destination (distinct from the footer)
+          10. PROOF — client reference (placeholder review until a real one exists)
+          ============================================================ */}
+      <Testimonial testimonial={homeTestimonial} />
+
+      {/* ============================================================
+          11. CONVERSION — the destination (distinct from the footer)
           ============================================================ */}
       <ContactPanel
         eyebrow="Aan de slag"
