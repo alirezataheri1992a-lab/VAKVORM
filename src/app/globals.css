@@ -232,6 +232,20 @@ h4 {
   transform: none;
 }
 
+/* Global scroll reveal — applied by <ScrollReveal> to below-the-fold content on every
+   page. The hidden state is only added by JS (progressive enhancement), so content is
+   always visible without JS or under reduced motion. */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -243,7 +257,8 @@ h4 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .reveal {
+  .reveal,
+  .reveal-on-scroll {
     opacity: 1;
     transform: none;
   }

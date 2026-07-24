@@ -3,6 +3,7 @@ import { sans, mono } from '@/lib/fonts';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { SiteHeader } from '@/components/chrome/SiteHeader';
 import { SiteFooter } from '@/components/chrome/SiteFooter';
+import { ScrollReveal } from '@/components/chrome/ScrollReveal';
 import './globals.css';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           interieurSubServices={groups.interieurSubs}
         />
         <main id="main">{children}</main>
+        <ScrollReveal />
         <SiteFooter />
       </body>
     </html>
