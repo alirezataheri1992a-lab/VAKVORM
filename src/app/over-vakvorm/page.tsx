@@ -20,7 +20,7 @@ export default function OverPage() {
         <Breadcrumbs items={[{ name: 'Over Vakvorm', path: '/over-vakvorm' }]} />
         <div className={styles.introGrid}>
           <div>
-            <SectionMarker index="—" label="Over Vakvorm" />
+            <SectionMarker label="Over Vakvorm" />
             <h1 className={`display ${styles.title}`}>
               Eén partij die het hele project draagt.
             </h1>
@@ -42,7 +42,7 @@ export default function OverPage() {
 
       <section className={`container ${styles.story}`}>
         <div className={styles.storyGrid}>
-          <SectionMarker index="01" label="De gedachte" />
+          <SectionMarker label="De gedachte" />
           <div className={styles.storyBody}>
             <p className={styles.storyLead}>
               De meeste verbouwingen lopen vast op afstemming: veel partijen, weinig regie.
@@ -63,7 +63,7 @@ export default function OverPage() {
       </section>
 
       <section className={`container ${styles.pillars}`}>
-        <SectionMarker index="02" label="Waar wij voor staan" />
+        <SectionMarker label="Waar wij voor staan" />
         <ul className={styles.pillarList}>
           {[
             ['Eén aanspreekpunt', 'Geen los verzameld team dat u zelf moet aansturen — één partij, één contact.'],

@@ -53,6 +53,7 @@ export default function HomePage() {
             <ProjectMedia
               media={{ alt: 'Recent project van Vakvorm', ratio: '3:4', slot: 'HERO — PROJECT' }}
               priority
+              fill
               sizes="(max-width: 1040px) 100vw, 46vw"
             />
           </div>
@@ -185,9 +186,16 @@ export default function HomePage() {
         <div className="container">
           <SectionMarker label="Het principe" tone="ink" />
           <p className={styles.statementText}>
-            U huurt <em>één</em> professionele partij in — geen los verzameld team van
-            specialisten dat u zelf moet aansturen. Vakvorm plant, coördineert en levert op.
+            Een complete verbouwing bestaat uit veel disciplines. Voor u voelt het als{' '}
+            <em>één</em> project — georganiseerd, gebouwd en afgewerkt door één partij.
           </p>
+          <div className={styles.triad}>
+            {['Organiseren', 'Bouwen', 'Afwerken'].map((v) => (
+              <span key={v} className={`label ${styles.triadItem}`}>
+                {v}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 

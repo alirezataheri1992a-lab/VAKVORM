@@ -55,7 +55,7 @@ export default function WerkwijzePage() {
         <Breadcrumbs items={[{ name: 'Werkwijze', path: '/werkwijze' }]} />
         <div className={styles.introGrid}>
           <div>
-            <SectionMarker index="—" label="Werkwijze" />
+            <SectionMarker label="Werkwijze" />
             <h1 className={`display ${styles.title}`}>
               Eén partij, van eerste schets tot oplevering.
             </h1>

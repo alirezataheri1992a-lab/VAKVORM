@@ -9,6 +9,8 @@ interface Props {
   /** Optional caption rendered beneath the frame as a datum line. */
   caption?: React.ReactNode;
   className?: string;
+  /** Fill the parent's height (desktop) instead of holding the aspect ratio. */
+  fill?: boolean;
 }
 
 function ratioValue(ratio: `${number}:${number}`): number {
@@ -21,12 +23,15 @@ function ratioValue(ratio: `${number}:${number}`): number {
  * development placeholder that holds the intended aspect ratio. Never fabricates
  * imagery — an empty slot reads as an empty slot.
  */
-export function ProjectMedia({ media, priority, sizes = '100vw', caption, className }: Props) {
+export function ProjectMedia({ media, priority, sizes = '100vw', caption, className, fill }: Props) {
   const ar = ratioValue(media.ratio);
 
   return (
-    <figure className={`${styles.figure} ${className ?? ''}`}>
-      <div className={styles.frame} style={{ aspectRatio: ar }}>
+    <figure className={`${styles.figure} ${fill ? styles.figureFill : ''} ${className ?? ''}`}>
+      <div
+        className={`${styles.frame} ${fill ? styles.frameFill : ''}`}
+        style={{ aspectRatio: ar }}
+      >
         {media.src ? (
           <Image
             src={media.src}

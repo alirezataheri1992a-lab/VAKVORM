@@ -48,14 +48,14 @@ export function ServicePageView({ service, crumbs }: Props) {
           media={{ ...service.hero, ratio: '3:2' }}
           priority
           sizes="100vw"
-          caption={<SectionMarker index="—" label={`${service.title} · ${site.city}`} />}
+          caption={<span className="label">{service.title} · {site.city}</span>}
         />
       </section>
 
       {/* responsibilities — editorial list, not checkmarks */}
       <section className={`container ${styles.resp}`}>
         <div className={styles.respHead}>
-          <SectionMarker index="→" label="Waar wij verantwoordelijk voor zijn" />
+          <SectionMarker label="Waar wij verantwoordelijk voor zijn" />
         </div>
         <ol className={styles.respList}>
           {service.responsibilities.map((r, i) => (

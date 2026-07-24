@@ -94,14 +94,16 @@
 @media (min-width: 1041px) {
   .heroGrid {
     grid-template-columns: minmax(0, 1fr) 46vw;
-    align-items: end;
+    /* vertically centre the text against the full-height media — removes the empty
+       top gap and unifies type + image into one composition */
+    align-items: center;
+    min-height: clamp(560px, 80vh, 780px);
     gap: clamp(40px, 4vw, 80px);
-    /* left-align text to the container while the media column bleeds to the right edge */
     padding-left: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
     padding-right: 0;
   }
-  .heroText {
-    padding-bottom: clamp(24px, 5vh, 64px);
+  .heroMedia {
+    align-self: stretch;
   }
   .heroLede {
     max-width: 40ch;
@@ -264,6 +266,24 @@
 .statementText em {
   font-style: italic;
   color: var(--oxide);
+}
+/* construction-register triad — typographic, not cards */
+.triad {
+  display: flex;
+  margin-top: clamp(40px, 6vh, 76px);
+  max-width: 620px;
+  border-top: 1px solid var(--concrete-line-dark);
+}
+.triadItem {
+  flex: 1;
+  padding: 22px 0 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--concrete-line-dark);
+  color: var(--on-ink-soft);
+}
+.triadItem:first-child {
+  border-left: none;
+  padding-left: 0;
 }
 
 /* ---------- E. Services ---------- */

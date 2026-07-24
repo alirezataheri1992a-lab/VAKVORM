@@ -27,7 +27,7 @@ export default function InterieurbouwPage() {
         <Breadcrumbs items={[{ name: 'Interieurbouw', path: '/interieurbouw' }]} />
         <div className={styles.introGrid}>
           <div className={styles.introText}>
-            <SectionMarker index="02" label="Maatwerk interieurbouw" />
+            <SectionMarker label="Maatwerk interieurbouw" />
             <h1 className={`display ${styles.title}`}>
               Interieur op maat, tot in het detail.
             </h1>
@@ -45,7 +45,7 @@ export default function InterieurbouwPage() {
       {/* body statement */}
       <section className={`container ${styles.body}`}>
         <div className={styles.bodyGrid}>
-          <SectionMarker index="→" label="De discipline" />
+          <SectionMarker label="De discipline" />
           <p className={styles.bodyText}>{interieurService.intro}</p>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default function InterieurbouwPage() {
       {/* sub-services index */}
       <section className={`container ${styles.subs}`}>
         <div className={styles.subsHead}>
-          <SectionMarker index="03" label="Specialisaties" />
+          <SectionMarker label="Specialisaties" />
         </div>
         <ul className={styles.subsList}>
           {interieurSubServices.map((s) => (

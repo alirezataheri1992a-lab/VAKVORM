@@ -9,6 +9,16 @@
   background: var(--paper);
   border-radius: var(--radius);
 }
+/* fill parent height on desktop (used by the hero); keep the ratio on mobile */
+@media (min-width: 1041px) {
+  .figureFill {
+    height: 100%;
+  }
+  .frameFill {
+    height: 100%;
+    aspect-ratio: auto !important;
+  }
+}
 .img {
   object-fit: cover;
   transition: transform var(--dur) var(--ease);

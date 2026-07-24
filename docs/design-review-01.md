@@ -128,3 +128,72 @@ Solid foundation; not yet the finished brand.
 - No more datum lines "to look more construction."
 - No fabricated stats, projects, reviews, awards.
 - No stock imagery presented as a real Vakvorm project.
+
+---
+
+# STRUCTURAL REFINEMENT PASS
+
+Implemented against this review, without photography (image CDNs remain blocked). Kept
+placeholders; improved only what is judgeable without final imagery. Target was a strong
+7–8 structural foundation, not a fake 9.
+
+### 1. What changed
+- **Hero recomposed.** Removed the empty top gap; the media column now **fills the full
+  hero height and bleeds to the right edge**, and the type is vertically centred against it
+  so the two read as one composition rather than text-left / image-in-a-box. Added a
+  `fill` capability to `ProjectMedia` (fills parent height on desktop, keeps ratio on mobile).
+- **Capability datum baseline** under the hero (`CONSTRUCTIE · RENOVATIE · AANBOUW ·
+  STUCWERK · INTERIEURBOUW · COÖRDINATIE`) — an architectural spec strip stating build breadth.
+- **Core statement rewritten + weighted** in the ink section: *"Een complete verbouwing
+  bestaat uit veel disciplines. Voor u voelt het als één project — georganiseerd, gebouwd en
+  afgewerkt door één partij."* — bridging bouw + interieur + regie.
+- **Construction-credibility triad** on ink (`ORGANISEREN · BOUWEN · AFWERKEN`) as a
+  typographic spec row, not cards.
+- **Tonal rhythm:** the ink "Het principe" section is the single deliberate dark chapter
+  break mid-page (kept the rest restrained; no second-section-dark pattern, no gradients).
+- **Header:** larger wordmark + wider descriptor tracking; CTA gained a geometric chevron.
+- **Placeholders softened:** removed the hard 1px border; registration marks + quiet field only.
+
+### 2. What was deliberately removed
+- All **arbitrary/decorative datum numbering** on generic section intros, site-wide
+  (`Het principe`, `Diensten`, `Werkwijze`, `Over Vakvorm`, `Contact`, interieurbouw and
+  service-page intros) and the decorative `—` / `→` marker glyphs. No motif was added to
+  compensate — the reduction *is* the improvement.
+
+### 3. Which datum usages remain, and why
+- **Two-pillar index** (`01 Bouw & Renovatie / 02 Interieurbouw`) — a real pair.
+- **ServiceIndex rows** (`01`–`06`) — a real directory.
+- **Werkwijze steps** (`01`–`05`) — a real sequence.
+- **Project case-study narrative** (`01 opgave / 02 aanpak / 03 resultaat`) — a real sequence.
+- Everything else is now a **label + hairline**, no number. Numbered moments are rarer and
+  therefore more distinctive.
+
+### 4. How construction credibility improved
+Without any cliché (no blueprints/hard-hats/icons): the hero capability baseline, the
+`ORGANISEREN · BOUWEN · AFWERKEN` triad, the "georganiseerd, gebouwd en afgewerkt" language,
+and the added tonal weight of the ink chapter all state that VAKVORM organises, builds and
+finishes — not merely designs interiors.
+
+### 5. How the hero composition changed
+From text-left / image-in-a-side-box with an empty top gap → a full-height media that bleeds
+to the edge and forms one composition with vertically-centred display type, closed by a
+full-width capability spec strip. Less templated, more architectural.
+
+### 6. How mobile changed
+Hero media is now a **tall, full-width image** (ratio preserved on mobile) with real presence
+below a strong display statement and a direct project route — no longer a small square. The
+capability baseline reflows to two columns.
+
+### 7. What remains impossible to judge without photography
+Final art-direction quality, **construction credibility at full strength**, and **project
+presentation** all still depend on real imagery — placeholders can't demonstrate finished
+work, craft detail, or process. Those axes are intentionally left un-scored. The composition
+is now strong enough that photography should **elevate** it, not rescue it.
+
+### Refined structural scores (composition only; photography un-scored)
+Art Direction 7.5 · Brand Distinctiveness 7 · Construction Credibility 6.5 · Typography 7 ·
+Composition 7.5 · Navigation 7.5 · Mobile 7.5 · **Overall structural ≈ 7.5/10.**
+
+---
+
+STRUCTURAL DESIGN: READY FOR PHOTOGRAPHY

@@ -21,7 +21,7 @@ export default function ContactPage() {
         <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
         <div className={styles.grid}>
           <div className={styles.intro}>
-            <SectionMarker index="—" label="Contact" />
+            <SectionMarker label="Contact" />
             <h1 className={`display ${styles.title}`}>Uw project bespreken.</h1>
             <p className={`lede ${styles.lede}`}>
               Vertel ons kort over uw plannen. We denken graag mee — vrijblijvend en zonder
