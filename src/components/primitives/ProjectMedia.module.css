@@ -26,11 +26,10 @@
   background:
     repeating-linear-gradient(
       -45deg,
-      transparent 0 22px,
-      rgba(108, 104, 95, 0.045) 22px 23px
+      transparent 0 26px,
+      rgba(108, 104, 95, 0.04) 26px 27px
     ),
     var(--paper);
-  border: 1px solid var(--concrete-line);
 }
 .plabel {
   color: var(--concrete);

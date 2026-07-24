@@ -24,9 +24,9 @@ export default function HomePage() {
       <OrganizationJsonLd />
       <WebSiteJsonLd />
 
-      {/* ---------- A. Opening ---------- */}
+      {/* ---------- A. Opening — image-participating, full-bleed right ---------- */}
       <section className={styles.hero}>
-        <div className={`container ${styles.heroInner}`}>
+        <div className={styles.heroGrid}>
           <div className={styles.heroText}>
             <span className={`label ${styles.heroEyebrow}`}>
               Aannemer &amp; interieurbouw — {site.city}
@@ -51,21 +51,30 @@ export default function HomePage() {
 
           <div className={styles.heroMedia}>
             <ProjectMedia
-              media={{ alt: 'Recent project van Vakvorm', ratio: '4:5', slot: 'HERO — PROJECT' }}
+              media={{ alt: 'Recent project van Vakvorm', ratio: '3:4', slot: 'HERO — PROJECT' }}
               priority
-              sizes="(max-width: 1040px) 100vw, 42vw"
-              caption={
-                <SectionMarker index="—" label={`Woningrenovatie · ${site.city}`} />
-              }
+              sizes="(max-width: 1040px) 100vw, 46vw"
             />
           </div>
+        </div>
+
+        {/* full-width capability datum baseline — a functional use of the line system
+            that also states the build breadth (construction register) */}
+        <div className={`container ${styles.heroBaseline}`}>
+          {['Constructie', 'Renovatie', 'Aanbouw', 'Stucwerk', 'Interieurbouw', 'Coördinatie'].map(
+            (cap) => (
+              <span key={cap} className={`label ${styles.cap}`}>
+                {cap}
+              </span>
+            ),
+          )}
         </div>
       </section>
 
       {/* ---------- B. Proof early ---------- */}
       <section className={`container ${styles.work}`}>
         <div className={styles.workHead}>
-          <SectionMarker index="01" label="Geselecteerd werk" />
+          <SectionMarker label="Geselecteerd werk" />
           <Link href="/projecten" className={styles.headLink}>
             Alle projecten
           </Link>
@@ -113,7 +122,7 @@ export default function HomePage() {
       <section className={`${styles.disciplines}`}>
         <div className="container">
           <div className={styles.discIntro}>
-            <SectionMarker index="02" label="Twee disciplines" />
+            <SectionMarker label="Twee disciplines" />
             <h2 className={`heading ${styles.discLead}`}>
               Twee vakgebieden, onder één verantwoordelijkheid.
             </h2>
@@ -171,19 +180,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- D. One-partner statement ---------- */}
-      <section className={`container ${styles.statement}`}>
-        <SectionMarker index="03" label="Het principe" />
-        <p className={styles.statementText}>
-          U huurt <em>één</em> professionele partij in — geen los verzameld team van
-          specialisten dat u zelf moet aansturen. Vakvorm plant, coördineert en levert op.
-        </p>
+      {/* ---------- D. One-partner statement — ink, to break the bone and add weight ---------- */}
+      <section className={`on-ink ${styles.statement}`}>
+        <div className="container">
+          <SectionMarker label="Het principe" tone="ink" />
+          <p className={styles.statementText}>
+            U huurt <em>één</em> professionele partij in — geen los verzameld team van
+            specialisten dat u zelf moet aansturen. Vakvorm plant, coördineert en levert op.
+          </p>
+        </div>
       </section>
 
       {/* ---------- E. Services index ---------- */}
       <section className={`container ${styles.servicesSec}`}>
         <div className={styles.servicesHead}>
-          <SectionMarker index="04" label="Diensten" />
+          <SectionMarker label="Diensten" />
         </div>
         <ServiceIndex items={services} />
       </section>
@@ -192,7 +203,7 @@ export default function HomePage() {
       <section className={`${styles.proces}`}>
         <div className="container">
           <div className={styles.procesHead}>
-            <SectionMarker index="05" label="Werkwijze" />
+            <SectionMarker label="Werkwijze" />
             <Link href="/werkwijze" className={styles.headLink}>
               Volledige werkwijze
             </Link>
