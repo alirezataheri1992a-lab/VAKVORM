@@ -1,25 +1,31 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { interieurService, interieurSubServices } from '@/lib/services';
-import { site } from '@/lib/site';
+import { getServiceGroups, getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
 import styles from './interieurbouw.module.css';
 
-export const metadata: Metadata = {
-  title: interieurService.seoTitle,
-  description: interieurService.metaDescription,
-  alternates: { canonical: '/interieurbouw' },
-  openGraph: {
-    title: interieurService.seoTitle,
-    description: interieurService.metaDescription,
-    url: '/interieurbouw',
-  },
-};
+export const revalidate = 60;
 
-export default function InterieurbouwPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const { interieurHub } = await getServiceGroups();
+  return {
+    title: interieurHub?.seoTitle ?? 'Maatwerk interieurbouw in Utrecht',
+    description: interieurHub?.metaDescription,
+    alternates: { canonical: '/interieurbouw' },
+    openGraph: {
+      title: interieurHub?.seoTitle ?? 'Maatwerk interieurbouw in Utrecht',
+      description: interieurHub?.metaDescription,
+      url: '/interieurbouw',
+    },
+  };
+}
+
+export default async function InterieurbouwPage() {
+  const [{ interieurHub: interieurService, interieurSubs: interieurSubServices }, site] =
+    await Promise.all([getServiceGroups(), getSiteSettings()]);
   return (
     <>
       {/* editorial opening — image-led */}
@@ -31,7 +37,7 @@ export default function InterieurbouwPage() {
             <h1 className={`display ${styles.title}`}>
               Interieur op maat, tot in het detail.
             </h1>
-            <p className={`lede ${styles.lede}`}>{interieurService.descriptor}</p>
+            <p className={`lede ${styles.lede}`}>{interieurService?.descriptor}</p>
           </div>
           <ProjectMedia
             className={styles.introMedia}
@@ -46,7 +52,7 @@ export default function InterieurbouwPage() {
       <section className={`container ${styles.body}`}>
         <div className={styles.bodyGrid}>
           <SectionMarker label="De discipline" />
-          <p className={styles.bodyText}>{interieurService.intro}</p>
+          <p className={styles.bodyText}>{interieurService?.intro}</p>
         </div>
       </section>
 

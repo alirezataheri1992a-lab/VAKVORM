@@ -7,6 +7,7 @@ import {
   servicesQuery,
   publishedProjectsQuery,
   projectBySlugQuery,
+  projectSlugsQuery,
 } from './sanity/queries';
 import { toMediaSlot } from './sanity/image';
 // ---- development fallback data (used when Sanity is not configured) ----
@@ -14,13 +15,21 @@ import { site as fallbackSite } from './site';
 import { services as fbServices, interieurSubServices as fbSubs } from './services';
 import { getPublishedProjects as fbProjects } from './projects';
 
+/*
+ * Single source of truth for all page content. When Sanity is configured
+ * (NEXT_PUBLIC_SANITY_PROJECT_ID set) every getter reads published documents from Sanity;
+ * otherwise it returns the local development seed so the site always builds and renders.
+ * The public front-end imports ONLY from this module — never the raw seed files.
+ */
+
 /* ============================ SiteSettings ============================ */
 
 export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
   if (sanityEnabled && sanityClient) {
     const data = await sanityClient.fetch<Partial<SiteSettings> | null>(settingsQuery);
     if (data) {
-      // baseUrl is never editor-managed; keep it from config. Only override defined fields.
+      // baseUrl is deployment config, never editor-managed; keep it from code. Only
+      // override fields the editor actually provided (non-empty).
       const merged: SiteSettings = { ...fallbackSite };
       (Object.keys(data) as (keyof SiteSettings)[]).forEach((k) => {
         const v = data[k];
@@ -82,13 +91,21 @@ export const getAllServices = cache(async (): Promise<Service[]> => {
   return [...fbServices, ...fbSubs];
 });
 
+/**
+ * Grouped views used by navigation, footer and index sections.
+ * - `main`        : the 6 top-level services (bouw + interieur hub) for the homepage index.
+ * - `bouw`        : the 5 construction services.
+ * - `interieurHub`: the /interieurbouw pillar page.
+ * - `interieurSubs`: interieurbouw specialisations.
+ */
 export const getServiceGroups = cache(async () => {
   const all = await getAllServices();
   const bouw = all.filter((s) => s.pillar === 'bouw');
   const interieur = all.filter((s) => s.pillar === 'interieur');
   const interieurHub = interieur.find((s) => s.path === '/interieurbouw') ?? interieur[0];
   const interieurSubs = interieur.filter((s) => s.path.startsWith('/interieurbouw/'));
-  return { all, bouw, interieurHub, interieurSubs };
+  const main = interieurHub ? [...bouw, interieurHub] : bouw;
+  return { all, main, bouw, interieurHub, interieurSubs };
 });
 
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
@@ -115,8 +132,10 @@ interface RawProject {
   objective?: string;
   approach?: string;
   result?: string;
+  seoTitle?: string;
+  metaDescription?: string;
   hero?: { alt?: string; asset?: { _ref?: string } };
-  gallery?: { alt?: string; category?: string; asset?: { _ref?: string } }[];
+  gallery?: { alt?: string; caption?: string; asset?: { _ref?: string } }[];
 }
 
 function mapProject(r: RawProject): Project {
@@ -129,16 +148,16 @@ function mapProject(r: RawProject): Project {
       projectType: r.projectType ?? '',
       location: r.location ?? '',
       propertyType: r.propertyType,
-      services: r.services ?? [],
+      services: (r.services ?? []).filter(Boolean),
       duration: r.duration,
     },
     hero: toMediaSlot(r.hero, '3:2', 'PROJECT'),
-    gallery: (r.gallery ?? []).map((g) =>
-      toMediaSlot(g, '3:2', g.category ? g.category.toUpperCase() : undefined),
-    ),
+    gallery: (r.gallery ?? []).map((g) => toMediaSlot(g, '3:2')),
     objective: r.objective,
     approach: r.approach,
     result: r.result,
+    seoTitle: r.seoTitle,
+    metaDescription: r.metaDescription,
   };
 }
 
@@ -156,4 +175,13 @@ export async function getProject(slug: string): Promise<Project | undefined> {
     return raw ? mapProject(raw) : undefined;
   }
   return fbProjects().find((p) => p.slug === slug);
+}
+
+/** Published project slugs for static generation. New slugs still render via ISR. */
+export async function getProjectSlugs(): Promise<string[]> {
+  if (sanityEnabled && sanityClient) {
+    const slugs = await sanityClient.fetch<string[]>(projectSlugsQuery);
+    return (slugs ?? []).filter(Boolean);
+  }
+  return fbProjects().map((p) => p.slug);
 }

@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { interieurSubServices, getService } from '@/lib/services';
+import { getServiceGroups, getServiceBySlug } from '@/lib/content';
 import { ServicePageView } from '@/components/pages/ServicePageView';
 
-export function generateStaticParams() {
-  return interieurSubServices.map((s) => ({ slug: s.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const { interieurSubs } = await getServiceGroups();
+  return interieurSubs.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -13,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = getService(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return {};
   return {
     title: service.seoTitle,
@@ -29,8 +32,9 @@ export default async function InterieurSubPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const service = getService(slug);
-  const isSub = interieurSubServices.some((s) => s.slug === slug);
+  const { interieurSubs } = await getServiceGroups();
+  const service = await getServiceBySlug(slug);
+  const isSub = interieurSubs.some((s) => s.slug === slug);
   if (!service || !isSub) notFound();
 
   return (

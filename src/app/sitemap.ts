@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
-import { services, interieurSubServices } from '@/lib/services';
-import { getPublishedProjects } from '@/lib/projects';
+import { getServiceGroups, getPublishedProjects } from '@/lib/content';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 60;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     '/',
     '/diensten',
@@ -14,12 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/interieurbouw',
   ];
 
-  const servicePaths = services
-    .filter((s) => s.pillar === 'bouw')
-    .map((s) => s.path)
-    .concat(interieurSubServices.map((s) => s.path));
+  const [groups, projects] = await Promise.all([getServiceGroups(), getPublishedProjects()]);
 
-  const projectPaths = getPublishedProjects().map((p) => `/projecten/${p.slug}`);
+  const servicePaths = [...groups.bouw, ...groups.interieurSubs].map((s) => s.path);
+  const projectPaths = projects.map((p) => `/projecten/${p.slug}`);
 
   const all = [...new Set([...staticPaths, ...servicePaths, ...projectPaths])];
 

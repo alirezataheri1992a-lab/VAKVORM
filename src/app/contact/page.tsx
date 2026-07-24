@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { site } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ContactForm } from '@/components/sections/ContactForm';
@@ -13,10 +13,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
 };
 
-export default function ContactPage() {
+export const revalidate = 60;
+
+export default async function ContactPage() {
+  const site = await getSiteSettings();
   return (
     <>
-      <LocalBusinessJsonLd />
+      <LocalBusinessJsonLd settings={site} />
       <section className={`container ${styles.wrap}`}>
         <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
         <div className={styles.grid}>
@@ -55,7 +58,11 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.formCol}>
-            <ContactForm />
+            <ContactForm
+              email={site.email}
+              phoneHref={site.phoneHref}
+              phoneDisplay={site.phoneDisplay}
+            />
           </div>
         </div>
       </section>

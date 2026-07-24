@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getPublishedProjects, workSlots } from '@/lib/projects';
-import { serviceTitle } from '@/lib/services';
-import { site } from '@/lib/site';
+import { workSlots } from '@/lib/projects';
+import { getPublishedProjects, getServiceTitle, getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
@@ -16,8 +15,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/projecten' },
 };
 
-export default function ProjectenPage() {
-  const projects = getPublishedProjects();
+export const revalidate = 60;
+
+export default async function ProjectenPage() {
+  const [projects, site] = await Promise.all([getPublishedProjects(), getSiteSettings()]);
+  const items = await Promise.all(
+    projects.map(async (p) => ({ p, svcTitle: await getServiceTitle(p.meta.services[0] ?? '') })),
+  );
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function ProjectenPage() {
 
       {projects.length > 0 ? (
         <section className={`container ${styles.grid}`}>
-          {projects.map((p, i) => (
+          {items.map(({ p, svcTitle }, i) => (
             <Link
               key={p.slug}
               href={`/projecten/${p.slug}`}
@@ -44,7 +48,7 @@ export default function ProjectenPage() {
               <div className={styles.itemMeta}>
                 <span className={styles.itemTitle}>{p.title}</span>
                 <span className="label">
-                  {serviceTitle(p.meta.services[0] ?? '')} · {p.meta.location}
+                  {svcTitle} · {p.meta.location}
                 </span>
               </div>
             </Link>

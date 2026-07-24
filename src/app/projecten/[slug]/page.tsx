@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProject, getPublishedProjects } from '@/lib/projects';
-import { getService, serviceTitle } from '@/lib/services';
+import { getProject, getProjectSlugs, getServiceBySlug } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
 import styles from './project.module.css';
 
-export function generateStaticParams() {
-  return getPublishedProjects().map((p) => ({ slug: p.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return (await getProjectSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,19 +20,26 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) return {};
   return {
-    title: project.title,
-    description: `${project.meta.projectType} in ${project.meta.location} door VAKVORM.`,
+    title: project.seoTitle ?? project.title,
+    description:
+      project.metaDescription ??
+      `${project.meta.projectType} in ${project.meta.location} door VAKVORM.`,
     alternates: { canonical: `/projecten/${project.slug}` },
   };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) notFound();
+
+  // Resolve related services once (async lookups can't run inside the JSX map).
+  const svcList = await Promise.all(
+    project.meta.services.map(async (s) => ({ slug: s, svc: await getServiceBySlug(s) })),
+  );
 
   const metaRows: [string, string | undefined][] = [
     ['Type', project.meta.projectType],
@@ -67,19 +75,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 <dd className={styles.metaValue}>{v}</dd>
               </div>
             ))}
-          {project.meta.services.length > 0 && (
+          {svcList.length > 0 && (
             <div className={styles.metaItem}>
               <dt className="label">Diensten</dt>
               <dd className={styles.metaValue}>
-                {project.meta.services.map((s, i) => {
-                  const svc = getService(s);
-                  return (
-                    <span key={s}>
-                      {svc ? <Link href={svc.path}>{svc.title}</Link> : serviceTitle(s)}
-                      {i < project.meta.services.length - 1 ? ', ' : ''}
-                    </span>
-                  );
-                })}
+                {svcList.map(({ slug: s, svc }, i) => (
+                  <span key={s}>
+                    {svc ? <Link href={svc.path}>{svc.title}</Link> : s}
+                    {i < svcList.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
               </dd>
             </div>
           )}
@@ -108,21 +113,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       )}
 
       {/* related services */}
-      {project.meta.services.length > 0 && (
+      {svcList.some(({ svc }) => svc) && (
         <section className={`container ${styles.related}`}>
           <SectionMarker label="Gerelateerde diensten" />
           <ul className={styles.relatedList}>
-            {project.meta.services.map((s) => {
-              const svc = getService(s);
-              if (!svc) return null;
-              return (
+            {svcList.map(({ slug: s, svc }) =>
+              svc ? (
                 <li key={s}>
                   <Link href={svc.path} className={styles.relatedLink}>
                     {svc.title}
                   </Link>
                 </li>
-              );
-            })}
+              ) : null,
+            )}
           </ul>
         </section>
       )}

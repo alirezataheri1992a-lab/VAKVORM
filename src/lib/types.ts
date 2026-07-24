@@ -54,6 +54,9 @@ export interface Project {
   objective?: string;
   approach?: string;
   result?: string;
+  /** Optional editor SEO overrides; fall back to a generated title/description. */
+  seoTitle?: string;
+  metaDescription?: string;
 }
 
 export interface SiteSettings {

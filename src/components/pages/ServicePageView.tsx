@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import type { Service } from '@/lib/types';
-import { services, interieurSubServices } from '@/lib/services';
+import { getServiceGroups, getSiteSettings } from '@/lib/content';
 import { Breadcrumbs, type Crumb } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
-import { site } from '@/lib/site';
 import styles from './ServicePageView.module.css';
 
 interface Props {
@@ -17,8 +16,9 @@ interface Props {
  * Editorial service page. It is an SEO landing page but must not read like one:
  * no feature-card grid, no accordion overload, no repeated CTAs. One considered page.
  */
-export function ServicePageView({ service, crumbs }: Props) {
-  const related = (service.pillar === 'interieur' ? interieurSubServices : services)
+export async function ServicePageView({ service, crumbs }: Props) {
+  const [groups, site] = await Promise.all([getServiceGroups(), getSiteSettings()]);
+  const related = (service.pillar === 'interieur' ? groups.interieurSubs : groups.bouw)
     .filter((s) => s.slug !== service.slug && s.pillar === service.pillar)
     .slice(0, 4);
 

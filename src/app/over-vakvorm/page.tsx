@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { site } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
@@ -13,7 +13,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/over-vakvorm' },
 };
 
-export default function OverPage() {
+export const revalidate = 60;
+
+export default async function OverPage() {
+  const site = await getSiteSettings();
   return (
     <>
       <section className={`container ${styles.intro}`}>

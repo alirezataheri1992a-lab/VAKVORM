@@ -1,7 +1,10 @@
-import { site } from '@/lib/site';
+import { site as config } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
+import type { SiteSettings } from '@/lib/types';
 
 // Structured data. Only factual fields are emitted. No AggregateRating / reviews /
-// fake address — those appear only once real, verified data exists.
+// fake address — those appear only once real, verified data exists. Contact details come
+// from the editor-managed site settings; the site URL is deployment config.
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
@@ -13,7 +16,8 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-export function OrganizationJsonLd() {
+export async function OrganizationJsonLd() {
+  const site = await getSiteSettings();
   return (
     <JsonLd
       data={{
@@ -33,20 +37,21 @@ export function OrganizationJsonLd() {
 /**
  * LocalBusiness is emitted only with verifiable fields. `address` is intentionally
  * omitted until the owner confirms a public business address (schema allows this;
- * a fabricated address would be worse than none).
+ * a fabricated address would be worse than none). Settings are passed in by the caller,
+ * which already resolves them for the page.
  */
-export function LocalBusinessJsonLd() {
+export function LocalBusinessJsonLd({ settings }: { settings: SiteSettings }) {
   return (
     <JsonLd
       data={{
         '@context': 'https://schema.org',
         '@type': 'GeneralContractor',
-        name: site.name,
-        description: `${site.descriptor} in ${site.city}.`,
-        url: site.baseUrl,
-        email: site.email,
-        telephone: `+${site.phoneHref.replace('+', '')}`,
-        areaServed: `${site.city} en omgeving`,
+        name: settings.name,
+        description: `${settings.descriptor} in ${settings.city}.`,
+        url: settings.baseUrl,
+        email: settings.email,
+        telephone: `+${settings.phoneHref.replace('+', '')}`,
+        areaServed: `${settings.city} en omgeving`,
       }}
     />
   );
@@ -58,8 +63,8 @@ export function WebSiteJsonLd() {
       data={{
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: site.name,
-        url: site.baseUrl,
+        name: config.name,
+        url: config.baseUrl,
         inLanguage: 'nl-NL',
       }}
     />
@@ -76,7 +81,7 @@ export function BreadcrumbJsonLd({ items }: { items: { name: string; path: strin
           '@type': 'ListItem',
           position: i + 1,
           name: it.name,
-          item: `${site.baseUrl}${it.path}`,
+          item: `${config.baseUrl}${it.path}`,
         })),
       }}
     />

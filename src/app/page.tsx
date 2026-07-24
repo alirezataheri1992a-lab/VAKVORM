@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { bouwServices, interieurService, interieurSubServices, services } from '@/lib/services';
-import { getPublishedProjects, workSlots } from '@/lib/projects';
-import { site } from '@/lib/site';
+import { workSlots } from '@/lib/projects';
+import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { Reveal } from '@/components/primitives/Reveal';
@@ -15,8 +14,15 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-export default function HomePage() {
-  const published = getPublishedProjects();
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const [groups, published, site] = await Promise.all([
+    getServiceGroups(),
+    getPublishedProjects(),
+    getSiteSettings(),
+  ]);
+  const { bouw: bouwServices, interieurHub: interieurService, interieurSubs: interieurSubServices, main: services } = groups;
   const hasProjects = published.length > 0;
 
   return (
@@ -196,7 +202,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href={interieurService.path} className={styles.discLink}>
+            <Link href={interieurService?.path ?? '/interieurbouw'} className={styles.discLink}>
               Naar interieurbouw
             </Link>
           </div>

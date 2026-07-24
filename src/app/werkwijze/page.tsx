@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { site } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
@@ -48,7 +48,10 @@ const steps = [
   },
 ];
 
-export default function WerkwijzePage() {
+export const revalidate = 60;
+
+export default async function WerkwijzePage() {
+  const site = await getSiteSettings();
   return (
     <>
       <section className={`container ${styles.intro}`}>

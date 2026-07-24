@@ -1,10 +1,13 @@
 import Link from 'next/link';
-import { nav, site } from '@/lib/site';
-import { bouwServices, interieurService, interieurSubServices } from '@/lib/services';
+import { nav } from '@/lib/site';
+import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import styles from './SiteFooter.module.css';
 
-export function SiteFooter() {
+export async function SiteFooter() {
   const year = 2025; // static; avoids per-request date churn. Update on next content pass.
+  const [site, groups] = await Promise.all([getSiteSettings(), getServiceGroups()]);
+  const { bouw: bouwServices, interieurHub: interieurService, interieurSubs: interieurSubServices } = groups;
+
   return (
     <footer className={`on-ink ${styles.footer}`}>
       <div className="container">
@@ -23,9 +26,11 @@ export function SiteFooter() {
                   <Link href={s.path}>{s.navLabel}</Link>
                 </li>
               ))}
-              <li>
-                <Link href={interieurService.path}>{interieurService.navLabel}</Link>
-              </li>
+              {interieurService && (
+                <li>
+                  <Link href={interieurService.path}>{interieurService.navLabel}</Link>
+                </li>
+              )}
               {interieurSubServices.map((s) => (
                 <li key={s.slug}>
                   <Link href={s.path} className={styles.sub}>

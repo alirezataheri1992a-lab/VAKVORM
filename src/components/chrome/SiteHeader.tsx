@@ -3,11 +3,18 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
-import { nav, site } from '@/lib/site';
-import { bouwServices, interieurService, interieurSubServices } from '@/lib/services';
+import { nav } from '@/lib/site';
+import type { Service, SiteSettings } from '@/lib/types';
 import styles from './SiteHeader.module.css';
 
-export function SiteHeader() {
+interface Props {
+  settings: SiteSettings;
+  bouwServices: Service[];
+  interieurService?: Service;
+  interieurSubServices: Service[];
+}
+
+export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
   const [dropdown, setDropdown] = useState(false);
   const [mobile, setMobile] = useState(false);
@@ -121,12 +128,14 @@ export function SiteHeader() {
                   <div className={styles.dropCol}>
                     <span className={`label ${styles.dropHead}`}>Interieurbouw</span>
                     <ul>
-                      <li>
-                        <Link href={interieurService.path} className={styles.dropLink}>
-                          <span className={`num ${styles.dropIndex}`}>{interieurService.index}</span>
-                          {interieurService.navLabel}
-                        </Link>
-                      </li>
+                      {interieurService && (
+                        <li>
+                          <Link href={interieurService.path} className={styles.dropLink}>
+                            <span className={`num ${styles.dropIndex}`}>{interieurService.index}</span>
+                            {interieurService.navLabel}
+                          </Link>
+                        </li>
+                      )}
                       {interieurSubServices.map((s) => (
                         <li key={s.slug}>
                           <Link href={s.path} className={`${styles.dropLink} ${styles.dropSub}`}>
@@ -190,7 +199,7 @@ export function SiteHeader() {
           <div className={styles.mobileServices}>
             <span className={`label ${styles.dropHead}`}>Diensten</span>
             <ul>
-              {[...bouwServices, interieurService, ...interieurSubServices].map((s) => (
+              {[...bouwServices, ...(interieurService ? [interieurService] : []), ...interieurSubServices].map((s) => (
                 <li key={s.path}>
                   <Link href={s.path} className={styles.mobileServiceLink}>
                     {s.navLabel}

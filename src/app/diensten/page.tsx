@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { bouwServices, interieurService } from '@/lib/services';
-import { site } from '@/lib/site';
+import { getServiceGroups, getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ServiceIndex } from '@/components/sections/ServiceIndex';
@@ -16,7 +15,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/diensten' },
 };
 
-export default function DienstenPage() {
+export const revalidate = 60;
+
+export default async function DienstenPage() {
+  const [{ bouw: bouwServices, interieurHub: interieurService }, site] = await Promise.all([
+    getServiceGroups(),
+    getSiteSettings(),
+  ]);
   return (
     <>
       <section className={`container ${styles.intro}`}>
@@ -38,26 +43,28 @@ export default function DienstenPage() {
         <ServiceIndex items={bouwServices} />
       </section>
 
-      <section className={styles.interieur}>
-        <div className="container">
-          <div className={styles.interieurGrid}>
-            <div className={styles.interieurText}>
-              <SectionMarker index="02" label="Interieurbouw" />
-              <h2 className={`heading ${styles.interieurTitle}`}>{interieurService.title}</h2>
-              <p className="body">{interieurService.intro}</p>
-              <Link href={interieurService.path} className={styles.interieurLink}>
-                Naar interieurbouw
-              </Link>
-            </div>
-            <div className={styles.interieurMedia}>
-              <ProjectMedia
-                media={interieurService.hero}
-                sizes="(max-width: 900px) 100vw, 44vw"
-              />
+      {interieurService && (
+        <section className={styles.interieur}>
+          <div className="container">
+            <div className={styles.interieurGrid}>
+              <div className={styles.interieurText}>
+                <SectionMarker index="02" label="Interieurbouw" />
+                <h2 className={`heading ${styles.interieurTitle}`}>{interieurService.title}</h2>
+                <p className="body">{interieurService.intro}</p>
+                <Link href={interieurService.path} className={styles.interieurLink}>
+                  Naar interieurbouw
+                </Link>
+              </div>
+              <div className={styles.interieurMedia}>
+                <ProjectMedia
+                  media={interieurService.hero}
+                  sizes="(max-width: 900px) 100vw, 44vw"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <ContactPanel />
     </>

@@ -23,7 +23,6 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem('service').title('Diensten'),
             S.documentTypeListItem('project').title('Projecten'),
-            S.documentTypeListItem('testimonial').title('Reviews'),
           ]),
     }),
     visionTool(),

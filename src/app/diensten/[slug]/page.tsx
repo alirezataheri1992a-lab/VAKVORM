@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { bouwServices, getService } from '@/lib/services';
+import { getServiceGroups, getServiceBySlug } from '@/lib/content';
 import { ServicePageView } from '@/components/pages/ServicePageView';
 
-export function generateStaticParams() {
-  return bouwServices.map((s) => ({ slug: s.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const { bouw } = await getServiceGroups();
+  return bouw.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -13,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = getService(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return {};
   return {
     title: service.seoTitle,
@@ -25,7 +28,7 @@ export async function generateMetadata({
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const service = getService(slug);
+  const service = await getServiceBySlug(slug);
   if (!service || service.pillar !== 'bouw') notFound();
 
   return (

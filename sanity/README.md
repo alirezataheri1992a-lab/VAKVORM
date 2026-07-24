@@ -1,52 +1,56 @@
 # VAKVORM — Content Studio (Sanity)
 
-The editorial back-end where the Vakvorm team manages **Projects**, **Diensten**,
-**Reviews** and **Site-instellingen** — without touching code.
+The editorial back-end where the VAKVORM team manages **Projecten**, **Diensten** and
+**Site-instellingen** — without touching code.
 
-The front-end (`/src`) currently reads from typed seed data in `src/lib/*` so the site
-runs before Sanity is provisioned. These schemas mirror those types 1:1, so switching the
-data source is a localised change (see "Connect the front-end" below).
+The front-end is **already wired** to Sanity: every page reads through `src/lib/content.ts`,
+which serves Sanity content when a project is configured and falls back to typed development
+seed data otherwise (so the site always builds). See `docs/cms-architecture.md` for the full
+picture.
 
 ## Provisioning (one-time, owner action)
 
 1. Create a free project at <https://sanity.io> and note the **Project ID**.
-2. In this `/sanity` folder:
+2. Front-end: set `NEXT_PUBLIC_SANITY_PROJECT_ID` (and `NEXT_PUBLIC_SANITY_DATASET`) in
+   `.env.local`, then redeploy once. This is the only deployment needed to switch the live
+   site onto Sanity.
+3. In this `/sanity` folder:
    ```bash
    npm install
    SANITY_STUDIO_PROJECT_ID=xxxx npm run dev   # local studio at http://localhost:3333
    ```
-   or set `projectId` directly in `sanity.config.ts`.
-3. Add content: fill **Site-instellingen** first, then add **Diensten** and **Projecten**.
-   Deploy the studio with `npm run deploy` (hosted at `<name>.sanity.studio`).
+   or set `projectId` directly in `sanity.config.ts`. Deploy the studio with
+   `npm run deploy` (hosted at `<name>.sanity.studio`).
+4. Add content: fill **Site-instellingen** first, then **Diensten**, then **Projecten**.
 
 ## Content model
 
 | Type | Purpose |
 |---|---|
-| `siteSettings` | Singleton — NAP, contact, default SEO. Single source of org details. |
-| `service` | Diensten (both pillars) + interieurbouw sub-services (via `parent`). |
-| `project` | Structured case studies. `published` gates visibility (default off). |
-| `testimonial` | Real reviews only, `consent` required. No aggregate ratings. |
+| `siteSettings` | Singleton — bedrijfsnaam, contact (e-mail/telefoon), plaats en werkgebied. Bron voor de organisatiegegevens op de site. |
+| `service` | Diensten (beide pijlers) + interieurbouw-specialisaties (via `parent`). |
+| `project` | Case studies. `published` (default **uit**) bepaalt zichtbaarheid; concepten verschijnen nergens. |
 
-## Connect the front-end (next step)
+Every schema field maps to something the website actually renders — there are no decorative
+fields. Field descriptions in the Studio are in Dutch and explain where each value appears.
 
-1. In `/` (front-end) install the client: `npm i next-sanity @sanity/image-url`.
-2. Add a `src/lib/sanity/client.ts` (projectId, dataset, `apiVersion`, `useCdn`).
-3. Replace the bodies of these functions to fetch from Sanity via GROQ:
-   - `src/lib/services.ts` → query `service` documents
-   - `src/lib/projects.ts` → query `project` documents where `published == true`
-   - `src/lib/site.ts` → query the `siteSettings` singleton
-4. Map Sanity image assets to the `MediaSlot` shape (`src`, `alt`, `ratio`) using
-   `@sanity/image-url`. `ProjectMedia` already renders real `src` when present.
-5. Add the Sanity CDN host to `next.config.mjs` `images.remotePatterns` (already present:
-   `cdn.sanity.io`).
+**Testimonials** are deliberately not modelled: the design has no reviews surface yet, and
+VAKVORM never publishes fabricated reviews. Add the type when a real, consent-based reviews
+section is designed.
 
-Because the front-end types (`src/lib/types.ts`) already match these schemas, no component
-changes are needed — only the data-fetching functions.
+## How publishing works
+
+- Drafts never reach the site: the front-end client uses `perspective: 'published'`, and
+  projects have an extra `published` switch (default off).
+- Published changes appear on the live site within ~60s via time-based revalidation — **no
+  redeploy**. For instant updates, set `SANITY_REVALIDATE_SECRET` and add a Sanity webhook to
+  `POST /api/revalidate` (header `x-revalidate-secret`).
 
 ## Env vars (front-end `.env.local`)
 
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID=xxxx
 NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-10-01
+SANITY_REVALIDATE_SECRET=        # optional, for instant publishing
 ```

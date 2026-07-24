@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
-import { site } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Privacyverklaring',
@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function PrivacyPage() {
+export const revalidate = 60;
+
+export default async function PrivacyPage() {
+  const site = await getSiteSettings();
   return (
     <section className="container section" style={{ minHeight: '50vh', maxWidth: '760px' }}>
       <Breadcrumbs items={[{ name: 'Privacy', path: '/privacy' }]} />

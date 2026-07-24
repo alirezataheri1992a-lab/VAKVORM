@@ -2,12 +2,17 @@
 
 import { useActionState } from 'react';
 import { submitInquiry, type InquiryState } from '@/lib/inquiry';
-import { site } from '@/lib/site';
 import styles from './ContactForm.module.css';
 
 const initial: InquiryState = { status: 'idle' };
 
-export function ContactForm() {
+interface Props {
+  email: string;
+  phoneHref: string;
+  phoneDisplay: string;
+}
+
+export function ContactForm({ email, phoneHref, phoneDisplay }: Props) {
   const [state, action, pending] = useActionState(submitInquiry, initial);
 
   if (state.status === 'success') {
@@ -68,8 +73,8 @@ export function ContactForm() {
           {state.message}
           {state.status === 'unconfigured' && (
             <span className={styles.fallback}>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
+              <a href={`mailto:${email}`}>{email}</a>
+              <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
             </span>
           )}
         </p>

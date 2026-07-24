@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { site } from '@/lib/site';
+import { getSiteSettings } from '@/lib/content';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import styles from './ContactPanel.module.css';
 
@@ -15,12 +15,13 @@ interface Props {
  * Confident closing invitation on the deep-navy chapter — premium but proactive.
  * Reusable across pages. Contact details come from the central site settings.
  */
-export function ContactPanel({
+export async function ContactPanel({
   eyebrow = 'Contact',
   heading = 'Een project bespreken?',
   body = 'Loop uw plannen met ons door. We denken graag mee — vrijblijvend en zonder verkooppraat.',
   facts = false,
 }: Props) {
+  const site = await getSiteSettings();
   return (
     <section className={`on-ink ${styles.panel}`}>
       <div className="container">
