@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { bouwServices, interieurService, services } from '@/lib/services';
+import { bouwServices, interieurService, interieurSubServices, services } from '@/lib/services';
 import { getPublishedProjects, workSlots } from '@/lib/projects';
 import { site } from '@/lib/site';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
@@ -171,32 +171,46 @@ export default function HomePage() {
           </div>
           <div className={styles.discBandMedia}>
             <ProjectMedia
-              media={{ alt: 'Bouw en renovatie door Vakvorm', ratio: '5:4', slot: 'BOUW' }}
+              media={{ alt: 'Bouw en renovatie door Vakvorm', ratio: '4:3', slot: 'BOUW' }}
               sizes="(max-width: 900px) 100vw, 42vw"
             />
           </div>
         </div>
       </section>
 
-      {/* Maatwerk Interieurbouw — warm stone field (material, tactile) */}
-      <section className={`on-sand ${styles.discBand} ${styles.discBandAlt}`}>
-        <div className={`container ${styles.discBandInner}`}>
-          <div className={styles.discBandMedia}>
-            <ProjectMedia
-              media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR — DETAIL' }}
-              sizes="(max-width: 900px) 100vw, 42vw"
-            />
-          </div>
-          <div className={styles.discBandText}>
+      {/* Maatwerk Interieurbouw — warm material chapter (tactile, editorial, two images) */}
+      <section className={`on-material ${styles.discInterieur}`}>
+        <div className={`container ${styles.discIntInner}`}>
+          <div className={styles.discIntText}>
             <SectionMarker index="02" label="Interieurbouw" />
             <h3 className={`heading ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
             <p className={styles.discBandBody}>
               Een volwaardige discipline binnen Vakvorm. Van maatwerkkasten en wandmeubels
-              tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail.
+              tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail, in
+              hout, fineer en zorgvuldig afgewerkte verbindingen.
             </p>
+            <ul className={styles.discBandList}>
+              {interieurSubServices.map((s) => (
+                <li key={s.slug}>
+                  <Link href={s.path}>{s.navLabel}</Link>
+                </li>
+              ))}
+            </ul>
             <Link href={interieurService.path} className={styles.discLink}>
               Naar interieurbouw
             </Link>
+          </div>
+          <div className={styles.discIntMedia}>
+            <ProjectMedia
+              className={styles.discIntMain}
+              media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR' }}
+              sizes="(max-width: 900px) 100vw, 36vw"
+            />
+            <ProjectMedia
+              className={styles.discIntDetail}
+              media={{ alt: 'Detail van maatwerk — houtverbinding', ratio: '1:1', slot: 'DETAIL' }}
+              sizes="(max-width: 900px) 60vw, 20vw"
+            />
           </div>
         </div>
       </section>
@@ -227,7 +241,7 @@ export default function HomePage() {
         <ServiceIndex items={services} />
       </section>
 
-      {/* ---------- F. Werkwijze preview ---------- */}
+      {/* ---------- F. Werkwijze — process with presence (media + progression) ---------- */}
       <section className={`on-sand ${styles.proces}`}>
         <div className="container">
           <div className={styles.procesHead}>
@@ -236,21 +250,35 @@ export default function HomePage() {
               Volledige werkwijze
             </Link>
           </div>
-          <ol className={styles.procesList}>
-            {[
-              ['01', 'Kennismaking', 'We bespreken uw plannen, wensen en mogelijkheden.'],
-              ['02', 'Plan & afstemming', 'Uitwerking van ontwerp, planning en offerte.'],
-              ['03', 'Realisatie', 'Uitvoering en coördinatie van alle vakmensen.'],
-              ['04', 'Oplevering', 'Controle, afwerking en nette oplevering.'],
-            ].map(([n, t, d]) => (
-              <li key={n} className={styles.procesStep}>
-                <span className={`num ${styles.procesNum}`}>{n}</span>
-                <span className={styles.procesLine} aria-hidden="true" />
-                <h3 className={styles.procesTitle}>{t}</h3>
-                <p className={styles.procesDesc}>{d}</p>
-              </li>
-            ))}
-          </ol>
+          <div className={styles.procesGrid}>
+            <div className={styles.procesIntro}>
+              <h2 className={`heading ${styles.procesLead}`}>
+                Eén partij die uw project plant, coördineert en oplevert.
+              </h2>
+              <div className={styles.procesMedia}>
+                <ProjectMedia
+                  media={{ alt: 'Vakvorm coördineert op de bouwplaats', ratio: '4:3', slot: 'PROCES — UITVOERING' }}
+                  sizes="(max-width: 940px) 100vw, 40vw"
+                />
+              </div>
+            </div>
+            <ol className={styles.procesSteps}>
+              {[
+                ['01', 'Kennismaking', 'We bespreken uw plannen, wensen en mogelijkheden.'],
+                ['02', 'Plan & afstemming', 'Uitwerking van ontwerp, planning en offerte.'],
+                ['03', 'Realisatie', 'Uitvoering en coördinatie van alle vakmensen.'],
+                ['04', 'Oplevering', 'Controle, afwerking en nette oplevering.'],
+              ].map(([n, t, d]) => (
+                <li key={n} className={styles.procesStep}>
+                  <span className={`num ${styles.procesNum}`}>{n}</span>
+                  <div className={styles.procesStepBody}>
+                    <h3 className={styles.procesTitle}>{t}</h3>
+                    <p className={styles.procesDesc}>{d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 

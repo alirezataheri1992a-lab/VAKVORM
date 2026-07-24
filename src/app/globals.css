@@ -11,6 +11,8 @@
   --bone: #f3efe4; /* alias: primary background */
   --stone: #e5ddcc; /* warm stone / taupe — supporting chapters */
   --sand: #e5ddcc; /* alias for stone surfaces */
+  --material: #ddcdb2; /* warm mushroom / oatmeal — interieurbouw chapter (plaster, oak, stone) */
+  --material-line: #c3b493; /* hairline on the material surface */
   --paper: #f8f4ea; /* raised surface (media wells, inputs, cards) */
   --ink: #1a1915; /* warm near-black — primary text on light */
   --ink-soft: #38342b; /* warm softened text */
@@ -197,6 +199,9 @@ h4 {
 }
 .on-sand {
   background: var(--sand);
+}
+.on-material {
+  background: var(--material);
 }
 .visually-hidden {
   position: absolute;

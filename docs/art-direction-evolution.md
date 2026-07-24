@@ -88,3 +88,77 @@ Media wells remain placeholders. Photography will bring wood/brick/stone/steel/s
 the human warmth that lifts "human feeling" to target. The interface leaves neutral room for it.
 
 ART DIRECTION EVOLUTION: READY FOR OWNER REVIEW
+
+---
+
+## Refinement Pass — Pillar Balance & Commercial Hierarchy
+
+Refinement of the approved evolution (no redesign; hero, typography, IA, ServiceIndex,
+navy statement all protected).
+
+### How Interieurbouw was elevated (pillar equality)
+Previously Bouw got a strong navy chapter while Interieurbouw fell back to a pale neutral —
+accidentally reading Bouw = primary, Interieur = secondary. Now the two are **equal but not
+identical specialist worlds**:
+- **Bouw & Renovatie** — deep **navy** field, broad/architectural, single landscape media, service list.
+- **Maatwerk Interieurbouw** — new warm **material** surface, tactile/editorial, a **two-image
+  composition** (large 4:5 + overlapping 1:1 detail), its own sub-service list (maatwerkkasten /
+  interieur op maat / wandmeubels) and material-led copy (hout, fineer, verbindingen).
+The scroll now reads: navy Bouw → material Interieur → navy one-party principle = **build +
+interior = one party.**
+
+### New material surface treatment
+Added `--material` (#ddcdb2, warm mushroom/oatmeal — plaster/oak/stone) + `--material-line`
+and an `.on-material` surface. Distinct from stone/ivory; evokes interior materiality, not
+pink/peach/fashion-beige.
+
+### Primary CTA rule (permanent)
+**Warm clay/cognac (`--oxide`) = primary action.** Applied systematically: header "Offerte
+aanvragen", hero "Vrijblijvend kennismaken", and the intake CTA are all filled clay (cream
+text, 6px radius, hover → ink). Clay stays scarce enough to *mean* "take action".
+
+### Secondary/tertiary CTA rule (permanent)
+- **Secondary** = neutral **outlined** button (hero "Onze werkwijze").
+- **Tertiary** = typographic **arrow/underline link** ("Alle projecten", "Volledige werkwijze",
+  "Naar interieurbouw", "Meer informatie"). Never competes with the clay primary.
+Accent discipline: clay only on primary CTAs, active/selected states, the single statement word,
+and small interaction feedback — not on section labels, static numbers, or decoration.
+
+### Selected Work composition
+Fewer, larger, more confident: one large primary media (~68%) with an offset secondary, less
+pale empty space, media wells deepened to stone so they read as *present* proof. Designed so a
+real Dutch renovation + a bespoke-interior detail will read as important. No cards/shadows/tiles.
+
+### Werkwijze
+Lifted from a footer-like 4-column row to a chapter with presence: a lead statement + a
+**process-image position** (future site/craft photography) alongside four large numbered steps
+with a connecting rhythm. Communicates control, planning, coordination, accountability.
+
+### Trust strip
+Bigger titles (1.3rem), more vertical air, **column borders removed** (less spreadsheet), cleaner
+rhythm. Still factual reassurance — no icons, no cards.
+
+### Mobile
+Full-width navy/material/stone chapters stack edge-to-edge → the two pillars read as distinct
+immersive worlds; Werkwijze keeps large stacked steps (not tiny columns); the clay primary CTA
+is obvious throughout.
+
+### Before / after scores (this pass)
+| Dimension | Before | After |
+|---|---|---|
+| Pillar equality | 4 | **8** |
+| Warmth | 8 | **8.5** |
+| Visual energy | 8 | **8.5** |
+| CTA clarity | 6 | **8.5** |
+| Selected-work authority | 4 | **7.5** *(→ 8+ with real photography)* |
+| Process credibility | 5 | **8** |
+| Construction confidence | 8 | **8.5** |
+| Interior sophistication | 7 | **8.5** |
+| Premium character | 8 | **8.5** |
+| Brand distinctiveness | 8 | **8.5** |
+
+All major dimensions ≥ 8 except Selected-work authority, which is capped by placeholders and
+reaches target once real photography lands. Not overcorrected — ivory breathing room retained,
+clay stays scarce.
+
+ART DIRECTION REFINEMENT: READY FOR OWNER REVIEW
