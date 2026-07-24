@@ -28,7 +28,7 @@ export default function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroText}>
-            <span className={`label ${styles.heroEyebrow}`}>
+            <span className={styles.heroEyebrow}>
               Aannemer &amp; interieurbouw — {site.city}
             </span>
             <h1 className={`display ${styles.heroTitle}`}>
@@ -40,8 +40,8 @@ export default function HomePage() {
               met één aanspreekpunt, van eerste schets tot oplevering.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/projecten" className={styles.btnPrimary}>
-                Bekijk projecten
+              <Link href="/contact" className={styles.btnPrimary}>
+                Vrijblijvend kennismaken
               </Link>
               <Link href="/werkwijze" className={styles.btnGhost}>
                 Onze werkwijze
@@ -64,11 +64,30 @@ export default function HomePage() {
         <div className={`container ${styles.heroBaseline}`}>
           {['Constructie', 'Renovatie', 'Aanbouw', 'Stucwerk', 'Interieurbouw', 'Coördinatie'].map(
             (cap) => (
-              <span key={cap} className={`label ${styles.cap}`}>
+              <span key={cap} className={`spec ${styles.cap}`}>
                 {cap}
               </span>
             ),
           )}
+        </div>
+      </section>
+
+      {/* ---------- Trust band — integrated, non-fabricated reassurance ---------- */}
+      <section className={`on-sand ${styles.trust}`}>
+        <div className="container">
+          <ul className={styles.trustGrid}>
+            {[
+              ['Eén aanspreekpunt', 'Van eerste schets tot oplevering heeft u één vast contact.'],
+              ['Complete begeleiding', 'Wij coördineren alle vakmensen en bewaken het geheel.'],
+              ['Heldere planning', 'Vooraf afgestemd, zodat u weet waar u aan toe bent.'],
+              ['Hoogwaardige afwerking', 'Vakmanschap tot in het detail, netjes opgeleverd.'],
+            ].map(([t, d]) => (
+              <li key={t} className={styles.trustItem}>
+                <h2 className={styles.trustTitle}>{t}</h2>
+                <p className={styles.trustDesc}>{d}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -191,7 +210,7 @@ export default function HomePage() {
           </p>
           <div className={styles.triad}>
             {['Organiseren', 'Bouwen', 'Afwerken'].map((v) => (
-              <span key={v} className={`label ${styles.triadItem}`}>
+              <span key={v} className={`spec ${styles.triadItem}`}>
                 {v}
               </span>
             ))}
@@ -208,7 +227,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------- F. Werkwijze preview ---------- */}
-      <section className={`${styles.proces}`}>
+      <section className={`on-sand ${styles.proces}`}>
         <div className="container">
           <div className={styles.procesHead}>
             <SectionMarker label="Werkwijze" />

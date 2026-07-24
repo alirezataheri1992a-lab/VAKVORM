@@ -7,7 +7,7 @@
   width: 100%;
   overflow: hidden;
   background: var(--paper);
-  border-radius: var(--radius);
+  border-radius: var(--radius-media);
 }
 /* fill parent height on desktop (used by the hero); keep the ratio on mobile */
 @media (min-width: 1041px) {

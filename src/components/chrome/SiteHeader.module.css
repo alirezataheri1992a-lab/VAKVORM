@@ -28,8 +28,11 @@
   letter-spacing: 0.04em;
 }
 .brandDesc {
-  font-size: 0.6rem;
-  letter-spacing: 0.34em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--concrete);
 }
 
@@ -143,22 +146,22 @@
   color: var(--oxide);
 }
 
-/* -------- cta — bordered, typography-led, restrained diagonal arrow -------- */
+/* -------- cta — filled, inviting, warm clay hover, restrained diagonal arrow -------- */
 .cta {
   flex: none;
   display: inline-flex;
   align-items: center;
   gap: 14px;
   height: 48px;
-  padding: 0 24px;
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--ink);
+  padding: 0 26px;
+  background: var(--oxide);
+  color: var(--on-ink);
+  border: 1px solid var(--oxide);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.005em;
-  border-radius: var(--radius);
-  transition: background 220ms var(--ease), color 220ms var(--ease);
+  border-radius: var(--radius-cta);
+  transition: background 220ms var(--ease), border-color 220ms var(--ease);
 }
 .cta::after {
   content: '';
@@ -172,7 +175,7 @@
 }
 .cta:hover {
   background: var(--ink);
-  color: var(--on-ink);
+  border-color: var(--ink);
 }
 .cta:hover::after {
   transform: translate(2px, -2px) rotate(-45deg);

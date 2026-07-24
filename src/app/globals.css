@@ -5,17 +5,20 @@
    ============================================================ */
 
 :root {
-  /* --- Color: material-inspired (see visual-direction §4) --- */
-  --bone: #ebe6dd;
-  --paper: #f4f1ea;
-  --ink: #15181a;
-  --ink-soft: #2a2e30;
-  --concrete: #6c685f;
-  --concrete-line: #c8c2b6;
-  --concrete-line-dark: #3a3e40;
-  --oxide: #9e4a2c;
-  --on-ink: #e7e2d8;
-  --on-ink-soft: #a8a396;
+  /* --- Color: warm material palette (warm sand + espresso + clay accent) --- */
+  --bone: #ece5d6; /* warm sand off-white — page background */
+  --sand: #e4dbc8; /* deeper warm neutral — alternating sections, depth */
+  --paper: #f4efe4; /* warm raised surface (media wells, inputs) */
+  --ink: #1c1a15; /* warm near-black — primary text */
+  --ink-soft: #3a352b; /* warm softened text */
+  --concrete: #6f685a; /* warm secondary text */
+  --concrete-line: #cbc0a9; /* warm hairlines / borders */
+  --deep: #23201a; /* deep warm espresso — feature sections (was cool ink) */
+  --concrete-line-dark: #40392d; /* warm hairlines on deep */
+  --oxide: #a85a34; /* warm clay / ochre accent — restrained */
+  --oxide-warm: #b9713f; /* lighter clay for hovers on dark */
+  --on-ink: #ece3d3; /* warm off-white on deep */
+  --on-ink-soft: #a99f8b; /* warm muted on deep */
 
   /* --- Typography ---
      One neo-grotesk for the readable layer; a mono for the technical spec layer. */
@@ -27,7 +30,9 @@
   --maxw: 1460px;
   --gutter: clamp(20px, 5vw, 96px);
   --col-gap: clamp(16px, 1.6vw, 28px);
-  --radius: 2px;
+  --radius: 2px; /* structural containers stay near-square */
+  --radius-cta: 6px; /* buttons — slightly softer for warmth */
+  --radius-media: 5px; /* image frames — subtle softening */
 
   /* --- Motion --- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -129,8 +134,22 @@ h4 {
   text-wrap: pretty;
 }
 
-/* The technical spec layer — mono, tabular, modest tracking (not performative). */
+/* Editorial label (section eyebrows, footer/column heads, breadcrumbs, captions).
+   Public Sans — brand typography, not an interface label. */
 .label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.72rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--concrete);
+}
+
+/* Technical spec layer — IBM Plex Mono, tabular. Reserved for genuine metadata /
+   index / specification / classification use only (numbers, years, locations,
+   dimensions, process indexes, capability classifications). */
+.spec {
   font-family: var(--font-technical);
   font-weight: 500;
   font-size: 0.7rem;
@@ -165,11 +184,14 @@ h4 {
   padding-block: clamp(48px, 7vh, 96px);
 }
 .on-ink {
-  background: var(--ink);
+  background: var(--deep);
   color: var(--on-ink);
 }
 .on-ink .label {
   color: var(--on-ink-soft);
+}
+.on-sand {
+  background: var(--sand);
 }
 .visually-hidden {
   position: absolute;
