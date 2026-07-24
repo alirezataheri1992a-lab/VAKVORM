@@ -42,10 +42,10 @@ export function ServicePageView({ service, crumbs }: Props) {
         </div>
       </section>
 
-      {/* hero image */}
+      {/* hero image — landscape crop for a controlled full-width scale */}
       <section className={`container ${styles.heroSec}`}>
         <ProjectMedia
-          media={service.hero}
+          media={{ ...service.hero, ratio: '3:2' }}
           priority
           sizes="100vw"
           caption={<SectionMarker index="—" label={`${service.title} · ${site.city}`} />}

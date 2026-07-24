@@ -190,6 +190,7 @@
 .mobile {
   position: fixed;
   inset: 84px 0 0 0;
+  z-index: 90;
   background: var(--bone);
   opacity: 0;
   visibility: hidden;

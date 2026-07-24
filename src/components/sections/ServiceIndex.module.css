@@ -8,7 +8,7 @@
 }
 .row {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1.1fr) minmax(0, 1.4fr) 40px;
+  grid-template-columns: 54px minmax(0, 1.45fr) minmax(0, 1fr) 40px;
   align-items: baseline;
   gap: 20px;
   padding: 26px 0;
@@ -25,13 +25,16 @@
   align-self: center;
 }
 .name {
+  min-width: 0;
+  overflow-wrap: normal;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+  font-size: clamp(1.35rem, 2.1vw, 1.95rem);
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.06;
 }
 .desc {
+  min-width: 0;
   color: var(--concrete);
   font-size: 0.98rem;
   align-self: center;

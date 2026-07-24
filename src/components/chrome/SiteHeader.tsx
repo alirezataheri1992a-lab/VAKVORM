@@ -62,7 +62,8 @@ export function SiteHeader() {
     path === '/' ? pathname === '/' : pathname.startsWith(path);
 
   return (
-    <header className={styles.header}>
+    <>
+      <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — ${site.descriptor}`}>
           <span className={styles.brandName}>{site.name}</span>
@@ -167,8 +168,10 @@ export function SiteHeader() {
           <span data-open={mobile} />
         </button>
       </div>
+      </header>
 
-      {/* -------- full-screen mobile menu -------- */}
+      {/* -------- full-screen mobile menu (sibling of header: fixed positioning
+          must not be trapped by the header's backdrop-filter containing block) -------- */}
       <div id={menuId} className={styles.mobile} data-open={mobile} aria-hidden={!mobile}>
         <nav className={`container ${styles.mobileInner}`} aria-label="Mobiel menu">
           <ul className={styles.mobileList}>
@@ -207,6 +210,6 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
