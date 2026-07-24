@@ -23,3 +23,15 @@ export const nav = [
   { label: 'Werkwijze', path: '/werkwijze' },
   { label: 'Over VAKVORM', path: '/over-vakvorm' },
 ] as const;
+
+// --- Homepage hero video ---------------------------------------------------
+// Single source of truth for the cinematic hero background. Swap `src`/`poster`
+// here to replace the footage — no component changes needed. `objectPosition`
+// keeps the craftsmanship action framed when the portrait source is cover-cropped
+// into the wide desktop hero (tuned to the current placeholder clip).
+// NOTE: the current file is a TEMPORARY stock placeholder — see /docs/video-sources.md.
+export const heroVideo = {
+  src: '/videos/vakvorm-hero-placeholder.mp4',
+  poster: '/images/hero/hero-poster.jpg',
+  objectPosition: '50% 25%',
+} as const;

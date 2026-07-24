@@ -1,0 +1,28 @@
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--navy); /* paints before the poster loads — never an empty flash */
+}
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+/* the video sits above the poster and only reveals once it is truly playing, so
+   the poster remains the fallback whenever playback never starts */
+video.layer {
+  opacity: 0;
+  transition: opacity 600ms var(--ease);
+}
+video.layer[data-playing='true'] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  video.layer {
+    transition: none;
+  }
+}

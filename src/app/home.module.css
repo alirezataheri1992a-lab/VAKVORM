@@ -2,47 +2,78 @@
    Recomposed for visual energy: dominant media, controlled overlap,
    stronger colour rhythm. Brand, type, IA and tokens unchanged. */
 
-/* ---------- 1. HERO — one composition ---------- */
+/* ---------- 1. HERO — cinematic video background ---------- */
 .hero {
-  padding-top: clamp(16px, 2.5vh, 40px);
-  padding-bottom: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  background: var(--navy);
+  /* immersive but not forced to exactly 100vh; sits under the 84px sticky header */
+  min-height: 560px;
+  min-height: max(560px, min(760px, calc(100svh - 84px)));
 }
-.heroGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(28px, 5vw, 56px);
-  padding-inline: var(--gutter);
+/* layered scrim: horizontal for text readability + a soft vertical foot to
+   bridge into the trust strip. The video stays clearly visible on the right. */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(9, 16, 26, 0.92) 0%,
+      rgba(11, 20, 32, 0.82) 26%,
+      rgba(13, 24, 38, 0.5) 52%,
+      rgba(15, 27, 42, 0.16) 78%,
+      rgba(15, 27, 42, 0.06) 100%
+    ),
+    linear-gradient(to bottom, transparent 68%, rgba(9, 16, 26, 0.34) 100%);
+}
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: clamp(48px, 9vh, 96px);
 }
 .heroText {
-  align-self: center;
+  max-width: 40ch;
 }
 .heroEyebrow {
   display: block;
-  margin-bottom: clamp(24px, 4vh, 44px);
+  margin-bottom: clamp(20px, 3.5vh, 34px);
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   letter-spacing: 0.005em;
-  color: var(--concrete);
+  color: var(--on-ink-soft);
 }
 .heroTitle {
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   font-weight: 500;
-  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
-  line-height: 0.98;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  line-height: 1.0;
+  color: var(--on-ink);
+  text-wrap: balance;
 }
 .heroAccent {
   color: inherit;
   font-weight: 700;
 }
 .heroLede {
-  max-width: 44ch;
+  max-width: 40ch;
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--on-ink-soft);
+  text-wrap: pretty;
 }
 .heroActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 40px;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: clamp(30px, 4.5vh, 44px);
 }
 .btnPrimary {
   display: inline-flex;
@@ -57,99 +88,56 @@
   transition: background 200ms var(--ease), border-color 200ms var(--ease);
 }
 .btnPrimary:hover {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--oxide-warm);
+  border-color: var(--oxide-warm);
 }
+/* secondary is a quiet light text link on the video, not a boxed button */
 .btnGhost {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   height: 56px;
-  padding: 0 26px;
-  border: 1px solid var(--concrete-line);
-  border-radius: var(--radius-cta);
+  padding: 0 6px;
+  color: var(--on-ink);
   font-weight: 500;
-  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
 }
 .btnGhost:hover {
-  border-color: var(--ink);
-  color: var(--oxide);
-}
-.heroMedia {
-  position: relative;
-  align-self: stretch;
-}
-/* metadata chip overlapping the media's lower edge */
-.heroChip {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 14px;
-}
-.heroChipType {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.02rem;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-.heroBaseline {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  margin-top: clamp(40px, 6vh, 76px);
-  border-top: 1px solid var(--concrete-line);
-}
-.cap {
-  padding: 18px 0 2px;
-  border-left: 1px solid var(--concrete-line);
-  padding-left: 16px;
-  color: var(--ink-soft);
-}
-.cap:first-child {
-  border-left: none;
-  padding-left: 0;
-}
-@media (max-width: 760px) {
-  .heroBaseline {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 2px;
-  }
-  .cap:nth-child(odd) {
-    border-left: none;
-    padding-left: 0;
-  }
-  .cap {
-    padding-bottom: 14px;
-  }
+  color: var(--oxide-warm);
+  border-color: var(--oxide-warm);
 }
 @media (min-width: 1041px) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1fr) 52vw;
-    align-items: center;
-    min-height: clamp(600px, 84vh, 840px);
-    gap: clamp(40px, 4vw, 80px);
-    padding-left: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
-    padding-right: 0;
+  .hero {
+    min-height: max(620px, min(820px, calc(100svh - 84px)));
   }
   .heroLede {
-    max-width: 40ch;
-  }
-  /* chip overlaps the lower-left of the media, bleeding onto the canvas */
-  .heroChip {
-    position: absolute;
-    left: clamp(-64px, -4vw, -28px);
-    bottom: clamp(20px, 4vh, 40px);
-    margin: 0;
-    padding: 16px 22px;
-    background: var(--bone);
-    border: 1px solid var(--concrete-line);
-    border-radius: var(--radius);
-    box-shadow: 0 18px 40px -28px rgba(26, 25, 21, 0.5);
-    z-index: 2;
+    max-width: 38ch;
   }
 }
-@media (min-width: 1041px) and (max-width: 1240px) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1fr) 46vw;
+/* mobile: the portrait source is ideal — go taller and more immersive, with a
+   vertical scrim tuned for copy-over-video readability */
+@media (max-width: 760px) {
+  .hero {
+    align-items: flex-end;
+    min-height: max(600px, min(760px, calc(100svh - 84px)));
+  }
+  .heroScrim {
+    background:
+      linear-gradient(
+        to top,
+        rgba(9, 16, 26, 0.92) 0%,
+        rgba(10, 18, 28, 0.66) 34%,
+        rgba(12, 22, 34, 0.34) 62%,
+        rgba(12, 22, 34, 0.5) 100%
+      );
+  }
+  .heroInner {
+    padding-bottom: clamp(36px, 6vh, 60px);
+  }
+  .heroText {
+    max-width: none;
   }
 }
 

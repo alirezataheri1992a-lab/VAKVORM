@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { workSlots } from '@/lib/projects';
+import { heroVideo } from '@/lib/site';
 import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
 import type { Project } from '@/lib/types';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { Reveal } from '@/components/primitives/Reveal';
+import { HeroVideo } from '@/components/sections/HeroVideo';
 import { ServiceIndex } from '@/components/sections/ServiceIndex';
 import { ContactPanel } from '@/components/sections/ContactPanel';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo/JsonLd';
@@ -32,57 +34,36 @@ export default async function HomePage() {
       <WebSiteJsonLd />
 
       {/* ============================================================
-          1. HERO — one composition: type + a dominant, edge-bleeding image
+          1. HERO — cinematic craftsmanship video; editorial copy dissolving
+          into the moving footage. Real semantic HTML; video is enhancement.
           ============================================================ */}
       <section className={styles.hero}>
-        <div className={styles.heroGrid}>
+        <HeroVideo
+          src={heroVideo.src}
+          poster={heroVideo.poster}
+          objectPosition={heroVideo.objectPosition}
+        />
+        <div className={styles.heroScrim} aria-hidden="true" />
+        <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroText}>
-            <span className={styles.heroEyebrow}>
-              Aannemer &amp; interieurbouw — {site.city}
-            </span>
+            <span className={styles.heroEyebrow}>Aannemer &amp; interieurbouwer in Utrecht</span>
             <h1 className={`display ${styles.heroTitle}`}>
-              Van bouw<br />
-              tot interieur.<br />
+              Van bouw tot interieur.<br />
               <span className={styles.heroAccent}>Eén partij.</span>
             </h1>
-            <p className={`lede ${styles.heroLede}`}>
-              VAKVORM realiseert complete verbouwingen, renovaties en maatwerk interieur —
-              met één aanspreekpunt, van eerste schets tot oplevering.
+            <p className={styles.heroLede}>
+              VAKVORM realiseert complete verbouwingen, renovaties en maatwerkinterieurs —
+              met één aanspreekpunt van voorbereiding tot oplevering.
             </p>
             <div className={styles.heroActions}>
               <Link href="/contact" className={styles.btnPrimary}>
-                Vrijblijvend kennismaken
+                Plan een vrijblijvend projectgesprek
               </Link>
-              <Link href="/werkwijze" className={styles.btnGhost}>
-                Onze werkwijze
+              <Link href="/projecten" className={styles.btnGhost}>
+                Bekijk projecten <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
-
-          <div className={styles.heroMedia}>
-            <ProjectMedia
-              media={{ alt: 'Recent project van VAKVORM', ratio: '3:4', slot: 'HERO — RENOVATIE UTRECHT' }}
-              priority
-              fill
-              sizes="(max-width: 1040px) 100vw, 52vw"
-            />
-            {/* metadata chip overlapping the media's lower edge — one composition */}
-            <div className={styles.heroChip}>
-              <span className="spec">Recent werk</span>
-              <span className={styles.heroChipType}>Woningrenovatie · {site.city}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* capability datum baseline — the build breadth, stated as spec */}
-        <div className={`container ${styles.heroBaseline}`}>
-          {['Constructie', 'Renovatie', 'Aanbouw', 'Stucwerk', 'Interieurbouw', 'Coördinatie'].map(
-            (cap) => (
-              <span key={cap} className={`spec ${styles.cap}`}>
-                {cap}
-              </span>
-            ),
-          )}
         </div>
       </section>
 
