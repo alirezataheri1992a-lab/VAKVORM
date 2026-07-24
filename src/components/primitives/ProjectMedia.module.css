@@ -1,0 +1,66 @@
+.figure {
+  margin: 0;
+  width: 100%;
+}
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: var(--radius);
+}
+.img {
+  object-fit: cover;
+  transition: transform var(--dur) var(--ease);
+}
+
+/* --- development placeholder: quiet, technical, unmistakably temporary --- */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 22px,
+      rgba(108, 104, 95, 0.045) 22px 23px
+    ),
+    var(--paper);
+  border: 1px solid var(--concrete-line);
+}
+.plabel {
+  color: var(--concrete);
+  font-size: 0.72rem;
+}
+.pratio {
+  color: var(--concrete-line);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+/* corner registration marks — drawing/datum language */
+.plusTL,
+.plusBR {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+.plusTL {
+  top: 12px;
+  left: 12px;
+  border-top: 1px solid var(--concrete);
+  border-left: 1px solid var(--concrete);
+}
+.plusBR {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 1px solid var(--concrete);
+  border-right: 1px solid var(--concrete);
+}
+
+.caption {
+  margin-top: 14px;
+}

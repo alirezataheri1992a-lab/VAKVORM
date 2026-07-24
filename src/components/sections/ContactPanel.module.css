@@ -1,0 +1,71 @@
+.panel {
+  padding-block: clamp(64px, 12vh, 160px);
+}
+.inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 5vw, 96px);
+  align-items: end;
+  margin-top: clamp(32px, 5vh, 64px);
+}
+.heading {
+  color: var(--on-ink);
+  max-width: 12ch;
+}
+.right {
+  padding-bottom: 8px;
+}
+.body {
+  color: var(--on-ink-soft);
+  max-width: 46ch;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 34px;
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 28px;
+  background: var(--on-ink);
+  color: var(--ink);
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.primary:hover {
+  background: var(--oxide);
+  color: var(--on-ink);
+}
+.secondary {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--on-ink);
+}
+.email {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--on-ink-soft);
+  border-bottom: 1px solid var(--concrete-line-dark);
+  padding-bottom: 2px;
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.email:hover {
+  color: var(--on-ink);
+  border-color: var(--oxide);
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}

@@ -1,0 +1,224 @@
+/* ============================================================
+   VAKVORM — global styles & design tokens
+   Custom CSS architecture. No component-library visual system.
+   See /docs/visual-direction.md for the rules these tokens encode.
+   ============================================================ */
+
+:root {
+  /* --- Color: material-inspired (see visual-direction §4) --- */
+  --bone: #ebe6dd;
+  --paper: #f4f1ea;
+  --ink: #15181a;
+  --ink-soft: #2a2e30;
+  --concrete: #6c685f;
+  --concrete-line: #c8c2b6;
+  --concrete-line-dark: #3a3e40;
+  --oxide: #9e4a2c;
+  --on-ink: #e7e2d8;
+  --on-ink-soft: #a8a396;
+
+  /* --- Typography --- */
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-text: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Space & layout --- */
+  --maxw: 1460px;
+  --gutter: clamp(20px, 5vw, 96px);
+  --col-gap: clamp(16px, 1.6vw, 28px);
+  --radius: 2px;
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 560ms;
+
+  /* --- Datum system --- */
+  --rule: 1px;
+}
+
+/* ---------------------------------------------------------- reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: 'kern' 1;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------- type roles */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 40ch;
+  text-wrap: pretty;
+}
+.body {
+  max-width: 62ch;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+/* The technical/editorial label — core of the datum signature */
+.label {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 0.72rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--concrete);
+  font-feature-settings: 'tnum' 1;
+}
+.num {
+  font-family: var(--font-text);
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------- utilities */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--col-gap);
+}
+.section {
+  padding-block: clamp(64px, 11vh, 160px);
+}
+.section--tight {
+  padding-block: clamp(48px, 7vh, 96px);
+}
+.on-ink {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.on-ink .label {
+  color: var(--on-ink-soft);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* focus — always visible, architectural */
+:focus-visible {
+  outline: 2px solid var(--oxide);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------- reveal (subtle, opt-in) */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+}
+.reveal[data-shown='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------- responsive grid helpers */
+@media (max-width: 900px) {
+  .grid12 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (max-width: 620px) {
+  .grid12 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

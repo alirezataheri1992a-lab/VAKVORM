@@ -1,0 +1,270 @@
+/* ============================== HOME ============================== */
+
+/* ---------- A. Hero ---------- */
+.hero {
+  padding-block: clamp(40px, 7vh, 88px) clamp(56px, 9vh, 120px);
+}
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 5vw, 72px);
+}
+.heroEyebrow {
+  display: block;
+  margin-bottom: clamp(28px, 5vh, 52px);
+}
+.heroTitle {
+  margin-bottom: 32px;
+}
+.heroAccent {
+  color: var(--oxide);
+}
+.heroLede {
+  max-width: 46ch;
+}
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 28px;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: background 200ms var(--ease);
+}
+.btnPrimary:hover {
+  background: var(--oxide);
+}
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 24px;
+  border: 1px solid var(--concrete-line);
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+}
+.btnGhost:hover {
+  border-color: var(--ink);
+}
+
+@media (min-width: 1041px) {
+  .heroInner {
+    grid-template-columns: 1fr 42%;
+    align-items: end;
+    gap: clamp(48px, 5vw, 96px);
+  }
+  .heroText {
+    padding-bottom: 10px;
+  }
+}
+
+/* ---------- B. Work ---------- */
+.work {
+  padding-block: clamp(48px, 7vh, 96px);
+}
+.workHead,
+.procesHead,
+.servicesHead {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: clamp(32px, 5vh, 56px);
+}
+.headLink {
+  flex: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--concrete-line);
+  padding-bottom: 3px;
+  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+}
+.headLink:hover {
+  border-color: var(--oxide);
+  color: var(--oxide);
+}
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+}
+.workItem a {
+  display: block;
+}
+.workItem :global(.img) {
+  transition: transform var(--dur) var(--ease);
+}
+.workItem a:hover :global(.img) {
+  transform: scale(1.03);
+}
+.workMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
+}
+.workTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+/* placeholder offset composition (no real projects yet) */
+.workGridOffset {
+  display: grid;
+  grid-template-columns: 58% 34%;
+  gap: clamp(20px, 4vw, 64px);
+  align-items: start;
+}
+.workB {
+  margin-top: clamp(40px, 9vw, 120px);
+}
+.workNote {
+  margin-top: 28px;
+  max-width: 52ch;
+  color: var(--concrete);
+  font-size: 0.98rem;
+}
+
+/* ---------- C. Disciplines ---------- */
+.disciplines {
+  padding-block: clamp(64px, 11vh, 160px);
+}
+.discIntro {
+  max-width: 760px;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+.discLead {
+  margin-top: 26px;
+  max-width: 18ch;
+}
+.discBlock {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(28px, 5vw, 88px);
+  align-items: center;
+  padding-block: clamp(28px, 4vh, 56px);
+}
+.discText {
+  position: relative;
+}
+.discNum {
+  font-size: 0.8rem;
+  color: var(--oxide);
+  letter-spacing: 0.08em;
+}
+.discTitle {
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+.discList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 26px;
+  border-top: 1px solid var(--concrete-line);
+  padding-top: 22px;
+}
+.discList a {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  transition: color 180ms var(--ease);
+}
+.discList a:hover {
+  color: var(--oxide);
+}
+.discLink {
+  display: inline-block;
+  margin-top: 26px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+@media (max-width: 900px) {
+  .discBlock,
+  .discBlockAlt {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .discBlockAlt .discMedia {
+    order: -1;
+  }
+}
+
+/* ---------- D. Statement ---------- */
+.statement {
+  padding-block: clamp(56px, 9vh, 128px);
+}
+.statementText {
+  margin-top: 40px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 4vw, 3.1rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.statementText em {
+  font-style: italic;
+  color: var(--oxide);
+}
+
+/* ---------- E. Services ---------- */
+.servicesSec {
+  padding-block: clamp(48px, 7vh, 96px);
+}
+
+/* ---------- F. Proces ---------- */
+.proces {
+  padding-block: clamp(64px, 10vh, 140px);
+}
+.procesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+}
+.procesStep {
+  padding-top: 20px;
+}
+.procesNum {
+  font-size: 0.8rem;
+  color: var(--oxide);
+}
+.procesLine {
+  display: block;
+  height: 1px;
+  background: var(--concrete-line);
+  margin: 18px 0 22px;
+}
+.procesTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+.procesDesc {
+  color: var(--concrete);
+  font-size: 0.96rem;
+  max-width: 30ch;
+}
+@media (max-width: 820px) {
+  .procesList {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 28px;
+  }
+}
+@media (max-width: 480px) {
+  .procesList {
+    grid-template-columns: 1fr;
+  }
+}
