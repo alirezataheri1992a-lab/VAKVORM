@@ -583,10 +583,10 @@ preference-picking).
 | **Framework** | SSR/SSG + first-class image handling + component reuse + clean CMS integration | Decide in Phase 2 against these requirements + chosen CMS — **not** by preference. |
 | **Image pipeline / DAM** | High-volume, high-quality project imagery, CWV; editors upload images | CMS-integrated media handling + build/CDN image optimization (AVIF/WebP, responsive). Editor upload UX matters since the team manages media. |
 | **Hosting / deployment** | Fast delivery, easy deploys, CMS webhooks → rebuild, EU data preference | Static/edge host with CMS-webhook deploys; prefer EU hosting for GDPR optics. **[TO CONFIRM: EU-hosting preference]** |
-| **Forms backend** | Reliable quote delivery, spam protection, GDPR | Where do leads go — email / WhatsApp / CRM? **[TO CONFIRM — §18]** Drives the handler choice. |
+| **Forms backend** | Reliable quote delivery, spam protection, GDPR | **CONFIRMED: leads go by email** to `alireza_taheri92@hotmail.com` *(temporary — "for now")*, with **phone `06 42241075`** shown as a direct contact. → Server-side form handler emailing the inbox + spam protection; no CRM at launch. (Recommend a Vakvorm-branded email later.) |
 | **Analytics** | Insight without harming premium feel / privacy | Privacy-friendly analytics vs GA4; cookie-consent implications (NL/EU). |
 | **Schema/sitemap generation** | Automatic from CMS content | Framework-native or library, fed by the content model. |
-| **Multilingual?** | Is EN needed (expats/commercial)? | Default **NL-only** at launch unless told otherwise **[TO CONFIRM — §18]** — affects URL/i18n architecture, so decide before build. |
+| **Language** | Reach vs simplicity | **CONFIRMED: NL-only.** No i18n layer needed — single-locale URL/content architecture. Simplifies the build. |
 
 *(Redirect-management row removed — no migration, per §14.)*
 
@@ -612,7 +612,10 @@ continuity and asset-gathering checklist — none of it blocks the build:
 - [ ] **Real credentials** — KvK/BTW, insurance, guarantees, memberships, certifications — only what
       genuinely exists (no fabrication). **[TO CONFIRM]**
 - [ ] **Brand assets** — new Vakvorm logo, colors, fonts (or note these are still to be created).
-- [ ] **NAP** — the address/phone/email to publish and use as the single Organization source.
+- [ ] **NAP** — the single Organization source. Known so far: **email
+      `alireza_taheri92@hotmail.com`** *(temporary)*, **phone `06 42241075`**. Still needed: the
+      **business address** to publish (or confirm Utrecht service-area only, no public address) and a
+      future Vakvorm-branded email. **[TO CONFIRM: address]**
 
 **Domain:** choose/confirm the new Vakvorm domain and who controls DNS. **[TO CONFIRM]**
 
@@ -620,25 +623,16 @@ continuity and asset-gathering checklist — none of it blocks the build:
 
 ## 18. Prioritized Questions for You
 
-**✅ Resolved so far (owner input this session):**
+**✅ All Tier-1 blockers resolved (owner input):**
 - ~~Persia website / migration~~ → **no website exists** — greenfield, no migration (§14).
 - ~~Who maintains content~~ → **owner/team, non-technically, via an admin back-end** → **CMS locked**
   (§16).
 - ~~Real launch proof~~ → **~5 real projects** to start (§11/§17).
-- ~~Nav: two-pillar vs dropdown~~ → **delegated to best practice → single "Diensten" dropdown**
-  decided (§7.3).
-
-**Tier 1 — Remaining blockers (answer these before build starts):**
-
-1. **Language scope.** NL-only at launch, or is English also needed (expats / commercial /
-   architect clients)? *Architecture-affecting* — it determines whether we build i18n/URL structure
-   in from day one. This is the main remaining architectural unknown.
-2. **Lead destination + contact channels.** Where should a quote request land — email, WhatsApp, a
-   CRM? And do you want **WhatsApp and/or phone** as prominent primary contact options? Drives the
-   forms backend and the contact UX.
-3. **Confirm the "add projects" interpretation (§16).** Admin back-end for *your team* to add
-   projects (assumed) — versus public/visitor submission (unusual here). Please confirm it's the
-   former.
+- ~~Nav: two-pillar vs dropdown~~ → **single "Diensten" dropdown** decided (§7.3).
+- ~~Language scope~~ → **NL-only** — no i18n layer (§16).
+- ~~Lead destination + contact channels~~ → **email** (`alireza_taheri92@hotmail.com`, temporary)
+  **+ phone** (`06 42241075`); no CRM at launch (§16/§17).
+- ~~"Add projects" interpretation~~ → **confirmed: team admin**, not public submission (§16).
 
 **Tier 2 — Important (needed early in the build, not blocking start):**
 
@@ -685,24 +679,24 @@ greenfield — so effort shifts to content, proof and earning authority from zer
 
 ## 20. Definition of Ready for the Build
 
-**Already satisfied:**
+**All build-blocking items satisfied:**
 - [x] No migration — greenfield confirmed (§14).
 - [x] Content maintainer decided → **CMS with admin back-end** (§16).
 - [x] Launch proof confirmed → **~5 real projects** (§11/§17).
-- [x] Nav model decided → **single "Diensten" dropdown**; `/interieurbouw/` top-level root recommended
-      (§6.2/§7.3).
+- [x] Nav model decided → **single "Diensten" dropdown**; `/interieurbouw/` top-level root (§6.2/§7.3).
+- [x] Language scope → **NL-only** (§16).
+- [x] Lead flow → **email + phone**, no CRM at launch (§16/§17).
+- [x] "Add projects" → **team admin** confirmed (§16).
 
-**Still required before build starts (the remaining Tier-1 in §18):**
-- [ ] **Language scope** (NL / NL+EN) fixed — architecture-affecting.
-- [ ] **Lead-flow destination(s) + contact channels** chosen.
-- [ ] **"Add projects" = team admin** interpretation confirmed.
-
-**Then, at the start of the build (Phase 2), sign-off on:**
+**To be signed off at the start of the build (Phase 2 — part of the build, not blockers to start):**
 - [ ] Final IA + URL map + content model.
 - [ ] CMS product + framework + hosting chosen against requirements — explained, not defaulted.
-- [ ] Real, displayable credentials/guarantees confirmed (Tier-2, no fabrication).
 
-Tier-2 items should be answered before their relevant phase; Tier-3 items may be resolved during the
+**To be gathered during Phase 1 (asset gathering, not blockers to start):**
+- [ ] Real, displayable credentials/guarantees (Tier-2, no fabrication).
+- [ ] Business address decision, brand assets/logo, and the new domain.
+
+Tier-2 items should be resolved before their relevant phase; Tier-3 items may be resolved during the
 build.
 
 ---
@@ -757,22 +751,28 @@ build.
 3. **Per-trade services and city pages deliberately NOT created** at launch — described within
    services / earned later with real value. (§6.3, §13)
 
-**Decisions locked this session:** greenfield (no migration); **CMS with admin back-end**; **single
-"Diensten" dropdown** nav; **~5 real launch projects**.
+**Decisions locked:** greenfield (no migration); **CMS with admin back-end**; **single "Diensten"
+dropdown** nav; **~5 real launch projects**; **NL-only**; **email + phone** contact (no CRM).
 
 ---
 
-# BUILD STATUS: NOT READY
+# BUILD STATUS: READY
 
-*Reason:* Most strategic questions are now resolved — greenfield (no migration), **CMS/admin**
-content management, **~5 real launch projects**, and the **single "Diensten" dropdown** navigation
-are all decided, and the architecture is locked. **Three Tier-1 items remain (§18):**
+*All strategically important questions are answered and the architecture is locked.* Confirmed:
+greenfield (no migration), **CMS/admin** content management with a team-facing project editor,
+**~5 real launch projects**, **single "Diensten" dropdown** navigation with `/interieurbouw/` as a
+top-level URL root, **NL-only** (no i18n layer), and **email + phone** as the contact/lead channel
+(no CRM at launch).
 
-1. **Language scope (NL vs NL+EN)** — the one remaining *architecture-affecting* unknown.
-2. **Lead destination + contact channels** (email / WhatsApp / phone / CRM).
-3. **Confirm "add projects" = a team admin** (not public submission).
+**Green-lit to proceed to the build, starting with:**
+- **Phase 1 — Foundation research & assets:** fresh NL keyword research (no legacy data exists),
+  gather the ~5 projects + photo rights, real credentials, business address, brand assets, domain.
+- **Phase 2 — Architecture lock:** finalize IA/URL map/content model and choose CMS product +
+  framework + hosting against the §15/§16 requirements (headless-CMS + SSG/SSR direction).
 
-These are quick to answer but genuinely shape the build (i18n, forms, admin scope), so it would be
-wrong to declare readiness before they're settled. **Answer these three and the status flips to
-READY**, and the build can proceed to Phase 1 (Foundation research & assets) → Phase 2 (Architecture
-lock, where CMS/framework/hosting are chosen).
+**Non-blocking items still to collect** (Phase 1, no fabrication): real credentials/guarantees,
+team-faces decision, GBP/social continuity, business address, logo/identity, and the domain. None of
+these stop the build from starting; they feed the phases as they come up.
+
+> Per the discovery constraint, no production code, copy, or design is produced yet. **Awaiting your
+> explicit go-ahead to begin Phase 1** — say the word and I'll start.
