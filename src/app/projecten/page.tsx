@@ -12,7 +12,7 @@ import styles from './projecten.module.css';
 export const metadata: Metadata = {
   title: 'Projecten',
   description:
-    'Gerealiseerde bouw-, renovatie- en interieurprojecten van Vakvorm in Utrecht en omgeving.',
+    'Gerealiseerde bouw-, renovatie- en interieurprojecten van VAKVORM in Utrecht en omgeving.',
   alternates: { canonical: '/projecten' },
 };
 

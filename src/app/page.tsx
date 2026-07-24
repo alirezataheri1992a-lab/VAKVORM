@@ -36,7 +36,7 @@ export default function HomePage() {
               <span className={styles.heroAccent}>Eén partij.</span>
             </h1>
             <p className={`lede ${styles.heroLede}`}>
-              Vakvorm realiseert complete verbouwingen, renovaties en maatwerk interieur —
+              VAKVORM realiseert complete verbouwingen, renovaties en maatwerk interieur —
               met één aanspreekpunt, van eerste schets tot oplevering.
             </p>
             <div className={styles.heroActions}>
@@ -51,7 +51,7 @@ export default function HomePage() {
 
           <div className={styles.heroMedia}>
             <ProjectMedia
-              media={{ alt: 'Recent project van Vakvorm', ratio: '3:4', slot: 'HERO — PROJECT' }}
+              media={{ alt: 'Recent project van VAKVORM', ratio: '3:4', slot: 'HERO — PROJECT' }}
               priority
               fill
               sizes="(max-width: 1040px) 100vw, 46vw"
@@ -171,7 +171,7 @@ export default function HomePage() {
           </div>
           <div className={styles.discBandMedia}>
             <ProjectMedia
-              media={{ alt: 'Bouw en renovatie door Vakvorm', ratio: '4:3', slot: 'BOUW' }}
+              media={{ alt: 'Bouw en renovatie door VAKVORM', ratio: '4:3', slot: 'BOUW' }}
               sizes="(max-width: 900px) 100vw, 42vw"
             />
           </div>
@@ -185,7 +185,7 @@ export default function HomePage() {
             <SectionMarker index="02" label="Interieurbouw" />
             <h3 className={`heading ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
             <p className={styles.discBandBody}>
-              Een volwaardige discipline binnen Vakvorm. Van maatwerkkasten en wandmeubels
+              Een volwaardige discipline binnen VAKVORM. Van maatwerkkasten en wandmeubels
               tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail, in
               hout, fineer en zorgvuldig afgewerkte verbindingen.
             </p>
@@ -203,7 +203,7 @@ export default function HomePage() {
           <div className={styles.discIntMedia}>
             <ProjectMedia
               className={styles.discIntMain}
-              media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR' }}
+              media={{ alt: 'Maatwerk interieur door VAKVORM', ratio: '4:5', slot: 'INTERIEUR' }}
               sizes="(max-width: 900px) 100vw, 36vw"
             />
             <ProjectMedia
@@ -257,7 +257,7 @@ export default function HomePage() {
               </h2>
               <div className={styles.procesMedia}>
                 <ProjectMedia
-                  media={{ alt: 'Vakvorm coördineert op de bouwplaats', ratio: '4:3', slot: 'PROCES — UITVOERING' }}
+                  media={{ alt: 'VAKVORM coördineert op de bouwplaats', ratio: '4:3', slot: 'PROCES — UITVOERING' }}
                   sizes="(max-width: 940px) 100vw, 40vw"
                 />
               </div>

@@ -3,7 +3,7 @@ import type { SiteSettings } from './types';
 // Single source of truth for organisation details. Never hard-code these in
 // components. In production this is replaced by the Sanity `siteSettings` singleton.
 // NOTE: contact details below are the owner's temporary details (to be replaced by a
-// Vakvorm-branded email + confirmed business address). Address is omitted until confirmed.
+// VAKVORM-branded email + confirmed business address). Address is omitted until confirmed.
 export const site: SiteSettings = {
   name: 'VAKVORM',
   descriptor: 'Bouw & Interieur',
@@ -21,5 +21,5 @@ export const nav = [
   { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
-  { label: 'Over Vakvorm', path: '/over-vakvorm' },
+  { label: 'Over VAKVORM', path: '/over-vakvorm' },
 ] as const;

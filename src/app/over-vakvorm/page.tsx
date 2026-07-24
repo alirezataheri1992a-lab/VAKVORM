@@ -7,9 +7,9 @@ import { ContactPanel } from '@/components/sections/ContactPanel';
 import styles from './over.module.css';
 
 export const metadata: Metadata = {
-  title: 'Over Vakvorm',
+  title: 'Over VAKVORM',
   description:
-    'Vakvorm is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht. Over de rebrand, de filosofie en de manier van werken.',
+    'VAKVORM is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht. Over de rebrand, de filosofie en de manier van werken.',
   alternates: { canonical: '/over-vakvorm' },
 };
 
@@ -17,16 +17,16 @@ export default function OverPage() {
   return (
     <>
       <section className={`container ${styles.intro}`}>
-        <Breadcrumbs items={[{ name: 'Over Vakvorm', path: '/over-vakvorm' }]} />
+        <Breadcrumbs items={[{ name: 'Over VAKVORM', path: '/over-vakvorm' }]} />
         <div className={styles.introGrid}>
           <div>
-            <SectionMarker label="Over Vakvorm" />
+            <SectionMarker label="Over VAKVORM" />
             <h1 className={`display ${styles.title}`}>
               Eén partij die het hele project draagt.
             </h1>
           </div>
           <p className={`lede ${styles.lede}`}>
-            Vakvorm bundelt bouw, renovatie en maatwerk interieurbouw onder één naam en
+            VAKVORM bundelt bouw, renovatie en maatwerk interieurbouw onder één naam en
             één verantwoordelijkheid — in {site.city} en omgeving.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function OverPage() {
 
       <section className={`container ${styles.mediaSec}`}>
         <ProjectMedia
-          media={{ alt: 'Vakvorm aan het werk — beeld volgt', ratio: '16:9', slot: 'WERKPLAATS / TEAM' }}
+          media={{ alt: 'VAKVORM aan het werk — beeld volgt', ratio: '16:9', slot: 'WERKPLAATS / TEAM' }}
           priority
           sizes="100vw"
         />
@@ -46,7 +46,7 @@ export default function OverPage() {
           <div className={styles.storyBody}>
             <p className={styles.storyLead}>
               De meeste verbouwingen lopen vast op afstemming: veel partijen, weinig regie.
-              Vakvorm draait dat om.
+              VAKVORM draait dat om.
             </p>
             <p className="body">
               Wij organiseren en realiseren complete projecten met eigen vakmensen en een
@@ -55,7 +55,7 @@ export default function OverPage() {
               afwerking.
             </p>
             <p className="body">
-              Vakvorm is de nieuwe naam waaronder dit werk wordt voortgezet. Dezelfde vakmensen,
+              VAKVORM is de nieuwe naam waaronder dit werk wordt voortgezet. Dezelfde vakmensen,
               een scherpere focus: bouw én interieur, professioneel op elkaar afgestemd.
             </p>
           </div>

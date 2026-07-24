@@ -5,7 +5,7 @@ import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Privacyverklaring',
-  description: 'Privacyverklaring van Vakvorm.',
+  description: 'Privacyverklaring van VAKVORM.',
   alternates: { canonical: '/privacy' },
   robots: { index: false, follow: true },
 };

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    'Vakvorm is één professionele partij voor complete bouw-, renovatie- en maatwerk interieurprojecten in Utrecht en omgeving. Van planning tot oplevering.',
+    'VAKVORM is één professionele partij voor complete bouw-, renovatie- en maatwerk interieurprojecten in Utrecht en omgeving. Van planning tot oplevering.',
   applicationName: site.name,
   authors: [{ name: site.name }],
   openGraph: {

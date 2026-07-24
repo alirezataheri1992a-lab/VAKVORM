@@ -12,7 +12,7 @@ import styles from './diensten.module.css';
 export const metadata: Metadata = {
   title: 'Diensten — bouw, renovatie & interieurbouw',
   description:
-    'De diensten van Vakvorm: complete renovatie en verbouwing, badkamerrenovatie, aan- en uitbouw, opbouw, stucwerk en maatwerk interieurbouw in Utrecht.',
+    'De diensten van VAKVORM: complete renovatie en verbouwing, badkamerrenovatie, aan- en uitbouw, opbouw, stucwerk en maatwerk interieurbouw in Utrecht.',
   alternates: { canonical: '/diensten' },
 };
 

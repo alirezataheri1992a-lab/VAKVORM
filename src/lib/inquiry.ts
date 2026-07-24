@@ -42,7 +42,7 @@ export async function submitInquiry(
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.INQUIRY_TO ?? site.email;
-  const from = process.env.INQUIRY_FROM; // e.g. "Vakvorm <website@vakvorm.nl>"
+  const from = process.env.INQUIRY_FROM; // e.g. "VAKVORM <website@vakvorm.nl>"
 
   if (!apiKey || !from) {
     // Not yet configured — be honest rather than pretend it was sent.

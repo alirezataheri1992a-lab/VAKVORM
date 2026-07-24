@@ -8,6 +8,12 @@ spec, not a strategy document.
 > construction discipline. Image-led, controlled, warm, understated. It must read as
 > *art-directed by a design studio* — never AI-templated.
 
+> **Brand-name rule (permanent):** the brand is always written **VAKVORM** in visible/textual
+> content — real uppercase text, never CSS `text-transform`. Applies to copy, nav, footer,
+> breadcrumbs, SEO titles/meta/OG, structured data and CMS content. Surrounding Dutch text keeps
+> normal capitalisation ("VAKVORM is gevestigd in Utrecht."). **Not** applied to URL slugs
+> (`/over-vakvorm`), the domain (`vakvorm.nl`), package names, or code identifiers.
+
 ---
 
 ## 1. Anti-AI constitution (hard rules)

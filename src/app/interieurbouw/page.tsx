@@ -35,7 +35,7 @@ export default function InterieurbouwPage() {
           </div>
           <ProjectMedia
             className={styles.introMedia}
-            media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR — DETAIL' }}
+            media={{ alt: 'Maatwerk interieur door VAKVORM', ratio: '4:5', slot: 'INTERIEUR — DETAIL' }}
             priority
             sizes="(max-width: 940px) 100vw, 40vw"
           />

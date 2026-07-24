@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!project) return {};
   return {
     title: project.title,
-    description: `${project.meta.projectType} in ${project.meta.location} door Vakvorm.`,
+    description: `${project.meta.projectType} in ${project.meta.location} door VAKVORM.`,
     alternates: { canonical: `/projecten/${project.slug}` },
   };
 }

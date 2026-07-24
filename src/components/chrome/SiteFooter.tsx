@@ -37,7 +37,7 @@ export function SiteFooter() {
           </nav>
 
           <nav className={styles.linksCol} aria-label="Pagina's">
-            <span className={`label ${styles.colHead}`}>Vakvorm</span>
+            <span className={`label ${styles.colHead}`}>VAKVORM</span>
             <ul>
               {nav
                 .filter((n) => n.path !== '/diensten')

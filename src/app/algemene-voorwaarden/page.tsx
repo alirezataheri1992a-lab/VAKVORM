@@ -5,7 +5,7 @@ import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Algemene voorwaarden',
-  description: 'Algemene voorwaarden van Vakvorm.',
+  description: 'Algemene voorwaarden van VAKVORM.',
   alternates: { canonical: '/algemene-voorwaarden' },
   robots: { index: false, follow: true },
 };

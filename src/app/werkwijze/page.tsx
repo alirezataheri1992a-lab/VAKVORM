@@ -9,7 +9,7 @@ import styles from './werkwijze.module.css';
 export const metadata: Metadata = {
   title: 'Werkwijze — één partij, van plan tot oplevering',
   description:
-    'Zo werkt Vakvorm: één aanspreekpunt dat uw project plant, coördineert en oplevert. Van kennismaking tot nette oplevering.',
+    'Zo werkt VAKVORM: één aanspreekpunt dat uw project plant, coördineert en oplevert. Van kennismaking tot nette oplevering.',
   alternates: { canonical: '/werkwijze' },
 };
 

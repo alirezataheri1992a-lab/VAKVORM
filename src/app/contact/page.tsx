@@ -9,7 +9,7 @@ import styles from './contact.module.css';
 export const metadata: Metadata = {
   title: 'Contact & offerte aanvragen',
   description:
-    'Bespreek uw bouw-, renovatie- of interieurproject met Vakvorm. Vraag vrijblijvend een offerte aan in Utrecht en omgeving.',
+    'Bespreek uw bouw-, renovatie- of interieurproject met VAKVORM. Vraag vrijblijvend een offerte aan in Utrecht en omgeving.',
   alternates: { canonical: '/contact' },
 };
 
