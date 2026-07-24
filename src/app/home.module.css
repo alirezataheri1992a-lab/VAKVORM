@@ -78,11 +78,15 @@
 .btnPrimary {
   display: inline-flex;
   align-items: center;
-  height: 56px;
-  padding: 0 32px;
+  justify-content: center;
+  min-height: 56px;
+  padding: 13px 32px;
   background: var(--oxide);
   color: var(--on-ink);
   font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
   border: 1px solid var(--oxide);
   border-radius: var(--radius-cta);
   transition: background 200ms var(--ease), border-color 200ms var(--ease);
@@ -138,6 +142,19 @@
   }
   .heroText {
     max-width: none;
+  }
+  /* stack the actions; the primary becomes a clean full-width button so a
+     longer label wraps to a centred two lines instead of cramping a fixed box */
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .btnPrimary {
+    width: 100%;
+  }
+  .btnGhost {
+    align-self: flex-start;
   }
 }
 
