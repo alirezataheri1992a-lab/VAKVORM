@@ -3,13 +3,20 @@
 Tracks every image slot on the site, the curated stock image chosen for it, and the
 real Vakvorm photograph that will eventually replace it.
 
-> **Session status — TO SOURCE.** The pre-launch stock photography could **not** be
-> downloaded in the build session: the environment's egress policy **blocks image CDNs**
-> (`images.unsplash.com`, `images.pexels.com` → policy `403`). The layout has been
+> **Session status — TO SOURCE (egress re-verified 2026-07-24, still blocked).** The
+> pre-launch stock photography still could **not** be downloaded: the environment's egress
+> policy continues to **block image CDNs** (`images.unsplash.com`, `images.pexels.com` →
+> gateway `403` at CONNECT). A wider probe this session confirmed the allowlist is tight —
+> `unsplash.com`, `api.unsplash.com`, `plus.unsplash.com`, `source.unsplash.com`,
+> `pexels.com`, `api.pexels.com`, `upload.wikimedia.org`, `commons.wikimedia.org`,
+> `pixabay.com`, `live.staticflickr.com`, and even `example.com` are all `403`-rejected;
+> the only reachable external host is GitHub git infrastructure. Downloading real
+> photography is therefore impossible from this session. The layout remains
 > **art-directed around photography** (crops, ratios, bleeds, whitespace all assume real
 > images), and every slot below is specified so images can be dropped in without touching
-> components. Add curated images from a session/machine with image egress, or have the
-> owner supply them.
+> components. **To unblock:** add `images.unsplash.com` + `images.pexels.com` to the
+> environment's egress allowlist and re-run, or have the owner supply the image files
+> directly.
 
 ## How to add an image (no code changes needed)
 
