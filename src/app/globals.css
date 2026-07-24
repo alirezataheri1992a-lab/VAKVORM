@@ -28,8 +28,9 @@
   --on-ink-soft: #93a1b1; /* muted blue-grey on navy */
 
   /* --- Typography ---
-     One neo-grotesk for the readable layer; a mono for the technical spec layer. */
-  --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+     Editorial serif (Fraunces) for the display voice; a warm grotesque (Hanken) for the
+     readable layer; a mono for the technical spec layer. */
+  --font-display: var(--font-serif), 'Iowan Old Style', Georgia, 'Times New Roman', serif;
   --font-text: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-technical: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
 
@@ -102,9 +103,9 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -0.018em;
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.008em;
   text-wrap: balance;
 }
 
@@ -113,18 +114,18 @@ h4 {
    Composed, not oversized: display tops out lower than the previous system. */
 .display {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 1.0;
-  letter-spacing: -0.022em;
+  line-height: 1.02;
+  letter-spacing: -0.014em;
   text-wrap: balance;
 }
 .heading {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(1.6rem, 3vw, 2.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.018em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 .lede {
   font-size: clamp(1.12rem, 1.5vw, 1.35rem);
@@ -142,14 +143,14 @@ h4 {
 }
 
 /* Editorial label (section eyebrows, footer/column heads, breadcrumbs, captions).
-   Public Sans — brand typography, not an interface label. */
+   Hanken Grotesk — the readable layer, not the serif voice. */
 .label {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: var(--font-text);
+  font-weight: 600;
   font-size: 0.72rem;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--concrete);
 }
 
@@ -166,10 +167,14 @@ h4 {
   color: var(--concrete);
   font-feature-settings: 'tnum' 1;
 }
+/* Index numerals — set in the editorial serif (Fraunces) so the datum "04" has
+   character and warmth instead of a flat mono figure. */
 .num {
-  font-family: var(--font-technical);
+  font-family: var(--font-display);
+  font-weight: 500;
   font-feature-settings: 'tnum' 1;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
 }
 
 /* ---------------------------------------------------------- utilities */

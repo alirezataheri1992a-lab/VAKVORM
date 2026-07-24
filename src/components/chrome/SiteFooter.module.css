@@ -7,7 +7,7 @@
   gap: clamp(32px, 4vw, 72px);
 }
 .brandName {
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 0.02em;
@@ -15,7 +15,7 @@
 .brandDesc {
   display: block;
   margin-top: 8px;
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-size: 0.64rem;
   letter-spacing: 0.12em;
 }

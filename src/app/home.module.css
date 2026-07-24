@@ -43,7 +43,7 @@
 .heroEyebrow {
   display: block;
   margin-bottom: clamp(20px, 3.5vh, 34px);
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-weight: 500;
   font-size: 0.98rem;
   letter-spacing: 0.005em;
