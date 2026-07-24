@@ -161,8 +161,8 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </ul>
         </nav>
 
-        <Link href="/contact" className={styles.cta}>
-          Project bespreken
+        <Link href="/start-uw-project" className={styles.cta}>
+          Start uw project
         </Link>
 
         {/* -------- mobile toggle -------- */}
@@ -210,8 +210,8 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </div>
 
           <div className={styles.mobileFoot}>
-            <Link href="/contact" className={styles.cta}>
-              Project bespreken
+            <Link href="/start-uw-project" className={styles.cta}>
+              Start uw project
             </Link>
             <a href={`tel:${site.phoneHref}`} className={styles.mobilePhone}>
               {site.phoneDisplay}

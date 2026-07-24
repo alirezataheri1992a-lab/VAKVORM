@@ -58,8 +58,8 @@ export default async function HomePage() {
               met één aanspreekpunt van voorbereiding tot oplevering.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/contact" className={styles.btnPrimary}>
-                Plan een vrijblijvend projectgesprek
+              <Link href="/start-uw-project" className={styles.btnPrimary}>
+                Start uw project
               </Link>
               <Link href="/projecten" className={styles.btnGhost}>
                 Bekijk projecten <span aria-hidden="true">→</span>
@@ -277,7 +277,7 @@ export default async function HomePage() {
             <h2 className={`heading ${styles.midCtaTitle}`}>Een verbouwing op de planning?</h2>
             <p className={styles.midCtaBody}>Vertel ons kort wat u wilt realiseren.</p>
           </div>
-          <Link href="/contact" className={styles.midCtaBtn}>
+          <Link href="/start-uw-project" className={styles.midCtaBtn}>
             Plan een projectgesprek
           </Link>
         </div>
