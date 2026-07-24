@@ -278,7 +278,7 @@ export default async function HomePage() {
             <p className={styles.midCtaBody}>Vertel ons kort wat u wilt realiseren.</p>
           </div>
           <Link href="/contact" className={styles.midCtaBtn}>
-            Project bespreken
+            Plan een projectgesprek
           </Link>
         </div>
       </section>
