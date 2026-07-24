@@ -18,6 +18,14 @@ repositioned from "a builder who does jobs" into **a single professional partner
 responsibility for the complete realization of construction and interior projects** — from first
 consultation through delivery.
 
+**Confirmed:** Persia has **no existing website**. This is therefore a **greenfield build with no
+site migration** — there is no old URL inventory, no redirect map, and no on-site SEO equity to
+preserve. The upside: full freedom over architecture with zero legacy constraints. The trade-off:
+SEO starts from **zero domain authority**, so rankings must be earned from scratch through content,
+projects, local signals and links — there is no inherited head-start. (Any off-site Persia presence
+— a Google Business Profile, social profiles, directory listings — is a separate, lighter brand-
+transition matter, not a website migration; see §14.)
+
 The strategic core of the whole project is one sentence: **the customer hires one party, not a
 collection of trades.** Every architecture, navigation, SEO and content decision below is judged
 against whether it reinforces or undermines that promise.
@@ -266,18 +274,37 @@ Home | Diensten ▾ | Projecten | Werkwijze | Over Vakvorm | [Contact / Offerte 
 | Over Vakvorm | Keep | Carries the rebrand story + team + credibility. |
 | Contact / Offerte | Keep, as CTA | Split label: nav item "Contact", header button "Offerte aanvragen". |
 
-**Open question:** should **Interieurbouw** be its own top-level nav item (rather than living inside
-the Diensten dropdown)? Given it is a co-equal pillar, a strong case exists for:
+### 7.3 DECISION — single "Diensten" dropdown with two labeled pillar groups (launch)
+
+The owner delegated this to best practice. **Decision: launch with the single grouped "Diensten"
+dropdown** (§7.1), not two separate top-level pillar items. The considered alternative was:
 
 ```
 Home | Bouw & Renovatie ▾ | Interieurbouw ▾ | Projecten | Werkwijze | Over | [Offerte]
 ```
 
-This makes the dual-pillar positioning unmissable and is arguably *more* premium and clearer. The
-trade-off is a slightly busier header. **This is a genuine strategic choice — raised in §18 for the
-owner to decide.** My provisional recommendation leans toward the two-pillar nav *if* interieurbouw
-has enough launch content to justify a top-level slot; otherwise start with the grouped-dropdown
-version and promote interieurbouw to top-level when its cluster matures.
+**Why the grouped dropdown wins at launch (UX/web best practice):**
+
+- **"Één partij" integrity.** The core brand promise is *one partner*. A single "Diensten" entry
+  point reinforces one-company/one-conversation; two separate pillar menus subtly frame Vakvorm as
+  two businesses — working against the central positioning.
+- **Cognitive load & Hick's law.** Fewer, well-labeled top-level items = faster, calmer decisions.
+  Premium sites lean minimal; a 5-item primary nav reads more confident than a 7-item one.
+- **Content maturity.** At launch there is roughly one interieurbouw hub + a few sub-pages and ~5
+  projects. A top-level pillar slot should be *earned* by a mature content cluster, not asserted by
+  an empty menu. Promoting it prematurely creates a thin, under-filled dropdown.
+- **The dual-pillar message is still delivered** — via the two labeled groups *inside* the dropdown,
+  plus the homepage hero, the two hub pages, and pillar-to-pillar cross-linking (§10). Positioning
+  does not depend on the nav bar alone.
+- **Reversible & future-proof.** Because `/interieurbouw/` is already a top-level URL root (§6.2),
+  promoting Interieurbouw to a top-level nav item later (when its cluster and B2B demand mature, or
+  toward a `Vakvorm Groep` split) is a **pure nav-label change with zero URL/redirect cost.** We keep
+  the option open without paying for it now.
+
+**Locked launch nav:** `Home | Diensten ▾ | Projecten | Werkwijze | Over Vakvorm | [Offerte aanvragen]`
+
+**Documented trigger to revisit:** promote Interieurbouw to its own top-level item once it has a
+filled sub-page cluster *and* proven interieur/B2B demand — a Phase-11 review item, not a launch one.
 
 ---
 
@@ -292,7 +319,8 @@ premium brand feel.
 ### 8.2 Page-type → intent mapping
 
 > Search **volumes are deliberately omitted** — no keyword data has been supplied. Intent labels are
-> qualitative. Actual prioritization requires real keyword/GSC data (see §14/§18).
+> qualitative. Actual prioritization requires real keyword research (see §18). Note: with **no legacy
+> site**, there is no historical GSC/ranking data to lean on — keyword research must be done fresh.
 
 | URL / page type | Primary search intent | Primary topic | Supporting topics | Journey role |
 |---|---|---|---|---|
@@ -437,7 +465,7 @@ so future filtering/related-content works. The content model (fields) for a Proj
 type) and a **consistent template**. This is the single strongest argument for a **structured
 content model / CMS** rather than hand-coded pages (see §15/§16).
 
-> No example project copy is written here — content comes from real Vakvorm/Persia projects.
+> No example project copy is written here — content comes from real Vakvorm (ex-Persia) projects.
 
 ---
 
@@ -474,8 +502,9 @@ It keeps the door open for `Vakvorm Groep` without a migration.
   justified **only** when backed by *genuine* unique value: real projects there, real reviews, real
   local demand, or meaningful distinct information. Until then, surrounding areas are served by the
   main service pages + GBP proximity + project locations.
-- **Google Business Profile is central** and must be handled carefully during the rebrand (rename,
-  not recreate — see §14) to preserve reviews and history.
+- **Google Business Profile is central.** If a Persia GBP already exists, **rename it** (preserve
+  reviews/history); if not, create one fresh for Vakvorm — a strong GBP is the highest-leverage local
+  signal, especially given zero legacy site authority. **[TO CONFIRM: does a Persia GBP exist?]**
 - **NAP consistency** across GBP, site, and citations — single source (`ContactDetails`/`Organization`
   entity) drives it.
 - **Projects are the honest local-SEO engine:** a real "aanbouw in Vleuten" case naturally builds
@@ -483,24 +512,28 @@ It keeps the door open for `Vakvorm Groep` without a migration.
 
 ---
 
-## 14. Migration Considerations (Persia Bouwbedrijf → Vakvorm)
+## 14. Brand Transition (no website migration)
 
-**This is a rebrand of a live business — the old site likely has SEO equity that must be
-preserved, not discarded.** No Persia domain/URL has been supplied yet, so the first migration task
-is *inventory* **[TO CONFIRM: domain(s), CMS, hosting, GSC/GBP access]**.
+**Confirmed: Persia has no website.** There is therefore **no site migration** — no old URL
+inventory, no 301 redirect map, no on-site SEO equity, and no Search Console history to preserve.
+This removes an entire class of risk and work. It also means one thing to be clear-eyed about:
+**SEO begins at zero domain authority.** Rankings will be earned from scratch — there is no
+inherited head-start, so early expectations should be set accordingly (see §13/§19-Phase 11).
 
-**Migration principles:**
+What *may* still exist off-site under the Persia name — and should be checked, but is lightweight:
 
-- Assume the old site **has** ranking/backlink value until proven otherwise.
-- Every old URL with value gets a **page-level 301** to its closest Vakvorm equivalent (not a blanket
-  redirect to the homepage — that destroys equity).
-- **Preserve, don't recreate** the Google Business Profile — *rename* it so reviews and history carry
-  over.
-- Plan the brand-name transition (Persia → Vakvorm) across GBP, citations, backlinks (request updates
-  where feasible), and structured data.
-- Monitor in Search Console before/during/after (indexation, rankings, 404s, redirect health).
+- **Google Business Profile.** If one exists for Persia, **rename it to Vakvorm** rather than
+  creating a new one, so any existing reviews and history carry over. If none exists, create a fresh
+  Vakvorm GBP. **[TO CONFIRM]**
+- **Social profiles** (Instagram/Facebook/LinkedIn) under the Persia name — rename/rebrand for
+  continuity rather than starting from zero followers. **[TO CONFIRM]**
+- **Directory / citation listings** (e.g. business directories) with the old NAP — update to the
+  Vakvorm name and details for consistency. **[TO CONFIRM]**
+- **Existing brand assets & rights** — logo history, and especially **rights to real project
+  photography** from past Persia jobs (these become launch Projects). **[TO CONFIRM]**
 
-*(Full pre-replacement inspection checklist in §17.)*
+None of these block the build; they are a rebrand-continuity checklist, not a migration project.
+*(Consolidated in §17.)*
 
 ---
 
@@ -524,129 +557,150 @@ These are **requirements**, not a stack choice (stack is deferred to §16):
 - **Forms** (quote request) with spam protection + reliable delivery/notification.
 - **Analytics + Search Console + (later) conversion tracking**, privacy/GDPR-compliant (cookie
   consent, given NL/EU).
-- **Redirect + migration tooling** to execute the Persia → Vakvorm 301 map.
+- **A content back-end / admin (CMS)** allowing the non-technical Vakvorm team to **add and manage
+  Projects** (and ideally Services/testimonials) without touching code — see §16 decision.
+  *(No `301`/migration tooling needed — greenfield, per §14.)*
 
 ---
 
-## 16. Open Technical Decisions (requirements-driven, not yet decided)
+## 16. Technical Decisions — CMS locked, stack requirements-driven
 
-Each is framed by the requirement that drives it. **No stack is chosen in discovery** — these are the
-decisions to make at the start of the build phase, informed by the answers in §18.
+**CONFIRMED (owner input):** content will be maintained **by the owner/team, non-technically**, and
+the site must include a **back-end/admin where the team can add Projects themselves**. This
+**decisively resolves the CMS-vs-code question in favor of a CMS with an editorial admin UI.** The
+remaining stack decisions below are now made *around* that fixed point (still requirements-driven, no
+preference-picking).
 
-| Decision | Driving requirement | Options / considerations |
+> **One clarification to confirm (§18):** "end-users can add projects" is read here as *the Vakvorm
+> team* adding projects via a protected admin — **not** members of the public submitting projects on
+> the live site. Confirm this interpretation; public/self-service submission would be a very
+> different (and unusual for this business) feature.
+
+| Decision | Driving requirement | Direction |
 |---|---|---|
-| **Rendering strategy** | Crawlable, fast, image-heavy, mostly-static content | SSG or hybrid SSR/SSG strongly indicated over SPA. |
-| **Framework** | SSR/SSG + strong image handling + component reuse | Decide *after* CMS + who maintains the site. Do not pick for preference. |
-| **CMS vs. code-managed content** | Owner must add **projects** regularly; structured model needed | The recurring, structured, non-technical **Projects** requirement pushes toward a CMS (headless or integrated). Code-managed only viable if a developer maintains content indefinitely **[TO CONFIRM who edits content]**. |
-| **Image pipeline / DAM** | High-volume, high-quality project imagery, CWV | Build-time optimization vs. image CDN/service. |
-| **Hosting / deployment** | Fast global-ish delivery, easy deploys, EU data preference | Static/edge hosting vs. managed platform; consider EU hosting for GDPR optics **[TO CONFIRM]**. |
-| **Forms backend** | Reliable quote delivery, spam protection, GDPR | Native handler vs. form service; where do leads go (email/CRM/WhatsApp)? **[TO CONFIRM]** |
-| **Analytics** | Insight without harming premium feel / privacy | Privacy-friendly analytics vs. GA4; cookie-consent implications. |
-| **Schema/sitemap generation** | Must be automatic from content model | Framework-native or library. |
-| **Redirect management** | Execute Persia 301 map | Platform-level redirects preferred. |
-| **Multilingual?** | Is EN needed (expats/commercial)? | Default **NL-only** at launch unless told otherwise **[TO CONFIRM]** — affects URL/i18n architecture, so decide early. |
+| **Content management** | Non-technical team must add/edit **Projects** (and Services/testimonials) via an admin | **CMS with editorial admin UI — LOCKED.** Choose between *headless CMS + framework front-end* vs *integrated CMS*. Recommend **headless CMS** so the front-end stays fast/SSG and SEO-clean while editors get a friendly admin. Final CMS product chosen in Phase 2. |
+| **Rendering strategy** | Crawlable, fast, image-heavy, proof-led content | **SSG / hybrid SSR+SSG** (not SPA). Content changes in the CMS trigger rebuilds or on-demand revalidation. |
+| **Framework** | SSR/SSG + first-class image handling + component reuse + clean CMS integration | Decide in Phase 2 against these requirements + chosen CMS — **not** by preference. |
+| **Image pipeline / DAM** | High-volume, high-quality project imagery, CWV; editors upload images | CMS-integrated media handling + build/CDN image optimization (AVIF/WebP, responsive). Editor upload UX matters since the team manages media. |
+| **Hosting / deployment** | Fast delivery, easy deploys, CMS webhooks → rebuild, EU data preference | Static/edge host with CMS-webhook deploys; prefer EU hosting for GDPR optics. **[TO CONFIRM: EU-hosting preference]** |
+| **Forms backend** | Reliable quote delivery, spam protection, GDPR | Where do leads go — email / WhatsApp / CRM? **[TO CONFIRM — §18]** Drives the handler choice. |
+| **Analytics** | Insight without harming premium feel / privacy | Privacy-friendly analytics vs GA4; cookie-consent implications (NL/EU). |
+| **Schema/sitemap generation** | Automatic from CMS content | Framework-native or library, fed by the content model. |
+| **Multilingual?** | Is EN needed (expats/commercial)? | Default **NL-only** at launch unless told otherwise **[TO CONFIRM — §18]** — affects URL/i18n architecture, so decide before build. |
+
+*(Redirect-management row removed — no migration, per §14.)*
 
 ---
 
-## 17. Migration Analysis — Pre-Replacement Inspection Checklist
+## 17. Brand-Transition & Asset Checklist (no site migration)
 
-Before the Persia site is replaced, **collect and inspect**:
+There is **no website to inspect, crawl, or redirect** (§14). What remains is a light rebrand-
+continuity and asset-gathering checklist — none of it blocks the build:
 
-- [ ] **Domain(s)** in use (root + any subdomains/microsites); who controls DNS/registrar.
-- [ ] **Full URL inventory** (crawl the live site) — every indexable page.
-- [ ] **Current CMS / hosting / tech stack** of the Persia site.
-- [ ] **Google Search Console** access + export: top pages, top queries, impressions/clicks,
-      current rankings, coverage/indexation, existing sitemaps.
-- [ ] **Google Analytics** (if any): top landing pages, traffic sources, conversions.
-- [ ] **Backlink profile** (which domains link to Persia, to which URLs) — what equity exists.
-- [ ] **Google Business Profile**: ownership/access, category, reviews, photos, NAP, posts —
-      plan a **rename** (preserve), not a new profile.
-- [ ] **Business citations / directories** (where Persia's NAP appears) for later updates.
-- [ ] **Existing rankings** for the target commercial terms (baseline).
-- [ ] **Content worth salvaging**: real projects, reviews, testimonials, photos, credentials.
-- [ ] **Existing assets**: logo/brand assets, real project photography rights, any certifications.
-- [ ] **Current forms/lead flow**: where do inquiries currently go?
-- [ ] **Legal pages** currently published (privacy, terms, KvK/BTW numbers).
-- [ ] **Social profiles** and their naming (for consistent rebrand).
-- [ ] **Any structured data / rich results** currently earned.
+**Rebrand continuity (do these to avoid losing existing goodwill):**
+- [ ] **Google Business Profile** — does a Persia GBP exist? If yes, **rename to Vakvorm** (keep
+      reviews/history); if no, create a fresh Vakvorm GBP. **[TO CONFIRM]**
+- [ ] **Social profiles** (Instagram/Facebook/LinkedIn) under Persia — rename/rebrand for continuity.
+      **[TO CONFIRM]**
+- [ ] **Directory / citation listings** with the old NAP — update to Vakvorm.
 
-Output of this step → an **old→new URL redirect map** and a preserved-equity plan.
+**Assets to gather for the new build (these become site content):**
+- [ ] **~5 real launch projects** — photos + basic facts for structured case studies (confirmed
+      available).
+- [ ] **Project photography rights** — confirm we may publish images from past jobs.
+- [ ] **Real client reviews/testimonials**, if any exist. **[TO CONFIRM]**
+- [ ] **Real credentials** — KvK/BTW, insurance, guarantees, memberships, certifications — only what
+      genuinely exists (no fabrication). **[TO CONFIRM]**
+- [ ] **Brand assets** — new Vakvorm logo, colors, fonts (or note these are still to be created).
+- [ ] **NAP** — the address/phone/email to publish and use as the single Organization source.
+
+**Domain:** choose/confirm the new Vakvorm domain and who controls DNS. **[TO CONFIRM]**
 
 ---
 
 ## 18. Prioritized Questions for You
 
-**Tier 1 — Blocking (build cannot responsibly start without these):**
+**✅ Resolved so far (owner input this session):**
+- ~~Persia website / migration~~ → **no website exists** — greenfield, no migration (§14).
+- ~~Who maintains content~~ → **owner/team, non-technically, via an admin back-end** → **CMS locked**
+  (§16).
+- ~~Real launch proof~~ → **~5 real projects** to start (§11/§17).
+- ~~Nav: two-pillar vs dropdown~~ → **delegated to best practice → single "Diensten" dropdown**
+  decided (§7.3).
 
-1. **Persia website & data access.** What is the current domain? Can we get Google Search Console,
-   Analytics, and Google Business Profile access? (Determines the entire migration/SEO-preservation
-   plan.)
-2. **Who maintains content after launch?** Will you (non-technical) need to add projects yourself, or
-   will a developer? (This is the single biggest driver of the CMS-vs-code decision in §16.)
-3. **Real proof available at launch.** How many *real, photographed* projects can we publish, and are
-   there *real* client reviews we may use? (Determines whether Projects can carry their strategic
-   load at launch or must grow over time — and whether the site can credibly launch at all.)
-4. **Interieurbouw as top-level pillar (§7.2).** Do you want Bouw & Interieur as two separate
-   top-level nav items, or one grouped "Diensten" dropdown at launch? (Affects nav + IA.)
-5. **Approve the `/interieurbouw/` top-level URL root (§6.2)** instead of nesting it under
-   `/diensten/`. (Structural, hard to change later.)
+**Tier 1 — Remaining blockers (answer these before build starts):**
 
-**Tier 2 — Important (needed early in the build):**
+1. **Language scope.** NL-only at launch, or is English also needed (expats / commercial /
+   architect clients)? *Architecture-affecting* — it determines whether we build i18n/URL structure
+   in from day one. This is the main remaining architectural unknown.
+2. **Lead destination + contact channels.** Where should a quote request land — email, WhatsApp, a
+   CRM? And do you want **WhatsApp and/or phone** as prominent primary contact options? Drives the
+   forms backend and the contact UX.
+3. **Confirm the "add projects" interpretation (§16).** Admin back-end for *your team* to add
+   projects (assumed) — versus public/visitor submission (unusual here). Please confirm it's the
+   former.
 
-6. **Language:** NL-only at launch, or is English needed (expats / commercial clients)?
-7. **Lead destination:** where should quote requests go — email, WhatsApp, a CRM? Do you want
-   WhatsApp and/or phone as primary contact channels?
-8. **Commercial / zakelijke interieurbouw:** real demand and references now, or a later phase?
-9. **Team & faces:** do you want team members/founder shown (strong trust signal), or stay
-   company-anonymous?
-10. **Credentials/guarantees** that are *real* (KvK, insurances, guarantees, memberships,
-    certifications) — which exist and may we display? (No fabrication.)
+**Tier 2 — Important (needed early in the build, not blocking start):**
+
+4. **Real credentials/guarantees** that genuinely exist (KvK/BTW, insurance, guarantees,
+   memberships, certifications) — which may we display? (No fabrication.)
+5. **Team & faces:** show team members/founder (strong trust signal), or stay company-anonymous?
+6. **GBP / social continuity:** does a Persia Google Business Profile or social presence exist to
+   rename, or do we start fresh? (§17)
+7. **Commercial / zakelijke interieurbouw:** real demand and references now, or a later phase?
+8. **Brand assets & domain:** is there a finished Vakvorm logo/visual identity, and is the new
+   domain chosen? (If identity isn't ready, a mini brand step precedes the design system.)
 
 **Tier 3 — Can be decided during build:**
 
-11. Exact launch scope of interieurbouw sub-pages (wandpanelen? wandmeubels?) — pending demand.
-12. Whether `aanbouw` and `uitbouw` should be one page or two (pending keyword data).
-13. Photography plan — is professional project photography budgeted? (Quality is the whole game for
-    interieurbouw.)
-14. Do you have real keyword/market data, or should keyword research be a scoped task in Phase 1?
+9. Exact launch scope of interieurbouw sub-pages (wandpanelen? wandmeubels?) — pending demand.
+10. Whether `aanbouw` and `uitbouw` should be one page or two (pending keyword data).
+11. Professional project photography — budgeted? (Quality is decisive for interieurbouw.)
+12. Keyword research — do you have market data, or should we scope it as a Phase-1 task?
+    (Reminder: with no legacy site, there is no historical search data to reuse.)
 
 ---
 
 ## 19. Proposed Implementation Phases
 
-An improved sequence (with SEO/migration woven throughout, not bolted on):
+An improved sequence (SEO woven throughout, not bolted on). No migration phase is needed —
+greenfield — so effort shifts to content, proof and earning authority from zero.
 
 | # | Phase | Purpose / key outputs |
 |---|---|---|
-| 0 | **Discovery** *(this document)* | Shared understanding, IA, questions answered. |
-| 1 | **Foundation research** | Keyword research (if no data), Persia audit + URL inventory + redirect map, GBP/GSC access, real-asset inventory (projects/reviews/credentials). |
-| 2 | **Architecture lock** | Final IA, URL map, content model, schema plan, tech decisions made (§16). |
-| 3 | **Design system** | Brand-aligned, premium, accessible components & tokens (calm, craftsmanship-forward). |
-| 4 | **Technical foundation** | Framework/CMS setup, content model implemented, SEO plumbing (metadata, sitemap, robots, schema, redirects), image pipeline, analytics/GSC. |
+| 0 | **Discovery** *(this document)* | Shared understanding, IA, key decisions locked. |
+| 1 | **Foundation research & assets** | Fresh keyword research (no legacy data), real-asset gathering (the ~5 projects + photos + rights, credentials, reviews), NAP, brand assets. |
+| 2 | **Architecture lock** | Final IA, URL map, content model, schema plan; **CMS product + framework + hosting chosen** (§16). |
+| 3 | **Design system** | Brand-aligned, premium, accessible components & tokens (calm, craftsmanship-forward). Precede with a mini brand step if identity isn't ready. |
+| 4 | **Technical foundation** | Framework + **CMS/admin** setup, content model implemented, SEO plumbing (metadata, sitemap, robots, schema), image pipeline, analytics/GSC. |
 | 5 | **Core pages** | Home, Diensten hub, service pages, Interieurbouw hub + sub-pages, Werkwijze, Over, Contact. |
-| 6 | **Projects** | Project template, taxonomy/filters, first batch of *real* case studies, proof-loop internal linking. |
+| 6 | **Projects** | Project template, taxonomy/filters, the ~5 real case studies, **admin/back-end for the team to add projects**, proof-loop internal linking. |
 | 7 | **SEO finalization** | On-page (titles/meta/headings), internal-linking pass, structured data validation, sitemap, cannibalization check. |
 | 8 | **Analytics & conversion** | Goal/conversion tracking, form flows (email/WhatsApp/CRM), consent. |
-| 9 | **QA** | Accessibility, Core Web Vitals, cross-device, crawlability, status codes, redirect testing, content proofreading (Dutch). |
-| 10 | **Migration & launch** | Execute 301 map, GBP rename, sitemap submission, DNS cutover, robots/index checks. |
-| 11 | **Post-launch monitoring** | GSC monitoring (indexation, 404s, rankings), reviews acquisition, iterate on content clusters, plan earned location/B2B pages. |
+| 9 | **QA** | Accessibility, Core Web Vitals, cross-device, crawlability, status codes, Dutch content proofreading, CMS-editor UX check. |
+| 10 | **Launch** | New Vakvorm domain live, GBP set up/renamed, sitemap submitted to GSC, index checks. |
+| 11 | **Post-launch growth** | Build authority from zero: GSC monitoring, reviews acquisition, expand content clusters, add projects via CMS, earn location/B2B pages when justified. |
 
 ---
 
 ## 20. Definition of Ready for the Build
 
-The build may start only when **all Tier-1 questions (§18) are answered** and:
+**Already satisfied:**
+- [x] No migration — greenfield confirmed (§14).
+- [x] Content maintainer decided → **CMS with admin back-end** (§16).
+- [x] Launch proof confirmed → **~5 real projects** (§11/§17).
+- [x] Nav model decided → **single "Diensten" dropdown**; `/interieurbouw/` top-level root recommended
+      (§6.2/§7.3).
 
-- [ ] Persia domain identified; GSC / Analytics / GBP access obtained (or explicitly unavailable).
-- [ ] URL inventory + old→new redirect map drafted (Phase 1).
-- [ ] Content maintainer decided → CMS-vs-code decision made.
-- [ ] Confirmed count of **real** launch projects + reviews (proof plan is viable).
-- [ ] Nav model chosen (two-pillar vs grouped dropdown) and `/interieurbouw/` root approved.
-- [ ] Language scope (NL / NL+EN) fixed.
-- [ ] Lead-flow destination(s) chosen.
-- [ ] Real, displayable credentials/guarantees confirmed (no fabrication).
-- [ ] Final IA + URL map + content model signed off (Phase 2).
-- [ ] Tech stack decisions (§16) made against requirements — and explained, not defaulted.
+**Still required before build starts (the remaining Tier-1 in §18):**
+- [ ] **Language scope** (NL / NL+EN) fixed — architecture-affecting.
+- [ ] **Lead-flow destination(s) + contact channels** chosen.
+- [ ] **"Add projects" = team admin** interpretation confirmed.
+
+**Then, at the start of the build (Phase 2), sign-off on:**
+- [ ] Final IA + URL map + content model.
+- [ ] CMS product + framework + hosting chosen against requirements — explained, not defaulted.
+- [ ] Real, displayable credentials/guarantees confirmed (Tier-2, no fabrication).
 
 Tier-2 items should be answered before their relevant phase; Tier-3 items may be resolved during the
 build.
@@ -677,35 +731,48 @@ build.
 - Missing/weak **Werkwijze** page, leaving the "one partner coordinates everything" promise unproven.
 
 **Technical unknowns / risks**
-- Choosing a stack before the content-maintenance and CMS questions are answered.
+- Choosing a framework/hosting before the CMS product is chosen to fit the locked CMS decision.
+- A CMS/admin whose editor UX is too technical for a non-technical team to add projects comfortably.
 - Client-side rendering harming crawlability and CWV on a proof/SEO-led site.
 - Unmanaged image weight killing Core Web Vitals on an image-heavy interior site.
 - GDPR/consent handling for forms and analytics in the NL/EU context.
 
+**Greenfield-specific risk**
+- **Zero starting authority.** No legacy site means no inherited rankings/backlinks — set realistic
+  expectations that organic visibility is earned over months via content, projects, GBP and reviews.
+
 **Anti-patterns to explicitly avoid**
-- Slug-swap SEO pages; auto-generated location pages; page-per-trade; homepage-only redirects;
-  fabricated reviews/projects/certifications/facts; mega-menus; picking tech by preference.
+- Slug-swap SEO pages; auto-generated location pages; page-per-trade; fabricated
+  reviews/projects/certifications/facts; mega-menus; picking tech by preference.
 
 ---
 
 ## Deviations from the Brief's Provisional Structure (flagged for approval)
 
 1. **Interieurbouw at `/interieurbouw/` (top-level root), not under `/diensten/`** — to encode
-   co-equal pillar status, build a clean topical hub, and future-proof the Groep split. (§6.2, §18-Q5)
-2. **Optional two-pillar top navigation** (Bouw & Renovatie ▾ | Interieurbouw ▾) as an alternative to
-   the single Diensten dropdown — presented as an owner decision. (§7.2, §18-Q4)
-3. **`aanbouw` + `uitbouw` recommended as one combined page** unless keyword data proves two distinct
+   co-equal pillar status, build a clean topical hub, and future-proof the Groep split. (§6.2)
+   *Recommended; proceeding on this basis unless you object.*
+2. **`aanbouw` + `uitbouw` recommended as one combined page** unless keyword data proves two distinct
    intents. (§9)
-4. **Per-trade services and city pages deliberately NOT created** at launch — described within
+3. **Per-trade services and city pages deliberately NOT created** at launch — described within
    services / earned later with real value. (§6.3, §13)
+
+**Decisions locked this session:** greenfield (no migration); **CMS with admin back-end**; **single
+"Diensten" dropdown** nav; **~5 real launch projects**.
 
 ---
 
 # BUILD STATUS: NOT READY
 
-*Reason:* The strategically important **Tier-1 questions in §18 are unanswered** — specifically
-Persia site/data access and migration equity, who maintains content (CMS-vs-code), the volume of
-**real** launch proof (projects/reviews), the navigation/pillar decisions, and confirmation of the
-`/interieurbouw/` root. Until these are resolved, starting the build would mean guessing on
-decisions that are expensive to reverse. Answer the Tier-1 questions and the build can proceed to
-Phase 1 (Foundation research).
+*Reason:* Most strategic questions are now resolved — greenfield (no migration), **CMS/admin**
+content management, **~5 real launch projects**, and the **single "Diensten" dropdown** navigation
+are all decided, and the architecture is locked. **Three Tier-1 items remain (§18):**
+
+1. **Language scope (NL vs NL+EN)** — the one remaining *architecture-affecting* unknown.
+2. **Lead destination + contact channels** (email / WhatsApp / phone / CRM).
+3. **Confirm "add projects" = a team admin** (not public submission).
+
+These are quick to answer but genuinely shape the build (i18n, forms, admin scope), so it would be
+wrong to declare readiness before they're settled. **Answer these three and the status flips to
+READY**, and the build can proceed to Phase 1 (Foundation research & assets) → Phase 2 (Architecture
+lock, where CMS/framework/hosting are chosen).
