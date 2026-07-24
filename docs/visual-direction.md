@@ -71,43 +71,36 @@ hold in pure monochrome (see typography-review.md). Photography always wins the 
 
 ## 5. Typography — neo-grotesk + mono spec layer
 
-Three roles: an **editorial serif** for the display "voice", a **warm grotesque** for
-everything readable, and a **monospace** for the technical spec layer. Character now comes
-from the letterforms *and* the application — a deliberate move away from the earlier
-neutral neo-grotesk (Public Sans) which read as generic.
+Two roles, one idea: a disciplined neo-grotesk for everything readable, and a monospace for
+the *technical spec layer*. Character comes from **application**, not an eccentric font.
+(Full rationale + the three tested directions in `typography-review.md`.)
 
-- **Display / voice — Fraunces** (SIL OFL): a warm, high-contrast old-style serif with real
-  character (contemporary revival). Used for display, headings, section/service titles,
-  **quotes (italic)** and the **index numerals** (the datum "04"). This is what makes the
-  brand distinctive and premium.
-- **Readable layer — Hanken Grotesk** (SIL OFL): a clean, faintly warm humanist grotesque.
-  Body, navigation, buttons, labels/eyebrows, the wordmark. Legible large and small.
-  Not Inter/Geist/Public Sans/Helvetica-neutral.
-- **Technical spec layer — IBM Plex Mono** (SIL OFL): capability strips, genuine spec tags,
-  placeholder ratios. A quiet counterpoint to the serif. Never used for reading copy.
+- **Readable layer — Public Sans** (SIL OFL): a Franklin/Helvetica-lineage workhorse gothic.
+  Mature, neutral-but-not-anonymous, excellent large and small. Used for display, headings,
+  body, navigation. Not Inter/Geist/Manrope/Montserrat/Poppins/DM Sans/Space Grotesk/Bricolage.
+- **Technical spec layer — IBM Plex Mono** (SIL OFL): metadata, section labels, capability
+  strips, index numbers, breadcrumbs, the brand descriptor. Architectural-drawing / spec-sheet
+  character with tabular figures. Never used for reading copy.
 
 **Scale (concise, deliberate):**
 
 | Role | Family | Size | Weight |
 |---|---|---|---|
-| Display | Fraunces | `clamp(2.4rem, 5vw, 4.6rem)` / lh 1.02 / track −0.014em | 500 |
-| Heading | Fraunces | `clamp(1.6rem, 3vw, 2.5rem)` | 500 |
-| Quote | Fraunces *italic* | contextual | 400 |
-| Index numeral | Fraunces, tabular | contextual, `--oxide` / `--navy` | 500 |
-| Lead | Hanken Grotesk | `clamp(1.12rem, 1.5vw, 1.35rem)` / lh 1.5 | 400 |
-| Body | Hanken Grotesk | `1.0625rem` / lh 1.62 / ≤ 64ch | 400 |
-| Label / eyebrow | Hanken Grotesk | `0.72rem`, uppercase, track 0.08em | 600 |
-| Navigation / wordmark | Hanken Grotesk | `0.9rem` / `1.5rem` | 500 / 700 |
-| Technical label | IBM Plex Mono | `0.70rem`, uppercase, track 0.04em, tabular | 500 |
+| Display | Public Sans | `clamp(2.4rem, 5vw, 4.6rem)` / lh 1.0 / track −0.022em | 500–700 |
+| Heading | Public Sans | `clamp(1.6rem, 3vw, 2.5rem)` | 600 |
+| Lead | Public Sans | `clamp(1.12rem, 1.5vw, 1.35rem)` / lh 1.5 | 400 |
+| Body | Public Sans | `1.0625rem` / lh 1.62 / ≤ 64ch | 400 |
+| Technical label | IBM Plex Mono | `0.70rem`, uppercase, track **0.04em**, tabular | 500 |
+| Index number | IBM Plex Mono | contextual, tabular, `--concrete` | 500 |
+| Navigation | Public Sans | `0.9rem` | 500 |
 
 **Rules:**
-- Serif for the **voice** (headlines, titles, quotes, numerals); grotesque for everything the
-  visitor *reads and operates* (body, nav, buttons, eyebrows, the wordmark). Never set body
-  copy in the serif.
-- Numerals are set in Fraunces and may take colour (`--oxide` cognac / `--navy`) — the datum
-  index is a signature element, not a flat mono figure.
-- Hierarchy from **face, weight, scale, position**. Uppercase only on labels/spec, modest tracking.
-- Max ~3 weights per face. No sub-15px reading copy.
+- Hierarchy from **weight, scale, position** — not colour. (Hero "Eén partij." is heavier, not orange.)
+- Uppercase only on the mono spec layer, with **modest tracking (0.04em)** — never the old
+  0.14–0.16em "performative" tracking. Metadata values may be sentence/normal case.
+- Display is **composed, not oversized** — tops out at 4.6rem, no huge-bold-three-line default.
+- Max ~3 weights in play. No sub-15px reading copy. CTA is a **bordered** typographic
+  treatment with a restrained `↗`, never a solid startup button.
 
 ## 6. The VAKVORM datum line (visual signature)
 

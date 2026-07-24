@@ -22,14 +22,14 @@
   line-height: 1;
 }
 .brandName {
-  font-family: var(--font-text);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 0.04em;
 }
 .brandDesc {
-  font-family: var(--font-text);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: 0.64rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
