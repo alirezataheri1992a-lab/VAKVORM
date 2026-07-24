@@ -1,6 +1,8 @@
-/* ============================== HOME ============================== */
+/* ============================== HOME ==============================
+   Recomposed for visual energy: dominant media, controlled overlap,
+   stronger colour rhythm. Brand, type, IA and tokens unchanged. */
 
-/* ---------- A. Hero ---------- */
+/* ---------- 1. HERO — one composition ---------- */
 .hero {
   padding-top: clamp(16px, 2.5vh, 40px);
   padding-bottom: 0;
@@ -11,6 +13,9 @@
   gap: clamp(28px, 5vw, 56px);
   padding-inline: var(--gutter);
 }
+.heroText {
+  align-self: center;
+}
 .heroEyebrow {
   display: block;
   margin-bottom: clamp(24px, 4vh, 44px);
@@ -18,13 +23,75 @@
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.005em;
-  text-transform: none;
   color: var(--concrete);
 }
+.heroTitle {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+  line-height: 0.98;
+}
+.heroAccent {
+  color: inherit;
+  font-weight: 700;
+}
+.heroLede {
+  max-width: 44ch;
+}
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 32px;
+  background: var(--oxide);
+  color: var(--on-ink);
+  font-weight: 500;
+  border: 1px solid var(--oxide);
+  border-radius: var(--radius-cta);
+  transition: background 200ms var(--ease), border-color 200ms var(--ease);
+}
+.btnPrimary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 26px;
+  border: 1px solid var(--concrete-line);
+  border-radius: var(--radius-cta);
+  font-weight: 500;
+  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+}
+.btnGhost:hover {
+  border-color: var(--ink);
+  color: var(--oxide);
+}
 .heroMedia {
+  position: relative;
   align-self: stretch;
 }
-/* full-width capability datum baseline */
+/* metadata chip overlapping the media's lower edge */
+.heroChip {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+.heroChipType {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
 .heroBaseline {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -54,89 +121,97 @@
     padding-bottom: 14px;
   }
 }
-.heroTitle {
-  margin-bottom: 32px;
-  font-weight: 500;
-}
-/* hierarchy from weight + line position, not colour (works in monochrome) */
-.heroAccent {
-  color: inherit;
-  font-weight: 700;
-}
-.heroLede {
-  max-width: 46ch;
-}
-.heroActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 40px;
-}
-/* PRIMARY action = warm clay (systematic: header, hero, intake all match) */
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  height: 54px;
-  padding: 0 30px;
-  background: var(--oxide);
-  color: var(--on-ink);
-  font-weight: 500;
-  border: 1px solid var(--oxide);
-  border-radius: var(--radius-cta);
-  transition: background 200ms var(--ease), border-color 200ms var(--ease);
-}
-.btnPrimary:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-}
-.btnGhost {
-  display: inline-flex;
-  align-items: center;
-  height: 54px;
-  padding: 0 26px;
-  border: 1px solid var(--concrete-line);
-  border-radius: var(--radius-cta);
-  font-weight: 500;
-  transition: border-color 200ms var(--ease), color 200ms var(--ease);
-}
-.btnGhost:hover {
-  border-color: var(--ink);
-  color: var(--oxide);
-}
-
 @media (min-width: 1041px) {
   .heroGrid {
-    grid-template-columns: minmax(0, 1fr) 46vw;
-    /* vertically centre the text against the full-height media — removes the empty
-       top gap and unifies type + image into one composition */
+    grid-template-columns: minmax(0, 1fr) 52vw;
     align-items: center;
-    min-height: clamp(560px, 80vh, 780px);
+    min-height: clamp(600px, 84vh, 840px);
     gap: clamp(40px, 4vw, 80px);
     padding-left: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
     padding-right: 0;
   }
-  .heroMedia {
-    align-self: stretch;
-  }
   .heroLede {
     max-width: 40ch;
+  }
+  /* chip overlaps the lower-left of the media, bleeding onto the canvas */
+  .heroChip {
+    position: absolute;
+    left: clamp(-64px, -4vw, -28px);
+    bottom: clamp(20px, 4vh, 40px);
+    margin: 0;
+    padding: 16px 22px;
+    background: var(--bone);
+    border: 1px solid var(--concrete-line);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px -28px rgba(26, 25, 21, 0.5);
+    z-index: 2;
   }
 }
 @media (min-width: 1041px) and (max-width: 1240px) {
   .heroGrid {
-    grid-template-columns: minmax(0, 1fr) 40vw;
+    grid-template-columns: minmax(0, 1fr) 46vw;
   }
 }
 
-/* ---------- B. Work ---------- */
+/* ---------- 2. TRUST / CAPABILITY — a bridge, bolder ---------- */
+.trust {
+  padding-block: clamp(56px, 9vh, 108px);
+}
+.trustHead {
+  margin-bottom: clamp(32px, 5vh, 56px);
+}
+.trustGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: clamp(28px, 3vw, 56px);
+  row-gap: 44px;
+}
+.trustItem {
+  max-width: 28ch;
+}
+.trustNum {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: var(--oxide);
+}
+.trustTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 1.8vw, 1.6rem);
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.trustDesc {
+  color: var(--concrete);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+@media (max-width: 860px) {
+  .trustGrid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+}
+@media (max-width: 520px) {
+  .trustGrid {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+}
+
+/* ---------- 3. SELECTED WORK — one dominant story ---------- */
 .work {
-  padding-block: clamp(48px, 7vh, 96px);
+  padding-block: clamp(64px, 10vh, 128px);
 }
 .workHead,
 .procesHead,
 .servicesHead {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
   margin-bottom: clamp(32px, 5vh, 56px);
 }
@@ -153,56 +228,81 @@
   border-color: var(--oxide);
   color: var(--oxide);
 }
-.workGrid {
+.featured {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 2.4vw, 40px);
+  gap: clamp(28px, 4vh, 48px);
 }
-.workItem a {
-  display: block;
-}
-.workItem :global(.img) {
-  transition: transform var(--dur) var(--ease);
-}
-.workItem a:hover :global(.img) {
-  transform: scale(1.03);
-}
-.workMeta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  margin-top: 16px;
-}
-.workTitle {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-/* placeholder composition — fewer, larger, confident (designed for real photography) */
-.workGridOffset {
+.featuredMedia {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(20px, 3vw, 40px);
-  align-items: end;
+  gap: 20px;
 }
-.workNote {
-  margin-top: 24px;
-  max-width: 46ch;
+.featuredMain :global(.img) {
+  transition: transform var(--dur) var(--ease);
+}
+.featuredMain a:hover :global(.img) {
+  transform: scale(1.03);
+}
+.featuredMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 32px;
+  padding-top: 26px;
+  border-top: 1px solid var(--concrete-line);
+}
+.featuredMetaText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 60ch;
+}
+.featuredTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+.featuredLoc {
   color: var(--concrete);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
-@media (min-width: 761px) {
-  .workGridOffset {
-    grid-template-columns: 68% 27%;
-    gap: clamp(24px, 4vw, 64px);
+.featuredNote {
+  color: var(--concrete);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 44ch;
+}
+.featuredLink {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 28px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-cta);
+  font-weight: 500;
+  transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.featuredLink:hover {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+@media (min-width: 941px) {
+  .featuredMedia {
+    grid-template-columns: 1fr 30%;
+    align-items: start;
   }
-  .workB {
-    margin-bottom: clamp(20px, 5vw, 64px);
+  /* the detail image is offset down and overlaps the dominant image */
+  .featuredDetail {
+    margin-top: clamp(56px, 9vw, 132px);
+    margin-left: clamp(-104px, -6vw, -48px);
+    z-index: 2;
   }
 }
 
-/* ---------- C. Two disciplines (colour-field chapters) ---------- */
+/* ---------- 4. TWO WORLDS ---------- */
 .discIntroSec {
   padding-block: clamp(56px, 9vh, 120px) clamp(28px, 4vh, 48px);
 }
@@ -214,36 +314,39 @@
   max-width: 20ch;
 }
 .discBand {
-  padding-block: clamp(56px, 9vh, 128px);
+  padding-block: clamp(64px, 10vh, 140px);
 }
 .discBandInner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(32px, 4vw, 72px);
+  gap: clamp(36px, 5vw, 80px);
   align-items: center;
 }
 .discBandTitle {
   margin-top: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
 }
 .discBandBody {
   color: inherit;
   max-width: 46ch;
   line-height: 1.62;
   opacity: 0.92;
+  font-size: 1.05rem;
 }
 .discBandList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 26px;
-  margin-top: 28px;
-  padding-top: 24px;
+  gap: 12px 28px;
+  margin-top: 30px;
+  padding-top: 26px;
   border-top: 1px solid var(--concrete-line-dark);
 }
 .discBandList a {
-  font-size: 0.96rem;
+  font-size: 1rem;
   color: inherit;
-  opacity: 0.82;
+  opacity: 0.84;
   transition: opacity 180ms var(--ease), color 180ms var(--ease);
 }
 .discBandList a:hover {
@@ -252,7 +355,7 @@
 }
 .discLink {
   display: inline-block;
-  margin-top: 26px;
+  margin-top: 28px;
   font-weight: 500;
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
@@ -263,23 +366,63 @@
 }
 @media (min-width: 941px) {
   .discBandInner {
-    grid-template-columns: 1fr 42%;
-  }
-  .discBandAlt .discBandInner {
-    grid-template-columns: 42% 1fr;
+    grid-template-columns: 1fr 40%;
   }
 }
 
-/* ---------- D. Statement (ink) ---------- */
+/* Interieurbouw — material chapter, tactile overlap */
+.discInterieur {
+  padding-block: clamp(72px, 11vh, 156px);
+}
+.discIntInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+.discInterieur .discBandList {
+  border-top-color: var(--material-line);
+}
+.discIntMedia {
+  position: relative;
+}
+.discIntDetail {
+  width: 58%;
+  margin-top: 18px;
+  margin-left: auto;
+}
+@media (min-width: 941px) {
+  .discIntInner {
+    grid-template-columns: 1fr 44%;
+  }
+  .discIntMedia {
+    padding-bottom: 64px;
+    padding-left: 72px;
+  }
+  .discIntMain {
+    width: 82%;
+    margin-left: auto;
+  }
+  .discIntDetail {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46%;
+    margin: 0;
+    z-index: 2;
+  }
+}
+
+/* ---------- 5. BRAND PRINCIPLE (protected) ---------- */
 .statement {
-  padding-block: clamp(72px, 13vh, 190px);
+  padding-block: clamp(80px, 14vh, 200px);
 }
 .statementText {
   margin-top: clamp(32px, 5vh, 56px);
   color: var(--on-ink);
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.8rem, 4.4vw, 3.4rem);
+  font-size: clamp(1.9rem, 4.6vw, 3.6rem);
   line-height: 1.12;
   letter-spacing: -0.02em;
   max-width: 22ch;
@@ -289,7 +432,6 @@
   font-style: italic;
   color: var(--oxide-warm);
 }
-/* construction-register triad — typographic, not cards */
 .triad {
   display: flex;
   margin-top: clamp(40px, 6vh, 76px);
@@ -308,12 +450,89 @@
   padding-left: 0;
 }
 
-/* ---------- E. Services ---------- */
+/* ---------- 6. SERVICES ---------- */
 .servicesSec {
-  padding-block: clamp(48px, 7vh, 96px);
+  padding-block: clamp(56px, 9vh, 120px);
 }
 
-/* ---------- F. Proces (process with presence) ---------- */
+/* ---------- 7. CRAFT MOMENT — full-bleed emotional anchor ---------- */
+.craft {
+  margin-block: clamp(8px, 2vh, 24px);
+}
+.craftMedia {
+  position: relative;
+  width: 100%;
+}
+.craftOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(28px, 5vw, 80px);
+  background: linear-gradient(
+    to top,
+    rgba(22, 39, 60, 0.66),
+    rgba(22, 39, 60, 0.08) 46%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+.craftLine {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--on-ink);
+  font-size: clamp(2rem, 5.6vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+@media (min-width: 1041px) {
+  .craftMedia {
+    height: clamp(480px, 66vh, 800px);
+  }
+}
+
+/* ---------- 8. MID-PAGE CTA ---------- */
+.midCta {
+  padding-block: clamp(44px, 7vh, 84px);
+}
+.midCtaInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+}
+.midCtaText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.midCtaTitle {
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  max-width: 20ch;
+}
+.midCtaBody {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+.midCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  height: 56px;
+  padding: 0 34px;
+  background: var(--oxide);
+  color: var(--on-ink);
+  font-weight: 500;
+  border-radius: var(--radius-cta);
+  transition: background 200ms var(--ease);
+}
+.midCtaBtn:hover {
+  background: var(--ink);
+}
+
+/* ---------- 9. WERKWIJZE — trust chapter ---------- */
 .proces {
   padding-block: clamp(72px, 12vh, 168px);
 }
@@ -324,11 +543,13 @@
   align-items: start;
 }
 .procesLead {
-  max-width: 16ch;
+  max-width: 15ch;
   margin-bottom: clamp(28px, 4vh, 44px);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 600;
 }
 .procesMedia {
-  max-width: 520px;
+  max-width: 460px;
 }
 .procesSteps {
   display: flex;
@@ -336,10 +557,10 @@
 }
 .procesStep {
   display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 20px;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
   align-items: start;
-  padding: clamp(22px, 3vh, 34px) 0;
+  padding: clamp(24px, 3.4vh, 38px) 0;
   border-top: 1px solid var(--material-line);
 }
 .procesStep:first-child {
@@ -347,112 +568,24 @@
   padding-top: 0;
 }
 .procesNum {
-  font-size: 0.9rem;
-  color: var(--concrete);
-  padding-top: 6px;
+  font-size: 0.95rem;
+  color: var(--oxide);
+  padding-top: 8px;
 }
 .procesTitle {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  letter-spacing: -0.015em;
-  margin-bottom: 8px;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  letter-spacing: -0.018em;
+  margin-bottom: 10px;
 }
 .procesDesc {
   color: var(--concrete);
-  font-size: 1rem;
-  max-width: 38ch;
+  font-size: 1.02rem;
+  max-width: 40ch;
 }
 @media (min-width: 941px) {
   .procesGrid {
-    grid-template-columns: 42% 1fr;
-  }
-  .procesLead {
-    font-size: clamp(1.7rem, 2.4vw, 2.2rem);
-  }
-}
-
-/* ---------- Trust band (warm sand) — factual reassurance, not a spreadsheet ---------- */
-.trust {
-  padding-block: clamp(52px, 8vh, 100px);
-}
-.trustGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: clamp(28px, 3vw, 56px);
-  row-gap: 40px;
-}
-.trustItem {
-  max-width: 26ch;
-}
-.trustTitle {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.3rem;
-  letter-spacing: -0.015em;
-  margin-bottom: 12px;
-}
-.trustDesc {
-  color: var(--concrete);
-  font-size: 0.98rem;
-  line-height: 1.55;
-  max-width: 30ch;
-}
-@media (max-width: 860px) {
-  .trustGrid {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 34px;
-  }
-}
-@media (max-width: 520px) {
-  .trustGrid {
-    grid-template-columns: 1fr;
-    row-gap: 24px;
-  }
-  .trustItem {
-    border-left: none;
-    padding-left: 0;
-  }
-}
-
-/* ---------- C2. Interieurbouw — warm material chapter (tactile, two-image) ---------- */
-.discInterieur {
-  padding-block: clamp(64px, 10vh, 144px);
-}
-.discIntInner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(36px, 5vw, 80px);
-  align-items: center;
-}
-.discInterieur .discBandList {
-  border-top-color: var(--material-line);
-}
-.discIntMedia {
-  position: relative;
-}
-.discIntDetail {
-  width: 58%;
-  margin-top: 18px;
-  margin-left: auto;
-}
-@media (min-width: 941px) {
-  .discIntInner {
-    grid-template-columns: 1fr 46%;
-  }
-  .discIntMedia {
-    padding-bottom: 56px;
-    padding-left: 64px;
-  }
-  .discIntMain {
-    width: 80%;
-    margin-left: auto;
-  }
-  .discIntDetail {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 44%;
-    margin: 0;
+    grid-template-columns: 44% 1fr;
   }
 }

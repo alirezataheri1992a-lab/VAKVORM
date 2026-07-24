@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { workSlots } from '@/lib/projects';
 import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
+import type { Project } from '@/lib/types';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { Reveal } from '@/components/primitives/Reveal';
@@ -23,14 +24,16 @@ export default async function HomePage() {
     getSiteSettings(),
   ]);
   const { bouw: bouwServices, interieurHub: interieurService, interieurSubs: interieurSubServices, main: services } = groups;
-  const hasProjects = published.length > 0;
+  const featured = published[0];
 
   return (
     <>
       <OrganizationJsonLd />
       <WebSiteJsonLd />
 
-      {/* ---------- A. Opening — image-participating, full-bleed right ---------- */}
+      {/* ============================================================
+          1. HERO — one composition: type + a dominant, edge-bleeding image
+          ============================================================ */}
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroText}>
@@ -38,7 +41,8 @@ export default async function HomePage() {
               Aannemer &amp; interieurbouw — {site.city}
             </span>
             <h1 className={`display ${styles.heroTitle}`}>
-              Van bouw tot interieur.<br />
+              Van bouw<br />
+              tot interieur.<br />
               <span className={styles.heroAccent}>Eén partij.</span>
             </h1>
             <p className={`lede ${styles.heroLede}`}>
@@ -57,16 +61,20 @@ export default async function HomePage() {
 
           <div className={styles.heroMedia}>
             <ProjectMedia
-              media={{ alt: 'Recent project van VAKVORM', ratio: '3:4', slot: 'HERO — PROJECT' }}
+              media={{ alt: 'Recent project van VAKVORM', ratio: '3:4', slot: 'HERO — RENOVATIE UTRECHT' }}
               priority
               fill
-              sizes="(max-width: 1040px) 100vw, 46vw"
+              sizes="(max-width: 1040px) 100vw, 52vw"
             />
+            {/* metadata chip overlapping the media's lower edge — one composition */}
+            <div className={styles.heroChip}>
+              <span className="spec">Recent werk</span>
+              <span className={styles.heroChipType}>Woningrenovatie · {site.city}</span>
+            </div>
           </div>
         </div>
 
-        {/* full-width capability datum baseline — a functional use of the line system
-            that also states the build breadth (construction register) */}
+        {/* capability datum baseline — the build breadth, stated as spec */}
         <div className={`container ${styles.heroBaseline}`}>
           {['Constructie', 'Renovatie', 'Aanbouw', 'Stucwerk', 'Interieurbouw', 'Coördinatie'].map(
             (cap) => (
@@ -78,17 +86,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Trust band — integrated, non-fabricated reassurance ---------- */}
+      {/* ============================================================
+          2. TRUST / CAPABILITY — a strong bridge, not a data table
+          ============================================================ */}
       <section className={`on-sand ${styles.trust}`}>
         <div className="container">
+          <div className={styles.trustHead}>
+            <SectionMarker label="Eén partij, van A tot Z" />
+          </div>
           <ul className={styles.trustGrid}>
             {[
               ['Eén aanspreekpunt', 'Van eerste schets tot oplevering heeft u één vast contact.'],
               ['Complete begeleiding', 'Wij coördineren alle vakmensen en bewaken het geheel.'],
               ['Heldere planning', 'Vooraf afgestemd, zodat u weet waar u aan toe bent.'],
               ['Hoogwaardige afwerking', 'Vakmanschap tot in het detail, netjes opgeleverd.'],
-            ].map(([t, d]) => (
+            ].map(([t, d], i) => (
               <li key={t} className={styles.trustItem}>
+                <span className={`num ${styles.trustNum}`}>{String(i + 1).padStart(2, '0')}</span>
                 <h2 className={styles.trustTitle}>{t}</h2>
                 <p className={styles.trustDesc}>{d}</p>
               </li>
@@ -97,7 +111,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------- B. Proof early ---------- */}
+      {/* ============================================================
+          3. SELECTED WORK — one dominant project story, with overlap
+          ============================================================ */}
       <section className={`container ${styles.work}`}>
         <div className={styles.workHead}>
           <SectionMarker label="Geselecteerd werk" />
@@ -106,45 +122,41 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        {hasProjects ? (
-          <div className={styles.workGrid}>
-            {published.slice(0, 3).map((p, i) => (
-              <Reveal key={p.slug} delay={i * 80} className={styles.workItem}>
-                <Link href={`/projecten/${p.slug}`}>
-                  <ProjectMedia media={p.hero} sizes="(max-width: 900px) 100vw, 40vw" />
-                  <div className={styles.workMeta}>
-                    <span className={styles.workTitle}>{p.title}</span>
-                    <span className="label">{p.meta.location}</span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+        {featured ? (
+          <FeaturedProject p={featured} city={site.city} />
         ) : (
-          <>
-            <div className={styles.workGridOffset}>
+          <div className={styles.featured}>
+            <div className={styles.featuredMedia}>
+              <Reveal className={styles.featuredMain}>
+                <ProjectMedia
+                  media={{ alt: 'Projectbeeld volgt', ratio: '3:2', slot: 'WONINGRENOVATIE' }}
+                  sizes="(max-width: 940px) 100vw, 66vw"
+                />
+              </Reveal>
               <ProjectMedia
-                className={styles.workA}
-                media={{ alt: 'Projectfoto volgt', ratio: '3:2', slot: workSlots[0].slot }}
-                sizes="(max-width: 900px) 100vw, 58vw"
-                caption={<span className="label">{workSlots[0].label} · {site.city}</span>}
-              />
-              <ProjectMedia
-                className={styles.workB}
-                media={{ alt: 'Projectfoto volgt', ratio: '4:5', slot: workSlots[1].slot }}
-                sizes="(max-width: 900px) 100vw, 34vw"
-                caption={<span className="label">{workSlots[1].label} · {site.city}</span>}
+                className={styles.featuredDetail}
+                media={{ alt: 'Detailbeeld volgt', ratio: '4:5', slot: 'DETAIL' }}
+                sizes="(max-width: 940px) 100vw, 30vw"
               />
             </div>
-            <p className={styles.workNote}>
-              De eerste projecten worden binnenkort toegevoegd. Elk project komt hier als
-              volledig uitgewerkte case te staan.
-            </p>
-          </>
+            <div className={styles.featuredMeta}>
+              <div className={styles.featuredMetaText}>
+                <span className="spec">Binnenkort — eerste projecten</span>
+                <h3 className={styles.featuredTitle}>Elk project als volledige case.</h3>
+              </div>
+              <p className={styles.featuredNote}>
+                De eerste VAKVORM-projecten worden nu voorbereid. Ze verschijnen hier als
+                complete cases — de opgave, onze aanpak en het resultaat, met beeld van het
+                echte werk.
+              </p>
+            </div>
+          </div>
         )}
       </section>
 
-      {/* ---------- C. Two disciplines — distinct colour-field chapters ---------- */}
+      {/* ============================================================
+          4. TWO WORLDS — Bouw (navy) and Interieurbouw (material)
+          ============================================================ */}
       <section className={styles.discIntroSec}>
         <div className="container">
           <div className={styles.discIntro}>
@@ -156,16 +168,16 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Bouw & Renovatie — navy field (structural, architectural weight) */}
+      {/* Bouw & Renovatie — navy field, broad and structural */}
       <section className={`on-ink ${styles.discBand}`}>
         <div className={`container ${styles.discBandInner}`}>
           <div className={styles.discBandText}>
             <SectionMarker index="01" label="Bouw & Renovatie" tone="ink" />
-            <h3 className={`heading ${styles.discBandTitle}`}>Bouw &amp; Renovatie</h3>
+            <h3 className={`display ${styles.discBandTitle}`}>Bouw &amp; Renovatie</h3>
             <p className={styles.discBandBody}>
               Complete renovaties, verbouwingen, badkamers, aan- en uitbouw, opbouw en
               stucwerk. Wij coördineren alle vakmensen en dragen de verantwoordelijkheid
-              voor het hele traject.
+              voor het hele traject — van fundering tot afwerking.
             </p>
             <ul className={styles.discBandList}>
               {bouwServices.map((s) => (
@@ -177,19 +189,19 @@ export default async function HomePage() {
           </div>
           <div className={styles.discBandMedia}>
             <ProjectMedia
-              media={{ alt: 'Bouw en renovatie door VAKVORM', ratio: '4:3', slot: 'BOUW' }}
-              sizes="(max-width: 900px) 100vw, 42vw"
+              media={{ alt: 'Bouw en renovatie door VAKVORM', ratio: '4:5', slot: 'BOUW — RUWBOUW' }}
+              sizes="(max-width: 900px) 100vw, 46vw"
             />
           </div>
         </div>
       </section>
 
-      {/* Maatwerk Interieurbouw — warm material chapter (tactile, editorial, two images) */}
+      {/* Maatwerk Interieurbouw — warm material chapter, tactile & overlapping */}
       <section className={`on-material ${styles.discInterieur}`}>
         <div className={`container ${styles.discIntInner}`}>
           <div className={styles.discIntText}>
             <SectionMarker index="02" label="Interieurbouw" />
-            <h3 className={`heading ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
+            <h3 className={`display ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
             <p className={styles.discBandBody}>
               Een volwaardige discipline binnen VAKVORM. Van maatwerkkasten en wandmeubels
               tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail, in
@@ -209,19 +221,21 @@ export default async function HomePage() {
           <div className={styles.discIntMedia}>
             <ProjectMedia
               className={styles.discIntMain}
-              media={{ alt: 'Maatwerk interieur door VAKVORM', ratio: '4:5', slot: 'INTERIEUR' }}
-              sizes="(max-width: 900px) 100vw, 36vw"
+              media={{ alt: 'Maatwerk interieur door VAKVORM', ratio: '4:5', slot: 'INTERIEUR — RUIMTE' }}
+              sizes="(max-width: 900px) 100vw, 38vw"
             />
             <ProjectMedia
               className={styles.discIntDetail}
-              media={{ alt: 'Detail van maatwerk — houtverbinding', ratio: '1:1', slot: 'DETAIL' }}
-              sizes="(max-width: 900px) 60vw, 20vw"
+              media={{ alt: 'Detail van maatwerk — houtverbinding', ratio: '1:1', slot: 'MATERIAAL' }}
+              sizes="(max-width: 900px) 55vw, 20vw"
             />
           </div>
         </div>
       </section>
 
-      {/* ---------- D. One-partner statement — ink, to break the bone and add weight ---------- */}
+      {/* ============================================================
+          5. BRAND PRINCIPLE — protected dark statement
+          ============================================================ */}
       <section className={`on-ink ${styles.statement}`}>
         <div className="container">
           <SectionMarker label="Het principe" tone="ink" />
@@ -239,15 +253,56 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------- E. Services index ---------- */}
+      {/* ============================================================
+          6. SERVICES — refined interactive catalogue
+          ============================================================ */}
       <section className={`container ${styles.servicesSec}`}>
         <div className={styles.servicesHead}>
           <SectionMarker label="Diensten" />
+          <Link href="/diensten" className={styles.headLink}>
+            Alle diensten
+          </Link>
         </div>
         <ServiceIndex items={services} />
       </section>
 
-      {/* ---------- F. Werkwijze — process with presence (media + progression) ---------- */}
+      {/* ============================================================
+          7. CRAFT MOMENT — full-bleed emotional anchor (stop explaining)
+          ============================================================ */}
+      <section className={styles.craft}>
+        <div className={styles.craftMedia}>
+          <ProjectMedia
+            media={{ alt: 'Afgewerkt VAKVORM-project — ruimte en detail', ratio: '16:9', slot: 'AFWERKING — RUIMTE' }}
+            fill
+            sizes="100vw"
+          />
+          <div className={styles.craftOverlay}>
+            <p className={styles.craftLine}>
+              Van ruwbouw tot<br />laatste detail.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          8. MID-PAGE CTA — a first, obvious next step before the end
+          ============================================================ */}
+      <section className={`on-material ${styles.midCta}`}>
+        <div className={`container ${styles.midCtaInner}`}>
+          <div className={styles.midCtaText}>
+            <span className="spec">Aan de slag</span>
+            <h2 className={`heading ${styles.midCtaTitle}`}>Een verbouwing op de planning?</h2>
+            <p className={styles.midCtaBody}>Vertel ons kort wat u wilt realiseren.</p>
+          </div>
+          <Link href="/contact" className={styles.midCtaBtn}>
+            Project bespreken
+          </Link>
+        </div>
+      </section>
+
+      {/* ============================================================
+          9. WERKWIJZE — a real trust chapter: big image + process
+          ============================================================ */}
       <section className={`on-sand ${styles.proces}`}>
         <div className="container">
           <div className={styles.procesHead}>
@@ -258,13 +313,13 @@ export default async function HomePage() {
           </div>
           <div className={styles.procesGrid}>
             <div className={styles.procesIntro}>
-              <h2 className={`heading ${styles.procesLead}`}>
+              <h2 className={`display ${styles.procesLead}`}>
                 Eén partij die uw project plant, coördineert en oplevert.
               </h2>
               <div className={styles.procesMedia}>
                 <ProjectMedia
-                  media={{ alt: 'VAKVORM coördineert op de bouwplaats', ratio: '4:3', slot: 'PROCES — UITVOERING' }}
-                  sizes="(max-width: 940px) 100vw, 40vw"
+                  media={{ alt: 'VAKVORM coördineert op de bouwplaats', ratio: '4:5', slot: 'PROCES — UITVOERING' }}
+                  sizes="(max-width: 940px) 100vw, 42vw"
                 />
               </div>
             </div>
@@ -288,7 +343,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------- I. Project intake — strong navy conversion moment ---------- */}
+      {/* ============================================================
+          10. CONVERSION — the destination (distinct from the footer)
+          ============================================================ */}
       <ContactPanel
         eyebrow="Aan de slag"
         heading="Plannen om te verbouwen?"
@@ -296,5 +353,36 @@ export default async function HomePage() {
         facts
       />
     </>
+  );
+}
+
+/* One dominant, real project: large hero image, offset+overlapping detail, meta bar. */
+function FeaturedProject({ p, city }: { p: Project; city: string }) {
+  const detail = p.gallery[0] ?? { alt: `${p.title} — detail`, ratio: '4:5' as const, slot: 'DETAIL' };
+  return (
+    <div className={styles.featured}>
+      <div className={styles.featuredMedia}>
+        <Reveal className={styles.featuredMain}>
+          <Link href={`/projecten/${p.slug}`}>
+            <ProjectMedia media={{ ...p.hero, ratio: '3:2' }} sizes="(max-width: 940px) 100vw, 66vw" />
+          </Link>
+        </Reveal>
+        <ProjectMedia
+          className={styles.featuredDetail}
+          media={{ ...detail, ratio: '4:5' }}
+          sizes="(max-width: 940px) 100vw, 30vw"
+        />
+      </div>
+      <div className={styles.featuredMeta}>
+        <div className={styles.featuredMetaText}>
+          <span className="spec">{p.meta.projectType || 'Project'}</span>
+          <h3 className={styles.featuredTitle}>{p.title}</h3>
+          <span className={styles.featuredLoc}>{p.meta.location || city}</span>
+        </div>
+        <Link href={`/projecten/${p.slug}`} className={styles.featuredLink}>
+          Bekijk project
+        </Link>
+      </div>
+    </div>
   );
 }

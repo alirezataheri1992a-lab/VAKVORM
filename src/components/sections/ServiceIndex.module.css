@@ -87,22 +87,27 @@
 
 @media (min-width: 1041px) {
   .wrap {
-    grid-template-columns: 1fr 34%;
-    gap: clamp(40px, 5vw, 88px);
+    grid-template-columns: 1fr 40%;
+    gap: clamp(48px, 5vw, 96px);
     align-items: start;
   }
   .preview {
     display: block;
     position: sticky;
-    top: 120px;
+    top: 108px;
     aspect-ratio: 4 / 5;
+    /* let the reveal extend beyond the list rhythm — a real focal point */
+    margin-top: -18px;
+    box-shadow: 0 40px 80px -56px rgba(26, 25, 21, 0.55);
+    border-radius: var(--radius-media);
+    overflow: hidden;
   }
   .previewItem {
     position: absolute;
     inset: 0;
     opacity: 0;
-    transform: scale(1.02);
-    transition: opacity 420ms var(--ease), transform 620ms var(--ease);
+    transform: scale(1.04);
+    transition: opacity 480ms var(--ease), transform 720ms var(--ease);
     pointer-events: none;
   }
   .previewItem[data-active='true'] {

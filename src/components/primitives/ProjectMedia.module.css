@@ -25,6 +25,8 @@
 }
 
 /* --- development placeholder: quiet, technical, unmistakably temporary --- */
+/* Quiet neutral surface — previews the final composition without shouting
+   "placeholder". A very faint hatch gives material texture, not a wireframe. */
 .placeholder {
   position: absolute;
   inset: 0;
@@ -32,40 +34,43 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   background:
     repeating-linear-gradient(
       -45deg,
-      transparent 0 26px,
-      rgba(45, 40, 33, 0.05) 26px 27px
+      transparent 0 46px,
+      rgba(45, 40, 33, 0.022) 46px 47px
     ),
-    var(--stone);
+    linear-gradient(150deg, var(--paper), var(--stone));
 }
 .plabel {
   color: var(--concrete);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  opacity: 0.72;
 }
 .pratio {
-  color: var(--concrete-line);
-  font-size: 0.72rem;
+  color: var(--concrete);
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
+  opacity: 0.45;
 }
-/* corner registration marks — drawing/datum language */
+/* corner registration marks — subtle drawing/datum language */
 .plusTL,
 .plusBR {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
+  opacity: 0.5;
 }
 .plusTL {
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
   border-top: 1px solid var(--concrete);
   border-left: 1px solid var(--concrete);
 }
 .plusBR {
-  bottom: 12px;
-  right: 12px;
+  bottom: 14px;
+  right: 14px;
   border-bottom: 1px solid var(--concrete);
   border-right: 1px solid var(--concrete);
 }
