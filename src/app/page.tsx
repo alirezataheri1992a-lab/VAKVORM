@@ -138,8 +138,8 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* ---------- C. Two disciplines ---------- */}
-      <section className={`${styles.disciplines}`}>
+      {/* ---------- C. Two disciplines — distinct colour-field chapters ---------- */}
+      <section className={styles.discIntroSec}>
         <div className="container">
           <div className={styles.discIntro}>
             <SectionMarker label="Twee disciplines" />
@@ -147,55 +147,56 @@ export default function HomePage() {
               Twee vakgebieden, onder één verantwoordelijkheid.
             </h2>
           </div>
+        </div>
+      </section>
 
-          <div className={styles.discBlock}>
-            <div className={styles.discMedia}>
-              <ProjectMedia
-                media={{ alt: 'Bouw en renovatie door Vakvorm', ratio: '4:3', slot: 'BOUW' }}
-                sizes="(max-width: 900px) 100vw, 52vw"
-              />
-            </div>
-            <div className={styles.discText}>
-              <span className={`num ${styles.discNum}`}>01</span>
-              <h3 className={`heading ${styles.discTitle}`}>Bouw &amp; Renovatie</h3>
-              <p className="body">
-                Complete renovaties, verbouwingen, badkamers, aan- en uitbouw, opbouw en
-                stucwerk. Wij coördineren alle vakmensen en dragen de verantwoordelijkheid
-                voor het hele traject.
-              </p>
-              <ul className={styles.discList}>
-                {bouwServices.map((s) => (
-                  <li key={s.slug}>
-                    <Link href={s.path}>{s.navLabel}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className={`${styles.discBlock} ${styles.discBlockAlt}`}>
-            <div className={styles.discText}>
-              <span className={`num ${styles.discNum}`}>02</span>
-              <h3 className={`heading ${styles.discTitle}`}>Maatwerk Interieurbouw</h3>
-              <p className="body">
-                Een volwaardige discipline binnen Vakvorm. Van maatwerkkasten en wandmeubels
-                tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail.
-              </p>
-              <ul className={styles.discList}>
-                <li>
-                  <Link href={interieurService.path}>Maatwerk interieurbouw</Link>
+      {/* Bouw & Renovatie — navy field (structural, architectural weight) */}
+      <section className={`on-ink ${styles.discBand}`}>
+        <div className={`container ${styles.discBandInner}`}>
+          <div className={styles.discBandText}>
+            <SectionMarker index="01" label="Bouw & Renovatie" tone="ink" />
+            <h3 className={`heading ${styles.discBandTitle}`}>Bouw &amp; Renovatie</h3>
+            <p className={styles.discBandBody}>
+              Complete renovaties, verbouwingen, badkamers, aan- en uitbouw, opbouw en
+              stucwerk. Wij coördineren alle vakmensen en dragen de verantwoordelijkheid
+              voor het hele traject.
+            </p>
+            <ul className={styles.discBandList}>
+              {bouwServices.map((s) => (
+                <li key={s.slug}>
+                  <Link href={s.path}>{s.navLabel}</Link>
                 </li>
-              </ul>
-              <Link href={interieurService.path} className={styles.discLink}>
-                Naar interieurbouw
-              </Link>
-            </div>
-            <div className={styles.discMedia}>
-              <ProjectMedia
-                media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR' }}
-                sizes="(max-width: 900px) 100vw, 44vw"
-              />
-            </div>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.discBandMedia}>
+            <ProjectMedia
+              media={{ alt: 'Bouw en renovatie door Vakvorm', ratio: '5:4', slot: 'BOUW' }}
+              sizes="(max-width: 900px) 100vw, 42vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Maatwerk Interieurbouw — warm stone field (material, tactile) */}
+      <section className={`on-sand ${styles.discBand} ${styles.discBandAlt}`}>
+        <div className={`container ${styles.discBandInner}`}>
+          <div className={styles.discBandMedia}>
+            <ProjectMedia
+              media={{ alt: 'Maatwerk interieur door Vakvorm', ratio: '4:5', slot: 'INTERIEUR — DETAIL' }}
+              sizes="(max-width: 900px) 100vw, 42vw"
+            />
+          </div>
+          <div className={styles.discBandText}>
+            <SectionMarker index="02" label="Interieurbouw" />
+            <h3 className={`heading ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
+            <p className={styles.discBandBody}>
+              Een volwaardige discipline binnen Vakvorm. Van maatwerkkasten en wandmeubels
+              tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail.
+            </p>
+            <Link href={interieurService.path} className={styles.discLink}>
+              Naar interieurbouw
+            </Link>
           </div>
         </div>
       </section>
@@ -253,8 +254,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- I. Contact ---------- */}
-      <ContactPanel />
+      {/* ---------- I. Project intake — strong navy conversion moment ---------- */}
+      <ContactPanel
+        eyebrow="Aan de slag"
+        heading="Plannen om te verbouwen?"
+        body="Vertel kort wat u wilt realiseren. Wij nemen contact op om uw project vrijblijvend te bespreken — van bouwkundige ingreep tot maatwerk interieur."
+        facts
+      />
     </>
   );
 }

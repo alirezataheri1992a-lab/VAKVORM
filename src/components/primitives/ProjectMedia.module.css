@@ -37,9 +37,9 @@
     repeating-linear-gradient(
       -45deg,
       transparent 0 26px,
-      rgba(108, 104, 95, 0.04) 26px 27px
+      rgba(45, 40, 33, 0.05) 26px 27px
     ),
-    var(--paper);
+    var(--stone);
 }
 .plabel {
   color: var(--concrete);

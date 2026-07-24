@@ -7,16 +7,19 @@ interface Props {
   eyebrow?: string;
   heading?: string;
   body?: string;
+  /** Show the trust-fact row (used as the homepage intake moment). */
+  facts?: boolean;
 }
 
 /**
- * Quiet, confident closing invitation — not an aggressive lead-gen CTA.
+ * Confident closing invitation on the deep-navy chapter — premium but proactive.
  * Reusable across pages. Contact details come from the central site settings.
  */
 export function ContactPanel({
   eyebrow = 'Contact',
   heading = 'Een project bespreken?',
   body = 'Loop uw plannen met ons door. We denken graag mee — vrijblijvend en zonder verkooppraat.',
+  facts = false,
 }: Props) {
   return (
     <section className={`on-ink ${styles.panel}`}>
@@ -28,7 +31,7 @@ export function ContactPanel({
             <p className={styles.body}>{body}</p>
             <div className={styles.actions}>
               <Link href="/contact" className={styles.primary}>
-                Offerte aanvragen
+                Vrijblijvend kennismaken
               </Link>
               <a href={`tel:${site.phoneHref}`} className={styles.secondary}>
                 {site.phoneDisplay}
@@ -39,6 +42,21 @@ export function ContactPanel({
             </a>
           </div>
         </div>
+
+        {facts && (
+          <ul className={styles.facts}>
+            {[
+              [`${site.city} & omgeving`, 'Werkgebied'],
+              ['Bouw + interieurbouw', 'Twee disciplines, één partij'],
+              ['Eén aanspreekpunt', 'Van eerste schets tot oplevering'],
+            ].map(([t, d]) => (
+              <li key={t} className={styles.fact}>
+                <span className={styles.factTitle}>{t}</span>
+                <span className={`spec ${styles.factLabel}`}>{d}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );

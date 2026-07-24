@@ -5,20 +5,25 @@
    ============================================================ */
 
 :root {
-  /* --- Color: warm material palette (warm sand + espresso + clay accent) --- */
-  --bone: #ece5d6; /* warm sand off-white — page background */
-  --sand: #e4dbc8; /* deeper warm neutral — alternating sections, depth */
-  --paper: #f4efe4; /* warm raised surface (media wells, inputs) */
-  --ink: #1c1a15; /* warm near-black — primary text */
-  --ink-soft: #3a352b; /* warm softened text */
-  --concrete: #6f685a; /* warm secondary text */
-  --concrete-line: #cbc0a9; /* warm hairlines / borders */
-  --deep: #23201a; /* deep warm espresso — feature sections (was cool ink) */
-  --concrete-line-dark: #40392d; /* warm hairlines on deep */
-  --oxide: #a85a34; /* warm clay / ochre accent — restrained */
-  --oxide-warm: #b9713f; /* lighter clay for hovers on dark */
-  --on-ink: #ece3d3; /* warm off-white on deep */
-  --on-ink-soft: #a99f8b; /* warm muted on deep */
+  /* --- Colour: ivory canvas · deep architectural navy · burnt-sienna accent · stone ---
+     Distribution target ≈ 55% light / 22% navy / 13% accent+material / rest photography. */
+  --ivory: #f3efe4; /* main canvas — fresher warm white (was dusty beige) */
+  --bone: #f3efe4; /* alias: primary background */
+  --stone: #e5ddcc; /* warm stone / taupe — supporting chapters */
+  --sand: #e5ddcc; /* alias for stone surfaces */
+  --paper: #f8f4ea; /* raised surface (media wells, inputs, cards) */
+  --ink: #1a1915; /* warm near-black — primary text on light */
+  --ink-soft: #38342b; /* warm softened text */
+  --concrete: #6d675a; /* secondary text */
+  --concrete-line: #cec4ae; /* warm hairlines on light */
+  --navy: #16273c; /* deep architectural navy — major chapters, gravitas, trust */
+  --deep: #16273c; /* alias: dark feature background */
+  --navy-soft: #1c3049; /* raised navy surface (cards on navy) */
+  --concrete-line-dark: #2d3f55; /* hairlines on navy */
+  --oxide: #b1552d; /* burnt sienna / cognac — action & material warmth */
+  --oxide-warm: #c66f42; /* lighter cognac for hovers / on-navy accents */
+  --on-ink: #eee7d7; /* warm cream on navy */
+  --on-ink-soft: #93a1b1; /* muted blue-grey on navy */
 
   /* --- Typography ---
      One neo-grotesk for the readable layer; a mono for the technical spec layer. */

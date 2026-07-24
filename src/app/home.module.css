@@ -195,68 +195,71 @@
   font-size: 0.98rem;
 }
 
-/* ---------- C. Disciplines ---------- */
-.disciplines {
-  padding-block: clamp(64px, 11vh, 160px);
+/* ---------- C. Two disciplines (colour-field chapters) ---------- */
+.discIntroSec {
+  padding-block: clamp(56px, 9vh, 120px) clamp(28px, 4vh, 48px);
 }
 .discIntro {
   max-width: 760px;
-  margin-bottom: clamp(40px, 6vh, 80px);
 }
 .discLead {
-  margin-top: 26px;
-  max-width: 18ch;
+  margin-top: 24px;
+  max-width: 20ch;
 }
-.discBlock {
+.discBand {
+  padding-block: clamp(56px, 9vh, 128px);
+}
+.discBandInner {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(28px, 5vw, 88px);
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 4vw, 72px);
   align-items: center;
-  padding-block: clamp(28px, 4vh, 56px);
 }
-.discText {
-  position: relative;
-}
-.discNum {
-  font-size: 0.8rem;
-  color: var(--concrete);
-  letter-spacing: 0.08em;
-}
-.discTitle {
-  margin-top: 14px;
+.discBandTitle {
+  margin-top: 18px;
   margin-bottom: 20px;
 }
-.discList {
+.discBandBody {
+  color: inherit;
+  max-width: 46ch;
+  line-height: 1.62;
+  opacity: 0.92;
+}
+.discBandList {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 26px;
-  margin-top: 26px;
-  border-top: 1px solid var(--concrete-line);
-  padding-top: 22px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--concrete-line-dark);
 }
-.discList a {
+.discBandList a {
   font-size: 0.96rem;
-  color: var(--ink-soft);
-  transition: color 180ms var(--ease);
+  color: inherit;
+  opacity: 0.82;
+  transition: opacity 180ms var(--ease), color 180ms var(--ease);
 }
-.discList a:hover {
-  color: var(--oxide);
+.discBandList a:hover {
+  opacity: 1;
+  color: var(--oxide-warm);
 }
 .discLink {
   display: inline-block;
   margin-top: 26px;
   font-weight: 500;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
+  transition: color 180ms var(--ease);
 }
-@media (max-width: 900px) {
-  .discBlock,
-  .discBlockAlt {
-    grid-template-columns: 1fr;
-    gap: 28px;
+.discLink:hover {
+  color: var(--oxide);
+}
+@media (min-width: 941px) {
+  .discBandInner {
+    grid-template-columns: 1fr 42%;
   }
-  .discBlockAlt .discMedia {
-    order: -1;
+  .discBandAlt .discBandInner {
+    grid-template-columns: 42% 1fr;
   }
 }
 
@@ -277,7 +280,7 @@
 }
 .statementText em {
   font-style: italic;
-  color: var(--on-ink);
+  color: var(--oxide-warm);
 }
 /* construction-register triad — typographic, not cards */
 .triad {

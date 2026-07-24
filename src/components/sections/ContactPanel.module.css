@@ -69,3 +69,44 @@
     align-items: start;
   }
 }
+
+/* trust-fact row — homepage intake moment */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: clamp(48px, 7vh, 88px);
+  border-top: 1px solid var(--concrete-line-dark);
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 24px 0 0;
+  border-left: 1px solid var(--concrete-line-dark);
+  padding-left: 28px;
+}
+.fact:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+.factTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--on-ink);
+}
+.factLabel {
+  color: var(--on-ink-soft);
+}
+@media (max-width: 720px) {
+  .facts {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+  }
+  .fact {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 0;
+  }
+}
