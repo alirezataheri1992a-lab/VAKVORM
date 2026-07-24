@@ -21,8 +21,13 @@
 }
 .index {
   font-size: 0.72rem;
-  color: var(--oxide);
+  color: var(--concrete);
   align-self: center;
+  transition: color 200ms var(--ease);
+}
+.row:hover .index,
+.row[data-active='true'] .index {
+  color: var(--oxide);
 }
 .name {
   min-width: 0;

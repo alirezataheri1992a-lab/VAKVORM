@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { display, text } from '@/lib/fonts';
+import { sans, mono } from '@/lib/fonts';
 import { site } from '@/lib/site';
 import { SiteHeader } from '@/components/chrome/SiteHeader';
 import { SiteFooter } from '@/components/chrome/SiteFooter';
@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={`${display.variable} ${text.variable}`}>
+    <html lang="nl" className={`${sans.variable} ${mono.variable}`}>
       <body>
         <a href="#main" className="visually-hidden">
           Naar hoofdinhoud

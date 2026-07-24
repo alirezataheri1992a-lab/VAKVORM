@@ -50,9 +50,12 @@
 }
 .heroTitle {
   margin-bottom: 32px;
+  font-weight: 500;
 }
+/* hierarchy from weight + line position, not colour (works in monochrome) */
 .heroAccent {
-  color: var(--oxide);
+  color: inherit;
+  font-weight: 700;
 }
 .heroLede {
   max-width: 46ch;
@@ -207,7 +210,7 @@
 }
 .discNum {
   font-size: 0.8rem;
-  color: var(--oxide);
+  color: var(--concrete);
   letter-spacing: 0.08em;
 }
 .discTitle {
@@ -265,7 +268,7 @@
 }
 .statementText em {
   font-style: italic;
-  color: var(--oxide);
+  color: var(--on-ink);
 }
 /* construction-register triad — typographic, not cards */
 .triad {
@@ -305,7 +308,7 @@
 }
 .procesNum {
   font-size: 0.8rem;
-  color: var(--oxide);
+  color: var(--concrete);
 }
 .procesLine {
   display: block;

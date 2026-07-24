@@ -58,23 +58,43 @@ Not black/gold luxury, not cold SaaS white. Warm mineral + ink + concrete + one 
 | `--concrete-line` | `#C8C2B6` | hairlines, datum rules, borders |
 | `--oxide` | `#9E4A2C` | accent — **used sparingly**, never competes with photos |
 
-Accent appears only at small, intentional moments (active index number, a single rule,
-a link underline on interaction). Photography always wins the color contest.
+Accent appears only at small, intentional moments — **interactive/active states only**
+(link hover, active service-index number/arrow, primary-button hover). It is **not** used on
+the hero, static headings, static index numbers, or the "één" emphasis. The identity must
+hold in pure monochrome (see typography-review.md). Photography always wins the colour contest.
 
-## 5. Typography
+## 5. Typography — neo-grotesk + mono spec layer
 
-- **Display / headings:** Bricolage Grotesque (variable, opsz+wght) — editorial, distinctive.
-- **UI / body / technical labels:** Archivo (variable) — neutral, great tabular figures.
-- Not Inter/Geist/Poppins/Montserrat/Manrope. Not the serif-heading+sans-body cliché
-  (two grotesks, chosen on purpose).
-- Type roles:
-  - **Display** `clamp(2.6rem, 6vw, 5.5rem)`, weight 500–600, tight tracking `-0.02em`,
-    line-height ~1.02.
-  - **Section heading** `clamp(1.6rem, 3vw, 2.6rem)`.
-  - **Body** `1.0625rem`/1.6, measure ≤ 68ch, color `--ink` on bone / softened on dark.
-  - **Technical label** (datum eyebrows, metadata): Archivo, `0.75rem`, uppercase,
-    tracking `0.14em`, tabular-nums, color `--concrete`.
-- Max 3 weights in play. No sub-15px body copy. No readability-breaking hero type.
+Two roles, one idea: a disciplined neo-grotesk for everything readable, and a monospace for
+the *technical spec layer*. Character comes from **application**, not an eccentric font.
+(Full rationale + the three tested directions in `typography-review.md`.)
+
+- **Readable layer — Public Sans** (SIL OFL): a Franklin/Helvetica-lineage workhorse gothic.
+  Mature, neutral-but-not-anonymous, excellent large and small. Used for display, headings,
+  body, navigation. Not Inter/Geist/Manrope/Montserrat/Poppins/DM Sans/Space Grotesk/Bricolage.
+- **Technical spec layer — IBM Plex Mono** (SIL OFL): metadata, section labels, capability
+  strips, index numbers, breadcrumbs, the brand descriptor. Architectural-drawing / spec-sheet
+  character with tabular figures. Never used for reading copy.
+
+**Scale (concise, deliberate):**
+
+| Role | Family | Size | Weight |
+|---|---|---|---|
+| Display | Public Sans | `clamp(2.4rem, 5vw, 4.6rem)` / lh 1.0 / track −0.022em | 500–700 |
+| Heading | Public Sans | `clamp(1.6rem, 3vw, 2.5rem)` | 600 |
+| Lead | Public Sans | `clamp(1.12rem, 1.5vw, 1.35rem)` / lh 1.5 | 400 |
+| Body | Public Sans | `1.0625rem` / lh 1.62 / ≤ 64ch | 400 |
+| Technical label | IBM Plex Mono | `0.70rem`, uppercase, track **0.04em**, tabular | 500 |
+| Index number | IBM Plex Mono | contextual, tabular, `--concrete` | 500 |
+| Navigation | Public Sans | `0.9rem` | 500 |
+
+**Rules:**
+- Hierarchy from **weight, scale, position** — not colour. (Hero "Eén partij." is heavier, not orange.)
+- Uppercase only on the mono spec layer, with **modest tracking (0.04em)** — never the old
+  0.14–0.16em "performative" tracking. Metadata values may be sentence/normal case.
+- Display is **composed, not oversized** — tops out at 4.6rem, no huge-bold-three-line default.
+- Max ~3 weights in play. No sub-15px reading copy. CTA is a **bordered** typographic
+  treatment with a restrained `↗`, never a solid startup button.
 
 ## 6. The VAKVORM datum line (visual signature)
 

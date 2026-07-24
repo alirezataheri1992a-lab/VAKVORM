@@ -62,7 +62,7 @@
 }
 .respNum {
   font-size: 0.72rem;
-  color: var(--oxide);
+  color: var(--concrete);
 }
 .respText {
   font-family: var(--font-display);
@@ -132,7 +132,7 @@
 }
 .relatedIndex {
   font-size: 0.72rem;
-  color: var(--oxide);
+  color: var(--concrete);
 }
 .relatedName {
   font-family: var(--font-display);

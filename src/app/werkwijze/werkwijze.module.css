@@ -37,7 +37,7 @@
 }
 .stepNum {
   font-size: 0.8rem;
-  color: var(--oxide);
+  color: var(--concrete);
   letter-spacing: 0.08em;
 }
 .stepRule {

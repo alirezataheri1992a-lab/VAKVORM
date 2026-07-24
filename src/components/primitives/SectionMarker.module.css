@@ -9,9 +9,9 @@
 }
 .index {
   font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--oxide);
-  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--concrete);
+  font-weight: 500;
   flex: none;
 }
 .rule {
@@ -23,5 +23,5 @@
   background: var(--concrete-line-dark);
 }
 .ink .index {
-  color: var(--oxide);
+  color: var(--on-ink-soft);
 }

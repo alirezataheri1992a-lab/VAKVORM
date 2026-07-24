@@ -143,37 +143,39 @@
   color: var(--oxide);
 }
 
-/* -------- cta -------- */
+/* -------- cta — bordered, typography-led, restrained diagonal arrow -------- */
 .cta {
   flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  height: 46px;
-  padding: 0 22px;
-  background: var(--ink);
-  color: var(--on-ink);
-  font-size: 0.85rem;
+  gap: 14px;
+  height: 48px;
+  padding: 0 24px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.005em;
   border-radius: var(--radius);
-  transition: background 200ms var(--ease);
+  transition: background 220ms var(--ease), color 220ms var(--ease);
 }
 .cta::after {
   content: '';
   flex: none;
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-top: 1px solid currentColor;
   border-right: 1px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 220ms var(--ease);
+  transform: rotate(-45deg);
+  transition: transform 240ms var(--ease);
 }
 .cta:hover {
-  background: var(--oxide);
+  background: var(--ink);
+  color: var(--on-ink);
 }
 .cta:hover::after {
-  transform: translateX(3px) rotate(45deg);
+  transform: translate(2px, -2px) rotate(-45deg);
 }
 
 /* -------- mobile burger -------- */
@@ -239,8 +241,8 @@
 }
 .mobileIndex {
   font-size: 0.8rem;
-  color: var(--oxide);
-  font-family: var(--font-text);
+  color: var(--concrete);
+  font-family: var(--font-technical);
 }
 .mobileServices {
   margin-top: 34px;

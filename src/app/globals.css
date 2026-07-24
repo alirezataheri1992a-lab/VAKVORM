@@ -17,9 +17,11 @@
   --on-ink: #e7e2d8;
   --on-ink-soft: #a8a396;
 
-  /* --- Typography --- */
-  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-  --font-text: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  /* --- Typography ---
+     One neo-grotesk for the readable layer; a mono for the technical spec layer. */
+  --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-text: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-technical: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
 
   /* --- Space & layout --- */
   --maxw: 1460px;
@@ -88,54 +90,58 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.018em;
   text-wrap: balance;
 }
 
-/* ---------------------------------------------------------- type roles */
+/* ---------------------------------------------------------- type roles
+   A concise, deliberate scale (documented in /docs/visual-direction.md).
+   Composed, not oversized: display tops out lower than the previous system. */
 .display {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2.6rem, 6vw, 5.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 1.0;
+  letter-spacing: -0.022em;
   text-wrap: balance;
 }
 .heading {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.7rem, 3.2vw, 2.7rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
 }
 .lede {
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-size: clamp(1.12rem, 1.5vw, 1.35rem);
   line-height: 1.5;
+  font-weight: 400;
   color: var(--ink-soft);
-  max-width: 40ch;
+  max-width: 42ch;
   text-wrap: pretty;
 }
 .body {
-  max-width: 62ch;
+  max-width: 64ch;
   color: var(--ink-soft);
+  line-height: 1.62;
   text-wrap: pretty;
 }
 
-/* The technical/editorial label — core of the datum signature */
+/* The technical spec layer — mono, tabular, modest tracking (not performative). */
 .label {
-  font-family: var(--font-text);
+  font-family: var(--font-technical);
   font-weight: 500;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   color: var(--concrete);
   font-feature-settings: 'tnum' 1;
 }
 .num {
-  font-family: var(--font-text);
+  font-family: var(--font-technical);
   font-feature-settings: 'tnum' 1;
   font-variant-numeric: tabular-nums;
 }
