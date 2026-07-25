@@ -232,8 +232,9 @@ h4 {
   transform: none;
 }
 
-/* Global scroll reveal — applied by <ScrollReveal> to below-the-fold content on every
-   page. The hidden state is only added by JS (progressive enhancement), so content is
+/* Global scroll reveal — applied by <ScrollReveal> with deliberate variety: light
+   content rises, full-bleed photography reveals by mask, navy chapters stay still.
+   The hidden state is only added by JS (progressive enhancement), so content is
    always visible without JS or under reduced motion. */
 .reveal-on-scroll {
   opacity: 0;
@@ -244,6 +245,15 @@ h4 {
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: none;
+}
+/* photography: a slow crop/mask reveal — an image treatment, not a UI fade */
+.reveal-mask-on-scroll {
+  clip-path: inset(0 0 18% 0);
+  transition: clip-path 1100ms var(--ease);
+  will-change: clip-path;
+}
+.reveal-mask-on-scroll.is-revealed {
+  clip-path: inset(0 0 0 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -261,6 +271,9 @@ h4 {
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
+  }
+  .reveal-mask-on-scroll {
+    clip-path: none;
   }
 }
 

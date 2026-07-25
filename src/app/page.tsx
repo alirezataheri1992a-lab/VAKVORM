@@ -83,9 +83,8 @@ export default async function HomePage() {
               ['Complete begeleiding', 'Wij coördineren alle vakmensen en bewaken het geheel.'],
               ['Heldere planning', 'Vooraf afgestemd, zodat u weet waar u aan toe bent.'],
               ['Hoogwaardige afwerking', 'Vakmanschap tot in het detail, netjes opgeleverd.'],
-            ].map(([t, d], i) => (
+            ].map(([t, d]) => (
               <li key={t} className={styles.trustItem}>
-                <span className={`num ${styles.trustNum}`}>{String(i + 1).padStart(2, '0')}</span>
                 <h2 className={styles.trustTitle}>{t}</h2>
                 <p className={styles.trustDesc}>{d}</p>
               </li>

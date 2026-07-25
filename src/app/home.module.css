@@ -174,12 +174,6 @@
 .trustItem {
   max-width: 28ch;
 }
-.trustNum {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 0.8rem;
-  color: var(--oxide);
-}
 .trustTitle {
   font-family: var(--font-display);
   font-weight: 600;
@@ -433,9 +427,10 @@
   max-width: 22ch;
   text-wrap: balance;
 }
+/* emphasis by voice (italic), not by the accent-word colour trick — the statement
+   must hold in monochrome (visual-direction §4) */
 .statementText em {
   font-style: italic;
-  color: var(--oxide-warm);
 }
 .triad {
   display: flex;

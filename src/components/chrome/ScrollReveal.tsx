@@ -4,16 +4,19 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * Global scroll-reveal. Mounted once in the root layout, it gives every page a subtle
- * rise-and-fade as sections enter the viewport — without wrapping each section by hand.
+ * Site-wide scroll reveal with deliberate variety — motion follows content, it is not a
+ * uniform effect (a uniform fade-up on every section is exactly the template signature
+ * we avoid). The rule set:
  *
- * Principles:
- * - Progressive enhancement: the hidden state is added by JS, so no-JS / reduced-motion
- *   visitors always see content. Nothing can get stuck invisible.
- * - Above-the-fold content is never hidden (protects the hero / LCP, avoids a flash).
- * - For full-bleed colour chapters it animates the inner `.container` (not the section
- *   background), so there is no colour gap during the movement.
- * - Re-runs on client-side navigation; respects `prefers-reduced-motion`.
+ *   1. Dark (navy) chapters — the statement, testimonial, conversion — do NOT animate.
+ *      Stillness gives them weight and creates contrast with the moving sections.
+ *   2. Full-bleed photography (a section that is only media, e.g. the craft moment)
+ *      reveals with a slow mask/crop — an image treatment, not a UI treatment.
+ *   3. Ordinary light content rises gently.
+ *
+ * Principles kept from before: the hidden state is added by JS only (no-JS and
+ * reduced-motion visitors always see content), above-the-fold is never hidden, and
+ * full-bleed colour sections animate their inner content so backgrounds never gap.
  */
 export function ScrollReveal() {
   const pathname = usePathname();
@@ -24,12 +27,28 @@ export function ScrollReveal() {
     const sections = Array.from(document.querySelectorAll<HTMLElement>('main > section'));
     if (!sections.length) return;
 
-    // Choose what to animate for each section: the inner content wrapper of a full-bleed
-    // section (so its background stays put), otherwise the section itself.
-    const targets = sections.map((sec) => {
+    interface Target {
+      el: HTMLElement;
+      cls: 'reveal-on-scroll' | 'reveal-mask-on-scroll';
+    }
+    const targets: Target[] = [];
+
+    for (const sec of sections) {
+      // Rule 1 — navy chapters hold still.
+      if (sec.classList.contains('on-ink')) continue;
+
       const inner = sec.querySelector<HTMLElement>(':scope > .container');
-      return inner ?? sec;
-    });
+      if (inner) {
+        targets.push({ el: inner, cls: 'reveal-on-scroll' });
+        continue;
+      }
+      // Rule 2 — a container-less section that is pure media gets the mask reveal.
+      if (sec.querySelector('figure, video, img')) {
+        targets.push({ el: sec, cls: 'reveal-mask-on-scroll' });
+      } else {
+        targets.push({ el: sec, cls: 'reveal-on-scroll' });
+      }
+    }
 
     const io = new IntersectionObserver(
       (entries, obs) => {
@@ -44,20 +63,19 @@ export function ScrollReveal() {
     );
 
     const vh = window.innerHeight;
-    const hidden: HTMLElement[] = [];
-    targets.forEach((el) => {
+    const hidden: Target[] = [];
+    targets.forEach((t) => {
       // Only hide (and later reveal) content that starts below the fold.
-      if (el.getBoundingClientRect().top >= vh * 0.9) {
-        el.classList.add('reveal-on-scroll');
-        io.observe(el);
-        hidden.push(el);
+      if (t.el.getBoundingClientRect().top >= vh * 0.9) {
+        t.el.classList.add(t.cls);
+        io.observe(t.el);
+        hidden.push(t);
       }
     });
 
     return () => {
       io.disconnect();
-      // Clean up so a re-run (route change) starts from a known state.
-      hidden.forEach((el) => el.classList.remove('reveal-on-scroll', 'is-revealed'));
+      hidden.forEach((t) => t.el.classList.remove(t.cls, 'is-revealed'));
     };
   }, [pathname]);
 
