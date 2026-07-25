@@ -1,5 +1,4 @@
 import type { Testimonial as TestimonialData } from '@/lib/testimonials';
-import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import styles from './Testimonial.module.css';
 
@@ -17,7 +16,6 @@ export function Testimonial({ testimonial }: { testimonial: TestimonialData }) {
     <section className={`on-ink ${styles.section}`}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.text}>
-          <SectionMarker label="Klantervaring" tone="ink" />
           <blockquote className={styles.quote}>
             <p className={styles.quoteText}>{t.quote}</p>
           </blockquote>

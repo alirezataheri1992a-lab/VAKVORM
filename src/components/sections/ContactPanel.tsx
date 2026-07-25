@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { getSiteSettings } from '@/lib/content';
-import { SectionMarker } from '@/components/primitives/SectionMarker';
 import styles from './ContactPanel.module.css';
 
 interface Props {
-  eyebrow?: string;
   heading?: string;
   body?: string;
   /** Show the trust-fact row (used as the homepage intake moment). */
@@ -13,10 +11,10 @@ interface Props {
 
 /**
  * Confident closing invitation on the deep-navy chapter — premium but proactive.
- * Reusable across pages. Contact details come from the central site settings.
+ * Opens directly with the display heading (no eyebrow formula). Reusable across
+ * pages; contact details come from the central site settings.
  */
 export async function ContactPanel({
-  eyebrow = 'Contact',
   heading = 'Een project bespreken?',
   body = 'Loop uw plannen met ons door. We denken graag mee — vrijblijvend en zonder verkooppraat.',
   facts = false,
@@ -25,7 +23,6 @@ export async function ContactPanel({
   return (
     <section className={`on-ink ${styles.panel}`}>
       <div className="container">
-        <SectionMarker label={eyebrow} tone="ink" />
         <div className={styles.inner}>
           <h2 className={`display ${styles.heading}`}>{heading}</h2>
           <div className={styles.right}>
@@ -53,7 +50,7 @@ export async function ContactPanel({
             ].map(([t, d]) => (
               <li key={t} className={styles.fact}>
                 <span className={styles.factTitle}>{t}</span>
-                <span className={`spec ${styles.factLabel}`}>{d}</span>
+                <span className={styles.factLabel}>{d}</span>
               </li>
             ))}
           </ul>

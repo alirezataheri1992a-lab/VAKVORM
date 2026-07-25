@@ -99,7 +99,6 @@ export default async function InterieurbouwPage() {
       </section>
 
       <ContactPanel
-        eyebrow="Interieur bespreken"
         heading="Een interieur op maat?"
         body={`Van één maatwerkkast tot een volledig ingericht interieur — we denken graag met u mee in ${site.city} en omgeving.`}
       />

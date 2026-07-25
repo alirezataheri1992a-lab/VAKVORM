@@ -158,46 +158,43 @@
   }
 }
 
-/* ---------- 2. TRUST / CAPABILITY — a bridge, bolder ---------- */
+/* ---------- 2. TRUST — claim + editorial ledger (not a benefit-card row) ---------- */
 .trust {
-  padding-block: clamp(56px, 9vh, 108px);
+  padding-block: clamp(56px, 9vh, 116px);
 }
-.trustHead {
-  margin-bottom: clamp(32px, 5vh, 56px);
-}
-.trustGrid {
+.trustInner {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: clamp(28px, 3vw, 56px);
-  row-gap: 44px;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vh, 44px);
 }
-.trustItem {
-  max-width: 28ch;
+.trustClaim {
+  max-width: 12ch;
 }
-.trustTitle {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.35rem, 1.8vw, 1.6rem);
-  letter-spacing: -0.018em;
-  line-height: 1.1;
-  margin-bottom: 12px;
+.trustLedger {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.6vh, 26px);
+  max-width: 52ch;
 }
-.trustDesc {
+.trustLine {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
   color: var(--concrete);
-  font-size: 1rem;
-  line-height: 1.55;
-  max-width: 30ch;
+  text-wrap: pretty;
 }
-@media (max-width: 860px) {
-  .trustGrid {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 36px;
+.trustLine strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+@media (min-width: 861px) {
+  .trustInner {
+    grid-template-columns: 5fr 7fr;
+    column-gap: clamp(40px, 6vw, 120px);
+    align-items: start;
   }
-}
-@media (max-width: 520px) {
-  .trustGrid {
-    grid-template-columns: 1fr;
-    row-gap: 28px;
+  /* the ledger sits deliberately lower than the claim — composed, not aligned */
+  .trustLedger {
+    padding-top: clamp(8px, 2vh, 28px);
   }
 }
 
@@ -412,12 +409,11 @@
   }
 }
 
-/* ---------- 5. BRAND PRINCIPLE (protected) ---------- */
+/* ---------- 5. BRAND PRINCIPLE — the statement alone, in space ---------- */
 .statement {
-  padding-block: clamp(80px, 14vh, 200px);
+  padding-block: clamp(88px, 15vh, 210px);
 }
 .statementText {
-  margin-top: clamp(32px, 5vh, 56px);
   color: var(--on-ink);
   font-family: var(--font-display);
   font-weight: 400;
@@ -426,28 +422,13 @@
   letter-spacing: -0.02em;
   max-width: 22ch;
   text-wrap: balance;
+  /* set deliberately off-centre — composed, not templated */
+  margin-left: clamp(0px, 6vw, 120px);
 }
 /* emphasis by voice (italic), not by the accent-word colour trick — the statement
    must hold in monochrome (visual-direction §4) */
 .statementText em {
   font-style: italic;
-}
-.triad {
-  display: flex;
-  margin-top: clamp(40px, 6vh, 76px);
-  max-width: 620px;
-  border-top: 1px solid var(--concrete-line-dark);
-}
-.triadItem {
-  flex: 1;
-  padding: 22px 0 0;
-  padding-left: 18px;
-  border-left: 1px solid var(--concrete-line-dark);
-  color: var(--on-ink-soft);
-}
-.triadItem:first-child {
-  border-left: none;
-  padding-left: 0;
 }
 
 /* ---------- 6. SERVICES ---------- */
@@ -492,34 +473,27 @@
   }
 }
 
-/* ---------- 8. MID-PAGE CTA ---------- */
+/* ---------- 8. MID-PAGE CTA — a conversational decision moment, not a banner ---------- */
 .midCta {
-  padding-block: clamp(44px, 7vh, 84px);
+  padding-block: clamp(56px, 9vh, 104px);
 }
 .midCtaInner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px 40px;
-}
-.midCtaText {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  max-width: 880px;
 }
 .midCtaTitle {
   font-size: clamp(1.7rem, 3vw, 2.5rem);
-  max-width: 20ch;
+  max-width: 24ch;
 }
-.midCtaBody {
-  color: var(--ink-soft);
-  font-size: 1.05rem;
+.midCtaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 26px;
+  margin-top: clamp(24px, 3.6vh, 36px);
 }
 .midCtaBtn {
   display: inline-flex;
   align-items: center;
-  flex: none;
   height: 56px;
   padding: 0 34px;
   background: var(--oxide);
@@ -530,6 +504,16 @@
 }
 .midCtaBtn:hover {
   background: var(--ink);
+}
+.midCtaPhone {
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--material-line);
+  padding-bottom: 2px;
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.midCtaPhone:hover {
+  color: var(--oxide);
+  border-color: var(--oxide);
 }
 
 /* ---------- 9. WERKWIJZE — trust chapter ---------- */

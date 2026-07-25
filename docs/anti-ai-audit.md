@@ -23,16 +23,31 @@ direction — nothing in the visual result may advertise how it was built.
 - Hero: cinematic video only. Reduced motion: everything static. Nothing is ever hidden
   without JS.
 
+## Recomposition round 2 (owner: "recompose everything that scored too high")
+
+| Section | Was | Now |
+|---|---|---|
+| Trust band | Four equal title+desc columns under an eyebrow marker — the classic benefit-grid | **Asymmetric editorial ledger**: large claim left ("Eén partij, van A tot Z."), four running assurance lines right — bold lead flowing into regular copy, no grid, no hairlines |
+| Statement chapter | Eyebrow marker + statement + decorative mono triad with column dividers | **The statement alone**, indented off-grid on the navy field; marker and triad removed — stillness and space |
+| Mid-page CTA | Marketing banner (eyebrow + heading left, button right) | **Left-aligned conversational moment**: one question, one clay action, a quiet "of bel …" phone alternative |
+| Testimonial | "Klantervaring" eyebrow marker above the quote | Marker removed — the cognac quote mark announces the section |
+| ContactPanel (all pages) | Eyebrow marker + mono uppercase fact labels | Opens directly with the display heading; fact labels set in sentence-case sans |
+| Disciplines intro | Marker + heading | Heading alone |
+
+Net effect: hairline+eyebrow openings reduced from ~8 to 4 on the homepage, all remaining
+ones functional (work header, the 01/02 discipline classification, Diensten, Werkwijze).
+Section openings no longer follow one predictable formula.
+
 ## Honest scores (targets: AI/template/vibe ≤ 2 · brand/art-direction/distinctiveness ≥ 8)
 
-| Dimension | Score | Notes |
+| Dimension | Score (after round 2) | Notes |
 |---|---|---|
-| Generic AI website resemblance | **3 → 2 with real photography** | The palette/typography ingredients sit near the known cliché; the composition is what separates it. The **placeholder rectangles are currently the strongest "generated" signal** — real project photography and the real hero edit are the single biggest remaining lever. |
-| Framer-template resemblance | **2** | Varied, rule-based motion; no scroll-jacking; still chapters. |
-| Vibe-coded aesthetic | **2** | No glass, gradient filler, bento, icon cards, pills, fake stats; deliberate CTA hierarchy; testimonial placeholder is explicitly marked, never fake proof. |
-| Brand specificity | **8 structurally / 7 visually until photography** | Two-discipline chapters, capability register, proof loop, werkwijze, and the guided project intake are construction-logic, not reskinnable patterns; the visuals only fully lock it once real work is shown. |
-| Human art-direction | **8** | Overlap, chapter contrast, stillness, monochrome-safe statement, asymmetric compositions. |
-| VAKVORM distinctiveness | **7–8** | Rises with real projects/photography; the structure is ready for them. |
+| Generic AI website resemblance | **2 at composition level** | The structural tells (benefit grid, eyebrow formula, decorative mono, CTA banner, accent-word trick) are gone. The one remaining "generated" cue is the **placeholder rectangles** — a content gap, not a design pattern; resolved by photography, not CSS. |
+| Framer-template resemblance | **2** | Varied, rule-based motion; still navy chapters; mask reveals on media only. |
+| Vibe-coded aesthetic | **2** | No glass, gradient filler, bento, icon cards, pills, fake stats; one deliberate action hierarchy; marked-placeholder review, never fake proof. |
+| Brand specificity | **8** | Claim+ledger trust copy, discipline chapters, capability logic, werkwijze and the intake journey are construction-specific; a dentist/SaaS reskin would have to rewrite the composition, not just the words. |
+| Human art-direction | **8** | Asymmetric ledger, off-grid statement, overlap, chapter contrast, deliberate stillness. |
+| VAKVORM distinctiveness | **8 structurally** | Photography consolidates it visually; every slot is specified in `image-sources.md`. |
 
 ## Standing rule for future passes
 

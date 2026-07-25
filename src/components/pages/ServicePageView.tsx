@@ -105,7 +105,7 @@ export async function ServicePageView({ service, crumbs }: Props) {
         </section>
       )}
 
-      <ContactPanel eyebrow="Aan de slag" heading={`Een ${service.title.toLowerCase()}-project?`} />
+      <ContactPanel heading={`Een ${service.title.toLowerCase()}-project?`} />
     </>
   );
 }

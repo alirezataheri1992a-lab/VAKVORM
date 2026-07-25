@@ -81,7 +81,7 @@ export default async function OverPage() {
         </ul>
       </section>
 
-      <ContactPanel eyebrow="Kennismaken" heading="Zullen we kennismaken?" />
+      <ContactPanel heading="Zullen we kennismaken?" />
     </>
   );
 }

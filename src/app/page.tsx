@@ -70,23 +70,24 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================================
-          2. TRUST / CAPABILITY — a strong bridge, not a data table
+          2. TRUST — one claim, four assurances written as running copy
+          (an editorial ledger, deliberately not a benefit-card row)
           ============================================================ */}
       <section className={`on-sand ${styles.trust}`}>
-        <div className="container">
-          <div className={styles.trustHead}>
-            <SectionMarker label="Eén partij, van A tot Z" />
-          </div>
-          <ul className={styles.trustGrid}>
+        <div className={`container ${styles.trustInner}`}>
+          <h2 className={`heading ${styles.trustClaim}`}>
+            Eén partij,<br />van A tot Z.
+          </h2>
+          <ul className={styles.trustLedger}>
             {[
-              ['Eén aanspreekpunt', 'Van eerste schets tot oplevering heeft u één vast contact.'],
-              ['Complete begeleiding', 'Wij coördineren alle vakmensen en bewaken het geheel.'],
-              ['Heldere planning', 'Vooraf afgestemd, zodat u weet waar u aan toe bent.'],
-              ['Hoogwaardige afwerking', 'Vakmanschap tot in het detail, netjes opgeleverd.'],
+              ['Eén aanspreekpunt', ' — van eerste schets tot oplevering heeft u één vast contact.'],
+              ['Complete begeleiding', ' — wij coördineren alle vakmensen en bewaken het geheel.'],
+              ['Heldere planning', ' — vooraf afgestemd, zodat u weet waar u aan toe bent.'],
+              ['Hoogwaardige afwerking', ' — vakmanschap tot in het detail, netjes opgeleverd.'],
             ].map(([t, d]) => (
-              <li key={t} className={styles.trustItem}>
-                <h2 className={styles.trustTitle}>{t}</h2>
-                <p className={styles.trustDesc}>{d}</p>
+              <li key={t} className={styles.trustLine}>
+                <strong>{t}</strong>
+                {d}
               </li>
             ))}
           </ul>
@@ -142,7 +143,6 @@ export default async function HomePage() {
       <section className={styles.discIntroSec}>
         <div className="container">
           <div className={styles.discIntro}>
-            <SectionMarker label="Twee disciplines" />
             <h2 className={`heading ${styles.discLead}`}>
               Twee vakgebieden, onder één verantwoordelijkheid.
             </h2>
@@ -220,18 +220,10 @@ export default async function HomePage() {
           ============================================================ */}
       <section className={`on-ink ${styles.statement}`}>
         <div className="container">
-          <SectionMarker label="Het principe" tone="ink" />
           <p className={styles.statementText}>
             Een complete verbouwing bestaat uit veel disciplines. Voor u voelt het als{' '}
             <em>één</em> project — georganiseerd, gebouwd en afgewerkt door één partij.
           </p>
-          <div className={styles.triad}>
-            {['Organiseren', 'Bouwen', 'Afwerken'].map((v) => (
-              <span key={v} className={`spec ${styles.triadItem}`}>
-                {v}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -270,15 +262,20 @@ export default async function HomePage() {
           8. MID-PAGE CTA — a first, obvious next step before the end
           ============================================================ */}
       <section className={`on-material ${styles.midCta}`}>
-        <div className={`container ${styles.midCtaInner}`}>
-          <div className={styles.midCtaText}>
-            <span className="spec">Aan de slag</span>
-            <h2 className={`heading ${styles.midCtaTitle}`}>Een verbouwing op de planning?</h2>
-            <p className={styles.midCtaBody}>Vertel ons kort wat u wilt realiseren.</p>
+        <div className="container">
+          <div className={styles.midCtaInner}>
+            <h2 className={`heading ${styles.midCtaTitle}`}>
+              Een verbouwing op de planning? Vertel ons kort wat u wilt realiseren.
+            </h2>
+            <div className={styles.midCtaActions}>
+              <Link href="/start-uw-project" className={styles.midCtaBtn}>
+                Plan een projectgesprek
+              </Link>
+              <a href={`tel:${site.phoneHref}`} className={styles.midCtaPhone}>
+                of bel {site.phoneDisplay}
+              </a>
+            </div>
           </div>
-          <Link href="/start-uw-project" className={styles.midCtaBtn}>
-            Plan een projectgesprek
-          </Link>
         </div>
       </section>
 
@@ -334,7 +331,6 @@ export default async function HomePage() {
           11. CONVERSION — the destination (distinct from the footer)
           ============================================================ */}
       <ContactPanel
-        eyebrow="Aan de slag"
         heading="Plannen om te verbouwen?"
         body="Vertel kort wat u wilt realiseren. Wij nemen contact op om uw project vrijblijvend te bespreken — van bouwkundige ingreep tot maatwerk interieur."
         facts
