@@ -1,0 +1,80 @@
+.figure {
+  margin: 0;
+  width: 100%;
+}
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: var(--radius-media);
+}
+/* fill parent height on desktop (used by the hero); keep the ratio on mobile */
+@media (min-width: 1041px) {
+  .figureFill {
+    height: 100%;
+  }
+  .frameFill {
+    height: 100%;
+    aspect-ratio: auto !important;
+  }
+}
+.img {
+  object-fit: cover;
+  transition: transform var(--dur) var(--ease);
+}
+
+/* --- development placeholder: quiet, technical, unmistakably temporary --- */
+/* Quiet neutral surface — previews the final composition without shouting
+   "placeholder". A very faint hatch gives material texture, not a wireframe. */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 46px,
+      rgba(45, 40, 33, 0.022) 46px 47px
+    ),
+    linear-gradient(150deg, var(--paper), var(--stone));
+}
+.plabel {
+  color: var(--concrete);
+  font-size: 0.68rem;
+  opacity: 0.72;
+}
+.pratio {
+  color: var(--concrete);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  opacity: 0.45;
+}
+/* corner registration marks — subtle drawing/datum language */
+.plusTL,
+.plusBR {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  opacity: 0.5;
+}
+.plusTL {
+  top: 14px;
+  left: 14px;
+  border-top: 1px solid var(--concrete);
+  border-left: 1px solid var(--concrete);
+}
+.plusBR {
+  bottom: 14px;
+  right: 14px;
+  border-bottom: 1px solid var(--concrete);
+  border-right: 1px solid var(--concrete);
+}
+
+.caption {
+  margin-top: 14px;
+}

@@ -1,0 +1,130 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.list {
+  border-top: 1px solid var(--concrete-line);
+}
+.row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1.45fr) minmax(0, 1fr) 40px;
+  align-items: baseline;
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--concrete-line);
+  transition: padding-left 320ms var(--ease), color 200ms var(--ease);
+}
+.row:hover,
+.row[data-active='true'] {
+  padding-left: 16px;
+}
+.index {
+  font-size: 0.72rem;
+  color: var(--concrete);
+  align-self: center;
+  transition: color 200ms var(--ease);
+}
+.row:hover .index,
+.row[data-active='true'] .index {
+  color: var(--oxide);
+}
+.name {
+  min-width: 0;
+  overflow-wrap: normal;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.1vw, 1.95rem);
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+.desc {
+  min-width: 0;
+  color: var(--concrete);
+  font-size: 0.98rem;
+  align-self: center;
+}
+.arrow {
+  align-self: center;
+  justify-self: end;
+  width: 22px;
+  height: 10px;
+  position: relative;
+  opacity: 0.5;
+  transition: transform 320ms var(--ease), opacity 200ms var(--ease);
+}
+.arrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+.arrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+.row:hover .arrow,
+.row[data-active='true'] .arrow {
+  transform: translateX(6px);
+  opacity: 1;
+  color: var(--oxide);
+}
+
+/* fixed preview column — desktop only */
+.preview {
+  display: none;
+}
+
+@media (min-width: 1041px) {
+  .wrap {
+    grid-template-columns: 1fr 40%;
+    gap: clamp(48px, 5vw, 96px);
+    align-items: start;
+  }
+  .preview {
+    display: block;
+    position: sticky;
+    top: 108px;
+    aspect-ratio: 4 / 5;
+    /* let the reveal extend beyond the list rhythm — a real focal point */
+    margin-top: -18px;
+    box-shadow: 0 40px 80px -56px rgba(26, 25, 21, 0.55);
+    border-radius: var(--radius-media);
+    overflow: hidden;
+  }
+  .previewItem {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 480ms var(--ease), transform 720ms var(--ease);
+    pointer-events: none;
+  }
+  .previewItem[data-active='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  .previewItem :global(.reveal),
+  .previewItem figure {
+    height: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 40px 1fr 28px;
+  }
+  .desc {
+    display: none;
+  }
+}

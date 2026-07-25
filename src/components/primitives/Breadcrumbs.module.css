@@ -1,0 +1,22 @@
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.link {
+  color: var(--concrete);
+  transition: color 180ms var(--ease);
+}
+.link:hover {
+  color: var(--oxide);
+}
+.sep {
+  color: var(--concrete-line);
+  font-size: 0.72rem;
+}

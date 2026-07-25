@@ -1,0 +1,113 @@
+.panel {
+  padding-block: clamp(64px, 12vh, 160px);
+}
+.inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 5vw, 96px);
+  align-items: end;
+}
+.heading {
+  color: var(--on-ink);
+  max-width: 12ch;
+}
+.right {
+  padding-bottom: 8px;
+}
+.body {
+  color: var(--on-ink-soft);
+  max-width: 46ch;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 34px;
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  height: 54px;
+  padding: 0 30px;
+  background: var(--oxide);
+  color: var(--on-ink);
+  font-weight: 500;
+  border-radius: var(--radius-cta);
+  transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.primary:hover {
+  background: var(--on-ink);
+  color: var(--ink);
+}
+.secondary {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--on-ink);
+}
+.email {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--on-ink-soft);
+  border-bottom: 1px solid var(--concrete-line-dark);
+  padding-bottom: 2px;
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.email:hover {
+  color: var(--on-ink);
+  border-color: var(--oxide);
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+/* trust-fact row — homepage intake moment */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: clamp(48px, 7vh, 88px);
+  border-top: 1px solid var(--concrete-line-dark);
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 24px 0 0;
+  border-left: 1px solid var(--concrete-line-dark);
+  padding-left: 28px;
+}
+.fact:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+.factTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--on-ink);
+}
+.factLabel {
+  color: var(--on-ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  .facts {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+  }
+  .fact {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,27 @@
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+.marker[data-align='end'] {
+  flex-direction: row-reverse;
+}
+.index {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--concrete);
+  font-weight: 500;
+  flex: none;
+}
+.rule {
+  flex: 1;
+  height: var(--rule);
+  background: var(--concrete-line);
+}
+.ink .rule {
+  background: var(--concrete-line-dark);
+}
+.ink .index {
+  color: var(--on-ink-soft);
+}

@@ -1,0 +1,59 @@
+.intro {
+  padding-block: clamp(28px, 5vh, 56px) clamp(40px, 7vh, 88px);
+}
+.introGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  margin-top: clamp(32px, 5vh, 56px);
+  align-items: end;
+}
+.title {
+  max-width: 12ch;
+}
+.lede {
+  max-width: 44ch;
+}
+@media (min-width: 941px) {
+  .introGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.indexSec {
+  padding-block: clamp(32px, 5vh, 64px);
+}
+.indexHead {
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+
+.interieur {
+  padding-block: clamp(56px, 9vh, 128px);
+}
+.interieurGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 72px);
+  align-items: center;
+}
+.interieurTitle {
+  margin-top: 22px;
+  margin-bottom: 20px;
+}
+.interieurLink {
+  display: inline-block;
+  margin-top: 26px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.interieurLink:hover {
+  color: var(--oxide);
+  border-color: var(--oxide);
+}
+@media (min-width: 941px) {
+  .interieurGrid {
+    grid-template-columns: 1fr 44%;
+  }
+}

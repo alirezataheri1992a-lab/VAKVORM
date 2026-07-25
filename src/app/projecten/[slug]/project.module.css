@@ -1,0 +1,108 @@
+.head {
+  padding-block: clamp(28px, 5vh, 56px) clamp(28px, 4vh, 48px);
+}
+.title {
+  margin-top: clamp(28px, 5vh, 48px);
+  max-width: 18ch;
+}
+.heroSec {
+  padding-bottom: clamp(40px, 6vh, 80px);
+}
+
+.metaSec {
+  padding-bottom: clamp(40px, 6vh, 88px);
+}
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+  border-top: 1px solid var(--concrete-line);
+  padding-top: 24px;
+}
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.metaValue {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+.metaValue a {
+  border-bottom: 1px solid var(--concrete-line);
+  transition: border-color 180ms var(--ease);
+}
+.metaValue a:hover {
+  border-color: var(--oxide);
+}
+@media (max-width: 720px) {
+  .metaGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+.narrative {
+  padding-block: clamp(40px, 7vh, 96px);
+}
+.narrativeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.narrativeText {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+  text-wrap: pretty;
+}
+@media (min-width: 941px) {
+  .narrativeGrid {
+    grid-template-columns: 240px 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+}
+
+.full {
+  padding-block: clamp(8px, 2vh, 24px);
+}
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 2.4vw, 40px);
+  padding-block: clamp(24px, 4vh, 56px);
+}
+@media (max-width: 760px) {
+  .pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related {
+  padding-block: clamp(40px, 6vh, 88px);
+}
+.relatedList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 24px;
+  border-top: 1px solid var(--concrete-line);
+  padding-top: 24px;
+}
+.relatedLink {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.relatedLink:hover {
+  color: var(--oxide);
+  border-color: var(--oxide);
+}
