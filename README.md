@@ -8,21 +8,61 @@ One professional partner for complete bouw-, renovatie- and maatwerk interieur p
 - **Next.js (App Router) + TypeScript**, React Server Components
 - **Custom CSS architecture** (CSS Modules + design tokens) — deliberately no Tailwind/
   shadcn/component-library visual system
-- Self-hosted fonts (Bricolage Grotesque + Archivo) via `next/font`
+- Fonts (Public Sans + IBM Plex Mono) via `next/font`
 - **Sanity** content studio in `/sanity` (see its README to provision)
 - SEO built in: metadata, canonical, sitemap, robots, JSON-LD, breadcrumbs
 
 Art direction and rules: **[`/docs/visual-direction.md`](docs/visual-direction.md)**.
 Strategy & architecture: **[`/DISCOVERY.md`](DISCOVERY.md)**.
 
-## Develop
+## Run it locally
+
+Requires **Node 20 or newer** (`node -v` to check; install from [nodejs.org](https://nodejs.org)
+if missing) and git. No `.env` file is needed to view the site — without one it runs on the
+local seed content and still builds.
+
+**Windows (PowerShell)** — run each line separately. Do not clone into `C:\Windows\System32`;
+start from a folder you own:
+
+```powershell
+cd $HOME\Desktop
+git clone https://github.com/alirezataheri1992a-lab/VAKVORM.git
+cd VAKVORM
+git checkout claude/vakvorm-discovery-architecture-rbcju2
+npm install
+npm run dev
+```
+
+**macOS / Linux**
 
 ```bash
+cd ~/Desktop
+git clone https://github.com/alirezataheri1992a-lab/VAKVORM.git
+cd VAKVORM
+git checkout claude/vakvorm-discovery-architecture-rbcju2
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build
-npm run typecheck  # tsc --noEmit
+npm run dev
 ```
+
+Wait for `✓ Ready`, then open **http://localhost:3000** (plain `http`, not `https`). The
+terminal has to stay open — closing it or pressing Ctrl+C stops the server. If port 3000 is
+taken, Next picks 3001 and prints the actual port.
+
+Already have a clone? `git pull origin claude/vakvorm-discovery-architecture-rbcju2 && npm install && npm run dev`.
+
+## Scripts
+
+```bash
+npm run dev        # dev server, hot reload, http://localhost:3000
+npm run build      # production build
+npm start          # serve the production build
+npm run typecheck  # tsc --noEmit
+npm run lint       # next lint
+```
+
+In `npm run dev` the guided project intake at `/start-uw-project` runs through to its final
+screen and logs the submission to the terminal instead of emailing it — no mail provider
+needed to click through the whole journey.
 
 ## Content
 
