@@ -9,7 +9,7 @@ interface Props {
 }
 
 /**
- * The VAKVORM datum marker: index number + hairline rule + label.
+ * The Nederdam Bouw datum marker: index number + hairline rule + label.
  * The quiet architectural signature used at section intros and indexes.
  *
  *   01 ─────────────────────  BOUW & RENOVATIE

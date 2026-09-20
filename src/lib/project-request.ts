@@ -113,9 +113,9 @@ async function sendEmail(body: Record<string, unknown>, apiKey: string): Promise
 }
 
 /**
- * Submits a VAKVORM project request. Server-side validation + honeypot/timing spam checks.
+ * Submits a Nederdam Bouw project request. Server-side validation + honeypot/timing spam checks.
  * Delivery is env-gated: with RESEND_API_KEY set it emails the intake (with attachments)
- * to VAKVORM and sends the client a confirmation; otherwise it returns `unconfigured` and
+ * to Nederdam Bouw and sends the client a confirmation; otherwise it returns `unconfigured` and
  * the UI offers direct contact — never a fake "sent". Leads are NOT written to Sanity.
  */
 export async function submitProjectRequest(formData: FormData): Promise<ProjectSubmitState> {
@@ -159,7 +159,7 @@ export async function submitProjectRequest(formData: FormData): Promise<ProjectS
     // Development adapter: let the whole journey be demonstrated without a provider — log
     // the intake instead of sending it, and never do this in production.
     if (process.env.NODE_ENV !== 'production') {
-      console.info(`[VAKVORM DEV] Projectaanvraag ontvangen (niet verzonden — geen mailprovider):\n${summary}`);
+      console.info(`[NEDERDAM DEV] Projectaanvraag ontvangen (niet verzonden — geen mailprovider):\n${summary}`);
       return { status: 'success', firstName: d.firstName };
     }
     // Production without a provider: be honest, never fake a "sent".
@@ -193,14 +193,14 @@ export async function submitProjectRequest(formData: FormData): Promise<ProjectS
       {
         from,
         to: d.email,
-        subject: 'We hebben uw projectaanvraag ontvangen | VAKVORM',
+        subject: 'We hebben uw projectaanvraag ontvangen | Nederdam Bouw',
         text: [
           `Bedankt ${d.firstName},`,
           '',
           'We hebben uw projectaanvraag ontvangen. We bekijken uw informatie en nemen',
           'contact met u op om uw project verder te bespreken.',
           '',
-          '— VAKVORM · Bouw & Interieur · Utrecht',
+          '— Nederdam Bouw · Utrecht',
           '',
           '----------------------------------------',
           summary,

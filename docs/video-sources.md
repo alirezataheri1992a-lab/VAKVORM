@@ -1,10 +1,10 @@
-# VAKVORM — Video sources
+# Nederdam Bouw — Video sources
 
 ## Homepage hero background
 
 | | |
 |---|---|
-| **File** | `/public/videos/vakvorm-hero-placeholder.mp4` |
+| **File** | `/public/videos/hero-placeholder.mp4` |
 | **Poster** | `/public/images/hero/hero-poster.jpg` (frame extracted from the clip @ ~5s) |
 | **Status** | **TEMPORARY STOCK PLACEHOLDER** |
 | **Source** | Pexels (supplied by the owner) |
@@ -12,12 +12,12 @@
 | **Purpose** | Homepage hero art-direction and technical development only |
 | **Subject** | A craftsman finishing/plastering an interior wall during a renovation |
 
-> This footage is **not** an actual VAKVORM project and must never be presented as one.
+> This footage is **not** an actual Nederdam Bouw project and must never be presented as one.
 > It is decorative placeholder material used to develop the hero experience.
 
 ### Future replacement
 
-Replace with a real VAKVORM construction + interieurbouw montage:
+Replace with a real Nederdam Bouw construction + interieurbouw montage:
 
 - ~8–15 seconds, 3–5 restrained shots — process → craft → result.
 - Cinematic / documentary / tactile; real hands, tools, materials, natural light.
@@ -32,7 +32,7 @@ Everything is driven from **one** place — `src/lib/site.ts`:
 
 ```ts
 export const heroVideo = {
-  src: '/videos/vakvorm-hero-placeholder.mp4',
+  src: '/videos/hero-placeholder.mp4',
   poster: '/images/hero/hero-poster.jpg',
   objectPosition: '50% 25%', // keeps the craft action framed in the desktop cover-crop
 };

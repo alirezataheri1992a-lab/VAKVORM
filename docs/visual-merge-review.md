@@ -1,4 +1,4 @@
-# VAKVORM — Visual Warmth & Commercial Energy Pass
+# Nederdam Bouw — Visual Warmth & Commercial Energy Pass
 
 An art-direction refinement (not a redesign). Structure, grid, compositions, ServiceIndex,
 navigation and the typography *system* are unchanged. Goal: warmer, richer, more inviting and
@@ -61,7 +61,7 @@ guarantees.
 - Buttons `6px`, media frames `5px` — subtly softer for warmth. Structural containers stay
   near-square (`2px`). The site remains architectural and controlled.
 
-## How Vakvorm stayed distinct
+## How Nederdam Bouw stayed distinct
 Espresso (not navy), one muted-clay accent (not gold), datum/spec language, ServiceIndex,
 near-zero cards, calm editorial composition — none of the reference's contractor-template
 signatures were imported.

@@ -13,7 +13,9 @@ export const siteSettings = defineType({
     { name: 'locatie', title: 'Locatie' },
   ],
   fields: [
-    defineField({ name: 'name', title: 'Bedrijfsnaam', type: 'string', group: 'merk', initialValue: 'VAKVORM', description: 'Altijd VAKVORM (in hoofdletters geschreven).' }),
+    defineField({ name: 'name', title: 'Bedrijfsnaam', type: 'string', group: 'merk', initialValue: 'Nederdam Bouw', description: 'De volledige handelsnaam. Gebruikt in paginatitels, Google-resultaten en e-mails.' }),
+    defineField({ name: 'wordmark', title: 'Woordmerk', type: 'string', group: 'merk', initialValue: 'NEDERDAM', description: 'Zoals het logo in de header en footer staat — in hoofdletters, één woord. De descriptor hieronder staat eronder, samen lezen ze als de volledige naam.' }),
+    defineField({ name: 'shortName', title: 'Korte naam', type: 'string', group: 'merk', initialValue: 'Nederdam', description: 'Hoe de naam in een lopende zin wordt geschreven, bijv. "Nederdam verzorgt de volledige renovatie".' }),
     defineField({ name: 'descriptor', title: 'Descriptor', type: 'string', group: 'merk', initialValue: 'Bouw & Interieur' }),
 
     defineField({ name: 'email', title: 'E-mailadres', type: 'string', group: 'contact', validation: (r) => r.email(), description: 'Waar aanvragen en contact naartoe gaan.' }),

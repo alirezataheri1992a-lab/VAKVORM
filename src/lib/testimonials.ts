@@ -17,15 +17,15 @@ export interface Testimonial {
 }
 
 // ⚠️ PLACEHOLDER — FICTIONAL SAMPLE, FOR DESIGN/DEVELOPMENT ONLY.
-// This is NOT a real VAKVORM customer review. Do not present it as genuine in
+// This is NOT a real Nederdam Bouw customer review. Do not present it as genuine in
 // production. Replace `quote`, `author`, `context` and `media` with a real,
 // consent-given review (and set `placeholder: false`) before launch — or remove
 // the section entirely until a real review exists. See /docs/content-status.md.
 export const homeTestimonial: Testimonial = {
   quote:
-    'VAKVORM heeft onze complete verbouwing van begin tot eind geregeld. Eén aanspreekpunt, een heldere planning en vakwerk tot in het detail — netjes opgeleverd, precies zoals afgesproken.',
+    'Nederdam heeft onze complete verbouwing van begin tot eind geregeld. Eén aanspreekpunt, een heldere planning en vakwerk tot in het detail — netjes opgeleverd, precies zoals afgesproken.',
   author: 'Mark de Vries',
   context: 'Woningrenovatie · Utrecht',
-  media: { alt: 'Door VAKVORM gerealiseerd project', ratio: '4:5', slot: 'PROJECT — RESULTAAT' },
+  media: { alt: 'Door Nederdam Bouw gerealiseerd project', ratio: '4:5', slot: 'PROJECT — RESULTAAT' },
   placeholder: true,
 };

@@ -13,7 +13,7 @@ export async function SiteFooter() {
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brandCol}>
-            <span className={styles.brandName}>{site.name}</span>
+            <span className={styles.brandName}>{site.wordmark}</span>
             <span className={`label ${styles.brandDesc}`}>{site.descriptor}</span>
             <p className={styles.tagline}>Van bouw tot interieur.<br />Eén partij.</p>
           </div>
@@ -42,7 +42,7 @@ export async function SiteFooter() {
           </nav>
 
           <nav className={styles.linksCol} aria-label="Pagina's">
-            <span className={`label ${styles.colHead}`}>VAKVORM</span>
+            <span className={`label ${styles.colHead}`}>{site.wordmark}</span>
             <ul>
               {nav
                 .filter((n) => n.path !== '/diensten')

@@ -1,8 +1,8 @@
 {
-  "name": "vakvorm",
+  "name": "nederdam-bouw",
   "version": "0.1.0",
   "private": true,
-  "description": "VAKVORM — Bouw & Interieur. Public website.",
+  "description": "Nederdam Bouw — Bouw & Interieur. Public website.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

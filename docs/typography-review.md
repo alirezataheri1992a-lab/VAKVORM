@@ -1,4 +1,4 @@
-# VAKVORM — Typography Review (De-AI Pass)
+# Nederdam Bouw — Typography Review (De-AI Pass)
 
 A focused typographic art-direction pass. Structural design, IA and compositions were
 already approved and are unchanged; only the type system changed.

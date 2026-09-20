@@ -1,6 +1,6 @@
-# VAKVORM — CMS Architecture (Sanity integration)
+# Nederdam Bouw — CMS Architecture (Sanity integration)
 
-How the website gets its content, how VAKVORM edits it without code, and how published
+How the website gets its content, how Nederdam Bouw edits it without code, and how published
 changes reach the live site. The **visual system is unchanged** by this integration — only
 the *source* of the content moved.
 
@@ -54,7 +54,7 @@ site's `MediaSlot` shape via `@sanity/image-url` (`src/lib/sanity/image.ts`); an
 field simply renders the existing placeholder — never a broken image.
 
 **Testimonials are intentionally not a content type.** The visual system has no reviews
-surface, and VAKVORM never publishes fabricated reviews, so shipping a testimonial type
+surface, and Nederdam Bouw never publishes fabricated reviews, so shipping a testimonial type
 would be a dead editor screen. It can be added when a real, consent-based reviews section is
 designed.
 
@@ -87,7 +87,7 @@ needs no setup.
 
 ## 5. What lives in code (not the CMS) — and why
 
-- **`baseUrl`** (`https://www.vakvorm.nl`) — deployment configuration, used for
+- **`baseUrl`** (`https://www.nederdambouw.nl`) — deployment configuration, used for
   `metadataBase`, canonical URLs, sitemap and structured data.
 - **Navigation routes** (`nav` in `src/lib/site.ts`) — the URL structure of the site.
 - **Email delivery config** — `RESEND_*` / `INQUIRY_*` env vars (server-side secrets).

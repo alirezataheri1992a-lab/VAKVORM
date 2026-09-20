@@ -1,4 +1,9 @@
-# VAKVORM — Bouw & Interieur
+# Nederdam Bouw — Bouw & Interieur
+
+> **Naamgeschiedenis.** Dit document is opgesteld toen de werknaam nog *VAKVORM* was. Die naam is
+> nooit gelanceerd — er is geen live site, domein of drukwerk onder uitgebracht. De gekozen naam is
+> **Nederdam Bouw**, en dit document is daarop bijgewerkt. De strategie, architectuur en
+> SEO-redenering zijn ongewijzigd, op §2 hieronder na, waar de naam zelf onderdeel van het argument is.
 ## Website Discovery & Architecture Document
 
 **Phase:** Discovery / Architecture (pre-build)
@@ -13,7 +18,7 @@
 
 ## 1. Executive Understanding
 
-Vakvorm is the rebrand of an existing Utrecht construction company, **Persia Bouwbedrijf**,
+Nederdam Bouw is the rebrand of an existing Utrecht construction company, **Persia Bouwbedrijf**,
 repositioned from "a builder who does jobs" into **a single professional partner that takes
 responsibility for the complete realization of construction and interior projects** — from first
 consultation through delivery.
@@ -35,8 +40,10 @@ Two things make this project different from a generic contractor website:
 1. **Two equal pillars, not one-and-a-sub-service.** *Bouw & Renovatie* and *Maatwerk
    Interieurbouw* must be structurally co-equal. Interieurbouw is a distinct business with its own
    audience, buying psychology, search demand and case studies — not a footnote under renovation.
-2. **A deliberately non-descriptive brand.** The company chose *Vakvorm* over an exact-match name
-   like *"Aannemer Utrecht."* That is a premium-positioning decision that pushes SEO risk onto the
+2. **A largely non-descriptive brand.** The company chose *Nederdam Bouw* over an exact-match name
+   like *"Aannemer Utrecht."* The "Bouw" half carries a weak category signal, but *Nederdam* is a
+   coined name and carries none — and neither half contains the city or the commercial modifiers
+   buyers actually search for. That is a premium-positioning decision that pushes SEO risk onto the
    architecture: the brand name will not win commercial rankings by itself, so information
    architecture, service landing pages, projects and local signals must carry the SEO load without
    the site ever *looking* like an SEO machine.
@@ -49,7 +56,7 @@ proof**. The website's job is not lead-volume maximization; it is **credibility 
 
 ## 2. Business Model Interpretation
 
-**What Vakvorm sells:** end-to-end project realization and coordination, delivered through a
+**What Nederdam Bouw sells:** end-to-end project realization and coordination, delivered through a
 combination of in-house capability and a curated network of specialized tradespeople. The product
 is *managed outcome and single-point accountability*, not hours of labor.
 
@@ -67,7 +74,7 @@ is *managed outcome and single-point accountability*, not hours of labor.
     more visual, more design-literate, and includes a **B2B / commercial** segment (offices, retail)
     plus **architects/designers** seeking an execution partner.
 - **The two pillars cross-sell.** The most valuable customer combines both ("renovate the house
-  *and* build the custom interior"). That is Vakvorm's structural advantage over specialists and
+  *and* build the custom interior"). That is Nederdam's structural advantage over specialists and
   the reason the "één partij" promise has commercial teeth — the site must make the combined
   journey obvious.
 
@@ -80,7 +87,7 @@ headline.
 
 ## 3. Positioning Interpretation
 
-| Vakvorm **IS** | Vakvorm is **NOT** |
+| Nederdam Bouw **IS** | Nederdam Bouw is **NOT** |
 |---|---|
 | A professional construction & interior partner | A handyman / klusbedrijf |
 | Single point of contact & coordination | A loose list of trades for hire |
@@ -100,7 +107,7 @@ forbids stuffing "Aannemer Utrecht" into the brand and hero. The resolution is a
 These are different pages doing different jobs, and that separation is a feature, not a compromise.
 
 **Scalability constraint:** today it is one company, one brand, one website. But decisions must not
-block a future `Vakvorm Groep → Bouw / Interieur / Projects` structure. Concretely this means: keep
+block a future `Nederdam Groep → Bouw / Interieur / Projects` structure. Concretely this means: keep
 the two pillars as clean, independent top-level content clusters with their own URL roots, so a
 future split is a re-labeling exercise, not a re-architecture. **Do not** hard-wire "interior is a
 child of construction" into URLs, navigation or the content model.
@@ -124,7 +131,7 @@ Ranked by strategic priority for the initial launch:
    landing page eventually, **not** at day one unless demand is proven **[TO CONFIRM]**.
 5. **Architects / interior designers / partners** seeking a reliable execution partner. Small in
    number, high in value and referral leverage. They judge on craftsmanship, process discipline and
-   whether Vakvorm will make *them* look good. A dedicated "for professionals/partners" angle is a
+   whether Nederdam Bouw will make *them* look good. A dedicated "for professionals/partners" angle is a
    later phase, not launch.
 
 **Note:** audiences 4 and 5 are real but should not dilute the launch. Build the architecture so
@@ -190,7 +197,7 @@ everything" promise is either substantiated or exposed as a slogan.
 │   └── /projecten/[project-slug]/     (individual case studies)
 │
 ├── /werkwijze/                        (Process — how the "one partner" promise works)
-├── /over-vakvorm/                     (About — story, rebrand, team, values)
+├── /over-nederdam/                     (About — story, rebrand, team, values)
 ├── /contact/                          (Contact + quote request)
 │
 └── Utility: /privacy/, /cookies/, /algemene-voorwaarden/, 404, sitemap.xml, robots.txt
@@ -202,7 +209,7 @@ under `/diensten/`.** Reasons:
 - It is a **co-equal pillar**, not a service. URL structure should encode that.
 - It targets a **distinct search cluster** (*interieurbouw Utrecht*, *maatwerk interieurbouw*) and
   benefits from being its own topical hub for topical-authority SEO.
-- It **future-proofs** the `Vakvorm Interieur` split — the root already exists.
+- It **future-proofs** the `Nederdam Interieur` split — the root already exists.
 - The **navigation can still present it inside a single "Diensten" dropdown** for simplicity (see
   §7). Nav labeling and URL architecture are decoupled on purpose.
 
@@ -220,7 +227,7 @@ Two tiers only, to keep it premium and non-sprawling:
 
 Individual trades (elektra, loodgieterswerk, tegelwerk, timmerwerk, schilderwerk) are **capability
 proof points described *within* the relevant service/process pages, NOT standalone pages.** Turning
-each trade into a page would (a) fragment authority, (b) create thin pages, and (c) make Vakvorm
+each trade into a page would (a) fragment authority, (b) create thin pages, and (c) make Nederdam Bouw
 look like a "list of trades" — the exact anti-positioning. This is a direct application of the
 brief's own warning.
 
@@ -240,7 +247,7 @@ brief's own warning.
 ### 7.1 Recommended top-level navigation
 
 ```
-Home | Diensten ▾ | Projecten | Werkwijze | Over Vakvorm | [Contact / Offerte aanvragen]
+Home | Diensten ▾ | Projecten | Werkwijze | Over Nederdam | [Contact / Offerte aanvragen]
 ```
 
 - **Diensten ▾** — a clean, single dropdown (NOT a mega-menu):
@@ -271,7 +278,7 @@ Home | Diensten ▾ | Projecten | Werkwijze | Over Vakvorm | [Contact / Offerte 
 | Diensten | Keep, restructured | Should visibly hold *both* pillars (grouped dropdown). |
 | Projecten | Keep — elevate | Projects are strategic proof, not a portfolio afterthought. Top-level. |
 | Werkwijze | Keep | Directly answers the #1 trust concern ("who coordinates?"). High value. |
-| Over Vakvorm | Keep | Carries the rebrand story + team + credibility. |
+| Over Nederdam | Keep | Carries the rebrand story + team + credibility. |
 | Contact / Offerte | Keep, as CTA | Split label: nav item "Contact", header button "Offerte aanvragen". |
 
 ### 7.3 DECISION — single "Diensten" dropdown with two labeled pillar groups (launch)
@@ -286,7 +293,7 @@ Home | Bouw & Renovatie ▾ | Interieurbouw ▾ | Projecten | Werkwijze | Over |
 **Why the grouped dropdown wins at launch (UX/web best practice):**
 
 - **"Één partij" integrity.** The core brand promise is *one partner*. A single "Diensten" entry
-  point reinforces one-company/one-conversation; two separate pillar menus subtly frame Vakvorm as
+  point reinforces one-company/one-conversation; two separate pillar menus subtly frame Nederdam Bouw as
   two businesses — working against the central positioning.
 - **Cognitive load & Hick's law.** Fewer, well-labeled top-level items = faster, calmer decisions.
   Premium sites lean minimal; a 5-item primary nav reads more confident than a 7-item one.
@@ -298,10 +305,10 @@ Home | Bouw & Renovatie ▾ | Interieurbouw ▾ | Projecten | Werkwijze | Over |
   does not depend on the nav bar alone.
 - **Reversible & future-proof.** Because `/interieurbouw/` is already a top-level URL root (§6.2),
   promoting Interieurbouw to a top-level nav item later (when its cluster and B2B demand mature, or
-  toward a `Vakvorm Groep` split) is a **pure nav-label change with zero URL/redirect cost.** We keep
+  toward a `Nederdam Groep` split) is a **pure nav-label change with zero URL/redirect cost.** We keep
   the option open without paying for it now.
 
-**Locked launch nav:** `Home | Diensten ▾ | Projecten | Werkwijze | Over Vakvorm | [Offerte aanvragen]`
+**Locked launch nav:** `Home | Diensten ▾ | Projecten | Werkwijze | Over Nederdam | [Offerte aanvragen]`
 
 **Documented trigger to revisit:** promote Interieurbouw to its own top-level item once it has a
 filled sub-page cluster *and* proven interieur/B2B demand — a Phase-11 review item, not a launch one.
@@ -324,7 +331,7 @@ premium brand feel.
 
 | URL / page type | Primary search intent | Primary topic | Supporting topics | Journey role |
 |---|---|---|---|---|
-| `/` Home | Brand / broad orientation | Vakvorm as one partner (bouw + interieur) | Both pillars, proof, process | Entry / orientation |
+| `/` Home | Brand / broad orientation | Nederdam Bouw as one partner (bouw + interieur) | Both pillars, proof, process | Entry / orientation |
 | `/diensten/` | Category — "what do they build?" | Bouw & renovatie overview | Links to each service | Orientation → routing |
 | `/diensten/renovatie-verbouwing/` | High-commercial: *verbouwing / renovatie / woningrenovatie Utrecht* | Complete renovation | Coordination, scope, process, projects | Consideration → convert |
 | `/diensten/badkamerrenovatie/` | High-commercial: *badkamerrenovatie / badkamer verbouwen Utrecht* | Bathroom renovation | Tegelwerk, loodgieten (as proof), projects | Consideration → convert |
@@ -338,8 +345,8 @@ premium brand feel.
 | `/interieurbouw/zakelijke-interieurbouw/` | *zakelijke interieurbouw* (B2B) | Commercial interiors | Office/retail fit-out | B2B consideration |
 | `/projecten/` | Proof / navigational | Portfolio of real work | Filter by service/type | Trust-building (all journeys) |
 | `/projecten/[slug]/` | Long-tail + proof | Specific case study | Services used, location, result | Trust → convert |
-| `/werkwijze/` | *hoe werkt een aannemer / verbouwing proces* (informational) | The Vakvorm process | Coordination, single contact | Trust → convert |
-| `/over-vakvorm/` | Brand / trust | Company, rebrand, team | Values, credentials | Trust |
+| `/werkwijze/` | *hoe werkt een aannemer / verbouwing proces* (informational) | The Nederdam Bouw process | Coordination, single contact | Trust → convert |
+| `/over-nederdam/` | Brand / trust | Company, rebrand, team | Values, credentials | Trust |
 | `/contact/` | Navigational / transactional | Contact & quote | Locations served | Convert |
 
 ### 8.3 Keyword cannibalization — the biggest SEO risk here
@@ -399,7 +406,7 @@ woningrenovatie*), there is a real risk of multiple pages competing for the same
 /projecten/                           Projects hub
 /projecten/[project-slug]/            Case study
 /werkwijze/                           Process
-/over-vakvorm/                        About
+/over-nederdam/                        About
 /contact/                             Contact / quote
 ```
 
@@ -451,7 +458,7 @@ so future filtering/related-content works. The content model (fields) for a Proj
 | Services used (relations) | Link to service pages | Powers the proof loop (§10) |
 | Scope / objective | Context | What the client wanted |
 | Initial situation | Narrative | Before-state |
-| Vakvorm approach | Narrative | The coordination story ("één partij" in action) |
+| Nederdam Bouw approach | Narrative | The coordination story ("één partij" in action) |
 | Execution | Narrative | What was done |
 | Challenges & solutions | Narrative | Demonstrates competence/trust |
 | Duration | Reassurance | Timeline expectation-setting |
@@ -465,7 +472,7 @@ so future filtering/related-content works. The content model (fields) for a Proj
 type) and a **consistent template**. This is the single strongest argument for a **structured
 content model / CMS** rather than hand-coded pages (see §15/§16).
 
-> No example project copy is written here — content comes from real Vakvorm (ex-Persia) projects.
+> No example project copy is written here — content comes from real Nederdam Bouw (ex-Persia) projects.
 
 ---
 
@@ -488,7 +495,7 @@ launch. Keeping the model lean now avoids over-engineering.
 | **Page (generic)** | ✅ | For About, Werkwijze, legal. |
 
 **Modeling principle:** one flexible `Service` type with a `pillar` discriminator > two rigid types.
-It keeps the door open for `Vakvorm Groep` without a migration.
+It keeps the door open for `Nederdam Groep` without a migration.
 
 ---
 
@@ -503,7 +510,7 @@ It keeps the door open for `Vakvorm Groep` without a migration.
   local demand, or meaningful distinct information. Until then, surrounding areas are served by the
   main service pages + GBP proximity + project locations.
 - **Google Business Profile is central.** If a Persia GBP already exists, **rename it** (preserve
-  reviews/history); if not, create one fresh for Vakvorm — a strong GBP is the highest-leverage local
+  reviews/history); if not, create one fresh for Nederdam Bouw — a strong GBP is the highest-leverage local
   signal, especially given zero legacy site authority. **[TO CONFIRM: does a Persia GBP exist?]**
 - **NAP consistency** across GBP, site, and citations — single source (`ContactDetails`/`Organization`
   entity) drives it.
@@ -522,13 +529,13 @@ inherited head-start, so early expectations should be set accordingly (see §13/
 
 What *may* still exist off-site under the Persia name — and should be checked, but is lightweight:
 
-- **Google Business Profile.** If one exists for Persia, **rename it to Vakvorm** rather than
+- **Google Business Profile.** If one exists for Persia, **rename it to Nederdam Bouw** rather than
   creating a new one, so any existing reviews and history carry over. If none exists, create a fresh
-  Vakvorm GBP. **[TO CONFIRM]**
+  Nederdam Bouw GBP. **[TO CONFIRM]**
 - **Social profiles** (Instagram/Facebook/LinkedIn) under the Persia name — rename/rebrand for
   continuity rather than starting from zero followers. **[TO CONFIRM]**
 - **Directory / citation listings** (e.g. business directories) with the old NAP — update to the
-  Vakvorm name and details for consistency. **[TO CONFIRM]**
+  Nederdam Bouw name and details for consistency. **[TO CONFIRM]**
 - **Existing brand assets & rights** — logo history, and especially **rights to real project
   photography** from past Persia jobs (these become launch Projects). **[TO CONFIRM]**
 
@@ -557,7 +564,7 @@ These are **requirements**, not a stack choice (stack is deferred to §16):
 - **Forms** (quote request) with spam protection + reliable delivery/notification.
 - **Analytics + Search Console + (later) conversion tracking**, privacy/GDPR-compliant (cookie
   consent, given NL/EU).
-- **A content back-end / admin (CMS)** allowing the non-technical Vakvorm team to **add and manage
+- **A content back-end / admin (CMS)** allowing the non-technical Nederdam Bouw team to **add and manage
   Projects** (and ideally Services/testimonials) without touching code — see §16 decision.
   *(No `301`/migration tooling needed — greenfield, per §14.)*
 
@@ -571,7 +578,7 @@ the site must include a **back-end/admin where the team can add Projects themsel
 remaining stack decisions below are now made *around* that fixed point (still requirements-driven, no
 preference-picking).
 
-> **One clarification to confirm (§18):** "end-users can add projects" is read here as *the Vakvorm
+> **One clarification to confirm (§18):** "end-users can add projects" is read here as *the Nederdam Bouw
 > team* adding projects via a protected admin — **not** members of the public submitting projects on
 > the live site. Confirm this interpretation; public/self-service submission would be a very
 > different (and unusual for this business) feature.
@@ -583,7 +590,7 @@ preference-picking).
 | **Framework** | SSR/SSG + first-class image handling + component reuse + clean CMS integration | Decide in Phase 2 against these requirements + chosen CMS — **not** by preference. |
 | **Image pipeline / DAM** | High-volume, high-quality project imagery, CWV; editors upload images | CMS-integrated media handling + build/CDN image optimization (AVIF/WebP, responsive). Editor upload UX matters since the team manages media. |
 | **Hosting / deployment** | Fast delivery, easy deploys, CMS webhooks → rebuild, EU data preference | Static/edge host with CMS-webhook deploys; prefer EU hosting for GDPR optics. **[TO CONFIRM: EU-hosting preference]** |
-| **Forms backend** | Reliable quote delivery, spam protection, GDPR | **CONFIRMED: leads go by email** to `alireza_taheri92@hotmail.com` *(temporary — "for now")*, with **phone `06 42241075`** shown as a direct contact. → Server-side form handler emailing the inbox + spam protection; no CRM at launch. (Recommend a Vakvorm-branded email later.) |
+| **Forms backend** | Reliable quote delivery, spam protection, GDPR | **CONFIRMED: leads go by email** to `alireza_taheri92@hotmail.com` *(temporary — "for now")*, with **phone `06 42241075`** shown as a direct contact. → Server-side form handler emailing the inbox + spam protection; no CRM at launch. (Recommend a Nederdam-branded email later.) |
 | **Analytics** | Insight without harming premium feel / privacy | Privacy-friendly analytics vs GA4; cookie-consent implications (NL/EU). |
 | **Schema/sitemap generation** | Automatic from CMS content | Framework-native or library, fed by the content model. |
 | **Language** | Reach vs simplicity | **CONFIRMED: NL-only.** No i18n layer needed — single-locale URL/content architecture. Simplifies the build. |
@@ -598,11 +605,11 @@ There is **no website to inspect, crawl, or redirect** (§14). What remains is a
 continuity and asset-gathering checklist — none of it blocks the build:
 
 **Rebrand continuity (do these to avoid losing existing goodwill):**
-- [ ] **Google Business Profile** — does a Persia GBP exist? If yes, **rename to Vakvorm** (keep
-      reviews/history); if no, create a fresh Vakvorm GBP. **[TO CONFIRM]**
+- [ ] **Google Business Profile** — does a Persia GBP exist? If yes, **rename to Nederdam Bouw** (keep
+      reviews/history); if no, create a fresh Nederdam Bouw GBP. **[TO CONFIRM]**
 - [ ] **Social profiles** (Instagram/Facebook/LinkedIn) under Persia — rename/rebrand for continuity.
       **[TO CONFIRM]**
-- [ ] **Directory / citation listings** with the old NAP — update to Vakvorm.
+- [ ] **Directory / citation listings** with the old NAP — update to Nederdam Bouw.
 
 **Assets to gather for the new build (these become site content):**
 - [ ] **~5 real launch projects** — photos + basic facts for structured case studies (confirmed
@@ -611,13 +618,13 @@ continuity and asset-gathering checklist — none of it blocks the build:
 - [ ] **Real client reviews/testimonials**, if any exist. **[TO CONFIRM]**
 - [ ] **Real credentials** — KvK/BTW, insurance, guarantees, memberships, certifications — only what
       genuinely exists (no fabrication). **[TO CONFIRM]**
-- [ ] **Brand assets** — new Vakvorm logo, colors, fonts (or note these are still to be created).
+- [ ] **Brand assets** — new Nederdam Bouw logo, colors, fonts (or note these are still to be created).
 - [ ] **NAP** — the single Organization source. Known so far: **email
       `alireza_taheri92@hotmail.com`** *(temporary)*, **phone `06 42241075`**. Still needed: the
       **business address** to publish (or confirm Utrecht service-area only, no public address) and a
-      future Vakvorm-branded email. **[TO CONFIRM: address]**
+      future Nederdam-branded email. **[TO CONFIRM: address]**
 
-**Domain:** choose/confirm the new Vakvorm domain and who controls DNS. **[TO CONFIRM]**
+**Domain:** choose/confirm the new Nederdam Bouw domain and who controls DNS. **[TO CONFIRM]**
 
 ---
 
@@ -642,7 +649,7 @@ continuity and asset-gathering checklist — none of it blocks the build:
 6. **GBP / social continuity:** does a Persia Google Business Profile or social presence exist to
    rename, or do we start fresh? (§17)
 7. **Commercial / zakelijke interieurbouw:** real demand and references now, or a later phase?
-8. **Brand assets & domain:** is there a finished Vakvorm logo/visual identity, and is the new
+8. **Brand assets & domain:** is there a finished Nederdam Bouw logo/visual identity, and is the new
    domain chosen? (If identity isn't ready, a mini brand step precedes the design system.)
 
 **Tier 3 — Can be decided during build:**
@@ -672,7 +679,7 @@ greenfield — so effort shifts to content, proof and earning authority from zer
 | 7 | **SEO finalization** | On-page (titles/meta/headings), internal-linking pass, structured data validation, sitemap, cannibalization check. |
 | 8 | **Analytics & conversion** | Goal/conversion tracking, form flows (email/WhatsApp/CRM), consent. |
 | 9 | **QA** | Accessibility, Core Web Vitals, cross-device, crawlability, status codes, Dutch content proofreading, CMS-editor UX check. |
-| 10 | **Launch** | New Vakvorm domain live, GBP set up/renamed, sitemap submitted to GSC, index checks. |
+| 10 | **Launch** | New Nederdam Bouw domain live, GBP set up/renamed, sitemap submitted to GSC, index checks. |
 | 11 | **Post-launch growth** | Build authority from zero: GSC monitoring, reviews acquisition, expand content clusters, add projects via CMS, earn location/B2B pages when justified. |
 
 ---

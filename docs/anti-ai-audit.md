@@ -1,4 +1,4 @@
-# VAKVORM — Anti-AI / anti-template audit
+# Nederdam Bouw — Anti-AI / anti-template audit
 
 Audit of the site against the "no AI / vibe-coded aesthetic" constraint. This extends the
 anti-AI constitution in `visual-direction.md` §1 with a concrete pass: inspect → name what
@@ -47,7 +47,7 @@ Section openings no longer follow one predictable formula.
 | Vibe-coded aesthetic | **2** | No glass, gradient filler, bento, icon cards, pills, fake stats; one deliberate action hierarchy; marked-placeholder review, never fake proof. |
 | Brand specificity | **8** | Claim+ledger trust copy, discipline chapters, capability logic, werkwijze and the intake journey are construction-specific; a dentist/SaaS reskin would have to rewrite the composition, not just the words. |
 | Human art-direction | **8** | Asymmetric ledger, off-grid statement, overlap, chapter contrast, deliberate stillness. |
-| VAKVORM distinctiveness | **8 structurally** | Photography consolidates it visually; every slot is specified in `image-sources.md`. |
+| Nederdam Bouw distinctiveness | **8 structurally** | Photography consolidates it visually; every slot is specified in `image-sources.md`. |
 
 ## Standing rule for future passes
 

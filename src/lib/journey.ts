@@ -1,6 +1,6 @@
-// VAKVORM — Guided Project Intake ("Start uw project").
+// Nederdam Bouw — Guided Project Intake ("Start uw project").
 // The flow logic lives in code (not the CMS) so conditional branches stay reliable.
-// Selectable service options map to real VAKVORM service slugs where practical.
+// Selectable service options map to real Nederdam Bouw service slugs where practical.
 
 export type Chapter = 'Project' | 'Situatie' | 'Wensen' | 'Planning' | 'Contact';
 export const CHAPTERS: Chapter[] = ['Project', 'Situatie', 'Wensen', 'Planning', 'Contact'];
@@ -9,7 +9,7 @@ export interface ServiceOption {
   id: string;
   label: string;
   hint?: string;
-  /** Maps to an existing VAKVORM service slug where one applies. */
+  /** Maps to an existing Nederdam Bouw service slug where one applies. */
   serviceSlug?: string;
 }
 

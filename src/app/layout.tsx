@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s — ${site.name}`,
     },
     description:
-      'VAKVORM is één professionele partij voor complete bouw-, renovatie- en maatwerk interieurprojecten in Utrecht en omgeving. Van planning tot oplevering.',
+      'Nederdam Bouw is één professionele partij voor complete bouw-, renovatie- en maatwerk interieurprojecten in Utrecht en omgeving. Van planning tot oplevering.',
     applicationName: site.name,
     authors: [{ name: site.name }],
     openGraph: {

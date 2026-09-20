@@ -1,4 +1,4 @@
-# VAKVORM — Design Review 01
+# Nederdam Bouw — Design Review 01
 ### Independent art-direction audit (pre-merge visual gate)
 
 Reviewed as an outside creative director against the built site (PR #1), across the
@@ -20,7 +20,7 @@ build.
 
 The structural design is genuinely disciplined — restrained type, real whitespace, hairline
 detailing, almost no cards, and a proprietary-feeling service index — which already puts it
-above the generic-AI-template baseline. But it is **not yet ownably VAKVORM**. Strip the
+above the generic-AI-template baseline. But it is **not yet ownably Nederdam Bouw**. Strip the
 words and it reads as a competent *Dutch architecture/interior studio* template: the bone
 monotony, the every-section datum marker, and the conventional left-text/right-image hero
 are studio conventions, not a signature. Worse for this business, **construction credibility
@@ -127,7 +127,7 @@ Solid foundation; not yet the finished brand.
 - No cards, bento grids, gradients, glassmorphism.
 - No more datum lines "to look more construction."
 - No fabricated stats, projects, reviews, awards.
-- No stock imagery presented as a real Vakvorm project.
+- No stock imagery presented as a real Nederdam Bouw project.
 
 ---
 
@@ -156,7 +156,7 @@ placeholders; improved only what is judgeable without final imagery. Target was 
 
 ### 2. What was deliberately removed
 - All **arbitrary/decorative datum numbering** on generic section intros, site-wide
-  (`Het principe`, `Diensten`, `Werkwijze`, `Over Vakvorm`, `Contact`, interieurbouw and
+  (`Het principe`, `Diensten`, `Werkwijze`, `Over Nederdam Bouw`, `Contact`, interieurbouw and
   service-page intros) and the decorative `—` / `→` marker glyphs. No motif was added to
   compensate — the reduction *is* the improvement.
 
@@ -171,7 +171,7 @@ placeholders; improved only what is judgeable without final imagery. Target was 
 ### 4. How construction credibility improved
 Without any cliché (no blueprints/hard-hats/icons): the hero capability baseline, the
 `ORGANISEREN · BOUWEN · AFWERKEN` triad, the "georganiseerd, gebouwd en afgewerkt" language,
-and the added tonal weight of the ink chapter all state that VAKVORM organises, builds and
+and the added tonal weight of the ink chapter all state that Nederdam Bouw organises, builds and
 finishes — not merely designs interiors.
 
 ### 5. How the hero composition changed

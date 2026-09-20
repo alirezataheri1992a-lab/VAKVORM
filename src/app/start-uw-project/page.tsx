@@ -5,7 +5,7 @@ import { ProjectJourney } from '@/components/journey/ProjectJourney';
 export const metadata: Metadata = {
   title: 'Start uw project',
   description:
-    'Start uw project bij VAKVORM. Beantwoord een paar gerichte vragen over uw bouw-, renovatie- of interieurplannen — daarna nemen we persoonlijk contact met u op.',
+    'Start uw project bij Nederdam Bouw. Beantwoord een paar gerichte vragen over uw bouw-, renovatie- of interieurplannen — daarna nemen we persoonlijk contact met u op.',
   alternates: { canonical: '/start-uw-project' },
 };
 

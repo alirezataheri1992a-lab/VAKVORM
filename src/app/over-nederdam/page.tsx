@@ -7,10 +7,10 @@ import { ContactPanel } from '@/components/sections/ContactPanel';
 import styles from './over.module.css';
 
 export const metadata: Metadata = {
-  title: 'Over VAKVORM',
+  title: 'Over Nederdam Bouw',
   description:
-    'VAKVORM is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht. Over de rebrand, de filosofie en de manier van werken.',
-  alternates: { canonical: '/over-vakvorm' },
+    'Nederdam Bouw is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht. Over de naam, de filosofie en de manier van werken.',
+  alternates: { canonical: '/over-nederdam' },
 };
 
 export const revalidate = 60;
@@ -20,16 +20,16 @@ export default async function OverPage() {
   return (
     <>
       <section className={`container ${styles.intro}`}>
-        <Breadcrumbs items={[{ name: 'Over VAKVORM', path: '/over-vakvorm' }]} />
+        <Breadcrumbs items={[{ name: 'Over Nederdam', path: '/over-nederdam' }]} />
         <div className={styles.introGrid}>
           <div>
-            <SectionMarker label="Over VAKVORM" />
+            <SectionMarker label="Over Nederdam" />
             <h1 className={`display ${styles.title}`}>
               Eén partij die het hele project draagt.
             </h1>
           </div>
           <p className={`lede ${styles.lede}`}>
-            VAKVORM bundelt bouw, renovatie en maatwerk interieurbouw onder één naam en
+            Nederdam Bouw bundelt bouw, renovatie en maatwerk interieurbouw onder één naam en
             één verantwoordelijkheid — in {site.city} en omgeving.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default async function OverPage() {
 
       <section className={`container ${styles.mediaSec}`}>
         <ProjectMedia
-          media={{ alt: 'VAKVORM aan het werk — beeld volgt', ratio: '16:9', slot: 'WERKPLAATS / TEAM' }}
+          media={{ alt: 'Nederdam Bouw aan het werk — beeld volgt', ratio: '16:9', slot: 'WERKPLAATS / TEAM' }}
           priority
           sizes="100vw"
         />
@@ -49,7 +49,7 @@ export default async function OverPage() {
           <div className={styles.storyBody}>
             <p className={styles.storyLead}>
               De meeste verbouwingen lopen vast op afstemming: veel partijen, weinig regie.
-              VAKVORM draait dat om.
+              Nederdam draait dat om.
             </p>
             <p className="body">
               Wij organiseren en realiseren complete projecten met eigen vakmensen en een
@@ -58,8 +58,9 @@ export default async function OverPage() {
               afwerking.
             </p>
             <p className="body">
-              VAKVORM is de nieuwe naam waaronder dit werk wordt voortgezet. Dezelfde vakmensen,
-              een scherpere focus: bouw én interieur, professioneel op elkaar afgestemd.
+              Nederdam Bouw is de nieuwe naam waaronder dit werk wordt voortgezet. Dezelfde
+              vakmensen, een scherpere focus: bouw én interieur, professioneel op elkaar
+              afgestemd.
             </p>
           </div>
         </div>

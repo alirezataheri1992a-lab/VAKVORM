@@ -1,7 +1,7 @@
-# VAKVORM — Image Sources & Photography Plan
+# Nederdam Bouw — Image Sources & Photography Plan
 
 Tracks every image slot on the site, the curated stock image chosen for it, and the
-real Vakvorm photograph that will eventually replace it.
+real Nederdam Bouw photograph that will eventually replace it.
 
 > **Session status — TO SOURCE.** The environment's network policy **blocks the image
 > CDNs** (`images.unsplash.com`, `images.pexels.com` — CONNECT denied; npm and Google
@@ -42,13 +42,13 @@ fitting cabinetry), never posed hard-hat/handshake stock.
 **process/craft** (plastering, drywall, tiling, measuring, joinery in progress — real
 renovation reality), one third **modest finished spaces** (a normal Dutch living room,
 bathroom or kitchen done well), one third **material/detail close-ups**. Anything that
-reads as a design-magazine villa spread is off-brief — VAKVORM builds for normal Dutch
+reads as a design-magazine villa spread is off-brief — Nederdam Bouw builds for normal Dutch
 homeowners, and the photography must feel attainable.
 
 ## Licensing
 
 Only Unsplash / Pexels (or equivalently licensed) sources. No architecture-firm/contractor
-project photos. **No stock image may be presented as a real Vakvorm project** — Projects stay
+project photos. **No stock image may be presented as a real Nederdam Bouw project** — Projects stay
 placeholder until genuine case studies are loaded.
 
 ---
@@ -58,7 +58,7 @@ placeholder until genuine case studies are loaded.
 | Page | Section | Slot | Ratio | Direction (search intent) | Source / URL / author | License | Status |
 |---|---|---|---|---|---|---|---|
 | Home | Hero | video + poster | 16:9 view | Craftsman at work (interior finishing) — placeholder clip in place, see `video-sources.md` | Pexels 6474181 | Pexels | PLACEHOLDER IN PLACE |
-| Home | Geselecteerd werk | WONINGRENOVATIE + DETAIL | 3:2 + 4:5 | **REAL VAKVORM PROJECTS ONLY — never stock.** Keeps its honest "binnenkort" state until genuine cases exist | — | — | AWAITS REAL WORK |
+| Home | Geselecteerd werk | WONINGRENOVATIE + DETAIL | 3:2 + 4:5 | **REAL Nederdam Bouw PROJECTS ONLY — never stock.** Keeps its honest "binnenkort" state until genuine cases exist | — | — | AWAITS REAL WORK |
 | Home | Bouw-chapter | BOUW — RUWBOUW | 4:5 | Structural renovation in progress: steel/beam, brick, drywall — process-credible, portrait | — | — | TO SOURCE |
 | Home | Interieur-chapter | INTERIEUR — RUIMTE | 4:5 | Modest finished space with bespoke joinery, portrait | — | — | TO SOURCE |
 | Home | Interieur-chapter | MATERIAAL | 1:1 | Oak/veneer joinery close-up, tactile | — | — | TO SOURCE |

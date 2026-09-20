@@ -5,7 +5,7 @@ import { getSiteSettings } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Algemene voorwaarden',
-  description: 'Algemene voorwaarden van VAKVORM.',
+  description: 'Algemene voorwaarden van Nederdam Bouw.',
   alternates: { canonical: '/algemene-voorwaarden' },
   robots: { index: false, follow: true },
 };

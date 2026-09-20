@@ -1,6 +1,6 @@
-# VAKVORM — Content Studio (Sanity)
+# Nederdam Bouw — Content Studio (Sanity)
 
-The editorial back-end where the VAKVORM team manages **Projecten**, **Diensten** and
+The editorial back-end where the Nederdam Bouw team manages **Projecten**, **Diensten** and
 **Site-instellingen** — without touching code.
 
 The front-end is **already wired** to Sanity: every page reads through `src/lib/content.ts`,
@@ -35,7 +35,7 @@ Every schema field maps to something the website actually renders — there are 
 fields. Field descriptions in the Studio are in Dutch and explain where each value appears.
 
 **Testimonials** are deliberately not modelled: the design has no reviews surface yet, and
-VAKVORM never publishes fabricated reviews. Add the type when a real, consent-based reviews
+Nederdam Bouw never publishes fabricated reviews. Add the type when a real, consent-based reviews
 section is designed.
 
 ## How publishing works

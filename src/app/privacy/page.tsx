@@ -5,7 +5,7 @@ import { getSiteSettings } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Privacyverklaring',
-  description: 'Privacyverklaring van VAKVORM.',
+  description: 'Privacyverklaring van Nederdam Bouw.',
   alternates: { canonical: '/privacy' },
   robots: { index: false, follow: true },
 };

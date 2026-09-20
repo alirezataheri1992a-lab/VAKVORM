@@ -1,4 +1,4 @@
-# VAKVORM — Homepage Recomposition Pass
+# Nederdam Bouw — Homepage Recomposition Pass
 
 Goal: make the homepage feel **alive, visual, premium, warm, confident, commercial**
 without restarting the brand, typography, information architecture or palette. Only the
@@ -77,12 +77,12 @@ a genuine trust/process chapter, warmth, and one clear emotional proof beat.
 
 **Explicitly rejected:** yellow/gold identity, decorative house logo, "Bekend van TV" badges,
 four-icon feature cards, rounded-card clutter, aggressive lead funnel, their service-grid,
-their typography and their exact navy. VAKVORM stays more editorial and more restrained.
+their typography and their exact navy. Nederdam Bouw stays more editorial and more restrained.
 
 ## 7. Proof module (item 15)
 
 A real proof/testimonial surface is **intentionally not rendered** — there is no confirmed
-review, score or credential yet, and VAKVORM never fabricates them. The narrative has a clear
+review, score or credential yet, and Nederdam Bouw never fabricates them. The narrative has a clear
 slot for it (between Werkwijze and Conversion) when real, consent-based proof exists.
 
 ## 8. Before / after scorecard (self-critique, not inflated)

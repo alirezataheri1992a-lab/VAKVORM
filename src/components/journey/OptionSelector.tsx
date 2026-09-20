@@ -27,7 +27,7 @@ function Check() {
 }
 
 /**
- * Native radio/checkbox semantics with VAKVORM's typographic row styling — keyboard and
+ * Native radio/checkbox semantics with Nederdam's typographic row styling — keyboard and
  * screen-reader correct (real inputs, visually hidden), never colour-only selected state.
  */
 export function OptionSelector({ name, type, options, value, onChange, cols = 1, ariaLabel }: Props) {

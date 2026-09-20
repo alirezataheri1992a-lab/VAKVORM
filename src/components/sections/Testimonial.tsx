@@ -4,7 +4,7 @@ import styles from './Testimonial.module.css';
 
 /**
  * Client-reference chapter: the review text on the left, a project image on the right
- * with an overlapping name card. Built in VAKVORM's own system (Public Sans, navy + clay,
+ * with an overlapping name card. Built in Nederdam's own system (Public Sans, navy + clay,
  * near-square shapes) — not the gold-serif reference it was inspired by.
  *
  * When `placeholder` is set the section shows a visible "voorbeeldreview" marker so sample

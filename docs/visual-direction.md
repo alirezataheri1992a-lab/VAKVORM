@@ -1,4 +1,4 @@
-# VAKVORM — Visual Direction
+# Nederdam Bouw — Visual Direction
 
 Practical implementation rules for the build. Derived from the approved discovery
 (`/DISCOVERY.md`) and the "Constructed Editorial" art direction. This is a build
@@ -8,11 +8,11 @@ spec, not a strategy document.
 > construction discipline. Image-led, controlled, warm, understated. It must read as
 > *art-directed by a design studio* — never AI-templated.
 
-> **Brand-name rule (permanent):** the brand is always written **VAKVORM** in visible/textual
+> **Brand-name rule (permanent):** the brand is always written **Nederdam Bouw** in visible/textual
 > content — real uppercase text, never CSS `text-transform`. Applies to copy, nav, footer,
 > breadcrumbs, SEO titles/meta/OG, structured data and CMS content. Surrounding Dutch text keeps
-> normal capitalisation ("VAKVORM is gevestigd in Utrecht."). **Not** applied to URL slugs
-> (`/over-vakvorm`), the domain (`vakvorm.nl`), package names, or code identifiers.
+> normal capitalisation ("Nederdam Bouw is gevestigd in Utrecht."). **Not** applied to URL slugs
+> (`/over-nederdam`), the domain (`nederdambouw.nl`), package names, or code identifiers.
 
 ---
 
@@ -102,7 +102,7 @@ the *technical spec layer*. Character comes from **application**, not an eccentr
 - Max ~3 weights in play. No sub-15px reading copy. CTA is a **bordered** typographic
   treatment with a restrained `↗`, never a solid startup button.
 
-## 6. The VAKVORM datum line (visual signature)
+## 6. The Nederdam Bouw datum line (visual signature)
 
 A thin architectural rule paired with an index number and a label — from construction
 datum lines / drawing indices.
@@ -119,7 +119,7 @@ datum lines / drawing indices.
 
 ## 7. Photography
 
-- Real projects will dominate. **No stock, no generic luxury villas presented as VAKVORM.**
+- Real projects will dominate. **No stock, no generic luxury villas presented as Nederdam Bouw.**
 - Until real assets arrive: `<ProjectMedia>` renders a labelled placeholder holding the
   intended aspect ratio (e.g. `[PROJECTFOTO — 4:5]`). Empty CMS fields simply don't render.
 - Editorial variety: landscape, portrait detail, full-bleed, image pairs, offset crops,
@@ -132,7 +132,7 @@ datum lines / drawing indices.
 - Vary motion or leave static. Respect `prefers-reduced-motion` (disable transforms/reveals).
 - No heavy animation libraries; CSS + a tiny IntersectionObserver reveal only.
 
-## 9. Components (VAKVORM primitives, not a UI kit)
+## 9. Components (Nederdam Bouw primitives, not a UI kit)
 
 `Container`, `EditorialGrid`, `SectionMarker`, `DatumLine`, `ProjectMedia`, `ProjectMeta`,
 `ServiceIndex`, `ImagePair`, `EditorialIntro`, `ProcessSequence`, `ContactPanel`,

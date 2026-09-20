@@ -1,9 +1,9 @@
-# VAKVORM — Project Journey (guided intake)
+# Nederdam Bouw — Project Journey (guided intake)
 
 A conditional, multi-step project-request experience at **`/start-uw-project`** that replaces
-the conventional long "offerte aanvragen" form. It guides the visitor step by step so VAKVORM
+the conventional long "offerte aanvragen" form. It guides the visitor step by step so Nederdam Bouw
 receives a well-prepared enquiry, and completing it feels like a small preview of working with
-VAKVORM: structured, clear, one party in control.
+Nederdam Bouw: structured, clear, one party in control.
 
 ## 1. Purpose
 Turn a cold "contact form" into a calm, reassuring intake that (a) shows what information is
@@ -28,7 +28,7 @@ A follow-up appears only when a relevant service is selected:
 - **Shared** → "Heeft u al een ontwerp of tekeningen?" — asked **once** across renovation /
   aanbouw / opbouw, and it adapts the upload copy in the Situatie step.
 
-Service options map to real VAKVORM service slugs where practical (`serviceSlug`); the flow
+Service options map to real Nederdam Bouw service slugs where practical (`serviceSlug`); the flow
 logic itself stays in code so editors can't break the branching. Deselecting a service prunes
 its now-irrelevant answers (`pruneCond`) so stale data is never submitted.
 

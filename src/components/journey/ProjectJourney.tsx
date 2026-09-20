@@ -25,7 +25,7 @@ import { OptionSelector } from './OptionSelector';
 import { FileUploader } from './FileUploader';
 import styles from './journey.module.css';
 
-const STORAGE_KEY = 'vakvorm-project-journey';
+const STORAGE_KEY = 'nederdam-project-journey';
 
 interface Props {
   phoneDisplay: string;
@@ -179,7 +179,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
       <section className={styles.dark}>
         <div className="container">
           <div className={styles.darkInner}>
-            <span className={styles.introEyebrow}>VAKVORM · Bouw &amp; Interieur</span>
+            <span className={styles.introEyebrow}>NEDERDAM · Bouw &amp; Interieur</span>
             <h1 className={styles.introTitle}>Start uw project.</h1>
             <p className={styles.introLede}>
               Vertel ons kort wat u wilt realiseren. We stellen een aantal gerichte vragen zodat
@@ -227,7 +227,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
               {[
                 ['01', 'Wij bekijken uw project', 'We nemen uw wensen, projectinformatie en eventuele bijlagen door.'],
                 ['02', 'We nemen contact met u op', 'We bespreken het project en de belangrijkste uitgangspunten.'],
-                ['03', 'Samen bepalen we de volgende stap', 'Als het project bij VAKVORM past, bespreken we hoe we verdergaan.'],
+                ['03', 'Samen bepalen we de volgende stap', 'Als het project bij Nederdam Bouw past, bespreken we hoe we verdergaan.'],
               ].map(([n, t, d]) => (
                 <div key={n} className={styles.successStep}>
                   <span className={styles.successNum}>{n}</span>
@@ -375,7 +375,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
           <>
             <Heading eyebrow="Situatie">Waar vindt het project plaats?</Heading>
             <p className={styles.help}>
-              VAKVORM is gevestigd in Utrecht en realiseert projecten in Utrecht en daarbuiten. Een
+              Nederdam Bouw is gevestigd in Utrecht en realiseert projecten in Utrecht en daarbuiten. Een
               volledig adres is nu nog niet nodig.
             </p>
             <div className={styles.fields}>
@@ -642,7 +642,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
         </div>
 
         <p className={styles.consent}>
-          Door uw projectaanvraag te versturen, gebruikt VAKVORM uw gegevens uitsluitend om
+          Door uw projectaanvraag te versturen, gebruikt Nederdam Bouw uw gegevens uitsluitend om
           contact met u op te nemen over uw aanvraag. Lees ons <Link href="/privacy">privacybeleid</Link>.
         </p>
       </>

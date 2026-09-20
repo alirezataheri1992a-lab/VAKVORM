@@ -26,7 +26,7 @@ export async function generateMetadata({
     title: project.seoTitle ?? project.title,
     description:
       project.metaDescription ??
-      `${project.meta.projectType} in ${project.meta.location} door VAKVORM.`,
+      `${project.meta.projectType} in ${project.meta.location} door Nederdam Bouw.`,
     alternates: { canonical: `/projecten/${project.slug}` },
   };
 }

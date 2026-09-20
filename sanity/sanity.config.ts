@@ -6,8 +6,8 @@ import { schemaTypes } from './schemas';
 // Provisioning: create a project at sanity.io, then set projectId + dataset below
 // (or via SANITY_STUDIO_PROJECT_ID / SANITY_STUDIO_DATASET env vars).
 export default defineConfig({
-  name: 'vakvorm',
-  title: 'VAKVORM — Bouw & Interieur',
+  name: 'nederdam-bouw',
+  title: 'Nederdam Bouw — Content Studio',
   projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'REPLACE_WITH_PROJECT_ID',
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
   plugins: [

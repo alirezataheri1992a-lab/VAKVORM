@@ -1,8 +1,8 @@
 {
-  "name": "vakvorm-studio",
+  "name": "nederdam-bouw-studio",
   "version": "0.1.0",
   "private": true,
-  "description": "VAKVORM content studio (Sanity).",
+  "description": "Nederdam Bouw content studio (Sanity).",
   "scripts": {
     "dev": "sanity dev",
     "build": "sanity build",

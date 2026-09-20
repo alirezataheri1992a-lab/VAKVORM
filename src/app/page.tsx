@@ -54,7 +54,7 @@ export default async function HomePage() {
               <span className={styles.heroAccent}>Eén partij.</span>
             </h1>
             <p className={styles.heroLede}>
-              VAKVORM realiseert complete verbouwingen, renovaties en maatwerkinterieurs —
+              Nederdam realiseert complete verbouwingen, renovaties en maatwerkinterieurs —
               met één aanspreekpunt van voorbereiding tot oplevering.
             </p>
             <div className={styles.heroActions}>
@@ -128,7 +128,7 @@ export default async function HomePage() {
                 <h3 className={styles.featuredTitle}>Elk project als volledige case.</h3>
               </div>
               <p className={styles.featuredNote}>
-                De eerste VAKVORM-projecten worden nu voorbereid. Ze verschijnen hier als
+                De eerste projecten van Nederdam Bouw worden nu voorbereid. Ze verschijnen hier als
                 complete cases — de opgave, onze aanpak en het resultaat, met beeld van het
                 echte werk.
               </p>
@@ -171,7 +171,7 @@ export default async function HomePage() {
           </div>
           <div className={styles.discBandMedia}>
             <ProjectMedia
-              media={{ alt: 'Bouw en renovatie door VAKVORM', ratio: '4:5', slot: 'BOUW — RUWBOUW' }}
+              media={{ alt: 'Bouw en renovatie door Nederdam Bouw', ratio: '4:5', slot: 'BOUW — RUWBOUW' }}
               sizes="(max-width: 900px) 100vw, 46vw"
             />
           </div>
@@ -185,7 +185,7 @@ export default async function HomePage() {
             <SectionMarker index="02" label="Interieurbouw" />
             <h3 className={`display ${styles.discBandTitle}`}>Maatwerk Interieurbouw</h3>
             <p className={styles.discBandBody}>
-              Een volwaardige discipline binnen VAKVORM. Van maatwerkkasten en wandmeubels
+              Een volwaardige discipline binnen Nederdam Bouw. Van maatwerkkasten en wandmeubels
               tot volledig ingerichte ruimtes — ontworpen en gemaakt tot in het detail, in
               hout, fineer en zorgvuldig afgewerkte verbindingen.
             </p>
@@ -203,7 +203,7 @@ export default async function HomePage() {
           <div className={styles.discIntMedia}>
             <ProjectMedia
               className={styles.discIntMain}
-              media={{ alt: 'Maatwerk interieur door VAKVORM', ratio: '4:5', slot: 'INTERIEUR — RUIMTE' }}
+              media={{ alt: 'Maatwerk interieur door Nederdam Bouw', ratio: '4:5', slot: 'INTERIEUR — RUIMTE' }}
               sizes="(max-width: 900px) 100vw, 38vw"
             />
             <ProjectMedia
@@ -246,7 +246,7 @@ export default async function HomePage() {
       <section className={styles.craft}>
         <div className={styles.craftMedia}>
           <ProjectMedia
-            media={{ alt: 'Afgewerkt VAKVORM-project — ruimte en detail', ratio: '16:9', slot: 'AFWERKING — RUIMTE' }}
+            media={{ alt: 'Afgewerkt project van Nederdam Bouw — ruimte en detail', ratio: '16:9', slot: 'AFWERKING — RUIMTE' }}
             fill
             sizes="100vw"
           />
@@ -297,7 +297,7 @@ export default async function HomePage() {
               </h2>
               <div className={styles.procesMedia}>
                 <ProjectMedia
-                  media={{ alt: 'VAKVORM coördineert op de bouwplaats', ratio: '4:5', slot: 'PROCES — UITVOERING' }}
+                  media={{ alt: 'Nederdam Bouw coördineert op de bouwplaats', ratio: '4:5', slot: 'PROCES — UITVOERING' }}
                   sizes="(max-width: 940px) 100vw, 42vw"
                 />
               </div>

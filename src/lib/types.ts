@@ -26,7 +26,7 @@ export interface Service {
   descriptor: string;
   /** Editorial intro paragraph for the service page. */
   intro: string;
-  /** What VAKVORM takes responsibility for on this service. */
+  /** What Nederdam Bouw takes responsibility for on this service. */
   responsibilities: string[];
   hero: MediaSlot;
   seoTitle: string;
@@ -60,7 +60,12 @@ export interface Project {
 }
 
 export interface SiteSettings {
+  /** Full trading name — metadata, JSON-LD, e-mail signatures, legal pages. */
   name: string;
+  /** Display wordmark in the header/footer lockup. Uppercase, one word. */
+  wordmark: string;
+  /** How the brand reads inside a running sentence. */
+  shortName: string;
   descriptor: string;
   email: string;
   phoneDisplay: string;

@@ -73,7 +73,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
       <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — ${site.descriptor}`}>
-          <span className={styles.brandName}>{site.name}</span>
+          <span className={styles.brandName}>{site.wordmark}</span>
           <span className={`label ${styles.brandDesc}`}>{site.descriptor}</span>
         </Link>
 

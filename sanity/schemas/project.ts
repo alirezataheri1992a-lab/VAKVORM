@@ -1,6 +1,6 @@
 import { defineType, defineField } from 'sanity';
 
-// A non-technical VAKVORM team member must be able to add a real project comfortably.
+// A non-technical Nederdam Bouw team member must be able to add a real project comfortably.
 // Every field here maps 1:1 to something the website actually renders — there are no
 // decorative fields that do nothing. Grouped, Dutch descriptions, sensible validation,
 // rich preview, and a publish gate so concepts never appear publicly.
@@ -89,7 +89,7 @@ export const project = defineType({
       type: 'text',
       rows: 4,
       group: 'inhoud',
-      description: 'Hoe heeft VAKVORM het aangepakt? Verschijnt als tweede tekstblok ("Onze aanpak").',
+      description: 'Hoe heeft Nederdam het aangepakt? Verschijnt als tweede tekstblok ("Onze aanpak").',
     }),
     defineField({
       name: 'result',
@@ -136,7 +136,7 @@ export const project = defineType({
     }),
 
     // ---------------- SEO ----------------
-    defineField({ name: 'seoTitle', title: 'SEO-titel', type: 'string', group: 'seo', description: 'Optioneel; anders wordt de projecttitel + VAKVORM gebruikt.' }),
+    defineField({ name: 'seoTitle', title: 'SEO-titel', type: 'string', group: 'seo', description: 'Optioneel; anders wordt de projecttitel + Nederdam Bouw gebruikt.' }),
     defineField({ name: 'metaDescription', title: 'Meta-omschrijving', type: 'text', rows: 2, group: 'seo', description: 'Optioneel; korte omschrijving voor Google (max ~155 tekens).' }),
 
     // ---------------- Publicatie ----------------
