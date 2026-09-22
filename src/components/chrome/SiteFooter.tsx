@@ -4,7 +4,9 @@ import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import styles from './SiteFooter.module.css';
 
 export async function SiteFooter() {
-  const year = 2025; // static; avoids per-request date churn. Update on next content pass.
+  // Server-rendered, so this is fixed at build/revalidate time — no per-request churn,
+  // and no hard-coded year to go stale.
+  const year = new Date().getFullYear();
   const [site, groups] = await Promise.all([getSiteSettings(), getServiceGroups()]);
   const { bouw: bouwServices, interieurHub: interieurService, interieurSubs: interieurSubServices } = groups;
 
@@ -67,7 +69,7 @@ export async function SiteFooter() {
                 <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
               </li>
               <li className={styles.area}>
-                {site.city} &amp; {site.serviceArea}
+                Werkgebied: {site.serviceArea}
               </li>
             </ul>
           </div>
