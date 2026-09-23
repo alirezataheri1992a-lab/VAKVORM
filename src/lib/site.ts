@@ -25,11 +25,20 @@ export const site: SiteSettings = {
   baseUrl: 'https://www.nederdambouw.nl',
 };
 
-// Primary navigation: the two disciplines first, then the supporting pages. No "Home"
-// (the logo is home) and no category above the disciplines — NEDERDAM has exactly two.
+// Primary navigation. "Diensten" opens a submenu with the two disciplines (Bouw, Interieur)
+// and their services; the discipline pages keep their own URLs.
 export const nav = [
-  { label: 'Bouw', path: '/bouw', discipline: 'bouw' },
-  { label: 'Interieur', path: '/interieur', discipline: 'interieur' },
+  { label: 'Home', path: '/' },
+  { label: 'Over ons', path: '/over-ons' },
+  { label: 'Diensten', path: '/diensten' },
+  { label: 'Projecten', path: '/projecten' },
+  { label: 'Contact', path: '/contact' },
+] as const;
+
+// Secondary page list for the footer and the mobile menu (includes Werkwijze, which is not
+// in the top bar).
+export const pages = [
+  { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
   { label: 'Over ons', path: '/over-ons' },

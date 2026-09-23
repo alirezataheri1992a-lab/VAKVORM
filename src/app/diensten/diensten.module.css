@@ -1,0 +1,50 @@
+.head {
+  padding-top: clamp(32px, 5vh, 56px);
+  padding-bottom: clamp(56px, 9vh, 112px);
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: clamp(40px, 7vh, 88px);
+  text-align: center;
+}
+.center :global(.lede) {
+  max-width: 54ch;
+}
+.group {
+  padding-bottom: clamp(72px, 11vh, 136px);
+}
+.band {
+  padding-top: clamp(72px, 11vh, 136px);
+}
+.groupHead {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.groupHead > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.groupHead :global(.label) {
+  color: var(--accent-text);
+}
+.groupLink {
+  margin-left: auto;
+  color: var(--accent-text);
+}
+@media (max-width: 560px) {
+  .groupHead {
+    flex-wrap: wrap;
+  }
+  .groupLink {
+    margin-left: 0;
+    width: 100%;
+  }
+}

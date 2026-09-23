@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { nav } from '@/lib/site';
+import { pages } from '@/lib/site';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { Logo } from './Logo';
 import styles from './SiteFooter.module.css';
@@ -66,9 +66,7 @@ export async function SiteFooter() {
               <li className={styles.area}>Werkgebied: {site.serviceArea}</li>
             </ul>
             <ul className={styles.pages}>
-              {nav
-                .filter((n) => !('discipline' in n))
-                .map((n) => (
+              {pages.map((n) => (
                   <li key={n.path}>
                     <Link href={n.path} className={styles.colLink}>
                       {n.label}

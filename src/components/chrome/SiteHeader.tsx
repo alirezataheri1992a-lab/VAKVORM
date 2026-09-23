@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useId, useState } from 'react';
-import { nav } from '@/lib/site';
+import { useEffect, useId, useRef, useState } from 'react';
+import { nav, pages } from '@/lib/site';
 import type { Service, SiteSettings } from '@/lib/types';
 import { Logo } from './Logo';
 import styles from './SiteHeader.module.css';
@@ -16,19 +16,25 @@ interface Props {
 }
 
 /**
- * Quiet, architectural header: the logo, six words, one text link. On the homepage it
- * sits over the hero in light type and scrolls away with it; on every other page it is a
- * thin linen bar that stays put. No dropdowns — the disciplines are pages, not menus.
- * The mobile menu is its own composition (a charcoal sheet with the two disciplines
- * leading), not the desktop list collapsed.
+ * Header: logo left, navigation centred, one bronze "Offerte aanvragen" button right.
+ * "Diensten" opens a submenu with the two disciplines and their services (hover, focus or
+ * click; Escape and an outside click close it). The mobile menu is a charcoal sheet with the
+ * two disciplines leading.
  */
 export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [drop, setDrop] = useState(false);
   const menuId = useId();
-  const overlay = pathname === '/';
+  const dropId = useId();
+  const dropWrap = useRef<HTMLLIElement | null>(null);
+  const closeTimer = useRef<number | undefined>(undefined);
+  const openedAt = useRef(0);
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setDrop(false);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -39,41 +45,121 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        setDrop(false);
+      }
+    }
+    function onDown(e: MouseEvent) {
+      if (dropWrap.current && !dropWrap.current.contains(e.target as Node)) setDrop(false);
     }
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onDown);
+    };
   }, []);
 
-  const isActive = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
+  const openDrop = () => {
+    window.clearTimeout(closeTimer.current);
+    if (!drop) openedAt.current = Date.now();
+    setDrop(true);
+  };
+  // a click that lands right after hover/focus opened the panel must not close it again
+  const toggleDrop = () => {
+    if (Date.now() - openedAt.current < 400) return setDrop(true);
+    setDrop((v) => !v);
+  };
+  const closeSoon = () => {
+    closeTimer.current = window.setTimeout(() => setDrop(false), 160);
+  };
+
+  const isActive = (path: string) =>
+    path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
+  const dienstenActive = ['/diensten', '/bouw', '/interieur'].some(isActive);
 
   return (
     <>
-      <header className={styles.header} data-overlay={overlay} data-open={open}>
+      <header className={styles.header} data-open={open}>
         <div className={`container ${styles.bar}`}>
           <Link href="/" className={styles.brand} aria-label="Nederdam — home">
-            <Logo variant="horizontal" tone={overlay || open ? 'light' : 'dark'} height={40} decorative />
+            <Logo variant="horizontal" tone={open ? 'light' : 'dark'} height={40} decorative />
           </Link>
 
           <nav className={styles.nav} aria-label="Hoofdmenu">
             <ul className={styles.list}>
-              {nav.map((n) => (
-                <li key={n.path}>
-                  <Link
-                    href={n.path}
-                    className={styles.link}
-                    data-active={isActive(n.path)}
-                    data-pillar={'discipline' in n ? n.discipline : undefined}
+              {nav.map((n) =>
+                n.path === '/diensten' ? (
+                  <li
+                    key={n.path}
+                    ref={dropWrap}
+                    className={styles.hasDrop}
+                    onMouseEnter={openDrop}
+                    onMouseLeave={closeSoon}
                   >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
+                    <button
+                      type="button"
+                      className={styles.link}
+                      data-active={dienstenActive}
+                      aria-expanded={drop}
+                      aria-controls={dropId}
+                      onClick={toggleDrop}
+                      onFocus={openDrop}
+                    >
+                      Diensten
+                      <span className={styles.caret} aria-hidden="true" />
+                    </button>
+
+                    <div id={dropId} className={styles.drop} data-open={drop}>
+                      <div className={styles.dropGroup} data-pillar="bouw">
+                        <Link href="/bouw" className={styles.dropHead}>
+                          <span className="label">01</span>
+                          Bouw
+                        </Link>
+                        <ul>
+                          {bouwServices.map((s) => (
+                            <li key={s.slug}>
+                              <Link href={s.path} className={styles.dropLink}>
+                                {s.navLabel}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className={styles.dropGroup} data-pillar="interieur">
+                        <Link href={interieurService?.path ?? '/interieur'} className={styles.dropHead}>
+                          <span className="label">02</span>
+                          Interieur
+                        </Link>
+                        <ul>
+                          {interieurSubServices.map((s) => (
+                            <li key={s.slug}>
+                              <Link href={s.path} className={styles.dropLink}>
+                                {s.navLabel}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <Link href="/diensten" className={`textlink ${styles.dropAll}`}>
+                        Alle diensten
+                      </Link>
+                    </div>
+                  </li>
+                ) : (
+                  <li key={n.path}>
+                    <Link href={n.path} className={styles.link} data-active={isActive(n.path)}>
+                      {n.label}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
 
-          <Link href="/start-uw-project" className={`textlink ${styles.cta}`}>
-            Start een project
+          <Link href="/start-uw-project" className={`btn btn--bronze ${styles.cta}`}>
+            Offerte aanvragen
           </Link>
 
           <button
@@ -92,16 +178,15 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
         </div>
       </header>
 
-      {/* ---- mobile menu: a charcoal sheet, disciplines first ---- */}
+      {/* ---- mobile menu: a charcoal sheet, the two disciplines first ---- */}
       <div id={menuId} className={styles.sheet} data-open={open} aria-hidden={!open}>
         <nav className={`container ${styles.sheetInner}`} aria-label="Menu">
+          <span className={`label ${styles.sheetLabel}`}>Diensten</span>
           <div className={styles.disciplines}>
             <Link href="/bouw" className={styles.discipline} data-pillar="bouw">
               <span className="label">01</span>
               <span className={styles.disciplineName}>Bouw</span>
-              <span className={styles.disciplineList}>
-                {bouwServices.map((s) => s.navLabel).join(' · ')}
-              </span>
+              <span className={styles.disciplineList}>{bouwServices.map((s) => s.navLabel).join(' · ')}</span>
             </Link>
             <Link href={interieurService?.path ?? '/interieur'} className={styles.discipline} data-pillar="interieur">
               <span className="label">02</span>
@@ -113,20 +198,23 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </div>
 
           <ul className={styles.sheetList}>
-            {nav
-              .filter((n) => !('discipline' in n))
-              .map((n) => (
-                <li key={n.path}>
-                  <Link href={n.path} className={styles.sheetLink} data-active={isActive(n.path)}>
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
+            <li>
+              <Link href="/" className={styles.sheetLink} data-active={isActive('/')}>
+                Home
+              </Link>
+            </li>
+            {pages.map((n) => (
+              <li key={n.path}>
+                <Link href={n.path} className={styles.sheetLink} data-active={isActive(n.path)}>
+                  {n.label}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           <div className={styles.sheetFoot}>
-            <Link href="/start-uw-project" className="btn">
-              Start een project
+            <Link href="/start-uw-project" className="btn btn--bronze">
+              Offerte aanvragen
             </Link>
             <div className={styles.sheetContact}>
               <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>

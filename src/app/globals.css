@@ -242,6 +242,7 @@ em {
   min-height: 52px;
   padding: 14px 28px;
   border: 1px solid currentColor;
+  border-radius: 3px;
   font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -286,6 +287,34 @@ em {
   background: var(--bronze);
   border-color: var(--bronze);
   color: var(--charcoal);
+}
+
+/* bronze: the primary action. Charcoal text — white on bronze fails contrast. */
+.btn--bronze {
+  background: var(--bronze);
+  border-color: var(--bronze);
+  color: var(--charcoal);
+}
+.btn--bronze:hover,
+.on-dark .btn--bronze:hover,
+.on-ink .btn--bronze:hover,
+.on-taupe .btn--bronze:hover {
+  background: var(--bronze-deep);
+  border-color: var(--bronze-deep);
+  color: var(--on-dark);
+}
+
+/* heading with a short bronze rule beneath — the same stroke that closes the logo */
+.rule-under::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin-top: 0.42em;
+  background: var(--bronze);
+}
+.rule-under--center::after {
+  margin-inline: auto;
 }
 
 /* ---------------------------------------------------------- utilities */

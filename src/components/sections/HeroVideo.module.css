@@ -2,7 +2,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: var(--navy); /* paints before the poster loads — never an empty flash */
+  background: var(--charcoal); /* paints before the poster loads — never an empty flash */
 }
 .layer {
   position: absolute;
