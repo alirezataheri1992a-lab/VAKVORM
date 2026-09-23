@@ -45,9 +45,9 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
 /* ============================== Services ============================== */
 
 function servicePath(pillar: Pillar, slug: string, parentSlug?: string): string {
-  if (pillar === 'bouw') return `/diensten/${slug}`;
-  if (parentSlug) return `/interieurbouw/${slug}`;
-  return '/interieurbouw';
+  if (pillar === 'bouw') return `/bouw/${slug}`;
+  if (parentSlug) return `/interieur/${slug}`;
+  return '/interieur';
 }
 
 interface RawService {
@@ -95,15 +95,15 @@ export const getAllServices = cache(async (): Promise<Service[]> => {
  * Grouped views used by navigation, footer and index sections.
  * - `main`        : the 6 top-level services (bouw + interieur hub) for the homepage index.
  * - `bouw`        : the 5 construction services.
- * - `interieurHub`: the /interieurbouw pillar page.
+ * - `interieurHub`: the /interieur discipline page.
  * - `interieurSubs`: interieurbouw specialisations.
  */
 export const getServiceGroups = cache(async () => {
   const all = await getAllServices();
   const bouw = all.filter((s) => s.pillar === 'bouw');
   const interieur = all.filter((s) => s.pillar === 'interieur');
-  const interieurHub = interieur.find((s) => s.path === '/interieurbouw') ?? interieur[0];
-  const interieurSubs = interieur.filter((s) => s.path.startsWith('/interieurbouw/'));
+  const interieurHub = interieur.find((s) => s.path === '/interieur') ?? interieur[0];
+  const interieurSubs = interieur.filter((s) => s.path.startsWith('/interieur/'));
   const main = interieurHub ? [...bouw, interieurHub] : bouw;
   return { all, main, bouw, interieurHub, interieurSubs };
 });

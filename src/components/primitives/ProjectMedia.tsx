@@ -6,11 +6,13 @@ interface Props {
   media: MediaSlot;
   priority?: boolean;
   sizes?: string;
-  /** Optional caption rendered beneath the frame as a datum line. */
+  /** Optional caption rendered beneath the frame. */
   caption?: React.ReactNode;
   className?: string;
   /** Fill the parent's height (desktop) instead of holding the aspect ratio. */
   fill?: boolean;
+  /** Tone of the reserved field while no photograph exists. */
+  tone?: 'stone' | 'linen' | 'dark' | 'taupe';
 }
 
 function ratioValue(ratio: `${number}:${number}`): number {
@@ -19,19 +21,25 @@ function ratioValue(ratio: `${number}:${number}`): number {
 }
 
 /**
- * Renders a real optimised image when a src exists, otherwise a clearly-temporary
- * development placeholder that holds the intended aspect ratio. Never fabricates
- * imagery — an empty slot reads as an empty slot.
+ * Renders a real, optimised photograph when a src exists — with the brand's warm, neutral
+ * treatment — otherwise a flat material field that holds the composition. The field is
+ * honest (its label says what belongs there) but it is designed as part of the page, not
+ * as a wireframe: a tone from the palette, one small label, nothing else.
  */
-export function ProjectMedia({ media, priority, sizes = '100vw', caption, className, fill }: Props) {
+export function ProjectMedia({
+  media,
+  priority,
+  sizes = '100vw',
+  caption,
+  className,
+  fill,
+  tone = 'stone',
+}: Props) {
   const ar = ratioValue(media.ratio);
 
   return (
     <figure className={`${styles.figure} ${fill ? styles.figureFill : ''} ${className ?? ''}`}>
-      <div
-        className={`${styles.frame} ${fill ? styles.frameFill : ''}`}
-        style={{ aspectRatio: ar }}
-      >
+      <div className={`${styles.frame} ${fill ? styles.frameFill : ''}`} style={{ aspectRatio: ar }}>
         {media.src ? (
           <Image
             src={media.src}
@@ -42,13 +50,8 @@ export function ProjectMedia({ media, priority, sizes = '100vw', caption, classN
             className={styles.img}
           />
         ) : (
-          <div className={styles.placeholder} role="img" aria-label={media.alt}>
-            <span className={styles.plusTL} aria-hidden="true" />
-            <span className={styles.plusBR} aria-hidden="true" />
-            <span className={`label ${styles.plabel}`}>
-              {media.slot ? `[${media.slot}]` : '[PROJECTFOTO]'}
-            </span>
-            <span className={`num ${styles.pratio}`}>{media.ratio}</span>
+          <div className={styles.field} data-tone={tone} role="img" aria-label={media.alt}>
+            <span className={`label ${styles.fieldLabel}`}>{media.slot ?? 'Projectfoto'}</span>
           </div>
         )}
       </div>

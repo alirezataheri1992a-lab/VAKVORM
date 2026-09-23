@@ -15,7 +15,7 @@ export interface MediaSlot {
 
 export interface Service {
   slug: string;
-  /** Full route, e.g. /diensten/badkamerrenovatie or /interieurbouw/maatwerkkasten */
+  /** Full route, e.g. /bouw/badkamerrenovatie or /interieur/maatwerkkasten */
   path: string;
   pillar: Pillar;
   /** Index shown in the datum-line system, e.g. "01". */

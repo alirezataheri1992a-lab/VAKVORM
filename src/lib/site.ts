@@ -25,12 +25,15 @@ export const site: SiteSettings = {
   baseUrl: 'https://www.nederdambouw.nl',
 };
 
+// Primary navigation: the two disciplines first, then the supporting pages. No "Home"
+// (the logo is home) and no category above the disciplines — NEDERDAM has exactly two.
 export const nav = [
-  { label: 'Home', path: '/' },
-  { label: 'Diensten', path: '/diensten' },
+  { label: 'Bouw', path: '/bouw', discipline: 'bouw' },
+  { label: 'Interieur', path: '/interieur', discipline: 'interieur' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
-  { label: 'Over Nederdam', path: '/over-nederdam' },
+  { label: 'Over ons', path: '/over-ons' },
+  { label: 'Contact', path: '/contact' },
 ] as const;
 
 // --- Homepage hero video ---------------------------------------------------

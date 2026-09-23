@@ -80,8 +80,8 @@ export function ContactForm({ email, phoneHref, phoneDisplay }: Props) {
         </p>
       )}
 
-      <button type="submit" className={styles.submit} disabled={pending}>
-        {pending ? 'Versturen…' : 'Aanvraag versturen'}
+      <button type="submit" className={`btn btn--solid ${styles.submit}`} disabled={pending}>
+        {pending ? 'Versturen…' : 'Bericht versturen'}
       </button>
     </form>
   );

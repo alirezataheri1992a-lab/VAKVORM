@@ -8,11 +8,11 @@ One professional partner for complete bouw-, renovatie- and maatwerk interieur p
 - **Next.js (App Router) + TypeScript**, React Server Components
 - **Custom CSS architecture** (CSS Modules + design tokens) — deliberately no Tailwind/
   shadcn/component-library visual system
-- Fonts (Public Sans + IBM Plex Mono) via `next/font`
+- Fonts (Instrument Sans + Instrument Serif, standing in for Söhne + Canela) via `next/font`
 - **Sanity** content studio in `/sanity` (see its README to provision)
 - SEO built in: metadata, canonical, sitemap, robots, JSON-LD, breadcrumbs
 
-Art direction and rules: **[`/docs/visual-direction.md`](docs/visual-direction.md)**.
+Brand identity and rules: **[`/docs/brand-identity.md`](docs/brand-identity.md)**.
 Strategy & architecture: **[`/DISCOVERY.md`](DISCOVERY.md)**.
 
 ## Run it locally
@@ -85,14 +85,14 @@ the contact form; Sanity for content). See comments in `.env.example`.
 
 ```
 src/
-  app/            routes (home, diensten, interieurbouw, projecten, werkwijze, over, contact, legal)
+  app/            routes (home, bouw, interieur, projecten, werkwijze, over-ons, contact, start-uw-project, legal)
   components/
-    chrome/       header, footer
+    chrome/       Logo, header, footer, scroll reveal
     primitives/   SectionMarker (datum line), ProjectMedia, Breadcrumbs, Reveal
     sections/     ServiceIndex, ContactPanel, ContactForm
-    pages/        ServicePageView (shared service template)
+    pages/        DisciplineView (Bouw / Interieur), ServicePageView (service template)
     seo/          JSON-LD (Organization, LocalBusiness, WebSite, BreadcrumbList)
   lib/            site settings, services, projects, types, fonts, inquiry action
 sanity/           content studio (config + schemas)
-docs/             visual-direction.md
+docs/             brand-identity.md, deploy.md, cms-architecture.md, project-journey.md, …
 ```

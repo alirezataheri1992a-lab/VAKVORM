@@ -41,7 +41,7 @@ export default async function InterieurSubPage({
     <ServicePageView
       service={service}
       crumbs={[
-        { name: 'Interieurbouw', path: '/interieurbouw' },
+        { name: 'Interieur', path: '/interieur' },
         { name: service.title, path: service.path },
       ]}
     />

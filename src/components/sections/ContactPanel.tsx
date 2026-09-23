@@ -5,14 +5,13 @@ import styles from './ContactPanel.module.css';
 interface Props {
   heading?: string;
   body?: string;
-  /** Show the trust-fact row (used as the homepage intake moment). */
+  /** Show the fact line (used as the homepage closing moment). */
   facts?: boolean;
 }
 
 /**
- * Confident closing invitation on the deep-navy chapter — premium but proactive.
- * Opens directly with the display heading (no eyebrow formula). Reusable across
- * pages; contact details come from the central site settings.
+ * The closing invitation: a charcoal chapter, the statement in serif on the left, the
+ * practical route on the right. One thin-border button, one phone number, one address.
  */
 export async function ContactPanel({
   heading = 'Een project bespreken?',
@@ -21,17 +20,17 @@ export async function ContactPanel({
 }: Props) {
   const site = await getSiteSettings();
   return (
-    <section className={`on-ink ${styles.panel}`}>
+    <section className={`on-dark ${styles.panel}`}>
       <div className="container">
         <div className={styles.inner}>
           <h2 className={`display ${styles.heading}`}>{heading}</h2>
           <div className={styles.right}>
             <p className={styles.body}>{body}</p>
             <div className={styles.actions}>
-              <Link href="/start-uw-project" className={styles.primary}>
-                Start uw project
+              <Link href="/start-uw-project" className="btn">
+                Start een project
               </Link>
-              <a href={`tel:${site.phoneHref}`} className={styles.secondary}>
+              <a href={`tel:${site.phoneHref}`} className={`textlink ${styles.phone}`}>
                 {site.phoneDisplay}
               </a>
             </div>
@@ -43,16 +42,18 @@ export async function ContactPanel({
 
         {facts && (
           <ul className={styles.facts}>
-            {[
-              [`${site.city} & omgeving`, 'Werkgebied'],
-              ['Bouw + interieurbouw', 'Twee disciplines, één partij'],
-              ['Eén aanspreekpunt', 'Van eerste schets tot oplevering'],
-            ].map(([t, d]) => (
-              <li key={t} className={styles.fact}>
-                <span className={styles.factTitle}>{t}</span>
-                <span className={styles.factLabel}>{d}</span>
-              </li>
-            ))}
+            <li>
+              <span className="label">Werkgebied</span>
+              <span>{site.serviceArea}</span>
+            </li>
+            <li>
+              <span className="label">Disciplines</span>
+              <span>Bouw en interieur, één partij</span>
+            </li>
+            <li>
+              <span className="label">Aanspreekpunt</span>
+              <span>Eén, van eerste schets tot oplevering</span>
+            </li>
           </ul>
         )}
       </div>

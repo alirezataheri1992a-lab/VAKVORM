@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { nav } from '@/lib/site';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
+import { Logo } from './Logo';
 import styles from './SiteFooter.module.css';
 
 export async function SiteFooter() {
@@ -8,34 +9,25 @@ export async function SiteFooter() {
   // and no hard-coded year to go stale.
   const year = new Date().getFullYear();
   const [site, groups] = await Promise.all([getSiteSettings(), getServiceGroups()]);
-  const { bouw: bouwServices, interieurHub: interieurService, interieurSubs: interieurSubServices } = groups;
+  const { bouw, interieurHub, interieurSubs } = groups;
 
   return (
-    <footer className={`on-ink ${styles.footer}`}>
+    <footer className={`on-dark ${styles.footer}`}>
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brandCol}>
-            <span className={styles.brandName}>{site.wordmark}</span>
-            <span className={`label ${styles.brandDesc}`}>{site.descriptor}</span>
-            <p className={styles.tagline}>Van bouw tot interieur.<br />Eén partij.</p>
+            <Logo tone="light" size={30} />
+            <p className={`serif ${styles.statement}`}>Bouwen aan wat blijft.</p>
           </div>
 
-          <nav className={styles.linksCol} aria-label="Diensten">
-            <span className={`label ${styles.colHead}`}>Diensten</span>
+          <nav className={styles.col} aria-label="Bouw" data-pillar="bouw">
+            <Link href="/bouw" className={`label ${styles.colHead}`}>
+              Bouw
+            </Link>
             <ul>
-              {bouwServices.map((s) => (
+              {bouw.map((s) => (
                 <li key={s.slug}>
-                  <Link href={s.path}>{s.navLabel}</Link>
-                </li>
-              ))}
-              {interieurService && (
-                <li>
-                  <Link href={interieurService.path}>{interieurService.navLabel}</Link>
-                </li>
-              )}
-              {interieurSubServices.map((s) => (
-                <li key={s.slug}>
-                  <Link href={s.path} className={styles.sub}>
+                  <Link href={s.path} className={styles.colLink}>
                     {s.navLabel}
                   </Link>
                 </li>
@@ -43,47 +35,61 @@ export async function SiteFooter() {
             </ul>
           </nav>
 
-          <nav className={styles.linksCol} aria-label="Pagina's">
-            <span className={`label ${styles.colHead}`}>{site.wordmark}</span>
+          <nav className={styles.col} aria-label="Interieur" data-pillar="interieur">
+            <Link href={interieurHub?.path ?? '/interieur'} className={`label ${styles.colHead}`}>
+              Interieur
+            </Link>
             <ul>
-              {nav
-                .filter((n) => n.path !== '/diensten')
-                .map((n) => (
-                  <li key={n.path}>
-                    <Link href={n.path}>{n.label}</Link>
-                  </li>
-                ))}
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
+              {interieurSubs.map((s) => (
+                <li key={s.slug}>
+                  <Link href={s.path} className={styles.colLink}>
+                    {s.navLabel}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
-          <div className={styles.contactCol}>
+          <div className={styles.col}>
             <span className={`label ${styles.colHead}`}>Contact</span>
             <ul>
               <li>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a href={`mailto:${site.email}`} className={styles.colLink}>
+                  {site.email}
+                </a>
               </li>
               <li>
-                <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
+                <a href={`tel:${site.phoneHref}`} className={styles.colLink}>
+                  {site.phoneDisplay}
+                </a>
               </li>
-              <li className={styles.area}>
-                Werkgebied: {site.serviceArea}
-              </li>
+              <li className={styles.area}>Werkgebied: {site.serviceArea}</li>
+            </ul>
+            <ul className={styles.pages}>
+              {nav
+                .filter((n) => !('discipline' in n))
+                .map((n) => (
+                  <li key={n.path}>
+                    <Link href={n.path} className={styles.colLink}>
+                      {n.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
-
-        <div className={styles.rule} aria-hidden="true" />
 
         <div className={styles.bottom}>
           <span className="label">
             &copy; {year} {site.name} — {site.descriptor}
           </span>
           <div className={styles.legal}>
-            <Link href="/privacy" className="label">Privacy</Link>
-            <Link href="/algemene-voorwaarden" className="label">Voorwaarden</Link>
+            <Link href="/privacy" className="label">
+              Privacy
+            </Link>
+            <Link href="/algemene-voorwaarden" className="label">
+              Voorwaarden
+            </Link>
           </div>
         </div>
       </div>

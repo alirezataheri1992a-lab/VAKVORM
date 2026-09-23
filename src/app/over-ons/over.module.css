@@ -1,0 +1,130 @@
+.open {
+  padding-block: clamp(36px, 5vh, 64px) clamp(56px, 8vh, 104px);
+}
+.openGrid {
+  margin-top: clamp(40px, 6vh, 80px);
+  align-items: end;
+}
+.title {
+  grid-column: 1 / span 8;
+  max-width: 12ch;
+}
+.lede {
+  grid-column: 9 / span 4;
+  padding-bottom: 10px;
+}
+.heroSec {
+  padding-bottom: clamp(80px, 12vh, 168px);
+}
+
+.story {
+  padding-bottom: clamp(88px, 13vh, 176px);
+}
+.storyMark {
+  grid-column: 1 / span 3;
+}
+.storyBody {
+  grid-column: 5 / span 7;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.storyLead {
+  max-width: 22ch;
+  margin-bottom: 12px;
+}
+
+.disciplines {
+  padding-bottom: clamp(88px, 13vh, 176px);
+}
+.discGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+.disc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: clamp(32px, 4vw, 56px) 0;
+}
+.disc + .disc {
+  border-left: 1px solid var(--line);
+  padding-left: clamp(32px, 4vw, 64px);
+}
+.disc:first-child {
+  padding-right: clamp(32px, 4vw, 64px);
+}
+.discMark {
+  color: var(--accent-text);
+}
+.discTitle {
+  max-width: 12ch;
+}
+.discText {
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 34ch;
+}
+
+.values {
+  padding-block: clamp(88px, 13vh, 176px);
+}
+.valuesTitle {
+  grid-column: 1 / span 4;
+}
+.valuesList {
+  grid-column: 6 / span 7;
+  border-top: 1px solid var(--stone-deep);
+}
+.value {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-areas:
+    'num title'
+    'num text';
+  row-gap: 8px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--stone-deep);
+}
+.valueNum {
+  grid-area: num;
+  color: var(--ink);
+  padding-top: 5px;
+}
+.valueTitle {
+  grid-area: title;
+}
+.valueText {
+  grid-area: text;
+  color: var(--ink-soft);
+  max-width: 48ch;
+}
+
+@media (max-width: 900px) {
+  .title,
+  .lede,
+  .storyMark,
+  .storyBody,
+  .valuesTitle,
+  .valuesList {
+    grid-column: 1 / -1;
+  }
+  .lede,
+  .storyBody,
+  .valuesList {
+    margin-top: 28px;
+  }
+  .discGrid {
+    grid-template-columns: 1fr;
+  }
+  .disc + .disc {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+  }
+  .disc:first-child {
+    padding-right: 0;
+  }
+}

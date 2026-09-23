@@ -2,21 +2,23 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .crumb {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .link {
-  color: var(--concrete);
-  transition: color 180ms var(--ease);
+  transition: color var(--dur) var(--ease);
 }
 .link:hover {
-  color: var(--oxide);
+  color: var(--ink);
 }
 .sep {
-  color: var(--concrete-line);
+  color: var(--line);
   font-size: 0.72rem;
+}
+.crumb [aria-current='page'] {
+  color: var(--ink);
 }

@@ -9,15 +9,14 @@ interface Props {
 }
 
 /**
- * The Nederdam Bouw datum marker: index number + hairline rule + label.
- * The quiet architectural signature used at section intros and indexes.
+ * Section marker: an optional index, a hairline, and a small tracked label.
  *
- *   01 ─────────────────────  BOUW & RENOVATIE
+ *   01 ────────────────────────────────────────  BOUW
  */
 export function SectionMarker({ index, label, align = 'start', tone = 'default' }: Props) {
   return (
     <div className={`${styles.marker} ${tone === 'ink' ? styles.ink : ''}`} data-align={align}>
-      {index && <span className={`num ${styles.index}`}>{index}</span>}
+      {index && <span className={`label ${styles.index}`}>{index}</span>}
       <span className={styles.rule} aria-hidden="true" />
       <span className="label">{label}</span>
     </div>

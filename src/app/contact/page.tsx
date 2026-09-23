@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
-import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { LocalBusinessJsonLd } from '@/components/seo/JsonLd';
 import styles from './contact.module.css';
@@ -20,15 +20,13 @@ export default async function ContactPage() {
   return (
     <>
       <LocalBusinessJsonLd settings={site} />
-      <section className={`container ${styles.wrap}`}>
+      <section className={`container ${styles.open}`}>
         <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
-        <div className={styles.grid}>
+        <div className={`grid12 ${styles.grid}`}>
           <div className={styles.intro}>
-            <SectionMarker label="Contact" />
             <h1 className={`display ${styles.title}`}>Uw project bespreken.</h1>
             <p className={`lede ${styles.lede}`}>
-              Vertel ons kort over uw plannen. We denken graag mee — vrijblijvend en zonder
-              verkooppraat.
+              Vertel ons kort over uw plannen. We denken graag mee — vrijblijvend en zonder verkooppraat.
             </p>
 
             <dl className={styles.details}>
@@ -50,19 +48,21 @@ export default async function ContactPage() {
               </div>
               <div>
                 <dt className="label">Werkgebied</dt>
-                <dd className={styles.detailText}>
-                  {site.city} &amp; {site.serviceArea}
-                </dd>
+                <dd>{site.serviceArea}</dd>
               </div>
             </dl>
+
+            <p className={styles.journey}>
+              Liever stap voor stap? Met de projectaanvraag stellen we een paar gerichte vragen en kunt u
+              tekeningen of foto&apos;s meesturen.{' '}
+              <Link href="/start-uw-project" className="textlink">
+                Start een project
+              </Link>
+            </p>
           </div>
 
           <div className={styles.formCol}>
-            <ContactForm
-              email={site.email}
-              phoneHref={site.phoneHref}
-              phoneDisplay={site.phoneDisplay}
-            />
+            <ContactForm email={site.email} phoneHref={site.phoneHref} phoneDisplay={site.phoneDisplay} />
           </div>
         </div>
       </section>

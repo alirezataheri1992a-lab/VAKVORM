@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { nav } from '@/lib/site';
 import type { Service, SiteSettings } from '@/lib/types';
+import { Logo } from './Logo';
 import styles from './SiteHeader.module.css';
 
 interface Props {
@@ -14,208 +15,123 @@ interface Props {
   interieurSubServices: Service[];
 }
 
+/**
+ * Quiet, architectural header: the logo, six words, one text link. On the homepage it
+ * sits over the hero in light type and scrolls away with it; on every other page it is a
+ * thin linen bar that stays put. No dropdowns — the disciplines are pages, not menus.
+ * The mobile menu is its own composition (a charcoal sheet with the two disciplines
+ * leading), not the desktop list collapsed.
+ */
 export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
-  const [dropdown, setDropdown] = useState(false);
-  const [mobile, setMobile] = useState(false);
+  const [open, setOpen] = useState(false);
   const menuId = useId();
-  const dropWrap = useRef<HTMLLIElement | null>(null);
-  const closeTimer = useRef<number | undefined>(undefined);
+  const overlay = pathname === '/';
 
-  // Close everything on navigation.
-  useEffect(() => {
-    setDropdown(false);
-    setMobile(false);
-  }, [pathname]);
+  useEffect(() => setOpen(false), [pathname]);
 
-  // Lock scroll while the full-screen mobile menu is open.
   useEffect(() => {
-    document.body.style.overflow = mobile ? 'hidden' : '';
+    document.body.style.overflow = open ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [mobile]);
+  }, [open]);
 
-  // Escape closes; outside click closes the dropdown.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        setDropdown(false);
-        setMobile(false);
-      }
-    }
-    function onClick(e: MouseEvent) {
-      if (dropWrap.current && !dropWrap.current.contains(e.target as Node)) {
-        setDropdown(false);
-      }
+      if (e.key === 'Escape') setOpen(false);
     }
     document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
-    };
+    return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  const openDrop = () => {
-    window.clearTimeout(closeTimer.current);
-    setDropdown(true);
-  };
-  const scheduleClose = () => {
-    closeTimer.current = window.setTimeout(() => setDropdown(false), 140);
-  };
-
-  const isActive = (path: string) =>
-    path === '/' ? pathname === '/' : pathname.startsWith(path);
+  const isActive = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
   return (
     <>
-      <header className={styles.header}>
-      <div className={`container ${styles.bar}`}>
-        <Link href="/" className={styles.brand} aria-label={`${site.name} — ${site.descriptor}`}>
-          <span className={styles.brandName}>{site.wordmark}</span>
-          <span className={`label ${styles.brandDesc}`}>{site.descriptor}</span>
-        </Link>
+      <header className={styles.header} data-overlay={overlay} data-open={open}>
+        <div className={`container ${styles.bar}`}>
+          <Link href="/" className={styles.brand} aria-label="Nederdam — home">
+            <Logo tone={overlay || open ? 'light' : 'dark'} size={26} />
+          </Link>
 
-        {/* -------- desktop nav -------- */}
-        <nav className={styles.desktopNav} aria-label="Hoofdmenu">
-          <ul className={styles.navList}>
-            <li>
-              <Link href="/" className={styles.navLink} data-active={isActive('/')}>
-                Home
-              </Link>
-            </li>
+          <nav className={styles.nav} aria-label="Hoofdmenu">
+            <ul className={styles.list}>
+              {nav.map((n) => (
+                <li key={n.path}>
+                  <Link
+                    href={n.path}
+                    className={styles.link}
+                    data-active={isActive(n.path)}
+                    data-pillar={'discipline' in n ? n.discipline : undefined}
+                  >
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <li
-              ref={dropWrap}
-              className={styles.hasDrop}
-              onMouseEnter={openDrop}
-              onMouseLeave={scheduleClose}
-            >
-              <Link
-                href="/diensten"
-                className={styles.navLink}
-                data-active={isActive('/diensten') || isActive('/interieurbouw')}
-                aria-expanded={dropdown}
-                aria-haspopup="true"
-                onClick={() => setDropdown(false)}
-                onFocus={openDrop}
-              >
-                Diensten
-                <span className={styles.caret} aria-hidden="true" />
-              </Link>
+          <Link href="/start-uw-project" className={`textlink ${styles.cta}`}>
+            Start een project
+          </Link>
 
-              <div
-                className={styles.dropdown}
-                data-open={dropdown}
-                onMouseEnter={openDrop}
-                onMouseLeave={scheduleClose}
-              >
-                <div className={styles.dropInner}>
-                  <div className={styles.dropCol}>
-                    <span className={`label ${styles.dropHead}`}>Bouw &amp; Renovatie</span>
-                    <ul>
-                      {bouwServices.map((s) => (
-                        <li key={s.slug}>
-                          <Link href={s.path} className={styles.dropLink}>
-                            <span className={`num ${styles.dropIndex}`}>{s.index}</span>
-                            {s.navLabel}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={styles.dropCol}>
-                    <span className={`label ${styles.dropHead}`}>Interieurbouw</span>
-                    <ul>
-                      {interieurService && (
-                        <li>
-                          <Link href={interieurService.path} className={styles.dropLink}>
-                            <span className={`num ${styles.dropIndex}`}>{interieurService.index}</span>
-                            {interieurService.navLabel}
-                          </Link>
-                        </li>
-                      )}
-                      {interieurSubServices.map((s) => (
-                        <li key={s.slug}>
-                          <Link href={s.path} className={`${styles.dropLink} ${styles.dropSub}`}>
-                            {s.navLabel}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
+          <button
+            className={styles.toggle}
+            aria-expanded={open}
+            aria-controls={menuId}
+            aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={styles.toggleWord}>{open ? 'Sluiten' : 'Menu'}</span>
+            <span className={styles.toggleLines} aria-hidden="true">
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
+      </header>
 
+      {/* ---- mobile menu: a charcoal sheet, disciplines first ---- */}
+      <div id={menuId} className={styles.sheet} data-open={open} aria-hidden={!open}>
+        <nav className={`container ${styles.sheetInner}`} aria-label="Menu">
+          <div className={styles.disciplines}>
+            <Link href="/bouw" className={styles.discipline} data-pillar="bouw">
+              <span className="label">01</span>
+              <span className={styles.disciplineName}>Bouw</span>
+              <span className={styles.disciplineList}>
+                {bouwServices.map((s) => s.navLabel).join(' · ')}
+              </span>
+            </Link>
+            <Link href={interieurService?.path ?? '/interieur'} className={styles.discipline} data-pillar="interieur">
+              <span className="label">02</span>
+              <span className={styles.disciplineName}>Interieur</span>
+              <span className={styles.disciplineList}>
+                {interieurSubServices.map((s) => s.navLabel).join(' · ')}
+              </span>
+            </Link>
+          </div>
+
+          <ul className={styles.sheetList}>
             {nav
-              .filter((n) => n.path !== '/' && n.path !== '/diensten')
+              .filter((n) => !('discipline' in n))
               .map((n) => (
                 <li key={n.path}>
-                  <Link href={n.path} className={styles.navLink} data-active={isActive(n.path)}>
+                  <Link href={n.path} className={styles.sheetLink} data-active={isActive(n.path)}>
                     {n.label}
                   </Link>
                 </li>
               ))}
           </ul>
-        </nav>
 
-        <Link href="/start-uw-project" className={styles.cta}>
-          Start uw project
-        </Link>
-
-        {/* -------- mobile toggle -------- */}
-        <button
-          className={styles.burger}
-          aria-expanded={mobile}
-          aria-controls={menuId}
-          aria-label={mobile ? 'Menu sluiten' : 'Menu openen'}
-          onClick={() => setMobile((v) => !v)}
-        >
-          <span data-open={mobile} />
-          <span data-open={mobile} />
-        </button>
-      </div>
-      </header>
-
-      {/* -------- full-screen mobile menu (sibling of header: fixed positioning
-          must not be trapped by the header's backdrop-filter containing block) -------- */}
-      <div id={menuId} className={styles.mobile} data-open={mobile} aria-hidden={!mobile}>
-        <nav className={`container ${styles.mobileInner}`} aria-label="Mobiel menu">
-          <ul className={styles.mobileList}>
-            {nav.map((n, i) => (
-              <li key={n.path}>
-                <Link href={n.path} className={styles.mobileLink}>
-                  <span className={`num ${styles.mobileIndex}`}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className={styles.mobileServices}>
-            <span className={`label ${styles.dropHead}`}>Diensten</span>
-            <ul>
-              {[...bouwServices, ...(interieurService ? [interieurService] : []), ...interieurSubServices].map((s) => (
-                <li key={s.path}>
-                  <Link href={s.path} className={styles.mobileServiceLink}>
-                    {s.navLabel}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.mobileFoot}>
-            <Link href="/start-uw-project" className={styles.cta}>
-              Start uw project
+          <div className={styles.sheetFoot}>
+            <Link href="/start-uw-project" className="btn">
+              Start een project
             </Link>
-            <a href={`tel:${site.phoneHref}`} className={styles.mobilePhone}>
-              {site.phoneDisplay}
-            </a>
+            <div className={styles.sheetContact}>
+              <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </div>
           </div>
         </nav>
       </div>

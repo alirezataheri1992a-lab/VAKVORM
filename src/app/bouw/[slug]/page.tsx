@@ -35,7 +35,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <ServicePageView
       service={service}
       crumbs={[
-        { name: 'Diensten', path: '/diensten' },
+        { name: 'Bouw', path: '/bouw' },
         { name: service.title, path: service.path },
       ]}
     />

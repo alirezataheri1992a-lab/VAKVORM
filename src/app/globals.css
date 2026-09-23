@@ -1,51 +1,80 @@
 /* ============================================================
-   Nederdam Bouw — global styles & design tokens
-   Custom CSS architecture. No component-library visual system.
-   See /docs/visual-direction.md for the rules these tokens encode.
+   NEDERDAM — global styles & design tokens
+   One brand, two disciplines. Charcoal · warm off-white · stone,
+   with bronze (Bouw) and olive (Interieur) as the only accents.
+   Custom CSS architecture — no component-library visual system.
+   Rules: /docs/brand-identity.md and /docs/visual-direction.md
    ============================================================ */
 
 :root {
-  /* --- Colour: ivory canvas · deep architectural navy · burnt-sienna accent · stone ---
-     Distribution target ≈ 55% light / 22% navy / 13% accent+material / rest photography. */
-  --ivory: #f3efe4; /* main canvas — fresher warm white (was dusty beige) */
-  --bone: #f3efe4; /* alias: primary background */
-  --stone: #e5ddcc; /* warm stone / taupe — supporting chapters */
-  --sand: #e5ddcc; /* alias for stone surfaces */
-  --material: #ddcdb2; /* warm mushroom / oatmeal — interieurbouw chapter (plaster, oak, stone) */
-  --material-line: #c3b493; /* hairline on the material surface */
-  --paper: #f8f4ea; /* raised surface (media wells, inputs, cards) */
-  --ink: #1a1915; /* warm near-black — primary text on light */
-  --ink-soft: #38342b; /* warm softened text */
-  --concrete: #6d675a; /* secondary text */
-  --concrete-line: #cec4ae; /* warm hairlines on light */
-  --navy: #16273c; /* deep architectural navy — major chapters, gravitas, trust */
-  --deep: #16273c; /* alias: dark feature background */
-  --navy-soft: #1c3049; /* raised navy surface (cards on navy) */
-  --concrete-line-dark: #2d3f55; /* hairlines on navy */
-  --oxide: #b1552d; /* burnt sienna / cognac — action & material warmth */
-  --oxide-warm: #c66f42; /* lighter cognac for hovers / on-navy accents */
-  --on-ink: #eee7d7; /* warm cream on navy */
-  --on-ink-soft: #93a1b1; /* muted blue-grey on navy */
+  /* --- Brand palette (from the identity board) --- */
+  --charcoal: #0e0e0e;
+  --bronze: #b08b6f;
+  --stone: #c9c2b8;
+  --olive: #4a5a46;
+  --taupe: #3a3a36;
 
-  /* --- Typography ---
-     One neo-grotesk for the readable layer; a mono for the technical spec layer. */
-  --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-text: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-technical: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
+  /* --- Derived surfaces: warm, never pure white, never cold grey --- */
+  --linen: #efeae3; /* primary light canvas */
+  --linen-deep: #e6e0d7; /* quiet supporting band */
+  --paper: #f4f0ea; /* raised light surface: inputs, wells */
+  --stone-deep: #b9b1a5; /* hairlines / marks on stone */
+  --charcoal-soft: #1a1a18; /* raised surface on charcoal */
+
+  /* --- Text --- */
+  --ink: #141412; /* on light */
+  --ink-soft: #3a3a36; /* on light, secondary */
+  --muted: #66605a; /* on light, tertiary — 4.9:1 on linen */
+  --on-dark: #e9e3da; /* on charcoal / taupe */
+  --on-dark-soft: #a39c93; /* on charcoal, secondary */
+
+  /* --- Accents in a usable text weight (the raw tones are for marks and fields) --- */
+  --bronze-deep: #7e5f45; /* bronze as text on light — 4.7:1 on linen */
+  --olive-on-dark: #8c9c84; /* olive as text on charcoal */
+
+  /* --- Hairlines --- */
+  --line: #d3ccc1; /* on linen */
+  --line-strong: #141412;
+  --line-dark: #272623; /* on charcoal */
+
+  /* --- Typography --- */
+  --font-sans: var(--font-sans-src), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-src), 'Iowan Old Style', Georgia, serif;
+  --font-display: var(--font-sans);
+  --font-text: var(--font-sans);
 
   /* --- Space & layout --- */
-  --maxw: 1460px;
-  --gutter: clamp(20px, 5vw, 96px);
-  --col-gap: clamp(16px, 1.6vw, 28px);
-  --radius: 2px; /* structural containers stay near-square */
-  --radius-cta: 6px; /* buttons — slightly softer for warmth */
-  --radius-media: 5px; /* image frames — subtle softening */
+  --maxw: 1520px;
+  --gutter: clamp(20px, 5vw, 104px);
+  --col-gap: clamp(16px, 1.8vw, 32px);
+  --radius: 0px;
 
-  /* --- Motion --- */
+  /* --- Motion: slow and controlled --- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur: 560ms;
+  --dur: 640ms;
 
-  /* --- Datum system --- */
+  /* ------------------------------------------------------------
+     Legacy aliases. Stylesheets written for the previous system
+     keep rendering, in the new palette, until they are rewritten.
+     ------------------------------------------------------------ */
+  --ivory: var(--linen);
+  --bone: var(--linen);
+  --sand: var(--linen-deep);
+  --material: var(--stone);
+  --material-line: var(--stone-deep);
+  --concrete: var(--muted);
+  --concrete-line: var(--line);
+  --navy: var(--charcoal);
+  --deep: var(--charcoal);
+  --navy-soft: var(--charcoal-soft);
+  --concrete-line-dark: var(--line-dark);
+  --oxide: var(--bronze-deep);
+  --oxide-warm: var(--bronze);
+  --on-ink: var(--on-dark);
+  --on-ink-soft: var(--on-dark-soft);
+  --font-technical: var(--font-sans);
+  --radius-cta: 0px;
+  --radius-media: 0px;
   --rule: 1px;
 }
 
@@ -66,10 +95,10 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background: var(--bone);
+  background: var(--linen);
   color: var(--ink);
   font-family: var(--font-text);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.6;
   font-feature-settings: 'kern' 1;
   min-height: 100dvh;
@@ -77,7 +106,8 @@ body {
 }
 img,
 picture,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
 }
@@ -101,75 +131,161 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -0.018em;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
   text-wrap: balance;
+}
+em {
+  font-style: italic;
 }
 
 /* ---------------------------------------------------------- type roles
-   A concise, deliberate scale (documented in /docs/visual-direction.md).
-   Composed, not oversized: display tops out lower than the previous system. */
+   Two voices. The serif speaks rarely and only in statements; the sans does
+   the work. Sizes are large but controlled; the scale is short on purpose. */
+
+/* editorial statements: hero, chapter openings, the closing invitation */
 .display {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 1.0;
-  letter-spacing: -0.022em;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.2vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
   text-wrap: balance;
 }
+/* section-level serif heading */
 .heading {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.85rem, 3.1vw, 2.9rem);
   line-height: 1.08;
-  letter-spacing: -0.018em;
+  letter-spacing: -0.008em;
+}
+/* functional heading: index rows, cards, steps */
+.title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+  line-height: 1.18;
+  letter-spacing: -0.012em;
 }
 .lede {
-  font-size: clamp(1.12rem, 1.5vw, 1.35rem);
-  line-height: 1.5;
+  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
+  line-height: 1.55;
   font-weight: 400;
   color: var(--ink-soft);
-  max-width: 42ch;
+  max-width: 44ch;
   text-wrap: pretty;
 }
 .body {
-  max-width: 64ch;
+  max-width: 60ch;
   color: var(--ink-soft);
-  line-height: 1.62;
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
-/* Editorial label (section eyebrows, footer/column heads, breadcrumbs, captions).
-   Public Sans — brand typography, not an interface label. */
-.label {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 0.72rem;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--concrete);
-}
-
-/* Technical spec layer — IBM Plex Mono, tabular. Reserved for genuine metadata /
-   index / specification / classification use only (numbers, years, locations,
-   dimensions, process indexes, capability classifications). */
+/* small uppercase metadata with generous letter spacing — the quiet labelling
+   layer everywhere: eyebrows, captions, column heads, breadcrumbs, index numbers */
+.label,
 .spec {
-  font-family: var(--font-technical);
+  font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--concrete);
-  font-feature-settings: 'tnum' 1;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 .num {
-  font-family: var(--font-technical);
-  font-feature-settings: 'tnum' 1;
+  font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------- UI: restrained
+   Text links with a subtle arrow, thin-border buttons, one solid button. No pills,
+   no gradients, no shadows. Border radius is 0 on everything structural. */
+.textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: inherit;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), gap var(--dur) var(--ease);
+}
+.textlink::after {
+  content: '→';
+  font-weight: 400;
+  transition: transform var(--dur) var(--ease);
+}
+.textlink:hover {
+  border-bottom-color: currentColor;
+}
+.textlink:hover::after {
+  transform: translateX(4px);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 14px 28px;
+  border: 1px solid currentColor;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: inherit;
+  background: transparent;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+.btn:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-dark);
+}
+.on-ink .btn:hover,
+.on-dark .btn:hover,
+.on-taupe .btn:hover {
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--charcoal);
+}
+.btn--solid {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--on-dark);
+}
+.btn--solid:hover {
+  background: var(--taupe);
+  border-color: var(--taupe);
+  color: var(--on-dark);
+}
+.on-ink .btn--solid,
+.on-dark .btn--solid,
+.on-taupe .btn--solid {
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--charcoal);
+}
+.on-ink .btn--solid:hover,
+.on-dark .btn--solid:hover,
+.on-taupe .btn--solid:hover {
+  background: var(--bronze);
+  border-color: var(--bronze);
+  color: var(--charcoal);
 }
 
 /* ---------------------------------------------------------- utilities */
@@ -181,28 +297,85 @@ h4 {
 }
 .grid12 {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
 .section {
-  padding-block: clamp(64px, 11vh, 160px);
+  padding-block: clamp(72px, 12vh, 176px);
 }
 .section--tight {
-  padding-block: clamp(48px, 7vh, 96px);
+  padding-block: clamp(48px, 7vh, 104px);
 }
-.on-ink {
-  background: var(--deep);
-  color: var(--on-ink);
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
 }
-.on-ink .label {
-  color: var(--on-ink-soft);
+
+/* surfaces */
+.on-ink,
+.on-dark {
+  background: var(--charcoal);
+  color: var(--on-dark);
+}
+.on-taupe {
+  background: var(--taupe);
+  color: var(--on-dark);
+}
+.on-stone {
+  background: var(--stone);
+  color: var(--ink);
 }
 .on-sand {
-  background: var(--sand);
+  background: var(--linen-deep);
 }
 .on-material {
-  background: var(--material);
+  background: var(--stone);
 }
+.on-ink .label,
+.on-dark .label,
+.on-taupe .label,
+.on-ink .spec,
+.on-dark .spec,
+.on-taupe .spec {
+  color: var(--on-dark-soft);
+}
+.on-ink .lede,
+.on-dark .lede,
+.on-taupe .lede,
+.on-ink .body,
+.on-dark .body,
+.on-taupe .body {
+  color: var(--on-dark-soft);
+}
+.on-stone .label,
+.on-stone .spec {
+  color: var(--ink-soft);
+}
+.on-stone .lede,
+.on-stone .body {
+  color: var(--ink-soft);
+}
+.on-stone .rule {
+  border-color: var(--stone-deep);
+}
+.on-ink .rule,
+.on-dark .rule,
+.on-taupe .rule {
+  border-color: var(--line-dark);
+}
+
+/* discipline accents — subtle, applied to marks and small text only */
+[data-pillar='bouw'] {
+  --accent: var(--bronze);
+  --accent-text: var(--bronze-deep);
+  --accent-on-dark: var(--bronze);
+}
+[data-pillar='interieur'] {
+  --accent: var(--olive);
+  --accent-text: var(--olive);
+  --accent-on-dark: var(--olive-on-dark);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -214,16 +387,16 @@ h4 {
   border: 0;
 }
 
-/* focus — always visible, architectural */
+/* focus — always visible, never a glow */
 :focus-visible {
-  outline: 2px solid var(--oxide);
-  outline-offset: 3px;
+  outline: 1px solid var(--bronze);
+  outline-offset: 4px;
 }
 
-/* ---------------------------------------------------------- reveal (subtle, opt-in) */
+/* ---------------------------------------------------------- reveal (opt-in) */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
   will-change: opacity, transform;
 }
@@ -232,24 +405,22 @@ h4 {
   transform: none;
 }
 
-/* Global scroll reveal — applied by <ScrollReveal> with deliberate variety: light
-   content rises, full-bleed photography reveals by mask, navy chapters stay still.
-   The hidden state is only added by JS (progressive enhancement), so content is
-   always visible without JS or under reduced motion. */
+/* Scroll reveal, applied by <ScrollReveal>. Light content settles into place; full-bleed
+   photography reveals with a slow crop; dark chapters stay still. Hidden state is added
+   by JS only, so content is always visible without JS or under reduced motion. */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  transform: translateY(14px);
+  transition: opacity 820ms var(--ease), transform 820ms var(--ease);
   will-change: opacity, transform;
 }
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: none;
 }
-/* photography: a slow crop/mask reveal — an image treatment, not a UI fade */
 .reveal-mask-on-scroll {
-  clip-path: inset(0 0 18% 0);
-  transition: clip-path 1100ms var(--ease);
+  clip-path: inset(0 0 16% 0);
+  transition: clip-path 1300ms var(--ease);
   will-change: clip-path;
 }
 .reveal-mask-on-scroll.is-revealed {
@@ -280,11 +451,14 @@ h4 {
 /* ---------------------------------------------------------- responsive grid helpers */
 @media (max-width: 900px) {
   .grid12 {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 @media (max-width: 620px) {
   .grid12 {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .btn {
+    width: 100%;
   }
 }

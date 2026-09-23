@@ -7,7 +7,7 @@ import type { Service } from './types';
 export const services: Service[] = [
   {
     slug: 'renovatie-verbouwing',
-    path: '/diensten/renovatie-verbouwing',
+    path: '/bouw/renovatie-verbouwing',
     pillar: 'bouw',
     index: '01',
     title: 'Renovatie & verbouwing',
@@ -28,7 +28,7 @@ export const services: Service[] = [
   },
   {
     slug: 'badkamerrenovatie',
-    path: '/diensten/badkamerrenovatie',
+    path: '/bouw/badkamerrenovatie',
     pillar: 'bouw',
     index: '02',
     title: 'Badkamerrenovatie',
@@ -49,7 +49,7 @@ export const services: Service[] = [
   },
   {
     slug: 'aanbouw-uitbouw',
-    path: '/diensten/aanbouw-uitbouw',
+    path: '/bouw/aanbouw-uitbouw',
     pillar: 'bouw',
     index: '03',
     title: 'Aanbouw & uitbouw',
@@ -70,7 +70,7 @@ export const services: Service[] = [
   },
   {
     slug: 'opbouw',
-    path: '/diensten/opbouw',
+    path: '/bouw/opbouw',
     pillar: 'bouw',
     index: '04',
     title: 'Opbouw',
@@ -91,7 +91,7 @@ export const services: Service[] = [
   },
   {
     slug: 'stucwerk',
-    path: '/diensten/stucwerk',
+    path: '/bouw/stucwerk',
     pillar: 'bouw',
     index: '05',
     title: 'Stucwerk',
@@ -112,7 +112,7 @@ export const services: Service[] = [
   },
   {
     slug: 'maatwerk-interieurbouw',
-    path: '/interieurbouw',
+    path: '/interieur',
     pillar: 'interieur',
     index: '06',
     title: 'Maatwerk interieurbouw',
@@ -137,7 +137,7 @@ export const services: Service[] = [
 export const interieurSubServices: Service[] = [
   {
     slug: 'maatwerkkasten',
-    path: '/interieurbouw/maatwerkkasten',
+    path: '/interieur/maatwerkkasten',
     pillar: 'interieur',
     index: '01',
     title: 'Maatwerkkasten',
@@ -158,7 +158,7 @@ export const interieurSubServices: Service[] = [
   },
   {
     slug: 'interieur-op-maat',
-    path: '/interieurbouw/interieur-op-maat',
+    path: '/interieur/interieur-op-maat',
     pillar: 'interieur',
     index: '02',
     title: 'Interieur op maat',
@@ -179,7 +179,7 @@ export const interieurSubServices: Service[] = [
   },
   {
     slug: 'wandmeubels',
-    path: '/interieurbouw/wandmeubels',
+    path: '/interieur/wandmeubels',
     pillar: 'interieur',
     index: '03',
     title: 'Wandmeubels',

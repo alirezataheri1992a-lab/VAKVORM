@@ -1,21 +1,27 @@
-import { Public_Sans, IBM_Plex_Mono } from 'next/font/google';
+import { Instrument_Sans, Instrument_Serif } from 'next/font/google';
 
-// Primary neo-grotesk — the human-readable layer (display, headings, body, navigation).
-// Public Sans: a disciplined Franklin/Helvetica-lineage workhorse gothic — mature,
-// neutral-but-not-anonymous, excellent large and small. (SIL OFL.)
-export const sans = Public_Sans({
+// The brand board specifies Söhne (functional layer) and Canela (editorial layer). Both
+// are commercially licensed and not bundled here. These are the closest open pairing —
+// drawn by the same designer, so they are made to sit together — and swapping in the
+// licensed faces later is a change to this file only: the rest of the system reads
+// `--font-sans` and `--font-serif`, which globals.css builds from the `*-src` variables
+// these fonts expose (the names differ on purpose — a token that references itself
+// is invalid CSS and silently drops the whole font stack).
+
+// Functional layer — navigation, body, labels, buttons, metadata, functional headings.
+export const sans = Instrument_Sans({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
+  weight: ['400', '500', '600'],
+  variable: '--font-sans-src',
 });
 
-// Technical spec layer — metadata, section labels, capability strips, index numbers.
-// IBM Plex Mono gives an architectural drawing / specification character with tabular
-// figures. Used sparingly for information, never for reading copy. (SIL OFL.)
-export const mono = IBM_Plex_Mono({
+// Editorial layer — major statements, selected heroes, section introductions. One
+// weight only: the serif is used sparingly and never bold.
+export const serif = Instrument_Serif({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '500'],
-  variable: '--font-mono',
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif-src',
 });

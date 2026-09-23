@@ -7,12 +7,12 @@ export const revalidate = 60;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     '/',
-    '/diensten',
+    '/bouw',
     '/projecten',
     '/werkwijze',
-    '/over-nederdam',
+    '/over-ons',
     '/contact',
-    '/interieurbouw',
+    '/interieur',
   ];
 
   const [groups, projects] = await Promise.all([getServiceGroups(), getPublishedProjects()]);

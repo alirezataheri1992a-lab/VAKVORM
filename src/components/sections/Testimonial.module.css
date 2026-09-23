@@ -1,89 +1,61 @@
 .section {
-  padding-block: clamp(64px, 11vh, 150px);
+  padding-block: clamp(80px, 12vh, 168px);
 }
 .inner {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(36px, 5vw, 80px);
-  align-items: center;
+  grid-template-columns: 7fr 1fr 4fr;
+  align-items: end;
+  gap: var(--col-gap);
 }
 .text {
-  max-width: 46ch;
-}
-.quote {
-  margin-top: 0;
-}
-.quoteText {
-  position: relative;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.5rem, 2.7vw, 2.4rem);
-  line-height: 1.28;
-  letter-spacing: -0.018em;
-  color: var(--on-ink);
-  text-wrap: pretty;
-}
-/* a quiet opening quote mark in warm cognac — restraint, not decoration */
-.quoteText::before {
-  content: '“';
-  position: absolute;
-  left: -0.06em;
-  top: -0.5em;
-  transform: translateX(-100%);
-  font-size: 2.4em;
-  line-height: 1;
-  color: var(--oxide-warm);
-  opacity: 0.7;
-}
-.placeholderTag {
-  display: inline-block;
-  margin-top: clamp(26px, 4vh, 40px);
-  padding: 8px 12px;
-  border: 1px dashed var(--concrete-line-dark);
-  border-radius: var(--radius);
-  color: var(--on-ink-soft);
-}
-
-.mediaWrap {
-  position: relative;
-}
-.card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 14px;
-  padding: 16px 22px;
-  background: var(--bone);
-  border-radius: var(--radius);
+  gap: 40px;
 }
-.cardName {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
-.cardRole {
-  font-size: 0.9rem;
-  color: var(--concrete);
+.quoteText {
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  line-height: 1.16;
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+  max-width: 22ch;
+}
+.quoteText::before {
+  content: '“';
+  margin-left: -0.45em;
+}
+.quoteText::after {
+  content: '”';
+}
+.by {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--stone-deep);
+  max-width: 320px;
+}
+.name {
+  font-weight: 500;
+}
+.placeholderTag {
+  color: var(--bronze-deep);
+}
+.media {
+  grid-column: 3;
 }
 
-@media (min-width: 941px) {
+@media (max-width: 900px) {
   .inner {
-    grid-template-columns: 1fr 40%;
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
-  .mediaWrap {
-    padding-bottom: 40px;
-  }
-  /* name card overlaps the lower-left of the project image, bleeding onto the navy */
-  .card {
-    position: absolute;
-    left: clamp(-56px, -3.5vw, -28px);
-    bottom: 0;
-    margin: 0;
-    max-width: 82%;
-    border: 1px solid var(--concrete-line);
-    box-shadow: 0 22px 46px -30px rgba(0, 0, 0, 0.55);
-    z-index: 2;
+  .media {
+    grid-column: auto;
+    max-width: 380px;
   }
 }

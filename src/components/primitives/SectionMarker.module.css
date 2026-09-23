@@ -8,20 +8,20 @@
   flex-direction: row-reverse;
 }
 .index {
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--concrete);
-  font-weight: 500;
-  flex: none;
+  color: var(--ink);
 }
 .rule {
-  flex: 1;
-  height: var(--rule);
-  background: var(--concrete-line);
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--line);
+  min-width: 32px;
 }
 .ink .rule {
-  background: var(--concrete-line-dark);
+  background: var(--line-dark);
 }
 .ink .index {
-  color: var(--on-ink-soft);
+  color: var(--on-dark);
+}
+.ink :global(.label) {
+  color: var(--on-dark-soft);
 }

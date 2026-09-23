@@ -1,0 +1,43 @@
+/* Lockup: symbol, then the wordmark on one line; the discipline sits under it as small,
+   tracked capitals in the discipline's own tone. Generous clear space is the caller's
+   job — the lockup itself is tight and never cramped. */
+.logo {
+  --logo-size: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--logo-size) * 0.5);
+  color: var(--ink);
+  line-height: 1;
+  white-space: nowrap;
+}
+.light {
+  color: var(--on-dark);
+}
+.symbol {
+  width: var(--logo-size);
+  height: var(--logo-size);
+  flex: none;
+}
+.words {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--logo-size) * 0.16);
+}
+.word {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: calc(var(--logo-size) * 0.62);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sub {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: calc(var(--logo-size) * 0.32);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--accent-text, var(--muted));
+}
+.light .sub {
+  color: var(--accent-on-dark, var(--on-dark-soft));
+}
