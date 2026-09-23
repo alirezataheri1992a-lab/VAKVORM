@@ -1,29 +1,40 @@
-/* ================================================================ hero */
+/* ================================================================ hero
+   Full-width moving footage; the text sits on a flat veil, anchored bottom-left. */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: var(--col-gap);
-  align-items: stretch;
-  padding-top: clamp(32px, 5vw, 64px);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: calc(100svh - 80px);
+  max-height: 920px;
+  overflow: hidden;
+  background: var(--charcoal);
+  color: var(--on-dark);
 }
-.heroText {
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 14, 14, 0.5);
+}
+.heroInner {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  gap: 24px;
-  padding-block: clamp(16px, 3vw, 48px);
-  padding-right: clamp(0px, 3vw, 48px);
+  gap: 22px;
+  padding-top: 120px;
+  padding-bottom: clamp(48px, 7vw, 88px);
 }
 .heroKicker {
-  color: var(--bronze-text);
+  color: var(--stone);
 }
 .heroTitle {
   max-width: 17ch;
-  font-size: clamp(2.3rem, 4.2vw, 3.9rem);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  color: var(--on-dark);
 }
 .heroLede {
-  max-width: 44ch;
+  max-width: 50ch;
+  color: var(--on-dark);
 }
 .heroActions {
   display: flex;
@@ -31,6 +42,12 @@
   align-items: center;
   gap: 16px 32px;
   margin-top: 8px;
+}
+/* bronze on footage: hover goes off-white, not charcoal */
+.heroActions :global(.btn--bronze:hover) {
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--charcoal);
 }
 .heroPhone {
   display: flex;
@@ -40,7 +57,7 @@
 }
 .heroPhoneLabel {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--stone);
 }
 .heroPhoneNumber {
   font-size: 1.25rem;
@@ -50,11 +67,6 @@
 .heroPhone:hover .heroPhoneNumber {
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-.heroMedia {
-  position: relative;
-  min-height: clamp(420px, 44vw, 640px);
-  background: var(--charcoal);
 }
 
 /* ================================================================ trust */
@@ -278,23 +290,13 @@
   }
 }
 @media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-  .heroText {
-    padding-right: 0;
-  }
-  .heroMedia {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-  }
   .project {
     grid-template-columns: 1fr;
   }
 }
 @media (max-width: 620px) {
   .hero {
-    padding-top: 24px;
+    min-height: calc(100svh - 68px);
   }
   .heroActions {
     flex-direction: column;

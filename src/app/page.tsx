@@ -41,9 +41,12 @@ export default async function HomePage() {
       <WebSiteJsonLd />
 
       {/* ---------------------------------------------------------------- hero
-          What we are, where, and how to reach us — then the work itself. */}
-      <section className={`container ${styles.hero}`}>
-        <div className={styles.heroText}>
+          The moving footage full width, with what we are, where, and how to reach
+          us set on it. */}
+      <section className={styles.hero}>
+        <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
+        <div className={styles.heroScrim} aria-hidden="true" />
+        <div className={`container ${styles.heroInner}`}>
           <p className={`label ${styles.heroKicker}`}>Aannemer · Bouw &amp; interieur · {site.serviceArea}</p>
           <h1 className={`display ${styles.heroTitle}`}>
             Verbouw, renovatie en maatwerk interieur in {site.city}.
@@ -61,9 +64,6 @@ export default async function HomePage() {
               <span className={styles.heroPhoneNumber}>{site.phoneDisplay}</span>
             </a>
           </div>
-        </div>
-        <div className={styles.heroMedia}>
-          <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition="55% 30%" />
         </div>
       </section>
 
