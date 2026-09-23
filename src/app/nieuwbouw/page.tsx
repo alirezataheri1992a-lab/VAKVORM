@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getSiteSettings } from '@/lib/content';
 import { journey, tradesYourself, nieuwbouwFaq } from '@/lib/nieuwbouw';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { NieuwbouwPlan } from '@/components/nieuwbouw/NieuwbouwPlan';
@@ -18,8 +17,9 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default async function NieuwbouwPage() {
-  const site = await getSiteSettings();
+const BUILDER = '/nieuwbouw/traject-samenstellen';
+
+export default function NieuwbouwPage() {
   const layers = journey.map((s) => ({ layer: s.layer, discipline: s.discipline }));
 
   // FAQ as structured data — the same questions and answers as on the page
@@ -51,12 +51,15 @@ export default async function NieuwbouwPage() {
               één onderdeel, een paar stappen of het hele traject.
             </p>
             <div className={styles.actions}>
-              <Link href="/start-uw-project?type=nieuwbouw" className="btn btn--primary">
-                Start uw nieuwbouwproject
+              <Link href={BUILDER} className="btn btn--primary">
+                Stel uw traject samen
+                <span className="btn-arrow" aria-hidden="true">
+                  →
+                </span>
               </Link>
-              <a href={`tel:${site.phoneHref}`} className={styles.phone}>
-                Of bel {site.phoneDisplay}
-              </a>
+              <Link href="/start-uw-project?type=nieuwbouw" className={styles.direct}>
+                Of vraag direct een offerte aan
+              </Link>
             </div>
           </div>
           {/* the empty shell the buyer receives — the journey below fills it in */}
@@ -86,11 +89,31 @@ export default async function NieuwbouwPage() {
             Het traject, stap voor stap
           </h2>
           <p className={styles.headText}>
-            Stel uw eigen traject samen. Alleen inmeten en oplevering horen bij elk project; de rest is
-            naar keuze. Zet aan wat u wilt — wat u niet kiest, ziet u gestippeld in de tekening.
+            Scroll door de stappen: de woning wordt afgewerkt terwijl u leest. Inmeten en oplevering
+            horen bij elk project; al het andere is los te kiezen.
           </p>
         </div>
         <NieuwbouwJourney steps={journey} />
+
+        {/* from reading to choosing: the route builder is its own page */}
+        <div className={styles.next}>
+          <div>
+            <p className="label">Uw traject</p>
+            <h2 className={`heading ${styles.nextTitle}`}>Welke stappen wilt u?</h2>
+          </div>
+          <div className={styles.nextBody}>
+            <p>
+              Kies een startpunt — afbouw, instapklaar of van sleutel tot thuis — en pas het per stap
+              aan. Daarna vraagt u in één keer een offerte aan voor precies die stappen.
+            </p>
+            <Link href={BUILDER} className="btn btn--primary">
+              Stel uw traject samen
+              <span className="btn-arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ---------------------------------------------------------------- questions */}
@@ -114,9 +137,9 @@ export default async function NieuwbouwPage() {
 
       <ContactPanel
         heading="Wanneer krijgt u de sleutel?"
-        body="Vertel ons uw sleuteldatum en wat u wilt laten doen. Dan plannen we terug vanaf die dag."
-        href="/start-uw-project?type=nieuwbouw"
-        cta="Start uw nieuwbouwproject"
+        body="Stel uw traject samen en vertel ons uw sleuteldatum. Dan plannen we terug vanaf die dag."
+        href={BUILDER}
+        cta="Stel uw traject samen"
       />
     </>
   );

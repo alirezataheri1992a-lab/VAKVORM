@@ -116,10 +116,6 @@
 .railStep[data-state='current'] {
   --seg: var(--accent-on-dark);
 }
-.railStep[data-skipped] {
-  background-color: transparent;
-  background-image: repeating-linear-gradient(90deg, var(--seg) 0 4px, transparent 4px 7px);
-}
 .stageCaption {
   display: flex;
   align-items: baseline;
@@ -134,40 +130,6 @@
   color: var(--on-dark-soft);
   font-variant-numeric: tabular-nums;
 }
-.stageRoute {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 20px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line-dark);
-  font-size: 0.9rem;
-  color: var(--on-dark-soft);
-}
-.stageRoute p {
-  flex: 1;
-  font-variant-numeric: tabular-nums;
-}
-.stageRoute strong {
-  font-weight: 600;
-  color: var(--on-dark);
-}
-.stageRoute button,
-.stageRoute a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  font-weight: 600;
-  color: var(--on-dark);
-  text-decoration: underline;
-  text-decoration-color: var(--on-dark-soft);
-  text-underline-offset: 4px;
-}
-.stageRoute button:hover,
-.stageRoute a:hover {
-  text-decoration-color: currentColor;
-}
-
 .steps {
   display: flex;
   flex-direction: column;
@@ -201,7 +163,7 @@
 .stepKicker {
   color: var(--accent-text);
 }
-/* 'Bij elk project' is a solid box, 'Naar keuze' a dashed one — the same language as the drawing */
+/* 'Bij elk project' is a solid box, 'Los te kiezen' a dashed one — the same language as the drawing */
 .tag {
   padding: 4px 8px;
   border: 1px solid var(--ink);
@@ -249,7 +211,6 @@
 .stepNederdam {
   font-size: 0.98rem;
   line-height: 1.55;
-  transition: color var(--dur) var(--ease);
 }
 .stepNote {
   max-width: 52ch;
@@ -259,73 +220,6 @@
   line-height: 1.5;
   color: var(--ink-soft);
 }
-/* not chosen: the trades are yours again, so they are no longer struck through */
-.step[data-chosen='false'] .chips li {
-  text-decoration: none;
-}
-.step[data-chosen='false'] .stepNederdam {
-  color: var(--muted);
-}
-.choice,
-.choiceFixed {
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-.choice {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 18px;
-}
-.choiceFixed,
-.choiceStatus {
-  font-size: 0.92rem;
-  color: var(--muted);
-}
-.step[data-chosen='true'] .choiceStatus {
-  color: var(--ink);
-  font-weight: 600;
-}
-.choose {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 48px;
-  padding: 0 20px 0 16px;
-  border: 1.5px solid var(--ink);
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-.choose:hover {
-  background: var(--canvas-raised);
-}
-.choose[aria-pressed='true'] {
-  background: var(--charcoal);
-  color: var(--on-dark);
-}
-.box {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid currentColor;
-  flex: none;
-}
-.choose[aria-pressed='true'] .box {
-  background: var(--accent-on-dark);
-  border-color: var(--accent-on-dark);
-}
-.choose[aria-pressed='true'] .box::after {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 5px;
-  height: 10px;
-  border: solid var(--charcoal);
-  border-width: 0 2px 2px 0;
-  rotate: 45deg;
-}
 .stepLinks {
   display: flex;
   flex-wrap: wrap;
@@ -333,75 +227,6 @@
 }
 .stepLinks :global(.textlink) {
   color: var(--accent-text);
-}
-
-/* ================================================================ the route */
-.summary {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: 40px clamp(32px, 5vw, 96px);
-  margin-top: clamp(48px, 6vw, 80px);
-  padding-top: 32px;
-  border-top: 1.5px solid var(--ink);
-  scroll-margin-top: 120px;
-}
-.summaryTitle {
-  margin: 12px 0 20px;
-  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
-  letter-spacing: -0.025em;
-  font-variant-numeric: tabular-nums;
-}
-.route li {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-.routeNum {
-  font-size: 0.8rem;
-  color: var(--accent-text);
-  font-variant-numeric: tabular-nums;
-}
-.routeFixed {
-  margin-left: auto;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--muted);
-}
-.summaryHint {
-  max-width: 52ch;
-  margin-top: 16px;
-  line-height: 1.55;
-  color: var(--ink-soft);
-}
-.summarySide {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.routeOut {
-  margin-top: 10px;
-}
-.routeOut li {
-  padding: 9px 0;
-  border-top: 1px dashed var(--line);
-  color: var(--muted);
-}
-.summaryActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 24px;
-}
-.allToggle {
-  min-height: 44px;
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
 }
 
 /* ================================================================ the switch */
@@ -540,20 +365,8 @@
     flex: 1;
     font-size: 0.98rem;
   }
-  .stageRoute {
-    order: 4;
-    flex: 1 1 100%;
-    padding-top: 6px;
-    font-size: 0.85rem;
-  }
-  .stageRoute a {
-    display: none;
-  }
   .trades {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .summary {
-    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 620px) {

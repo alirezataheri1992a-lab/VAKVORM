@@ -10,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/',
     '/diensten',
     '/nieuwbouw',
+    '/nieuwbouw/traject-samenstellen',
     '/bouw',
     '/projecten',
     '/werkwijze',

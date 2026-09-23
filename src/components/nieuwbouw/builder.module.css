@@ -1,0 +1,370 @@
+/* The route builder: choices on the left, the route itself in a charcoal panel on the right.
+   Chosen is solid, not chosen is dashed — the same language as the drawing on /nieuwbouw. */
+.builder {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 56px);
+}
+.stepLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+.stepLabel span {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--ink);
+  font-size: 0.75rem;
+}
+
+/* ---------------------------------------------------------------- starting points */
+.presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.preset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 18px;
+  text-align: left;
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+.preset:hover {
+  border-color: var(--ink);
+}
+.preset[aria-pressed='true'] {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--on-dark);
+}
+.presetHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+.presetTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.badge {
+  padding: 3px 6px;
+  background: var(--bronze);
+  color: var(--charcoal);
+}
+.presetText {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.presetCount {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.preset[aria-pressed='true'] .presetText,
+.preset[aria-pressed='true'] .presetCount {
+  color: var(--on-dark-soft);
+}
+.custom {
+  min-height: 1.4em;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- steps */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 4px 20px;
+  align-items: start;
+  padding: 20px;
+  background: var(--panel);
+  border: 1.5px solid var(--ink);
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.card[data-in='false'] {
+  background: transparent;
+  border: 1.5px dashed var(--line);
+}
+.cardNum {
+  padding-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  font-variant-numeric: tabular-nums;
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cardKicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--accent-text);
+}
+.fixed {
+  color: var(--ink);
+}
+.cardTitle {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+.cardShort {
+  max-width: 48ch;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.cardNote {
+  max-width: 48ch;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.cardYourself {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.cardMore {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+}
+.cardMore:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+.card[data-in='false'] .cardTitle,
+.card[data-in='false'] .cardShort {
+  color: var(--ink-soft);
+}
+
+/* the switch per step: an empty box to add, a ticked box once it is in */
+.add,
+.included {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.add {
+  border: 1.5px solid var(--ink);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.add:hover {
+  background: var(--canvas-raised);
+}
+.add[aria-pressed='true'] {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--on-dark);
+}
+.included {
+  color: var(--muted);
+}
+.box {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border: 1.5px solid currentColor;
+}
+.add[aria-pressed='true'] .box,
+.included .box {
+  background: var(--accent-on-dark);
+  border-color: var(--accent-on-dark);
+}
+.included .box {
+  background: var(--muted);
+  border-color: var(--muted);
+}
+.add[aria-pressed='true'] .box::after,
+.included .box::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--charcoal);
+  border-width: 0 2px 2px 0;
+  rotate: 45deg;
+}
+.included .box::after {
+  border-color: var(--panel);
+}
+
+/* ---------------------------------------------------------------- the route */
+.side {
+  position: sticky;
+  top: 104px;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(20px, 2.5vw, 32px);
+}
+.count {
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+.count strong {
+  font-weight: 600;
+}
+.gain {
+  margin-top: -8px;
+  color: var(--on-dark-soft);
+}
+.gain strong {
+  font-weight: 600;
+  color: var(--bronze);
+}
+.plan {
+  max-width: 340px;
+  margin: 8px 0;
+}
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.summary li {
+  padding: 4px 8px;
+  border: 1px solid var(--on-dark-soft);
+  font-size: 0.82rem;
+  color: var(--on-dark);
+}
+.summary li[data-in='false'] {
+  border-style: dashed;
+  border-color: var(--line-dark);
+  color: var(--on-dark-soft);
+  opacity: 0.7;
+}
+.cta {
+  width: 100%;
+  margin-top: 8px;
+  white-space: normal;
+  text-align: center;
+}
+.call {
+  font-size: 0.9rem;
+  color: var(--on-dark-soft);
+}
+.call a {
+  font-weight: 600;
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------------------------------------------------------------- small screens */
+.bar {
+  display: none;
+}
+@media (max-width: 1040px) {
+  .builder {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .side {
+    position: static;
+  }
+  .bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line-dark);
+    transition: translate 300ms var(--ease);
+  }
+  .bar[data-hidden='true'] {
+    translate: 0 110%;
+  }
+  .bar :global(.btn) {
+    flex: none;
+    width: auto;
+    min-height: 44px;
+    padding: 0 18px;
+  }
+  .barText {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .barText strong {
+    font-weight: 600;
+  }
+  .barGain {
+    font-size: 0.8rem;
+    color: var(--on-dark-soft);
+  }
+  .barGain strong {
+    font-weight: 600;
+    color: var(--bronze);
+  }
+}
+@media (max-width: 720px) {
+  .presets {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .card {
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 16px;
+  }
+  .cardAction {
+    grid-column: 2;
+    margin-top: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}

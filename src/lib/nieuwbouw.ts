@@ -4,7 +4,8 @@
 // otherwise arrange yourself, what Nederdam takes over) — the general method is /werkwijze.
 //
 // Only measuring and the handover belong to every project; every other step is the client's
-// choice — the page lets visitors compose their own route and passes it to the intake.
+// choice. /nieuwbouw explains the journey; /nieuwbouw/traject-samenstellen lets visitors put
+// their own route together (starting from one of the presets) and passes it to the intake.
 //
 // Confirmed by the owner: much is done in-house, the rest through a fixed network of trusted
 // specialists; design is arranged by Nederdam; Nederdam can advise on meer- en minderwerk
@@ -26,6 +27,8 @@ export interface JourneyStep {
   note?: string;
   /** Short name, used in the progress rail and on the homepage. */
   title: string;
+  /** One line on what the step gives you — the step's card in the route builder. */
+  short: string;
   /** Which discipline leads this step — sets the accent colour. */
   discipline: Discipline;
   layer: PlanLayer;
@@ -45,6 +48,7 @@ export const journey: JourneyStep[] = [
     required: false,
     scope: ['meer-minderwerk'],
     title: 'Voor de sleutel',
+    short: 'Meekijken met tekeningen en meer- en minderwerk, zodat u niets dubbel betaalt.',
     discipline: 'bouw',
     layer: 'drawing',
     happens:
@@ -58,6 +62,7 @@ export const journey: JourneyStep[] = [
     required: false,
     scope: ['ontwerp'],
     title: 'Ontwerp & plan',
+    short: 'Eén ontwerp voor indeling, materialen, kleuren en licht.',
     discipline: 'interieur',
     layer: 'design',
     happens:
@@ -72,6 +77,7 @@ export const journey: JourneyStep[] = [
     required: true,
     scope: [],
     title: 'Sleutel & inmeten',
+    short: 'De hele woning in één keer ingemeten, op de millimeter.',
     discipline: 'bouw',
     layer: 'measure',
     happens: 'U krijgt de sleutel van een kale woning. Nu kan er gemeten worden wat eerst alleen op tekening stond.',
@@ -84,6 +90,7 @@ export const journey: JourneyStep[] = [
     scope: ['wanden-plafonds', 'vloeren', 'schilder-behang', 'elektra'],
     note: 'Ook per onderdeel: alleen de vloeren of alleen het stucwerk kan ook.',
     title: 'Afbouw',
+    short: 'Wanden, plafonds, vloeren, schilderwerk en elektra in één planning.',
     discipline: 'bouw',
     layer: 'finish',
     happens: 'Wanden, plafonds, vloeren, schilderwerk, elektra, deuren en trap: de woning wordt afgewerkt.',
@@ -97,6 +104,7 @@ export const journey: JourneyStep[] = [
     required: false,
     scope: ['badkamer', 'keuken'],
     title: 'Badkamer & keuken',
+    short: 'Tegelwerk, sanitair en keuken, op elkaar afgestemd.',
     discipline: 'bouw',
     layer: 'wet',
     happens: 'Tegelwerk, sanitair en installaties in badkamer en toilet; de keuken wordt geplaatst en aangesloten.',
@@ -108,8 +116,9 @@ export const journey: JourneyStep[] = [
     id: 'interieur',
     required: false,
     scope: ['maatwerk'],
-    note: 'Los af te nemen, of helemaal niet. Uw woning is ook zonder maatwerk klaar.',
+    note: 'Los te bestellen — ook later, als u er al woont.',
     title: 'Interieur op maat',
+    short: 'Kasten en wandmeubels uit onze eigen werkplaats.',
     discipline: 'interieur',
     layer: 'joinery',
     happens: 'Kasten, wandmeubels en ander maatwerk maken de woning af en compleet.',
@@ -125,6 +134,7 @@ export const journey: JourneyStep[] = [
     required: true,
     scope: [],
     title: 'Oplevering & garantie',
+    short: 'Eén oplevering, één puntenlijst en garantie op ons werk.',
     discipline: 'bouw',
     layer: 'handover',
     happens: 'Alles wordt gecontroleerd en afgewerkt, tot en met de laatste details.',
@@ -136,6 +146,7 @@ export const journey: JourneyStep[] = [
     required: false,
     scope: ['verhuizing'],
     title: 'Verhuizen & thuis',
+    short: 'De verhuizing afgestemd op de dag dat alles klaar is.',
     discipline: 'interieur',
     layer: 'home',
     happens: 'De woning is klaar. Nu kunt u verhuizen en er echt wonen.',
@@ -143,6 +154,40 @@ export const journey: JourneyStep[] = [
     nederdam: 'Desgewenst stemmen we de verhuizing af op de oplevering, zodat u op de dag dat alles klaar is kunt verhuizen.',
   },
 ];
+
+/** Where the route builder starts. Required steps are always part of the route. */
+export interface JourneyPreset {
+  id: string;
+  title: string;
+  text: string;
+  /** Our own advice — not a claim about what most clients choose. */
+  recommended?: boolean;
+  steps: string[];
+}
+
+export const journeyPresets: JourneyPreset[] = [
+  {
+    id: 'afbouw',
+    title: 'Afbouw',
+    text: 'Wanden, plafonds, vloeren en schilderwerk. De rest regelt u zelf.',
+    steps: ['afbouw'],
+  },
+  {
+    id: 'instapklaar',
+    title: 'Instapklaar',
+    text: 'Ontwerp, afbouw, badkamer en keuken: klaar om in te wonen.',
+    recommended: true,
+    steps: ['ontwerp', 'afbouw', 'badkamer-keuken'],
+  },
+  {
+    id: 'compleet',
+    title: 'Van sleutel tot thuis',
+    text: 'Alles, van meer- en minderwerk tot maatwerk en verhuizing.',
+    steps: journey.filter((s) => !s.required).map((s) => s.id),
+  },
+];
+
+export const defaultPreset = 'instapklaar';
 
 /** Everyone a buyer would otherwise find, brief and coordinate — derived from the journey. */
 export const tradesYourself: string[] = [
@@ -158,6 +203,9 @@ export const tradesYourself: string[] = [
   'Interieurbouwer',
   'Verhuizer',
 ];
+
+/** The trades of `tradesYourself` that a step takes off your hands. */
+export const stepTrades = (step: JourneyStep) => step.yourself.filter((y) => tradesYourself.includes(y));
 
 export const nieuwbouwFaq: { q: string; a: string }[] = [
   {

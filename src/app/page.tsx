@@ -233,8 +233,8 @@ export default async function HomePage() {
               <Link href="/nieuwbouw" className="btn btn--primary">
                 Van sleutel tot thuis
               </Link>
-              <Link href="/werkwijze" className="textlink">
-                Onze werkwijze
+              <Link href="/nieuwbouw/traject-samenstellen" className="textlink">
+                Stel uw traject samen
               </Link>
             </div>
           </div>

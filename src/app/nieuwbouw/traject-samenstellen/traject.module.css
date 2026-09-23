@@ -1,0 +1,26 @@
+.head {
+  padding-top: clamp(24px, 3vw, 40px);
+}
+.headGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 20px clamp(32px, 5vw, 80px);
+  align-items: end;
+  margin-top: clamp(24px, 4vw, 48px);
+  padding-bottom: clamp(32px, 4vw, 48px);
+  border-bottom: 1.5px solid var(--ink);
+}
+.title {
+  max-width: 14ch;
+}
+.lede {
+  max-width: 46ch;
+}
+.body {
+  padding-block: clamp(32px, 4vw, 48px) var(--section);
+}
+@media (max-width: 900px) {
+  .headGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
