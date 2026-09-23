@@ -15,17 +15,17 @@
   --taupe: #3a3a36;
 
   /* --- Derived surfaces: warm, never pure white, never cold grey --- */
-  --linen: #efeae3; /* primary light canvas */
-  --linen-deep: #e6e0d7; /* quiet supporting band */
-  --paper: #f4f0ea; /* raised light surface: inputs, wells */
+  --linen: #f4f0e8; /* primary light canvas — the brand's warm off-white */
+  --linen-deep: #ebe6de; /* quiet supporting band */
+  --paper: #f8f5f0; /* raised light surface: inputs, wells */
   --stone-deep: #b9b1a5; /* hairlines / marks on stone */
   --charcoal-soft: #1a1a18; /* raised surface on charcoal */
 
   /* --- Text --- */
-  --ink: #141412; /* on light */
+  --ink: #0e0e0e; /* on light — charcoal */
   --ink-soft: #3a3a36; /* on light, secondary */
   --muted: #66605a; /* on light, tertiary — 4.9:1 on linen */
-  --on-dark: #e9e3da; /* on charcoal / taupe */
+  --on-dark: #f4f0e8; /* on charcoal / taupe — the same off-white the reversed logos use */
   --on-dark-soft: #a39c93; /* on charcoal, secondary */
 
   /* --- Accents in a usable text weight (the raw tones are for marks and fields) --- */
@@ -34,7 +34,7 @@
 
   /* --- Hairlines --- */
   --line: #d3ccc1; /* on linen */
-  --line-strong: #141412;
+  --line-strong: #0e0e0e;
   --line-dark: #272623; /* on charcoal */
 
   /* --- Typography --- */

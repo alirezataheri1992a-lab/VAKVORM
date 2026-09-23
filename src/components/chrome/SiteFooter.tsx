@@ -16,7 +16,7 @@ export async function SiteFooter() {
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brandCol}>
-            <Logo tone="light" size={30} />
+            <Logo variant="master" tone="light" height={168} className={styles.logo} />
             <p className={`serif ${styles.statement}`}>Bouwen aan wat blijft.</p>
           </div>
 

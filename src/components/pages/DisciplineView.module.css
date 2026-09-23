@@ -13,6 +13,11 @@
   gap: 32px;
   padding-bottom: 24px;
 }
+.openBrand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 .openMark {
   color: var(--accent-text);
 }

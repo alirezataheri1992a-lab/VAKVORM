@@ -11,7 +11,11 @@
 .brandCol {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 8px;
+}
+/* the master file centres its art inside a 620×360 canvas; pull it onto the column edge */
+.logo {
+  margin-left: -72px;
 }
 .statement {
   font-size: clamp(1.9rem, 2.6vw, 2.6rem);

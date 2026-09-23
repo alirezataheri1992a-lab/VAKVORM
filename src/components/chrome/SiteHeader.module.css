@@ -36,6 +36,9 @@
   display: inline-flex;
   padding: 8px 0;
 }
+.brand img {
+  height: 40px;
+}
 
 /* ---------------------------------------------------------------- nav */
 .nav {
@@ -224,6 +227,9 @@
 @media (max-width: 860px) {
   .bar {
     height: 76px;
+  }
+  .brand img {
+    height: 34px;
   }
   .nav {
     display: none;

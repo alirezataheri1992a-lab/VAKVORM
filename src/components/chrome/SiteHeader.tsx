@@ -52,7 +52,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
       <header className={styles.header} data-overlay={overlay} data-open={open}>
         <div className={`container ${styles.bar}`}>
           <Link href="/" className={styles.brand} aria-label="Nederdam — home">
-            <Logo tone={overlay || open ? 'light' : 'dark'} size={26} />
+            <Logo variant="horizontal" tone={overlay || open ? 'light' : 'dark'} height={40} decorative />
           </Link>
 
           <nav className={styles.nav} aria-label="Hoofdmenu">

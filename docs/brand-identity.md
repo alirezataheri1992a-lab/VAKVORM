@@ -26,24 +26,34 @@ button. The site's dominant colours are charcoal, warm off-white and stone.
 
 ## Logo
 
-`src/components/chrome/Logo.tsx` renders the lockup: the symbol, the tracked NEDERDAM
-wordmark, and — for a sub-brand — the discipline in small capitals beneath it, in its tone.
+The approved logo files live in `/public/brand/`, byte-for-byte as supplied. They are never
+redrawn, recoloured or recomposed; `src/components/chrome/Logo.tsx` only chooses which file
+to show and at what height.
 
-**The symbol is a vector re-drawing from the board image, not the original artwork.** It
-reads as the board does — an N built from two open strokes meeting on the diagonal, one
-stroke per discipline — but the exact geometry should be replaced by the source file when
-it is available. That is a change to the two `<path>` elements in `Symbol` and to
-`src/app/icon.svg` (the favicon), nothing else.
+| File | Use |
+|---|---|
+| `nederdam-horizontal-dark.svg` / `-light.svg` | header lockup on light / dark surfaces (also `nederdam-logo.svg`, an exact copy of the dark one) |
+| `nederdam-master-dark.svg` / `-light.svg` | stacked master lockup with BOUW & INTERIEUR — the footer |
+| `nederdam-bouw-dark.svg` / `-light.svg` | sub-brand lockup, bronze |
+| `nederdam-interieur-dark.svg` / `-light.svg` | sub-brand lockup, olive |
+| `nederdam-mark-bronze.svg` / `-olive.svg` / `-white.svg` | the symbol alone; bronze is also the favicon (`src/app/icon.svg`, an exact copy) |
 
-Clear space: the lockup itself is tight; callers give it room. The header gives it the
-full 88px bar; the footer sets it alone above the statement.
+Placement: the header always carries the master (horizontal) logo — light colourway over the
+homepage hero and in the mobile menu, dark colourway on the linen bar. The footer carries the
+stacked master lockup, reversed. The discipline pages introduce the sub-brand with its own
+mark (bronze on Bouw, olive on Interieur) beside the opening label; the primary logo never
+changes per page.
+
+The files carry their own clear space inside the viewBox. Sizing is by height; width follows
+the file's aspect ratio. The one layout adjustment is a negative left margin on the footer
+lockup so its art aligns with the column edge — the file itself is untouched.
 
 ## Colour
 
 | Token | Hex | Use |
 |---|---|---|
 | `--charcoal` | `#0E0E0E` | dark chapters, the footer, the intake's opening and close |
-| `--linen` | `#EFEAE3` | the canvas — warm off-white, never pure white |
+| `--linen` | `#F4F0E8` | the canvas — the brand's warm off-white, the same tone the reversed logos use for text |
 | `--stone` | `#C9C2B8` | supporting chapters, the reserved image fields |
 | `--taupe` | `#3A3A36` | secondary text on light; warm-dark surfaces |
 | `--bronze` | `#B08B6F` | Bouw accent — marks, labels on dark; `--bronze-deep #7E5F45` as text on light |

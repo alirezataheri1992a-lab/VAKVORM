@@ -5,6 +5,7 @@ import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ServiceIndex } from '@/components/sections/ServiceIndex';
 import { ContactPanel } from '@/components/sections/ContactPanel';
+import { Logo } from '@/components/chrome/Logo';
 import styles from './DisciplineView.module.css';
 
 interface Props {
@@ -64,8 +65,11 @@ export async function DisciplineView({ pillar, services, hub, site }: Props) {
         <Breadcrumbs items={[{ name: c.name, path: `/${pillar}` }]} />
         <div className={`grid12 ${styles.openGrid}`}>
           <div className={styles.openText}>
-            <span className={`label ${styles.openMark}`}>
-              {c.index} · Nederdam {c.name}
+            <span className={styles.openBrand}>
+              <Logo variant="mark" mark={pillar === 'bouw' ? 'bronze' : 'olive'} height={44} decorative />
+              <span className={`label ${styles.openMark}`}>
+                {c.index} · Nederdam {c.name}
+              </span>
             </span>
             <h1 className={`display ${styles.openTitle}`}>{c.statement}</h1>
             <p className={`lede ${styles.openLede}`}>{lede}</p>
