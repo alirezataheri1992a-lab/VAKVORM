@@ -1,41 +1,41 @@
 /* ============================================================
    NEDERDAM — global styles & design tokens
-   One brand, two disciplines. Charcoal · warm off-white · stone,
-   with bronze (Bouw) and olive (Interieur) as the only accents.
+   Built on the KADER identity board: a charcoal canvas, warm
+   off-white type, hairline structure, numbered chapters, and
+   bronze (Bouw) and olive (Interieur) as the only accents.
    Custom CSS architecture — no component-library visual system.
-   Rules: /docs/brand-identity.md and /docs/visual-direction.md
+   Rules: /docs/brand-identity.md
    ============================================================ */
 
 :root {
-  /* --- Brand palette (from the identity board) --- */
+  /* --- Brand palette (from the identity board, exact) --- */
   --charcoal: #0e0e0e;
   --bronze: #b08b6f;
   --stone: #c9c2b8;
   --olive: #4a5a46;
   --taupe: #3a3a36;
 
-  /* --- Derived surfaces: warm, never pure white, never cold grey --- */
-  --linen: #f4f0e8; /* primary light canvas — the brand's warm off-white */
-  --linen-deep: #ebe6de; /* quiet supporting band */
-  --paper: #f8f5f0; /* raised light surface: inputs, wells */
-  --stone-deep: #b9b1a5; /* hairlines / marks on stone */
-  --charcoal-soft: #1a1a18; /* raised surface on charcoal */
+  /* --- Surfaces: the page is charcoal; panels are barely raised from it --- */
+  --canvas: #0e0e0e;
+  --canvas-raised: #141412; /* a quiet band */
+  --panel: #181816; /* cards, inputs, wells */
+  --charcoal-soft: #1a1a18;
 
-  /* --- Text --- */
-  --ink: #0e0e0e; /* on light — charcoal */
-  --ink-soft: #3a3a36; /* on light, secondary */
-  --muted: #66605a; /* on light, tertiary — 4.9:1 on linen */
-  --on-dark: #f4f0e8; /* on charcoal / taupe — the same off-white the reversed logos use */
-  --on-dark-soft: #a39c93; /* on charcoal, secondary */
+  /* --- Text: the same warm off-white the reversed logos use --- */
+  --ink: #f4f0e8;
+  --ink-soft: #b4ada3;
+  --muted: #8b857c; /* tertiary — 5.2:1 on charcoal */
+  --on-dark: #f4f0e8;
+  --on-dark-soft: #a39c93;
 
-  /* --- Accents in a usable text weight (the raw tones are for marks and fields) --- */
-  --bronze-deep: #7e5f45; /* bronze as text on light — 4.7:1 on linen */
-  --olive-on-dark: #8c9c84; /* olive as text on charcoal */
+  /* --- Accents in a usable text weight on charcoal --- */
+  --bronze-text: #b08b6f; /* 6.3:1 on charcoal */
+  --olive-on-dark: #8c9c84; /* olive as text/line on charcoal */
 
   /* --- Hairlines --- */
-  --line: #d3ccc1; /* on linen */
-  --line-strong: #0e0e0e;
-  --line-dark: #272623; /* on charcoal */
+  --line: #2c2b28;
+  --line-strong: #4a4843;
+  --line-dark: #2c2b28;
 
   /* --- Typography --- */
   --font-sans: var(--font-sans-src), ui-sans-serif, system-ui, sans-serif;
@@ -45,7 +45,7 @@
 
   /* --- Space & layout --- */
   --maxw: 1520px;
-  --gutter: clamp(20px, 5vw, 104px);
+  --gutter: clamp(20px, 4.4vw, 88px);
   --col-gap: clamp(16px, 1.8vw, 32px);
   --radius: 0px;
 
@@ -54,21 +54,27 @@
   --dur: 640ms;
 
   /* ------------------------------------------------------------
-     Legacy aliases. Stylesheets written for the previous system
-     keep rendering, in the new palette, until they are rewritten.
+     Aliases. Stylesheets written for earlier iterations name light
+     surfaces (linen, paper, sand); on the KADER board those are the
+     charcoal canvas and its raised panels.
      ------------------------------------------------------------ */
-  --ivory: var(--linen);
-  --bone: var(--linen);
-  --sand: var(--linen-deep);
-  --material: var(--stone);
-  --material-line: var(--stone-deep);
+  --linen: var(--canvas);
+  --linen-deep: var(--canvas-raised);
+  --paper: var(--panel);
+  --stone-deep: var(--line-strong);
+  --bronze-deep: var(--bronze-text);
+  --ivory: var(--canvas);
+  --bone: var(--canvas);
+  --sand: var(--canvas-raised);
+  --material: var(--panel);
+  --material-line: var(--line-strong);
   --concrete: var(--muted);
   --concrete-line: var(--line);
   --navy: var(--charcoal);
   --deep: var(--charcoal);
   --navy-soft: var(--charcoal-soft);
   --concrete-line-dark: var(--line-dark);
-  --oxide: var(--bronze-deep);
+  --oxide: var(--bronze-text);
   --oxide-warm: var(--bronze);
   --on-ink: var(--on-dark);
   --on-ink-soft: var(--on-dark-soft);
@@ -93,13 +99,16 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  background: var(--canvas);
+  color-scheme: dark;
 }
 body {
-  background: var(--linen);
+  background: var(--canvas);
   color: var(--ink);
   font-family: var(--font-text);
   font-size: 1rem;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.65;
   font-feature-settings: 'kern' 1;
   min-height: 100dvh;
   overflow-x: hidden;
@@ -132,71 +141,107 @@ h2,
 h3,
 h4 {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.005em;
   text-wrap: balance;
 }
 em {
   font-style: italic;
 }
+::selection {
+  background: var(--bronze);
+  color: var(--charcoal);
+}
 
 /* ---------------------------------------------------------- type roles
-   Two voices. The serif speaks rarely and only in statements; the sans does
-   the work. Sizes are large but controlled; the scale is short on purpose. */
+   Two voices, as on the board. The serif (Canela's role) speaks in light,
+   open statements; the grotesk (Söhne's role) does the work and, set in
+   wide-tracked capitals, carries every label, chapter and navigation item. */
 
 /* editorial statements: hero, chapter openings, the closing invitation */
 .display {
   font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(2.5rem, 5.2vw, 5rem);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 /* section-level serif heading */
 .heading {
   font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(1.85rem, 3.1vw, 2.9rem);
-  line-height: 1.08;
-  letter-spacing: -0.008em;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3.1vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 /* functional heading: index rows, cards, steps */
 .title {
   font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
-  line-height: 1.18;
-  letter-spacing: -0.012em;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  line-height: 1.25;
+  letter-spacing: 0;
 }
 .lede {
-  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
-  line-height: 1.55;
-  font-weight: 400;
+  font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+  line-height: 1.6;
+  font-weight: 300;
   color: var(--ink-soft);
-  max-width: 44ch;
+  max-width: 46ch;
   text-wrap: pretty;
 }
 .body {
   max-width: 60ch;
   color: var(--ink-soft);
-  line-height: 1.65;
+  font-weight: 300;
+  line-height: 1.7;
   text-wrap: pretty;
 }
 
-/* small uppercase metadata with generous letter spacing — the quiet labelling
-   layer everywhere: eyebrows, captions, column heads, breadcrumbs, index numbers */
+/* small uppercase metadata with wide letter spacing — the labelling layer
+   everywhere: eyebrows, captions, column heads, breadcrumbs, index numbers */
 .label,
 .spec {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.68rem;
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
+}
+/* a statement set in tracked capitals: "ÉÉN MERK. TWEE DISCIPLINES." */
+.tracked {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  line-height: 1.9;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+}
+/* a vertical stack of words closed by a short rule — the board's margin notes */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  color: var(--ink-soft);
+}
+.stack::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  margin-top: 1.2em;
+  background: currentColor;
+  opacity: 0.6;
 }
 .num {
   font-family: var(--font-sans);
@@ -205,27 +250,29 @@ em {
 }
 .serif {
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 300;
 }
 
 /* ---------------------------------------------------------- UI: restrained
-   Text links with a subtle arrow, thin-border buttons, one solid button. No pills,
-   no gradients, no shadows. Border radius is 0 on everything structural. */
+   Text links with a quiet arrow, hairline buttons, one bronze button. Square
+   corners, no pills, no gradients, no shadows. */
 .textlink {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  gap: 12px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
   color: inherit;
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur) var(--ease), gap var(--dur) var(--ease);
 }
 .textlink::after {
   content: '→';
-  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 0.95rem;
   transition: transform var(--dur) var(--ease);
 }
 .textlink:hover {
@@ -239,78 +286,53 @@ em {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  min-height: 52px;
-  padding: 14px 28px;
-  border: 1px solid currentColor;
-  border-radius: 3px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  min-height: 50px;
+  padding: 14px 30px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: inherit;
+  color: var(--ink);
   background: transparent;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
 }
 .btn:hover {
-  background: var(--ink);
   border-color: var(--ink);
-  color: var(--on-dark);
-}
-.on-ink .btn:hover,
-.on-dark .btn:hover,
-.on-taupe .btn:hover {
-  background: var(--on-dark);
-  border-color: var(--on-dark);
+  background: var(--ink);
   color: var(--charcoal);
 }
 .btn--solid {
-  background: var(--charcoal);
-  border-color: var(--charcoal);
-  color: var(--on-dark);
-}
-.btn--solid:hover {
-  background: var(--taupe);
-  border-color: var(--taupe);
-  color: var(--on-dark);
-}
-.on-ink .btn--solid,
-.on-dark .btn--solid,
-.on-taupe .btn--solid {
-  background: var(--on-dark);
-  border-color: var(--on-dark);
+  background: var(--ink);
+  border-color: var(--ink);
   color: var(--charcoal);
 }
-.on-ink .btn--solid:hover,
-.on-dark .btn--solid:hover,
-.on-taupe .btn--solid:hover {
+.btn--solid:hover {
   background: var(--bronze);
   border-color: var(--bronze);
   color: var(--charcoal);
 }
-
-/* bronze: the primary action. Charcoal text — white on bronze fails contrast. */
+/* bronze: the primary action. Charcoal text — off-white on bronze fails contrast. */
 .btn--bronze {
   background: var(--bronze);
   border-color: var(--bronze);
   color: var(--charcoal);
 }
-.btn--bronze:hover,
-.on-dark .btn--bronze:hover,
-.on-ink .btn--bronze:hover,
-.on-taupe .btn--bronze:hover {
-  background: var(--bronze-deep);
-  border-color: var(--bronze-deep);
-  color: var(--on-dark);
+.btn--bronze:hover {
+  background: transparent;
+  border-color: var(--bronze);
+  color: var(--bronze);
 }
 
-/* heading with a short bronze rule beneath — the same stroke that closes the logo */
+/* the short bronze rule the board sets under the logo and the hero statement */
 .rule-under::after {
   content: '';
   display: block;
-  width: 44px;
+  width: 40px;
   height: 2px;
-  margin-top: 0.42em;
+  margin-top: 0.55em;
   background: var(--bronze);
 }
 .rule-under--center::after {
@@ -330,7 +352,7 @@ em {
   column-gap: var(--col-gap);
 }
 .section {
-  padding-block: clamp(72px, 12vh, 176px);
+  padding-block: clamp(72px, 12vh, 160px);
 }
 .section--tight {
   padding-block: clamp(48px, 7vh, 104px);
@@ -340,68 +362,43 @@ em {
   border-top: 1px solid var(--line);
 }
 
-/* surfaces */
+/* surfaces — on the KADER board every surface is dark; they differ by a step */
 .on-ink,
 .on-dark {
-  background: var(--charcoal);
+  background: var(--canvas);
   color: var(--on-dark);
 }
 .on-taupe {
   background: var(--taupe);
   color: var(--on-dark);
 }
-.on-stone {
-  background: var(--stone);
+.on-stone,
+.on-material {
+  background: var(--panel);
   color: var(--ink);
 }
 .on-sand {
-  background: var(--linen-deep);
+  background: var(--canvas-raised);
 }
-.on-material {
-  background: var(--stone);
-}
-.on-ink .label,
-.on-dark .label,
 .on-taupe .label,
-.on-ink .spec,
-.on-dark .spec,
-.on-taupe .spec {
-  color: var(--on-dark-soft);
-}
-.on-ink .lede,
-.on-dark .lede,
+.on-taupe .spec,
 .on-taupe .lede,
-.on-ink .body,
-.on-dark .body,
 .on-taupe .body {
   color: var(--on-dark-soft);
 }
-.on-stone .label,
-.on-stone .spec {
-  color: var(--ink-soft);
-}
-.on-stone .lede,
-.on-stone .body {
-  color: var(--ink-soft);
-}
-.on-stone .rule {
-  border-color: var(--stone-deep);
-}
-.on-ink .rule,
-.on-dark .rule,
 .on-taupe .rule {
-  border-color: var(--line-dark);
+  border-color: #4a4843;
 }
 
-/* discipline accents — subtle, applied to marks and small text only */
+/* discipline accents — subtle, applied to marks, rules and small text only */
 [data-pillar='bouw'] {
   --accent: var(--bronze);
-  --accent-text: var(--bronze-deep);
+  --accent-text: var(--bronze-text);
   --accent-on-dark: var(--bronze);
 }
 [data-pillar='interieur'] {
-  --accent: var(--olive);
-  --accent-text: var(--olive);
+  --accent: var(--olive-on-dark);
+  --accent-text: var(--olive-on-dark);
   --accent-on-dark: var(--olive-on-dark);
 }
 
@@ -434,9 +431,9 @@ em {
   transform: none;
 }
 
-/* Scroll reveal, applied by <ScrollReveal>. Light content settles into place; full-bleed
-   photography reveals with a slow crop; dark chapters stay still. Hidden state is added
-   by JS only, so content is always visible without JS or under reduced motion. */
+/* Scroll reveal, applied by <ScrollReveal>. Content settles into place; full-bleed
+   photography reveals with a slow crop. Hidden state is added by JS only, so content
+   is always visible without JS or under reduced motion. */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(14px);

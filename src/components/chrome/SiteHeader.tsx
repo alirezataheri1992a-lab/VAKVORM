@@ -15,25 +15,27 @@ interface Props {
   interieurSubServices: Service[];
 }
 
+type MenuKey = 'bouw' | 'interieur';
+
 /**
- * Header: logo left, navigation centred, one bronze "Offerte aanvragen" button right.
- * "Diensten" opens a submenu with the two disciplines and their services (hover, focus or
- * click; Escape and an outside click close it). The mobile menu is a charcoal sheet with the
- * two disciplines leading.
+ * Header, as on the KADER board: the logo left, the navigation right in small tracked
+ * capitals, one bronze action. Bouw and Interieur each open a panel with their services
+ * (hover, focus or click; Escape and an outside click close it). The mobile menu is a
+ * charcoal sheet with the two disciplines leading.
  */
 export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [drop, setDrop] = useState(false);
+  const [menu, setMenu] = useState<MenuKey | null>(null);
   const menuId = useId();
-  const dropId = useId();
-  const dropWrap = useRef<HTMLLIElement | null>(null);
+  const panelId = useId();
+  const navRef = useRef<HTMLElement | null>(null);
   const closeTimer = useRef<number | undefined>(undefined);
   const openedAt = useRef(0);
 
   useEffect(() => {
     setOpen(false);
-    setDrop(false);
+    setMenu(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -47,11 +49,11 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
         setOpen(false);
-        setDrop(false);
+        setMenu(null);
       }
     }
     function onDown(e: MouseEvent) {
-      if (dropWrap.current && !dropWrap.current.contains(e.target as Node)) setDrop(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setMenu(null);
     }
     document.addEventListener('keydown', onKey);
     document.addEventListener('mousedown', onDown);
@@ -61,105 +63,103 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
     };
   }, []);
 
-  const openDrop = () => {
+  const show = (key: MenuKey) => {
     window.clearTimeout(closeTimer.current);
-    if (!drop) openedAt.current = Date.now();
-    setDrop(true);
+    if (menu !== key) openedAt.current = Date.now();
+    setMenu(key);
+  };
+  const hideSoon = () => {
+    closeTimer.current = window.setTimeout(() => setMenu(null), 160);
   };
   // a click that lands right after hover/focus opened the panel must not close it again
-  const toggleDrop = () => {
-    if (Date.now() - openedAt.current < 400) return setDrop(true);
-    setDrop((v) => !v);
-  };
-  const closeSoon = () => {
-    closeTimer.current = window.setTimeout(() => setDrop(false), 160);
+  const toggle = (key: MenuKey) => {
+    if (Date.now() - openedAt.current < 400) return setMenu(key);
+    setMenu((m) => (m === key ? null : key));
   };
 
   const isActive = (path: string) =>
     path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
-  const dienstenActive = ['/diensten', '/bouw', '/interieur'].some(isActive);
+
+  const groups: Record<MenuKey, { index: string; title: string; href: string; items: Service[] }> = {
+    bouw: { index: '01', title: 'Bouw', href: '/bouw', items: bouwServices },
+    interieur: {
+      index: '02',
+      title: 'Interieur',
+      href: interieurService?.path ?? '/interieur',
+      items: interieurSubServices,
+    },
+  };
 
   return (
     <>
       <header className={styles.header} data-open={open}>
         <div className={`container ${styles.bar}`}>
           <Link href="/" className={styles.brand} aria-label="Nederdam — home">
-            <Logo variant="horizontal" tone={open ? 'light' : 'dark'} height={40} decorative />
+            <Logo variant="horizontal" tone="light" height={54} decorative />
           </Link>
 
-          <nav className={styles.nav} aria-label="Hoofdmenu">
+          <nav className={styles.nav} aria-label="Hoofdmenu" ref={navRef}>
             <ul className={styles.list}>
-              {nav.map((n) =>
-                n.path === '/diensten' ? (
+              {nav.map((n) => {
+                if (!('menu' in n)) {
+                  return (
+                    <li key={n.path}>
+                      <Link href={n.path} className={styles.link} data-active={isActive(n.path)}>
+                        {n.label}
+                      </Link>
+                    </li>
+                  );
+                }
+                const key = n.menu as MenuKey;
+                const g = groups[key];
+                const expanded = menu === key;
+                return (
                   <li
                     key={n.path}
-                    ref={dropWrap}
-                    className={styles.hasDrop}
-                    onMouseEnter={openDrop}
-                    onMouseLeave={closeSoon}
+                    className={styles.hasPanel}
+                    data-pillar={key}
+                    onMouseEnter={() => show(key)}
+                    onMouseLeave={hideSoon}
                   >
                     <button
                       type="button"
                       className={styles.link}
-                      data-active={dienstenActive}
-                      aria-expanded={drop}
-                      aria-controls={dropId}
-                      onClick={toggleDrop}
-                      onFocus={openDrop}
+                      data-active={isActive(n.path)}
+                      aria-expanded={expanded}
+                      aria-controls={`${panelId}-${key}`}
+                      onClick={() => toggle(key)}
+                      onFocus={() => show(key)}
                     >
-                      Diensten
+                      {n.label}
                       <span className={styles.caret} aria-hidden="true" />
                     </button>
 
-                    <div id={dropId} className={styles.drop} data-open={drop}>
-                      <div className={styles.dropGroup} data-pillar="bouw">
-                        <Link href="/bouw" className={styles.dropHead}>
-                          <span className="label">01</span>
-                          Bouw
-                        </Link>
-                        <ul>
-                          {bouwServices.map((s) => (
-                            <li key={s.slug}>
-                              <Link href={s.path} className={styles.dropLink}>
-                                {s.navLabel}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className={styles.dropGroup} data-pillar="interieur">
-                        <Link href={interieurService?.path ?? '/interieur'} className={styles.dropHead}>
-                          <span className="label">02</span>
-                          Interieur
-                        </Link>
-                        <ul>
-                          {interieurSubServices.map((s) => (
-                            <li key={s.slug}>
-                              <Link href={s.path} className={styles.dropLink}>
-                                {s.navLabel}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <Link href="/diensten" className={`textlink ${styles.dropAll}`}>
+                    <div id={`${panelId}-${key}`} className={styles.panel} data-open={expanded}>
+                      <Link href={g.href} className={styles.panelHead}>
+                        <span className="label">{g.index}</span>
+                        <span className={styles.panelTitle}>{g.title}</span>
+                      </Link>
+                      <ul className={styles.panelList}>
+                        {g.items.map((s) => (
+                          <li key={s.slug}>
+                            <Link href={s.path} className={styles.panelLink}>
+                              {s.navLabel}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link href="/diensten" className={`textlink ${styles.panelAll}`}>
                         Alle diensten
                       </Link>
                     </div>
                   </li>
-                ) : (
-                  <li key={n.path}>
-                    <Link href={n.path} className={styles.link} data-active={isActive(n.path)}>
-                      {n.label}
-                    </Link>
-                  </li>
-                ),
-              )}
+                );
+              })}
             </ul>
           </nav>
 
           <Link href="/start-uw-project" className={`btn btn--bronze ${styles.cta}`}>
-            Offerte aanvragen
+            Start uw project
           </Link>
 
           <button
@@ -169,7 +169,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
             aria-label={open ? 'Menu sluiten' : 'Menu openen'}
             onClick={() => setOpen((v) => !v)}
           >
-            <span className={styles.toggleWord}>{open ? 'Sluiten' : 'Menu'}</span>
+            <span>{open ? 'Sluiten' : 'Menu'}</span>
             <span className={styles.toggleLines} aria-hidden="true">
               <span />
               <span />
@@ -181,20 +181,17 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
       {/* ---- mobile menu: a charcoal sheet, the two disciplines first ---- */}
       <div id={menuId} className={styles.sheet} data-open={open} aria-hidden={!open}>
         <nav className={`container ${styles.sheetInner}`} aria-label="Menu">
-          <span className={`label ${styles.sheetLabel}`}>Diensten</span>
           <div className={styles.disciplines}>
-            <Link href="/bouw" className={styles.discipline} data-pillar="bouw">
-              <span className="label">01</span>
-              <span className={styles.disciplineName}>Bouw</span>
-              <span className={styles.disciplineList}>{bouwServices.map((s) => s.navLabel).join(' · ')}</span>
-            </Link>
-            <Link href={interieurService?.path ?? '/interieur'} className={styles.discipline} data-pillar="interieur">
-              <span className="label">02</span>
-              <span className={styles.disciplineName}>Interieur</span>
-              <span className={styles.disciplineList}>
-                {interieurSubServices.map((s) => s.navLabel).join(' · ')}
-              </span>
-            </Link>
+            {(['bouw', 'interieur'] as const).map((key) => {
+              const g = groups[key];
+              return (
+                <Link key={key} href={g.href} className={styles.discipline} data-pillar={key}>
+                  <span className="label">{g.index}</span>
+                  <span className={styles.disciplineName}>{g.title}</span>
+                  <span className={styles.disciplineList}>{g.items.map((s) => s.navLabel).join(' · ')}</span>
+                </Link>
+              );
+            })}
           </div>
 
           <ul className={styles.sheetList}>
@@ -214,7 +211,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
 
           <div className={styles.sheetFoot}>
             <Link href="/start-uw-project" className="btn btn--bronze">
-              Offerte aanvragen
+              Start uw project
             </Link>
             <div className={styles.sheetContact}>
               <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>

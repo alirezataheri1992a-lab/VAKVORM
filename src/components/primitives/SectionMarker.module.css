@@ -1,27 +1,24 @@
 .marker {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   width: 100%;
 }
 .marker[data-align='end'] {
   flex-direction: row-reverse;
 }
 .index {
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  min-width: 2.2em;
+}
+.name {
   color: var(--ink);
+  letter-spacing: 0.32em;
 }
 .rule {
   flex: 1 1 auto;
   height: 1px;
   background: var(--line);
   min-width: 32px;
-}
-.ink .rule {
-  background: var(--line-dark);
-}
-.ink .index {
-  color: var(--on-dark);
-}
-.ink :global(.label) {
-  color: var(--on-dark-soft);
 }

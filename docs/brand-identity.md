@@ -20,9 +20,9 @@ gone; the navigation is `Bouw · Interieur · Projecten · Werkwijze · Over ons
 never a third pillar beside them. Routes follow the architecture: `/bouw/<service>` and
 `/interieur/<service>`.
 
-The accents are subtle by design: a 6px square before the discipline's name in the header,
-the colour of small tracked labels, the tone of a hairline. Never a background, never a
-button. The site's dominant colours are charcoal, warm off-white and stone.
+The accents are subtle by design: the colour of small tracked labels and index numbers, the
+top edge of a navigation panel, the tone of a hairline — and bronze for the one primary
+action. The site's dominant colours are charcoal and warm off-white.
 
 ## Logo
 
@@ -38,11 +38,11 @@ to show and at what height.
 | `nederdam-interieur-dark.svg` / `-light.svg` | sub-brand lockup, olive |
 | `nederdam-mark-bronze.svg` / `-olive.svg` / `-white.svg` | the symbol alone; bronze is also the favicon (`src/app/icon.svg`, an exact copy) |
 
-Placement: the header always carries the master (horizontal) logo — light colourway over the
-homepage hero and in the mobile menu, dark colourway on the linen bar. The footer carries the
-stacked master lockup, reversed. The discipline pages introduce the sub-brand with its own
-mark (bronze on Bouw, olive on Interieur) beside the opening label; the primary logo never
-changes per page.
+Placement: the header always carries the master (horizontal) logo, light colourway on the
+charcoal bar. The footer carries the stacked master lockup, reversed. The homepage shows the
+two sub-brand lockups side by side (light colourway), as on the board; the discipline pages
+introduce the sub-brand with its own mark (bronze on Bouw, olive on Interieur) beside the
+opening label. The primary logo never changes per page.
 
 The files carry their own clear space inside the viewBox. Sizing is by height; width follows
 the file's aspect ratio. The one layout adjustment is a negative left margin on the footer
@@ -52,17 +52,19 @@ lockup so its art aligns with the column edge — the file itself is untouched.
 
 | Token | Hex | Use |
 |---|---|---|
-| `--charcoal` | `#0E0E0E` | dark chapters, the footer, the intake's opening and close |
-| `--linen` | `#F4F0E8` | the canvas — the brand's warm off-white, the same tone the reversed logos use for text |
-| `--stone` | `#C9C2B8` | supporting chapters, the reserved image fields |
-| `--taupe` | `#3A3A36` | secondary text on light; warm-dark surfaces |
+| `--charcoal` | `#0E0E0E` | the canvas — every page, header and footer |
+| (off-white) | `#F4F0E8` | type (`--ink`) — the same tone the reversed logos use |
+| `--stone` | `#C9C2B8` | reserved for material and print; not a web surface |
+| `--taupe` | `#3A3A36` | a warm-dark band (werkwijze close) and reserved image fields |
 | `--bronze` | `#B08B6F` | Bouw accent — marks, labels on dark; `--bronze-deep #7E5F45` as text on light |
 | `--olive` | `#4A5A46` | Interieur accent — marks, labels; `--olive-on-dark #8C9C84` on charcoal |
 
-Derived values (`--linen-deep`, `--paper`, `--stone-deep`, `--charcoal-soft`, `--muted`,
-`--on-dark`, `--on-dark-soft`, hairlines) are in `src/app/globals.css` with their contrast
-notes. Raw bronze fails contrast as small text on linen, which is why `--bronze-deep`
-exists; raw olive fails on charcoal, which is why `--olive-on-dark` exists.
+The site follows the KADER board: the page is **charcoal**, type is the warm off-white
+`#F4F0E8` the reversed logos use, and structure is drawn in hairlines. Derived values
+(`--canvas-raised`, `--panel`, `--ink-soft`, `--muted`, `--line`, `--line-strong`) are in
+`src/app/globals.css` with their contrast notes. Bronze reads as text on charcoal (6.3:1);
+raw olive does not, which is why `--olive-on-dark` exists. Older names (`--linen`,
+`--paper`, `--sand`) are kept as aliases of the dark surfaces.
 
 No gradients (the hero scrim excepted — it is a legibility device over footage, not a
 decoration), no shadows, no border radius on anything structural.
@@ -74,18 +76,24 @@ commercially licensed and not bundled. The site ships the closest open pairing:
 
 | Role | Board | Implemented | Where |
 |---|---|---|---|
-| Functional — nav, body, labels, buttons, metadata, functional headings | Söhne | **Instrument Sans** 400/500/600 | `--font-sans` |
-| Editorial — statements, hero, chapter openings, the closing invitation | Canela | **Instrument Serif** 400 + italic | `--font-serif` |
+| Functional — nav, body, labels, buttons, metadata, functional headings | Söhne | **Hanken Grotesk** 300/400/500 | `--font-sans` |
+| Editorial — statements, hero, chapter openings, the closing invitation | Canela | **Newsreader** 300 (display optical size) + italic | `--font-serif` |
 
-They are drawn by the same designer and made to sit together. Swapping in the licensed
-faces is a change to `src/lib/fonts.ts` only; every stylesheet reads the two variables.
+Chosen side by side against the board: Hanken Grotesk carries Söhne's light, wide-tracked
+capitals; Newsreader at display size has Canela's open, light serif. Swapping in the
+licensed faces is a change to `src/lib/fonts.ts` only; every stylesheet reads the two
+variables.
 
 Rules the system enforces:
 
-- The serif is never bold and never used for body copy or UI. It appears in `.display`,
-  `.heading`, the serif paragraphs on discipline and project pages, and nowhere else.
-- Metadata is small, uppercase, tracked `0.18em` (`.label`). It is the site's quiet
-  labelling layer: eyebrows, captions, index numbers, column heads, breadcrumbs.
+- The serif is set light (300), never bold and never used for UI. It appears in
+  `.display`, `.heading`, service names and a few statements.
+- Metadata is small, uppercase, tracked `0.28em` (`.label`). It is the site's labelling
+  layer: eyebrows, captions, index numbers, column heads, breadcrumbs, navigation.
+- Board devices: `.tracked` (a statement in tracked capitals — "Eén merk. Twee
+  disciplines."), `.stack` (a vertical column of tracked words closed by a short rule),
+  `.rule-under` (the 2px bronze rule under the hero statement, as under the logo) and
+  `SectionMarker` (index, label, hairline: `01  NEDERDAM ─────`).
 - The scale is short on purpose: `.display`, `.heading`, `.title`, `.lede`, body, `.label`.
 
 ## Layout
@@ -93,15 +101,17 @@ Rules the system enforces:
 A 12-column grid (`.grid12`) inside a 1520px container with a fluid gutter. Compositions are
 deliberately unequal: a statement in columns 3–8 with facts in 10–12; an image in 9–12 beside
 text in 1–7 (mirrored on Interieur); a landscape in 1–8 with a portrait in 10–12 set lower.
-Sections vary in ground — linen, stone, charcoal, taupe — and in structure. No section is a
-row of equal cards.
+Chapters open with a numbered `SectionMarker` and are separated by hairlines, as on the
+board. Images sit framed inside the margins with small tracked captions beneath.
 
 ## UI
 
-- Text links: `.textlink` — weight 500, an arrow, a hairline that appears on hover.
-- Buttons: `.btn` (1px border, uppercase, 52px) and `.btn--solid` (charcoal). One of each
-  per moment at most.
-- Forms: square fields on `--paper` with a hairline border that darkens to ink on focus.
+- Text links: `.textlink` — tracked capitals, an arrow, a hairline that appears on hover.
+- Buttons: square, tracked capitals, 50px. `.btn--bronze` is the primary action
+  ("Start uw project"); `.btn` is a hairline outline; `.btn--solid` is off-white.
+- Navigation: logo left, the two disciplines first (each opens its services), then the
+  pages, in tracked capitals; one bronze action.
+- Forms: square fields on `--panel` with a hairline border.
 - Motion: slow (`640ms`, `cubic-bezier(0.22, 1, 0.36, 1)`). Light content settles into
   place, photography reveals with a crop, dark chapters stay still. Nothing bounces.
 

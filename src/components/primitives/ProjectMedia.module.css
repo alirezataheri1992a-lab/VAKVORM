@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: var(--stone);
+  background: var(--panel);
 }
 @media (min-width: 1041px) {
   .figureFill {
@@ -28,35 +28,31 @@ a:hover .img {
   transform: scale(1.03);
 }
 
-/* reserved field: a flat tone from the palette and one label, bottom-left */
+/* reserved field: a flat dark tone and one label, bottom-left — on the charcoal page the
+   fields read as unlit rooms waiting for their photograph, framed by a hairline */
 .field {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-end;
   padding: 18px 20px;
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 .field[data-tone='stone'] {
-  background: var(--stone);
+  background: #1c1b19;
 }
 .field[data-tone='linen'] {
-  background: var(--linen-deep);
+  background: #211f1c;
 }
 .field[data-tone='dark'] {
-  background: var(--charcoal-soft);
+  background: #161614;
 }
 .field[data-tone='taupe'] {
-  background: var(--taupe);
+  background: #2a2926;
 }
 .fieldLabel {
-  color: var(--ink-soft);
-  opacity: 0.7;
-  font-size: 0.62rem;
-}
-.field[data-tone='dark'] .fieldLabel,
-.field[data-tone='taupe'] .fieldLabel {
-  color: var(--on-dark-soft);
-  opacity: 0.9;
+  color: var(--muted);
+  font-size: 0.6rem;
 }
 
 .caption {

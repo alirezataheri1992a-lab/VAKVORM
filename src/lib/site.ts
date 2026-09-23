@@ -27,16 +27,18 @@ export const site: SiteSettings = {
 
 // Primary navigation. "Diensten" opens a submenu with the two disciplines (Bouw, Interieur)
 // and their services; the discipline pages keep their own URLs.
+// Main navigation, as on the KADER board: the two disciplines lead (each opens its
+// services), then the pages.
 export const nav = [
-  { label: 'Home', path: '/' },
+  { label: 'Bouw', path: '/bouw', menu: 'bouw' },
+  { label: 'Interieur', path: '/interieur', menu: 'interieur' },
   { label: 'Over ons', path: '/over-ons' },
-  { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },
+  { label: 'Werkwijze', path: '/werkwijze' },
   { label: 'Contact', path: '/contact' },
 ] as const;
 
-// Secondary page list for the footer and the mobile menu (includes Werkwijze, which is not
-// in the top bar).
+// Page list for the footer and the mobile menu.
 export const pages = [
   { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },

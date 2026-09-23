@@ -35,8 +35,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--concrete);
 }
@@ -116,13 +116,13 @@
   margin-bottom: 18px;
   font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   color: var(--bronze-deep);
-  font-weight: 500;
+  font-weight: 400;
 }
 .question {
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(1.9rem, 3.6vw, 3rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -198,7 +198,7 @@
   width: 13px;
   height: 13px;
   opacity: 0;
-  color: var(--on-ink);
+  color: var(--charcoal);
 }
 .option[data-selected='true'] .mark svg {
   opacity: 1;
@@ -306,15 +306,18 @@
   height: 46px;
   padding: 0 22px;
   margin-top: 18px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius-cta);
-  font-weight: 500;
+  font-weight: 400;
   background: transparent;
   cursor: pointer;
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
 }
 .dropBtn:hover {
   background: var(--ink);
-  color: var(--on-ink);
+  color: var(--charcoal);
 }
 .files {
   display: flex;
@@ -392,20 +395,21 @@
   gap: 10px;
   min-height: 52px;
   padding: 0 28px;
-  background: var(--charcoal);
-  color: var(--on-dark);
-  border: 1px solid var(--charcoal);
+  background: var(--bronze);
+  color: var(--charcoal);
+  border: 1px solid var(--bronze);
   border-radius: 0;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 180ms var(--ease), border-color 180ms var(--ease);
 }
 .btnPrimary:hover:not(:disabled) {
-  background: var(--taupe);
-  border-color: var(--taupe);
+  background: transparent;
+  border-color: var(--bronze);
+  color: var(--bronze);
 }
 .btnPrimary:disabled {
   opacity: 0.5;
@@ -416,12 +420,12 @@
   align-items: center;
   min-height: 52px;
   padding: 0 24px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line-strong);
   border-radius: 0;
   background: transparent;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--ink);
   cursor: pointer;
@@ -429,7 +433,8 @@
 }
 .btnSecondary:hover {
   background: var(--ink);
-  color: var(--on-dark);
+  color: var(--charcoal);
+  border-color: var(--ink);
 }
 .btnQuiet {
   background: none;
@@ -533,14 +538,14 @@
   display: block;
   font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   color: var(--bronze);
   font-weight: 500;
   margin-bottom: 26px;
 }
 .introTitle {
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(2.6rem, 5.6vw, 4.8rem);
   line-height: 1.02;
   letter-spacing: -0.012em;
@@ -558,8 +563,8 @@
   align-items: center;
   gap: 10px;
   margin-top: 26px;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--on-ink-soft);
 }
@@ -575,20 +580,21 @@
   align-items: center;
   min-height: 52px;
   padding: 0 30px;
-  background: var(--on-dark);
+  background: var(--bronze);
   color: var(--charcoal);
   border-radius: 0;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   cursor: pointer;
-  border: 1px solid var(--on-dark);
+  border: 1px solid var(--bronze);
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .introPrimary:hover {
-  background: var(--bronze);
+  background: transparent;
   border-color: var(--bronze);
+  color: var(--bronze);
 }
 .introPhone {
   color: var(--on-ink-soft);

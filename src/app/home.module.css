@@ -1,360 +1,313 @@
-/* the left edge of the page container, used by sections whose right half bleeds */
-.hero,
-.about {
-  --edge: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
+/* ================================================================ hero
+   A framed image inside the page margins, as on the board: never edge to edge. */
+.heroWrap {
+  padding-top: clamp(16px, 2.4vw, 32px);
 }
-
-/* ================================================================ 1. hero (split) */
 .hero {
+  position: relative;
+  min-height: min(80svh, 780px);
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--charcoal-soft);
+}
+/* a flat veil so the statement holds on any frame of the footage */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 14, 14, 0.52);
+}
+.heroInner {
+  position: relative;
+  flex: 1 1 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-  min-height: min(86svh, 820px);
-  padding-left: var(--edge);
-  background: var(--linen);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 40px;
+  padding: clamp(32px, 5vw, 80px);
 }
 .heroText {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  gap: 26px;
-  padding: clamp(56px, 9vh, 112px) clamp(32px, 5vw, 88px) clamp(56px, 9vh, 112px) 0;
+  gap: 28px;
 }
 .heroLabel {
-  color: var(--bronze-deep);
+  color: var(--ink-soft);
 }
 .heroTitle {
-  max-width: 12ch;
-  font-size: clamp(2.6rem, 4.9vw, 4.9rem);
-}
-.heroLede {
-  max-width: 40ch;
+  max-width: 13ch;
+  font-size: clamp(2.7rem, 5.6vw, 5.6rem);
 }
 .heroActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 10px;
-}
-.heroMedia {
-  position: relative;
-  min-height: 420px;
-  background: var(--charcoal);
-}
-
-/* ================================================================ 2. pillars (icons) */
-.pillars {
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.pillarList {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.pillarList > li + li {
-  border-left: 1px solid var(--line);
-}
-.pillar {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 40px 16px 36px;
-  text-align: center;
+  gap: 18px 32px;
+  margin-top: 6px;
 }
-.pillarIcon {
-  color: var(--bronze);
-  transition: transform var(--dur) var(--ease);
-}
-.pillar:hover .pillarIcon {
-  transform: translateY(-3px);
-}
-.pillarLabel {
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.heroStack {
+  align-self: center;
   color: var(--ink);
+  padding-right: clamp(0px, 3vw, 48px);
 }
 
-/* ================================================================ 3. about (dark split) */
-.about {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  padding-left: var(--edge);
+/* ================================================================ chapters
+   Every chapter opens with the board's marker: index, label, hairline. */
+.chapter {
+  padding-top: clamp(80px, 12vh, 144px);
 }
-.aboutText {
+.chapter > :first-child {
+  margin-bottom: clamp(40px, 6vh, 72px);
+}
+
+/* ---------------------------------------------------------------- 01 intro */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 2.5fr) minmax(0, 2.5fr);
+  gap: var(--col-gap);
+  align-items: start;
+}
+.introMain {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  padding: clamp(72px, 12vh, 144px) clamp(32px, 6vw, 112px) clamp(72px, 12vh, 144px) 0;
+  gap: 28px;
+  max-width: 620px;
 }
-.aboutLabel {
-  color: var(--bronze);
+.introStatement {
+  color: var(--ink);
 }
-.aboutTitle {
-  max-width: 18ch;
-}
-.aboutBody {
-  max-width: 50ch;
-  line-height: 1.7;
-  color: var(--on-dark-soft);
-}
-.aboutFacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 48px;
-  padding: 20px 0 8px;
-  border-top: 1px solid var(--line-dark);
-  width: 100%;
-  max-width: 50ch;
-}
-.aboutFacts div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.aboutFacts dt {
-  color: var(--on-dark-soft);
-}
-.aboutFacts dd {
-  font-size: 0.95rem;
-}
-.aboutMedia {
-  position: relative;
-  min-height: 520px;
-}
-.aboutQuote {
-  position: absolute;
-  left: clamp(-72px, -4vw, -24px);
-  bottom: clamp(40px, 8vh, 88px);
-  max-width: 340px;
-  padding: 32px 34px 28px;
-  background: var(--charcoal);
-  border-top: 2px solid var(--bronze);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.aboutQuote p {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
-  line-height: 1.12;
-  color: var(--on-dark);
-}
-.aboutQuote footer {
-  color: var(--on-dark-soft);
-}
-
-/* ================================================================ shared: centred section heads */
-.center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  text-align: center;
-  margin-bottom: clamp(40px, 6vh, 64px);
-}
-.centerText {
-  max-width: 52ch;
+.introText {
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.6;
   color: var(--ink-soft);
-  line-height: 1.6;
 }
-.more {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(36px, 5vh, 56px);
+.introStack {
+  padding-top: 6px;
 }
 
-/* ================================================================ 4. services */
-.services {
-  padding-block: clamp(80px, 13vh, 160px);
-}
-
-/* ================================================================ 5. work */
-.work {
-  padding-block: clamp(80px, 13vh, 160px);
-}
-.workHead {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  margin-bottom: clamp(32px, 5vh, 56px);
-}
-.workHead > div {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.workGrid {
+/* ---------------------------------------------------------------- 02 disciplines */
+.split {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--col-gap);
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
-.workItem {
+.discipline {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 28px;
+  padding: clamp(40px, 6vh, 72px) clamp(24px, 4vw, 72px) clamp(40px, 6vh, 64px) 0;
 }
-.workName {
-  margin-top: 8px;
+.discipline + .discipline {
+  border-left: 1px solid var(--line);
+  padding-left: clamp(24px, 4vw, 72px);
+  padding-right: 0;
+}
+/* the lockups are centred in their own 620×360 canvas; centre them in the column too */
+.lockup {
+  align-self: center;
+  margin-block: -24px 0;
+}
+.disciplineText {
+  max-width: 46ch;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.serviceList {
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+.serviceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left var(--dur) var(--ease);
+}
+.serviceRow :global(.label) {
+  color: var(--accent-text);
+  min-width: 2.4em;
+}
+.serviceName {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  line-height: 1.1;
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
 }
-.workNote {
-  margin-top: 36px;
-  max-width: 62ch;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--muted);
+.serviceRow:hover {
+  padding-left: 6px;
+}
+.disciplineLink {
+  color: var(--accent-text);
 }
 
-/* ================================================================ 6. process */
+/* ---------------------------------------------------------------- 03 process */
 .process {
-  padding-block: clamp(80px, 13vh, 160px);
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 2fr);
+  gap: clamp(32px, 4vw, 72px);
+  align-items: start;
+}
+.processIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+.processStatement {
+  color: var(--ink);
+}
+.processText {
+  max-width: 42ch;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-soft);
 }
 .steps {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--line);
 }
 .step {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 32px 28px 8px 0;
-}
-.step + .step {
-  padding-left: 28px;
-  border-left: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.3fr);
+  align-items: baseline;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
 }
 .stepNum {
   font-family: var(--font-serif);
-  font-size: 2.4rem;
+  font-weight: 300;
+  font-size: 2rem;
   line-height: 1;
   color: var(--bronze);
 }
 .stepName {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
 }
 .stepDesc {
   font-size: 0.92rem;
-  line-height: 1.55;
+  font-weight: 300;
+  line-height: 1.6;
   color: var(--ink-soft);
-  max-width: 28ch;
+}
+.processStack {
+  justify-self: end;
+}
+
+/* ---------------------------------------------------------------- 04 work */
+.work {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 24px);
+  align-items: start;
+}
+.workItem {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.workCaption {
+  color: var(--ink-soft);
+}
+.workFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-top: 36px;
+}
+.workNote {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 /* ================================================================ responsive */
 @media (max-width: 1100px) {
-  .pillarList {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 48px;
   }
-  .pillarList > li:nth-child(4) {
-    border-left: 0;
+  .introMain {
+    grid-column: 1 / -1;
   }
-  .pillarList > li:nth-child(n + 4) {
-    border-top: 1px solid var(--line);
+  .process {
+    grid-template-columns: 1fr;
   }
-  .steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .step:nth-child(3) {
-    border-left: 0;
-    padding-left: 0;
-  }
-  .step:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-    margin-top: 24px;
+  .processStack {
+    justify-self: start;
   }
 }
-@media (max-width: 1040px) {
-  .hero,
-  .about {
+@media (max-width: 900px) {
+  .heroInner {
     grid-template-columns: 1fr;
-    padding-left: 0;
   }
-  .heroText,
-  .aboutText {
-    padding-inline: var(--gutter);
+  .heroStack {
+    display: none;
   }
-  .heroMedia {
-    order: -1;
-    min-height: 0;
-    aspect-ratio: 4 / 3;
+  .split {
+    grid-template-columns: 1fr;
   }
-  .aboutMedia {
-    min-height: 0;
-    padding: 0 var(--gutter) 72px;
+  .discipline,
+  .discipline + .discipline {
+    padding-inline: 0;
+    border-left: 0;
   }
-  .aboutQuote {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    margin: -64px 0 0 24px;
+  .discipline + .discipline {
+    border-top: 1px solid var(--line);
   }
-  .workGrid {
+  .work {
     grid-template-columns: 1fr 1fr;
+  }
+  .work > li:first-child {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 640px) {
-  .heroMedia {
-    aspect-ratio: 5 / 4;
+  .heroWrap {
+    padding-inline: 0;
+    padding-top: 0;
   }
-  .heroText {
-    padding-top: 40px;
-    gap: 20px;
+  .hero {
+    min-height: 88svh;
+    border-inline: 0;
+    border-top: 0;
+  }
+  .heroInner {
+    padding: 28px var(--gutter) 40px;
   }
   .heroActions {
     flex-direction: column;
-    align-self: stretch;
+    align-items: stretch;
+    width: 100%;
   }
-  .pillarList {
-    grid-template-columns: 1fr 1fr;
-    padding-inline: 0;
+  .heroActions :global(.textlink) {
+    align-self: flex-start;
   }
-  .pillarList > li {
-    border-left: 0 !important;
-    border-top: 1px solid var(--line);
+  .lockup img {
+    height: 190px !important;
   }
-  .pillarList > li:nth-child(-n + 2) {
-    border-top: 0;
+  .step {
+    grid-template-columns: 48px minmax(0, 1fr);
   }
-  .pillarList > li:nth-child(even) {
-    border-left: 1px solid var(--line) !important;
+  .stepDesc {
+    grid-column: 2;
   }
-  .pillarList > li:last-child {
-    grid-column: 1 / -1;
-    border-left: 0 !important;
-  }
-  .pillar {
-    padding: 28px 12px 24px;
-  }
-  .aboutQuote {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  .workHead {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .workGrid,
-  .steps {
+  .work {
     grid-template-columns: 1fr;
   }
-  .step,
-  .step + .step {
-    border-left: 0;
-    padding-left: 0;
-    border-top: 1px solid var(--line);
-    margin-top: 0;
-  }
-  .step:first-child {
-    border-top: 0;
+  .workFoot {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
