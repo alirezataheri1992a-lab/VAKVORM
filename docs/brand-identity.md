@@ -95,10 +95,15 @@ close.
 
 ## UI
 
-- Buttons: square, sentence case, 52px. `.btn--bronze` is the primary action; `.btn` is a
-  charcoal outline; `.btn--solid` is charcoal.
-- Header: logo, Bouw and Interieur (each opens its services), the pages, the phone number,
-  "Offerte aanvragen".
+- Buttons: square, sentence case, 52px. `.btn--primary` is the primary action ("Offerte
+  aanvragen"): charcoal with a bronze hover on the warm white page; bronze with charcoal
+  text on dark grounds (`.on-dark`, `.on-footage`, the mobile menu). `.btn` is a charcoal
+  outline.
+- Header: logo, Bouw and Interieur (each opens its services), the pages; then, after one
+  hairline, the phone number (icon + number, the secondary action) and "Offerte aanvragen →"
+  (primary). Below 1240px the number collapses to its icon; on mobile a 44px call button sits
+  next to "Menu". Werkgebied is linked from the hero, service pages, mobile menu and footer,
+  not the top bar, to keep it calm.
 - Placeholders: `<Placeholder>` marks any detail still to be supplied (KvK number,
   certification name, warranty terms, insurance) with a dashed bronze frame, so nothing
   reads as a claim before it is confirmed.

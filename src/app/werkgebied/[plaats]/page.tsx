@@ -52,12 +52,13 @@ export default async function AreaPage({ params }: { params: Promise<{ plaats: s
           ]}
         />
         <p className={`label ${styles.kicker}`}>
-          Werkgebied · {area.name} · {area.province}
+          Werkgebied · {area.name}
+          {area.province !== area.name && ` · ${area.province}`}
         </p>
         <h1 className={`display ${styles.title}`}>Aannemer in {area.name}.</h1>
         <p className="lede">{area.intro}</p>
         <div className={styles.actions}>
-          <Link href="/start-uw-project" className="btn btn--bronze">
+          <Link href="/start-uw-project" className="btn btn--primary">
             Vraag een offerte aan
           </Link>
           <a href={`tel:${site.phoneHref}`} className={styles.phone}>

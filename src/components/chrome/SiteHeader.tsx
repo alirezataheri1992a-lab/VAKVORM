@@ -7,6 +7,7 @@ import { nav, pages } from '@/lib/site';
 import type { Service, SiteSettings } from '@/lib/types';
 import { Logo } from './Logo';
 import { InstagramLink } from '@/components/primitives/InstagramLink';
+import { PhoneIcon } from '@/components/primitives/PhoneIcon';
 import styles from './SiteHeader.module.css';
 
 interface Props {
@@ -158,13 +159,22 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </nav>
 
           <div className={styles.actions}>
-            <a href={`tel:${site.phoneHref}`} className={styles.phone}>
-              {site.phoneDisplay}
+            <a href={`tel:${site.phoneHref}`} className={styles.phone} aria-label={`Bel ${site.phoneDisplay}`}>
+              <PhoneIcon />
+              <span>{site.phoneDisplay}</span>
             </a>
-            <Link href="/start-uw-project" className={`btn btn--bronze ${styles.cta}`}>
+            <Link href="/start-uw-project" className={`btn btn--primary ${styles.cta}`}>
               Offerte aanvragen
+              <span className="btn-arrow" aria-hidden="true">
+                →
+              </span>
             </Link>
           </div>
+
+          {/* mobile: tap-to-call next to the menu — the quickest route to a builder */}
+          <a href={`tel:${site.phoneHref}`} className={styles.callMobile} aria-label={`Bel ${site.phoneDisplay}`}>
+            <PhoneIcon size={20} />
+          </a>
 
           <button
             className={styles.toggle}
@@ -213,7 +223,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </ul>
 
           <div className={styles.sheetFoot}>
-            <Link href="/start-uw-project" className="btn btn--bronze">
+            <Link href="/start-uw-project" className="btn btn--primary">
               Offerte aanvragen
             </Link>
             <div className={styles.sheetContact}>

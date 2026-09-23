@@ -268,16 +268,26 @@ em {
   background: var(--taupe);
   border-color: var(--taupe);
 }
-/* bronze: the primary action. Charcoal text — off-white on bronze fails contrast. */
-.btn--bronze {
+/* The primary action ("Offerte aanvragen"): the strongest contrast with its ground.
+   On the warm white page it is charcoal, with bronze as its hover; on dark grounds
+   (footage, the charcoal close, the mobile menu) it turns bronze with charcoal text —
+   off-white on bronze would fail contrast. */
+.btn--primary {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--on-dark);
+}
+.btn--primary:hover {
   background: var(--bronze);
   border-color: var(--bronze);
   color: var(--charcoal);
 }
-.btn--bronze:hover {
-  background: var(--charcoal);
-  border-color: var(--charcoal);
-  color: var(--on-dark);
+.btn-arrow {
+  font-weight: 400;
+  transition: transform var(--dur) var(--ease);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
 }
 .on-dark .btn,
 .on-ink .btn,
@@ -298,16 +308,18 @@ em {
   border-color: var(--on-dark);
   color: var(--charcoal);
 }
-.on-dark .btn--bronze,
-.on-ink .btn--bronze,
-.on-taupe .btn--bronze {
+.on-dark .btn--primary,
+.on-ink .btn--primary,
+.on-taupe .btn--primary,
+.on-footage .btn--primary {
   background: var(--bronze);
   border-color: var(--bronze);
   color: var(--charcoal);
 }
-.on-dark .btn--bronze:hover,
-.on-ink .btn--bronze:hover,
-.on-taupe .btn--bronze:hover {
+.on-dark .btn--primary:hover,
+.on-ink .btn--primary:hover,
+.on-taupe .btn--primary:hover,
+.on-footage .btn--primary:hover {
   background: var(--on-dark);
   border-color: var(--on-dark);
   color: var(--charcoal);

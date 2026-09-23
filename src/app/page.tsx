@@ -45,7 +45,7 @@ export default async function HomePage() {
       {/* ---------------------------------------------------------------- hero
           The moving footage full width, with what we are, where, and how to reach
           us set on it. */}
-      <section className={styles.hero}>
+      <section className={`on-footage ${styles.hero}`}>
         <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
         <div className={styles.heroScrim} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
@@ -59,7 +59,7 @@ export default async function HomePage() {
             heel Nederland.
           </p>
           <div className={styles.heroActions}>
-            <Link href="/start-uw-project" className="btn btn--bronze">
+            <Link href="/start-uw-project" className="btn btn--primary">
               Vraag een offerte aan
             </Link>
             <a href={`tel:${site.phoneHref}`} className={styles.heroPhone}>

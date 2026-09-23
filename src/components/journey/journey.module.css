@@ -396,9 +396,9 @@
   gap: 10px;
   min-height: 52px;
   padding: 0 28px;
-  background: var(--bronze);
-  color: var(--charcoal);
-  border: 1px solid var(--bronze);
+  background: var(--charcoal);
+  color: var(--on-dark);
+  border: 1px solid var(--charcoal);
   border-radius: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -408,9 +408,9 @@
   transition: background 180ms var(--ease), border-color 180ms var(--ease);
 }
 .btnPrimary:hover:not(:disabled) {
-  background: var(--charcoal);
-  border-color: var(--charcoal);
-  color: var(--on-dark);
+  background: var(--bronze);
+  border-color: var(--bronze);
+  color: var(--charcoal);
 }
 .btnPrimary:disabled {
   opacity: 0.5;

@@ -139,19 +139,32 @@
   color: var(--accent-text);
 }
 
-/* ---------------------------------------------------------------- actions */
+/* ---------------------------------------------------------------- actions
+   Navigation and actions are separated by one hairline. The phone number is the
+   secondary action (icon + number, reads as a link); the charcoal button is primary. */
 .actions {
   display: flex;
   align-items: center;
   gap: 24px;
 }
+.actions::before {
+  content: '';
+  width: 1px;
+  height: 28px;
+  margin-right: clamp(0px, 0.5vw, 8px);
+  background: var(--line);
+}
 .phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
   font-size: 1rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.phone:hover {
+.phone:hover span {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -160,9 +173,16 @@
   padding: 0 20px;
   font-size: 0.95rem;
 }
+.callMobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid currentColor;
+}
 .toggle {
   display: none;
-  justify-self: end;
   align-items: center;
   gap: 12px;
   padding: 12px 0 12px 12px;
@@ -266,6 +286,11 @@
 .sheetLink[data-active='true'] {
   color: var(--bronze);
 }
+.sheetFoot :global(.btn--primary) {
+  background: var(--bronze);
+  border-color: var(--bronze);
+  color: var(--charcoal);
+}
 .sheetFoot {
   margin-top: auto;
   padding-top: 28px;
@@ -282,15 +307,22 @@
 }
 
 /* ---------------------------------------------------------------- responsive */
-@media (max-width: 1320px) {
-  .phone {
+@media (max-width: 1240px) {
+  .phone span {
     display: none;
+  }
+  .actions {
+    gap: 16px;
   }
 }
 @media (max-width: 1100px) {
   .bar {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
     height: 68px;
+  }
+  .callMobile {
+    display: inline-flex;
   }
   .brand img {
     height: 44px !important;

@@ -36,7 +36,6 @@ export const nav = [
   { label: 'Interieur', path: '/interieur', menu: 'interieur' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
-  { label: 'Werkgebied', path: '/werkgebied' },
   { label: 'Over ons', path: '/over-ons' },
   { label: 'Contact', path: '/contact' },
 ] as const;
