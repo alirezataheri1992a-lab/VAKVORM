@@ -102,6 +102,12 @@ export default async function AreaPage({ params }: { params: Promise<{ plaats: s
             </ul>
           </div>
         </div>
+        <p className={styles.nieuwbouwLine}>
+          Een nieuwbouwwoning in {area.name}?{' '}
+          <Link href="/nieuwbouw" className="textlink">
+            Van sleutel tot thuis
+          </Link>
+        </p>
       </section>
 
       {/* building in this city */}

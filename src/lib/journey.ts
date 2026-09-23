@@ -14,6 +14,7 @@ export interface ServiceOption {
 }
 
 export const serviceOptions: ServiceOption[] = [
+  { id: 'nieuwbouw-afwerken', label: 'Nieuwbouwwoning afwerken', hint: 'Van sleutel tot thuis' },
   { id: 'complete-renovatie', label: 'Complete renovatie', hint: 'Woning volledig aanpakken', serviceSlug: 'renovatie-verbouwing' },
   { id: 'renovatie-verbouwing', label: 'Renovatie / verbouwing', serviceSlug: 'renovatie-verbouwing' },
   { id: 'badkamerrenovatie', label: 'Badkamerrenovatie', serviceSlug: 'badkamerrenovatie' },
@@ -43,6 +44,41 @@ export interface CondQuestion {
 // Conditional follow-ups — kept short. A question appears only when a relevant service is
 // selected. The shared "drawings" question is asked once across several services.
 export const condQuestions: CondQuestion[] = [
+  {
+    id: 'nieuwbouw-sleutel',
+    appliesTo: ['nieuwbouw-afwerken'],
+    heading: 'Wanneer krijgt u de sleutel?',
+    help: 'Dan plannen we terug vanaf die dag. Een schatting is genoeg.',
+    type: 'single',
+    options: [
+      { id: 'ontvangen', label: 'Ik heb de sleutel al' },
+      { id: '0-3', label: 'Binnen 3 maanden' },
+      { id: '3-6', label: 'Over 3–6 maanden' },
+      { id: '6-12', label: 'Over 6–12 maanden' },
+      { id: 'later', label: 'Over meer dan een jaar' },
+      { id: 'onbekend', label: 'Nog niet bekend' },
+    ],
+  },
+  {
+    id: 'nieuwbouw-scope',
+    appliesTo: ['nieuwbouw-afwerken'],
+    heading: 'Waar kunnen we u mee helpen?',
+    help: 'Meerdere antwoorden mogelijk.',
+    type: 'multi',
+    options: [
+      { id: 'alles', label: 'Alles — van sleutel tot thuis' },
+      { id: 'meer-minderwerk', label: 'Meekijken met meer- en minderwerk' },
+      { id: 'ontwerp', label: 'Ontwerp & advies' },
+      { id: 'wanden-plafonds', label: 'Wanden & plafonds' },
+      { id: 'vloeren', label: 'Vloeren' },
+      { id: 'schilder-behang', label: 'Schilder- & behangwerk' },
+      { id: 'elektra', label: 'Elektra' },
+      { id: 'badkamer', label: 'Badkamer & toilet' },
+      { id: 'keuken', label: 'Keuken plaatsen' },
+      { id: 'maatwerk', label: 'Kasten & interieur op maat' },
+      { id: 'verhuizing', label: 'Verhuizing' },
+    ],
+  },
   {
     id: 'renovatie-scope',
     appliesTo: ['complete-renovatie', 'renovatie-verbouwing'],

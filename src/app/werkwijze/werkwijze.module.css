@@ -95,3 +95,30 @@
     max-width: 100%;
   }
 }
+
+/* link to the nieuwbouw journey */
+.nieuwbouw {
+  padding-bottom: var(--section);
+}
+.nieuwbouwInner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) auto;
+  gap: var(--col-gap);
+  align-items: end;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--ink);
+}
+.nieuwbouwKicker {
+  margin-bottom: 12px;
+  color: var(--bronze-text);
+}
+.nieuwbouwText {
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+@media (max-width: 900px) {
+  .nieuwbouwInner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}

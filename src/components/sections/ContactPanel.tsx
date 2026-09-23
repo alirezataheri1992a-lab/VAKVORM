@@ -5,8 +5,9 @@ import styles from './ContactPanel.module.css';
 interface Props {
   heading?: string;
   body?: string;
-  /** Show the fact line (used as the homepage closing moment). */
-  facts?: boolean;
+  /** Where the primary button goes, and what it says. */
+  href?: string;
+  cta?: string;
 }
 
 /**
@@ -16,7 +17,8 @@ interface Props {
 export async function ContactPanel({
   heading = 'Een project bespreken?',
   body = 'Loop uw plannen met ons door. We denken graag mee — vrijblijvend en zonder verkooppraat.',
-  facts = false,
+  href = '/start-uw-project',
+  cta = 'Offerte aanvragen',
 }: Props) {
   const site = await getSiteSettings();
   return (
@@ -27,8 +29,8 @@ export async function ContactPanel({
           <div className={styles.right}>
             <p className={styles.body}>{body}</p>
             <div className={styles.actions}>
-              <Link href="/start-uw-project" className="btn btn--primary">
-                Offerte aanvragen
+              <Link href={href} className="btn btn--primary">
+                {cta}
               </Link>
               <a href={`tel:${site.phoneHref}`} className={`textlink ${styles.phone}`}>
                 {site.phoneDisplay}
@@ -39,23 +41,6 @@ export async function ContactPanel({
             </a>
           </div>
         </div>
-
-        {facts && (
-          <ul className={styles.facts}>
-            <li>
-              <span className="label">Werkgebied</span>
-              <span>{site.serviceArea}</span>
-            </li>
-            <li>
-              <span className="label">Disciplines</span>
-              <span>Bouw en interieur, één partij</span>
-            </li>
-            <li>
-              <span className="label">Aanspreekpunt</span>
-              <span>Eén, van eerste schets tot oplevering</span>
-            </li>
-          </ul>
-        )}
       </div>
     </section>
   );

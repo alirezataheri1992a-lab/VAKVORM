@@ -13,6 +13,7 @@ The site is built to run before all real content exists. This tracks what is
 | **Insurance** | homepage trust bar | Confirmed: verzekerd. Type not yet supplied | Replace the insurance placeholder with the actual cover. |
 | **Own workshop** | homepage trust bar, hero | Confirmed: eigen werkplaats | — |
 | **Instagram account** | `instagram` in `src/lib/site.ts` (or Sanity site settings) | Not yet supplied — placeholder shown in footer, mobile menu, contact page and "Recent werk" | Set the account name (without @); the links, and `sameAs` in structured data, switch on automatically. |
+| **Verhuizing (nieuwbouw)** | `src/lib/nieuwbouw.ts` (step "Verhuizen & thuis", trade list, intake option) | **Idea in development** — placed on the site at the owner's request | Confirm before launch that Nederdam (or a partner) actually arranges the move; otherwise remove the step, the trade and the intake option. |
 | **KvK number** | footer | Not yet supplied | Replace `<Placeholder>00000000</Placeholder>` in `SiteFooter.tsx`. |
 | **Example project (voor/na)** | homepage "Recent werk" | Layout example, marked | Disappears automatically when the first project is published. |
 | **Contact details** | `src/lib/site.ts` / Sanity `siteSettings` | Email set to `info@nederdambouw.nl`; phone `06 42241075` | Make sure the mailbox `info@nederdambouw.nl` exists and receives mail (also set `INQUIRY_TO` in the host); add a public address only if confirmed. |

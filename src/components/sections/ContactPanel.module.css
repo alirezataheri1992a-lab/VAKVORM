@@ -39,28 +39,10 @@
 .email:hover {
   color: var(--on-dark);
 }
-.facts {
-  margin-top: clamp(56px, 8vh, 96px);
-  padding-top: 28px;
-  border-top: 1px solid var(--line-dark);
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-}
-.facts li {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 0.95rem;
-}
 
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .facts {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
 }

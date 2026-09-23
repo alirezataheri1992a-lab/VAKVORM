@@ -3,6 +3,7 @@
 import { site } from './site';
 import {
   serviceLabel,
+  serviceOptions,
   condQuestion,
   optionLabel,
   phaseOptions,
@@ -132,6 +133,18 @@ export async function submitProjectRequest(formData: FormData): Promise<ProjectS
   }
 
   // --- server-side validation ---
+  // Keep only answers the intake actually offers; anything else is dropped, never mailed.
+  if (Array.isArray(d.services)) d.services = d.services.filter((id) => serviceOptions.some((o) => o.id === id));
+  if (d.cond && typeof d.cond === 'object') {
+    const clean: Record<string, string[]> = {};
+    for (const [qid, values] of Object.entries(d.cond)) {
+      const q = condQuestion(qid);
+      if (q && Array.isArray(values)) clean[qid] = values.filter((v) => q.options.some((o) => o.id === v));
+    }
+    d.cond = clean;
+  } else {
+    d.cond = {};
+  }
   if (!Array.isArray(d.services) || d.services.length === 0) {
     return { status: 'error', message: 'Kies eerst wat u wilt realiseren.' };
   }

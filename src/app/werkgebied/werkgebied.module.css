@@ -226,3 +226,13 @@
     row-gap: 28px;
   }
 }
+
+.nieuwbouwLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-top: 32px;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}

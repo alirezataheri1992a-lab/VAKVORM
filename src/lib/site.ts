@@ -34,14 +34,15 @@ export const site: SiteSettings = {
 export const nav = [
   { label: 'Bouw', path: '/bouw', menu: 'bouw' },
   { label: 'Interieur', path: '/interieur', menu: 'interieur' },
+  { label: 'Nieuwbouw', path: '/nieuwbouw' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
-  { label: 'Over ons', path: '/over-ons' },
   { label: 'Contact', path: '/contact' },
 ] as const;
 
 // Page list for the footer and the mobile menu.
 export const pages = [
+  { label: 'Nieuwbouw', path: '/nieuwbouw' },
   { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },

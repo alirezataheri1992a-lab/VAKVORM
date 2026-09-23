@@ -31,11 +31,14 @@ interface Props {
   phoneDisplay: string;
   phoneHref: string;
   email: string;
+  /** Services preselected by the page that linked here (e.g. ?type=nieuwbouw). */
+  initialServices?: string[];
 }
 
-export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
+export function ProjectJourney({ phoneDisplay, phoneHref, email, initialServices = [] }: Props) {
+  const fresh = (): JourneyData => ({ ...emptyJourney(), services: [...initialServices] });
   const [mode, setMode] = useState<'intro' | 'journey' | 'success'>('intro');
-  const [data, setData] = useState<JourneyData>(emptyJourney);
+  const [data, setData] = useState<JourneyData>(fresh);
   const [index, setIndex] = useState(0);
   const [situationFiles, setSituationFiles] = useState<File[]>([]);
   const [inspirationFiles, setInspirationFiles] = useState<File[]>([]);
@@ -145,7 +148,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
   const resetSaved = () => {
     sessionStorage.removeItem(STORAGE_KEY);
     setSaved(null);
-    setData(emptyJourney());
+    setData(fresh());
   };
 
   const submit = async () => {

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { heroVideo } from '@/lib/site';
 import { areas } from '@/lib/areas';
+import { journey } from '@/lib/nieuwbouw';
 import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
 import { Placeholder } from '@/components/primitives/Placeholder';
 import { CertificationMark } from '@/components/primitives/CertificationMark';
@@ -20,13 +21,6 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 60;
-
-const STEPS = [
-  ['Kennismaking', 'We bespreken uw plannen, wensen en mogelijkheden, en u krijgt een eerlijk beeld van wat kan.'],
-  ['Offerte & planning', 'U ontvangt een heldere offerte en planning. Alles is vooraf afgestemd.'],
-  ['Uitvoering', 'Eén vast aanspreekpunt houdt kwaliteit, planning en communicatie in de hand.'],
-  ['Oplevering & garantie', 'We controleren het werk, werken de details af en leveren netjes op — met garantie.'],
-] as const;
 
 export default async function HomePage() {
   const [groups, published, site] = await Promise.all([
@@ -54,9 +48,9 @@ export default async function HomePage() {
             Aannemer voor verbouw, renovatie en maatwerk interieur.
           </h1>
           <p className={`lede ${styles.heroLede}`}>
-            Eén bouwbedrijf voor het hele traject: van sloop en constructie tot de kast op maat uit
-            onze eigen werkplaats. Met één vast aanspreekpunt — in Utrecht, Rotterdam, Amsterdam en
-            heel Nederland.
+            Van ontwerp en vergunning tot oplevering: één bouwbedrijf dat alles regelt, met eigen
+            vakmensen, een vast netwerk en een eigen werkplaats. U heeft er geen omkijken naar — in
+            Utrecht, Rotterdam, Amsterdam en heel Nederland.
           </p>
           <div className={styles.heroActions}>
             <Link href="/start-uw-project" className="btn btn--primary">
@@ -222,23 +216,37 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- process */}
+      {/* ---------------------------------------------------------------- nieuwbouw
+          A doorway to the buyer's journey. Only the step names appear here; the journey
+          itself lives on /nieuwbouw, the method on /werkwijze. */}
       <section className={`container ${styles.section}`}>
-        <header className={styles.head}>
-          <h2 className="heading">Zo werken we</h2>
-          <Link href="/werkwijze" className="textlink">
-            Volledige werkwijze
-          </Link>
-        </header>
-        <ol className={styles.steps}>
-          {STEPS.map(([t, d], i) => (
-            <li key={t} className={styles.step}>
-              <span className={styles.stepNum}>{i + 1}</span>
-              <h3 className={styles.stepTitle}>{t}</h3>
-              <p className={styles.stepText}>{d}</p>
-            </li>
-          ))}
-        </ol>
+        <div className={styles.nieuwbouw}>
+          <div className={styles.nieuwbouwText}>
+            <p className={`label ${styles.nieuwbouwKicker}`}>Nieuwbouw</p>
+            <h2 className="heading">Net de sleutel van uw nieuwbouwwoning?</h2>
+            <p>
+              Een nieuwbouwwoning wordt vaak kaal opgeleverd. Daarna zoekt u voor ieder onderdeel een
+              aparte vakman. Wij nemen het hele traject over — van de tekening tot de dag dat u erin
+              woont.
+            </p>
+            <div className={styles.nieuwbouwLinks}>
+              <Link href="/nieuwbouw" className="btn btn--primary">
+                Van sleutel tot thuis
+              </Link>
+              <Link href="/werkwijze" className="textlink">
+                Onze werkwijze
+              </Link>
+            </div>
+          </div>
+          <ol className={styles.nieuwbouwRail} aria-label="Het nieuwbouwtraject in stappen">
+            {journey.map((j, i) => (
+              <li key={j.id} data-pillar={j.discipline}>
+                <span className={styles.railNum}>{String(i + 1).padStart(2, '0')}</span>
+                <span className={styles.railTitle}>{j.title}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* A client's words — marked as sample until a real review exists */}
@@ -248,7 +256,6 @@ export default async function HomePage() {
       <ContactPanel
         heading="Plannen voor een verbouwing of maatwerk interieur?"
         body="Vertel kort wat u wilt laten doen. We nemen contact op om uw project vrijblijvend te bespreken."
-        facts
       />
     </>
   );

@@ -1,51 +1,53 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
 import styles from './werkwijze.module.css';
 
 export const metadata: Metadata = {
-  title: 'Werkwijze — één partij, van plan tot oplevering',
+  title: 'Werkwijze — van ontwerp en vergunning tot oplevering',
   description:
-    'Zo werkt Nederdam Bouw: één aanspreekpunt dat uw project plant, coördineert en oplevert. Van kennismaking tot nette oplevering.',
+    'Zo werkt Nederdam Bouw: advies en ontwerp, de vergunning waar nodig, één planning, uitvoering door eigen vakmensen en een vast netwerk, en oplevering met garantie.',
   alternates: { canonical: '/werkwijze' },
 };
 
-// NOTE: step labels are provisional and must be confirmed with the owner before launch.
-// They describe a conventional, truthful sequence.
+// The method for every project — the one place the process is described. The homepage and
+// the other pages link here instead of repeating it; the nieuwbouw page tells the buyer's
+// own journey (see src/lib/nieuwbouw.ts), not this method again.
 const steps = [
   {
     n: '01',
-    title: 'Kennismaking',
-    text: 'We bespreken uw plannen, wensen en mogelijkheden. U krijgt een eerlijk beeld van wat kan en hoe we het aanpakken.',
-    slot: 'Kennismaking',
+    title: 'Advies & ontwerp',
+    text: 'We bespreken uw plannen en wensen en werken ze uit tot een ontwerp: indeling, materialen, kleuren en maatwerk. Zo weet u vooraf precies hoe het wordt.',
+    slot: 'Ontwerp',
     ratio: '4:5' as const,
   },
   {
     n: '02',
-    title: 'Inventarisatie & voorbereiding',
-    text: 'We brengen de situatie in kaart, meten in en werken het plan uit — inclusief materialen, planning en waar nodig vergunningen.',
-    slot: 'Voorbereiding',
+    title: 'Vergunning, waar nodig',
+    text: 'Is voor uw plan een vergunning nodig, bijvoorbeeld voor een uitbouw, dan verzorgen wij de aanvraag. U hoeft zelf niets uit te zoeken.',
+    slot: 'Vergunning',
     ratio: '3:2' as const,
   },
   {
     n: '03',
-    title: 'Plan & afstemming',
-    text: 'U ontvangt een heldere offerte en planning. Alles is vooraf afgestemd, zodat u weet wat u kunt verwachten.',
-    slot: 'Plan',
+    title: 'Voorbereiding & planning',
+    text: 'We meten in, bestellen de materialen en maken één planning voor alle vakmensen. U ontvangt een heldere offerte; alles is vooraf afgestemd.',
+    slot: 'Voorbereiding',
     ratio: '4:5' as const,
   },
   {
     n: '04',
-    title: 'Realisatie',
-    text: 'Wij voeren uit en coördineren alle vakmensen. Eén aanspreekpunt houdt kwaliteit, planning en communicatie in de hand.',
-    slot: 'Realisatie',
+    title: 'Uitvoering',
+    text: 'Onze eigen vakmensen en ons vaste netwerk van specialisten — zoals vloerleggers en behangers — voeren het werk uit. Eén aanspreekpunt houdt kwaliteit, planning en communicatie in de hand.',
+    slot: 'Uitvoering',
     ratio: '3:2' as const,
   },
   {
     n: '05',
-    title: 'Oplevering',
-    text: 'We controleren het werk, werken de details af en leveren netjes op. Pas als het klopt, is het klaar.',
+    title: 'Oplevering & garantie',
+    text: 'We controleren het werk, werken de details af en leveren netjes op — met garantie op ons werk. Pas als het klopt, is het klaar.',
     slot: 'Oplevering',
     ratio: '4:5' as const,
   },
@@ -59,10 +61,10 @@ export default async function WerkwijzePage() {
       <section className={`container ${styles.open}`}>
         <Breadcrumbs items={[{ name: 'Werkwijze', path: '/werkwijze' }]} />
         <div className={`grid12 ${styles.openGrid}`}>
-          <h1 className={`display ${styles.title}`}>Eén partij, van eerste schets tot oplevering.</h1>
+          <h1 className={`display ${styles.title}`}>Van ontwerp tot oplevering. U heeft er geen omkijken naar.</h1>
           <p className={`lede ${styles.lede}`}>
-            U heeft één aanspreekpunt dat het hele traject plant, coördineert en de verantwoordelijkheid
-            draagt — u hoeft niet zelf losse specialisten aan te sturen.
+            Eén partij regelt het hele traject: het ontwerp, de vergunning, de planning, alle vakmensen
+            en de oplevering. U heeft één aanspreekpunt en hoeft niet zelf losse partijen aan te sturen.
           </p>
         </div>
       </section>
@@ -86,6 +88,23 @@ export default async function WerkwijzePage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      {/* the nieuwbouw buyer's journey lives on its own page — link, don't repeat */}
+      <section className={`container ${styles.nieuwbouw}`}>
+        <div className={styles.nieuwbouwInner}>
+          <div>
+            <p className={`label ${styles.nieuwbouwKicker}`}>Nieuwbouw</p>
+            <h2 className="heading">Net de sleutel van uw nieuwbouwwoning?</h2>
+          </div>
+          <p className={styles.nieuwbouwText}>
+            Bekijk stap voor stap hoe we een kale woning afwerken en inrichten — van de tekening tot de
+            dag dat u erin woont.
+          </p>
+          <Link href="/nieuwbouw" className="textlink">
+            Van sleutel tot thuis
+          </Link>
+        </div>
       </section>
 
       <section className={`on-taupe ${styles.closing}`}>

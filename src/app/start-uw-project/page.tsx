@@ -9,15 +9,25 @@ export const metadata: Metadata = {
   alternates: { canonical: '/start-uw-project' },
 };
 
-export const revalidate = 60;
+// ?type=<key> preselects a project type, so a page can send its visitors straight into the
+// matching questions (the nieuwbouw page links with ?type=nieuwbouw).
+const PRESETS: Record<string, string[]> = {
+  nieuwbouw: ['nieuwbouw-afwerken'],
+};
 
-export default async function StartUwProjectPage() {
-  const site = await getSiteSettings();
+export default async function StartUwProjectPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string | string[] }>;
+}) {
+  const [site, params] = await Promise.all([getSiteSettings(), searchParams]);
+  const type = Array.isArray(params.type) ? params.type[0] : params.type;
   return (
     <ProjectJourney
       phoneDisplay={site.phoneDisplay}
       phoneHref={site.phoneHref}
       email={site.email}
+      initialServices={(type && PRESETS[type]) || []}
     />
   );
 }

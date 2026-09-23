@@ -259,40 +259,68 @@
   color: var(--on-dark-soft);
 }
 
-/* ================================================================ process */
-.steps {
+/* ================================================================ nieuwbouw doorway */
+.nieuwbouw {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--col-gap);
-}
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 20px;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 96px);
+  align-items: start;
+  padding-top: 24px;
   border-top: 1.5px solid var(--ink);
 }
-.stepNum {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-bottom: 8px;
-  background: var(--bronze);
-  color: var(--charcoal);
-  font-size: 0.9rem;
-  font-weight: 600;
+.nieuwbouwText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
-.stepTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-}
-.stepText {
+.nieuwbouwText p:not(.nieuwbouwKicker) {
+  max-width: 50ch;
   color: var(--ink-soft);
-  font-size: 0.98rem;
+  font-size: 1.1rem;
   line-height: 1.55;
+}
+.nieuwbouwKicker {
+  color: var(--bronze-text);
+}
+.nieuwbouwLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 8px;
+}
+.nieuwbouwRail {
+  counter-reset: none;
+  border-left: 1px solid var(--line);
+}
+.nieuwbouwRail li {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0 10px 24px;
+}
+.nieuwbouwRail li::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  background: var(--accent);
+}
+.railNum {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.railTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
 }
 
 /* ================================================================ responsive */
@@ -311,13 +339,10 @@
     grid-template-columns: 1fr;
     row-gap: 28px;
   }
-  .steps {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 40px;
-  }
 }
 @media (max-width: 900px) {
-  .project {
+  .project,
+  .nieuwbouw {
     grid-template-columns: 1fr;
   }
 }
@@ -345,9 +370,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-  }
-  .steps {
-    grid-template-columns: 1fr;
   }
   .beforeAfter {
     grid-template-columns: 1fr;

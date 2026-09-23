@@ -1,0 +1,355 @@
+/* ================================================================ the drawing */
+.plan {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--on-dark);
+  overflow: visible;
+}
+.layer {
+  --stroke: var(--on-dark-soft);
+  transition: opacity 500ms var(--ease), color 500ms var(--ease);
+}
+.layer[data-state='future'] {
+  opacity: 0;
+}
+.layer[data-state='done'] {
+  opacity: 1;
+  color: var(--on-dark-soft);
+}
+.layer[data-state='current'] {
+  opacity: 1;
+  color: var(--accent-on-dark);
+}
+.wallOuter,
+.wall,
+.thin,
+.hair,
+.line,
+.dash,
+.tick {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: square;
+}
+.wallOuter {
+  stroke-width: 6;
+}
+.wall {
+  stroke-width: 3;
+}
+.line {
+  stroke-width: 1.5;
+}
+.thin {
+  stroke-width: 1;
+}
+.hair {
+  stroke-width: 0.75;
+  opacity: 0.45;
+}
+.dash {
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+.tick {
+  stroke-width: 2.5;
+}
+.room {
+  fill: currentColor;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* the walls stay fully drawn once the shell exists */
+.layer[data-state='done'] .wallOuter,
+.layer[data-state='done'] .wall {
+  color: var(--on-dark);
+}
+
+/* ================================================================ the journey */
+.journey {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 96px);
+  align-items: start;
+}
+.stage {
+  position: sticky;
+  top: 104px;
+}
+.stageInner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(20px, 2.5vw, 32px);
+}
+.rail {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+}
+.railStep {
+  display: block;
+  width: 100%;
+  height: 20px;
+  padding: 8px 0;
+  background-clip: content-box;
+  background-color: var(--line-dark);
+  transition: background-color 300ms var(--ease);
+}
+.railStep[data-state='done'] {
+  background-color: var(--on-dark-soft);
+}
+.railStep[data-state='current'] {
+  background-color: var(--accent-on-dark);
+}
+.stageCaption {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-height: 1.4em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.stageNum {
+  font-size: 0.8rem;
+  color: var(--on-dark-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--line);
+  transition: opacity 400ms var(--ease);
+}
+.step:first-child {
+  border-top: 1.5px solid var(--ink);
+}
+/* on a wide screen each step holds the stage long enough to read the change */
+@media (min-width: 1041px) {
+  .step {
+    min-height: 62vh;
+  }
+  .step[data-state='other'] {
+    opacity: 0.4;
+  }
+}
+.stepKicker {
+  color: var(--accent-text);
+}
+.stepTitle {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.025em;
+}
+.stepHappens {
+  max-width: 52ch;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.stepCompare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--col-gap);
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.compareLabel {
+  margin-bottom: 10px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chips li {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--muted);
+}
+.stepNederdam {
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.stepLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.stepLinks :global(.textlink) {
+  color: var(--accent-text);
+}
+
+/* ================================================================ the switch */
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  border: 1.5px solid var(--ink);
+}
+.toggle button {
+  min-height: 48px;
+  padding: 0 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.toggle button[aria-pressed='true'] {
+  background: var(--charcoal);
+  color: var(--on-dark);
+}
+.tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 48px;
+}
+.tally div {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.tally dt {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  order: 2;
+}
+.tally dd {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.compare[data-mode='nederdam'] .tally dd {
+  color: var(--bronze-text);
+}
+.trades {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.trade {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  animation: tradeIn 420ms var(--ease) both;
+}
+.tradeName {
+  font-weight: 600;
+}
+.tradeMeta {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+@keyframes tradeIn {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+}
+.one {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px 40px;
+  align-items: center;
+  padding: clamp(24px, 3vw, 40px);
+  animation: tradeIn 420ms var(--ease) both;
+}
+.one :global(img) {
+  margin-left: -14px;
+}
+.oneText {
+  max-width: 52ch;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+.oneTrades {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-dark);
+  font-size: 0.92rem;
+  color: var(--on-dark-soft);
+}
+.oneTrades li::before {
+  content: '✓';
+  margin-right: 6px;
+  color: var(--bronze);
+}
+
+/* ================================================================ responsive */
+@media (max-width: 1040px) {
+  .journey {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .stage {
+    top: 68px;
+    z-index: 2;
+  }
+  .stageInner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 12px var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+  }
+  .rail {
+    order: 3;
+    flex: 1 1 100%;
+  }
+  .stageInner .plan {
+    width: 132px;
+    flex: none;
+  }
+  .stageCaption {
+    flex: 1;
+    font-size: 0.98rem;
+  }
+  .trades {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 620px) {
+  .stepCompare,
+  .one {
+    grid-template-columns: 1fr;
+  }
+  .toggle {
+    align-self: stretch;
+  }
+  .toggle button {
+    flex: 1;
+    padding: 0 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trade,
+  .one {
+    animation: none;
+  }
+}
