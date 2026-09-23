@@ -10,7 +10,7 @@ import styles from './diensten.module.css';
 export const metadata: Metadata = {
   title: 'Diensten — bouw en maatwerk interieur',
   description:
-    'Alle diensten van Nederdam Bouw: renovatie en verbouwing, badkamerrenovatie, aan- en uitbouw, opbouw, stucwerk en maatwerk interieur in Utrecht en omgeving.',
+    'Alle diensten van Nederdam Bouw: renovatie en verbouwing, badkamerrenovatie, aan- en uitbouw, opbouw, stucwerk en maatwerk interieur in Utrecht, Rotterdam, Amsterdam en heel Nederland.',
   alternates: { canonical: '/diensten' },
 };
 

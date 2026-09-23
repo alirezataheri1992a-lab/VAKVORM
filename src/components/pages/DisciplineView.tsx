@@ -135,7 +135,7 @@ export async function DisciplineView({ pillar, services, hub, site }: Props) {
 
       <ContactPanel
         heading={c.contact}
-        body={`Vertel kort wat u wilt realiseren in ${site.city} of omgeving. We nemen contact op om het project vrijblijvend te bespreken.`}
+        body={`Vertel kort wat u wilt realiseren — in Utrecht, Rotterdam, Amsterdam of elders in Nederland. We nemen contact op om het project vrijblijvend te bespreken.`}
       />
     </div>
   );

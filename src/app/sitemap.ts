@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
+import { areas } from '@/lib/areas';
 import { getServiceGroups, getPublishedProjects } from '@/lib/content';
 
 export const revalidate = 60;
@@ -14,6 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/over-ons',
     '/contact',
     '/interieur',
+    '/werkgebied',
+    ...areas.map((a) => `/werkgebied/${a.slug}`),
   ];
 
   const [groups, projects] = await Promise.all([getServiceGroups(), getPublishedProjects()]);

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
@@ -55,7 +54,6 @@ const steps = [
 export const revalidate = 60;
 
 export default async function WerkwijzePage() {
-  const site = await getSiteSettings();
   return (
     <>
       <section className={`container ${styles.open}`}>
@@ -95,7 +93,7 @@ export default async function WerkwijzePage() {
           <p className={`display ${styles.closingText}`}>
             Rust, overzicht en één verantwoordelijke partij.
           </p>
-          <p className={styles.closingNote}>In {site.city} en omgeving.</p>
+          <p className={styles.closingNote}>In Utrecht, Rotterdam, Amsterdam en heel Nederland.</p>
         </div>
       </section>
 

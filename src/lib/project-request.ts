@@ -171,7 +171,7 @@ export async function submitProjectRequest(formData: FormData): Promise<ProjectS
   }
 
   const attachments = [...situation.files, ...inspiration.files];
-  const place = d.city || 'Utrecht';
+  const place = d.city || 'plaats onbekend';
   const fullName = `${d.firstName} ${d.lastName}`.trim();
 
   try {
@@ -200,7 +200,7 @@ export async function submitProjectRequest(formData: FormData): Promise<ProjectS
           'We hebben uw projectaanvraag ontvangen. We bekijken uw informatie en nemen',
           'contact met u op om uw project verder te bespreken.',
           '',
-          '— Nederdam Bouw · Utrecht',
+          '— Nederdam Bouw',
           '',
           '----------------------------------------',
           summary,

@@ -375,7 +375,7 @@ export function ProjectJourney({ phoneDisplay, phoneHref, email }: Props) {
           <>
             <Heading eyebrow="Situatie">Waar vindt het project plaats?</Heading>
             <p className={styles.help}>
-              Nederdam Bouw is gevestigd in Utrecht en realiseert projecten in Utrecht en daarbuiten. Een
+              Nederdam Bouw werkt in Utrecht, Rotterdam, Amsterdam en de rest van Nederland. Een
               volledig adres is nu nog niet nodig.
             </p>
             <div className={styles.fields}>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { pages } from '@/lib/site';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { Logo } from './Logo';
+import { areas } from '@/lib/areas';
 import { Placeholder } from '@/components/primitives/Placeholder';
 import { CertificationMark } from '@/components/primitives/CertificationMark';
 import styles from './SiteFooter.module.css';
@@ -73,7 +74,15 @@ export async function SiteFooter() {
                   {site.phoneDisplay}
                 </a>
               </li>
-              <li className={styles.area}>Werkgebied: {site.serviceArea}</li>
+              <li className={styles.area}>
+                Werkgebied:{' '}
+                {areas.map((a) => (
+                  <span key={a.slug}>
+                    <Link href={`/werkgebied/${a.slug}`}>{a.name}</Link>,{' '}
+                  </span>
+                ))}
+                <Link href="/werkgebied">heel Nederland</Link>
+              </li>
             </ul>
             <ul className={styles.pages}>
               {pages.map((n) => (

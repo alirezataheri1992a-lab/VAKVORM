@@ -46,6 +46,15 @@
 .colLink:hover {
   color: var(--on-dark);
 }
+.area a {
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--line-dark);
+  text-underline-offset: 3px;
+}
+.area a:hover {
+  text-decoration-color: currentColor;
+}
 .area {
   font-size: 0.82rem;
   color: var(--on-dark-soft);

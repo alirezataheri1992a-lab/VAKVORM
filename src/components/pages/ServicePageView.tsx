@@ -5,6 +5,8 @@ import { Breadcrumbs, type Crumb } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
+import { ServiceJsonLd } from '@/components/seo/JsonLd';
+import { areas } from '@/lib/areas';
 import styles from './ServicePageView.module.css';
 
 interface Props {
@@ -25,6 +27,7 @@ export async function ServicePageView({ service, crumbs }: Props) {
 
   return (
     <div data-pillar={service.pillar}>
+      <ServiceJsonLd service={service} settings={site} />
       {/* opening */}
       <section className={`container ${styles.open}`}>
         <Breadcrumbs items={crumbs} />
@@ -52,9 +55,7 @@ export async function ServicePageView({ service, crumbs }: Props) {
           priority
           sizes="100vw"
           caption={
-            <span className="label">
-              {service.title} · {site.city}
-            </span>
+            <span className="label">{service.title}</span>
           }
         />
       </section>
@@ -93,6 +94,32 @@ export async function ServicePageView({ service, crumbs }: Props) {
             media={{ alt: `${service.title} — detailfoto volgt`, ratio: '4:5', slot: 'Detail' }}
             sizes="(max-width: 900px) 100vw, 30vw"
           />
+        </div>
+      </section>
+
+      {/* where we do this — links to the city pages */}
+      <section className={`container ${styles.areas}`}>
+        <SectionMarker label="Werkgebied" />
+        <div className={styles.areasGrid}>
+          <h2 className={`heading ${styles.areasTitle}`}>
+            {service.title} in Utrecht, Rotterdam, Amsterdam en heel Nederland.
+          </h2>
+          <ul className={styles.areasList}>
+            {areas.map((a) => (
+              <li key={a.slug}>
+                <Link href={`/werkgebied/${a.slug}`} className={styles.areasLink}>
+                  {service.title} in {a.name}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/werkgebied" className={styles.areasLink}>
+                Elders in Nederland
+                <span aria-hidden="true">→</span>
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
 

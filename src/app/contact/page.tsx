@@ -9,7 +9,7 @@ import styles from './contact.module.css';
 export const metadata: Metadata = {
   title: 'Contact & offerte aanvragen',
   description:
-    'Bespreek uw bouw-, renovatie- of interieurproject met Nederdam Bouw. Vraag vrijblijvend een offerte aan in Utrecht en omgeving.',
+    'Bespreek uw bouw-, renovatie- of interieurproject met Nederdam Bouw. Vraag vrijblijvend een offerte aan — in Utrecht, Rotterdam, Amsterdam en heel Nederland.',
   alternates: { canonical: '/contact' },
 };
 

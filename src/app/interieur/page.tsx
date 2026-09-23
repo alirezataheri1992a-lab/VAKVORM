@@ -6,7 +6,7 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { interieurHub } = await getServiceGroups();
-  const title = interieurHub?.seoTitle ?? 'Interieur — maatwerk interieurbouw in Utrecht';
+  const title = interieurHub?.seoTitle ?? 'Maatwerk interieurbouw in Utrecht, Rotterdam & Amsterdam';
   return {
     title,
     description: interieurHub?.metaDescription,

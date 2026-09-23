@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { SectionMarker } from '@/components/primitives/SectionMarker';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
@@ -10,14 +9,13 @@ import styles from './over.module.css';
 export const metadata: Metadata = {
   title: 'Over ons',
   description:
-    'Nederdam Bouw is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht. Over de naam, de filosofie en de manier van werken.',
+    'Nederdam Bouw is één professionele partij voor bouw, renovatie en maatwerk interieurbouw in Utrecht, Rotterdam, Amsterdam en heel Nederland. Over de naam, de filosofie en de manier van werken.',
   alternates: { canonical: '/over-ons' },
 };
 
 export const revalidate = 60;
 
 export default async function OverPage() {
-  const site = await getSiteSettings();
   return (
     <>
       <section className={`container ${styles.open}`}>
@@ -26,7 +24,7 @@ export default async function OverPage() {
           <h1 className={`display ${styles.title}`}>Eén partij die het hele project draagt.</h1>
           <p className={`lede ${styles.lede}`}>
             Nederdam Bouw bundelt bouw, renovatie en maatwerk interieurbouw onder één naam en één
-            verantwoordelijkheid — in {site.city} en omgeving.
+            verantwoordelijkheid — in Utrecht, Rotterdam, Amsterdam en de rest van Nederland.
           </p>
         </div>
       </section>

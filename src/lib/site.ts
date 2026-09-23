@@ -9,18 +9,17 @@ import type { SiteSettings } from './types';
 //                              so the lockup reads as the full name without doubling "Bouw"
 //   shortName "Nederdam"       inside a running sentence
 //
-// NOTE: contact details below are the owner's temporary details (to be replaced by a
-// Nederdam-branded email + confirmed business address). Address is omitted until confirmed.
+// NOTE: the business address is omitted until confirmed.
 export const site: SiteSettings = {
   name: 'Nederdam Bouw',
   wordmark: 'NEDERDAM',
   shortName: 'Nederdam',
   descriptor: 'Bouw & Interieur',
-  email: 'alireza_taheri92@hotmail.com',
+  email: 'info@nederdambouw.nl',
   phoneDisplay: '06 42241075',
   phoneHref: '+31642241075',
   city: 'Utrecht',
-  serviceArea: 'Utrecht en omgeving',
+  serviceArea: 'Heel Nederland',
   addressText: undefined,
   baseUrl: 'https://www.nederdambouw.nl',
 };
@@ -34,6 +33,7 @@ export const nav = [
   { label: 'Interieur', path: '/interieur', menu: 'interieur' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
+  { label: 'Werkgebied', path: '/werkgebied' },
   { label: 'Over ons', path: '/over-ons' },
   { label: 'Contact', path: '/contact' },
 ] as const;
@@ -43,6 +43,7 @@ export const pages = [
   { label: 'Diensten', path: '/diensten' },
   { label: 'Projecten', path: '/projecten' },
   { label: 'Werkwijze', path: '/werkwijze' },
+  { label: 'Werkgebied', path: '/werkgebied' },
   { label: 'Over ons', path: '/over-ons' },
   { label: 'Contact', path: '/contact' },
 ] as const;

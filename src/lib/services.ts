@@ -22,9 +22,9 @@ export const services: Service[] = [
       'Bewaking van kwaliteit, planning en oplevering',
     ],
     hero: { alt: 'Gerenoveerde woning door Nederdam Bouw', ratio: '4:3', slot: 'RENOVATIE' },
-    seoTitle: 'Renovatie & verbouwing in Utrecht',
+    seoTitle: 'Renovatie & verbouwing in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Complete woningrenovaties en verbouwingen in Utrecht. Eén professionele partij die uw project van planning tot oplevering realiseert.',
+      'Complete woningrenovaties en verbouwingen in Utrecht, Rotterdam, Amsterdam en heel Nederland. Eén partij, van planning tot oplevering.',
   },
   {
     slug: 'badkamerrenovatie',
@@ -43,9 +43,9 @@ export const services: Service[] = [
       'Plaatsing van sanitair en maatwerk',
     ],
     hero: { alt: 'Gerenoveerde badkamer door Nederdam Bouw', ratio: '4:5', slot: 'BADKAMER' },
-    seoTitle: 'Badkamerrenovatie in Utrecht',
+    seoTitle: 'Badkamerrenovatie in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Complete badkamerrenovatie in Utrecht. Nederdam verzorgt leidingwerk, tegelwerk en afwerking — één partij, strak resultaat.',
+      'Complete badkamerrenovatie in Utrecht, Rotterdam, Amsterdam en heel Nederland. Leidingwerk, tegelwerk en afwerking door één partij.',
   },
   {
     slug: 'aanbouw-uitbouw',
@@ -64,9 +64,9 @@ export const services: Service[] = [
       'Afbouw en aansluiting op de bestaande woning',
     ],
     hero: { alt: 'Uitbouw aan een woning door Nederdam Bouw', ratio: '3:2', slot: 'UITBOUW' },
-    seoTitle: 'Aanbouw & uitbouw in Utrecht',
+    seoTitle: 'Aanbouw & uitbouw in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Aanbouw en uitbouw in Utrecht. Nederdam realiseert extra ruimte — constructief doordacht en netjes ingepast in uw woning.',
+      'Aanbouw en uitbouw in Utrecht, Rotterdam, Amsterdam en heel Nederland. Nederdam realiseert extra ruimte — constructief doordacht en netjes ingepast in uw woning.',
   },
   {
     slug: 'opbouw',
@@ -85,9 +85,9 @@ export const services: Service[] = [
       'Afwerking en aansluiting binnen de woning',
     ],
     hero: { alt: 'Opbouw op een woning door Nederdam Bouw', ratio: '3:2', slot: 'OPBOUW' },
-    seoTitle: 'Opbouw in Utrecht',
+    seoTitle: 'Opbouw in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Opbouw in Utrecht. Een extra verdieping op uw woning, constructief doordacht en volledig verzorgd door Nederdam Bouw.',
+      'Opbouw in Utrecht, Rotterdam, Amsterdam en heel Nederland. Een extra verdieping op uw woning, constructief doordacht en volledig verzorgd door Nederdam Bouw.',
   },
   {
     slug: 'stucwerk',
@@ -106,9 +106,9 @@ export const services: Service[] = [
       'Netjes aangesloten op het overige werk',
     ],
     hero: { alt: 'Strak stucwerk door Nederdam Bouw', ratio: '4:3', slot: 'STUCWERK' },
-    seoTitle: 'Stucwerk in Utrecht',
+    seoTitle: 'Stucwerk in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Stucwerk in Utrecht. Strakke wanden en plafonds, als onderdeel van uw verbouwing of als losse opdracht.',
+      'Stucwerk in Utrecht, Rotterdam, Amsterdam en heel Nederland. Strakke wanden en plafonds, als onderdeel van uw verbouwing of als losse opdracht.',
   },
   {
     slug: 'maatwerk-interieurbouw',
@@ -127,9 +127,9 @@ export const services: Service[] = [
       'Afwerking en detaillering op maat',
     ],
     hero: { alt: 'Maatwerk interieur door Nederdam Bouw', ratio: '4:5', slot: 'INTERIEUR' },
-    seoTitle: 'Maatwerk interieurbouw in Utrecht',
+    seoTitle: 'Maatwerk interieurbouw in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Maatwerk interieurbouw in Utrecht. Kasten, wandmeubels en interieur op maat — ontworpen en gemaakt door Nederdam Bouw.',
+      'Maatwerk interieurbouw in Utrecht, Rotterdam, Amsterdam en heel Nederland. Kasten, wandmeubels en interieur op maat — ontworpen en gemaakt door Nederdam Bouw.',
   },
 ];
 
@@ -152,9 +152,9 @@ export const interieurSubServices: Service[] = [
       'Afwerking passend bij het interieur',
     ],
     hero: { alt: 'Maatwerkkast door Nederdam Bouw', ratio: '4:5', slot: 'MAATWERKKAST' },
-    seoTitle: 'Maatwerkkasten in Utrecht',
+    seoTitle: 'Maatwerkkasten in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Maatwerkkasten in Utrecht. Inbouwkasten en kastwanden op maat, ontworpen en gemaakt door Nederdam Bouw.',
+      'Maatwerkkasten in Utrecht, Rotterdam, Amsterdam en heel Nederland. Inbouwkasten en kastwanden op maat, ontworpen en gemaakt door Nederdam Bouw.',
   },
   {
     slug: 'interieur-op-maat',
@@ -173,9 +173,9 @@ export const interieurSubServices: Service[] = [
       'Montage en afwerking in één hand',
     ],
     hero: { alt: 'Interieur op maat door Nederdam Bouw', ratio: '3:2', slot: 'INTERIEUR OP MAAT' },
-    seoTitle: 'Interieur op maat in Utrecht',
+    seoTitle: 'Interieur op maat in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Interieur op maat in Utrecht. Samenhangend ontworpen en gerealiseerd door Nederdam Bouw.',
+      'Interieur op maat in Utrecht, Rotterdam, Amsterdam en heel Nederland. Samenhangend ontworpen en gerealiseerd door Nederdam Bouw.',
   },
   {
     slug: 'wandmeubels',
@@ -194,9 +194,9 @@ export const interieurSubServices: Service[] = [
       'Montage en detaillering op maat',
     ],
     hero: { alt: 'Wandmeubel op maat door Nederdam Bouw', ratio: '3:2', slot: 'WANDMEUBEL' },
-    seoTitle: 'Wandmeubels op maat in Utrecht',
+    seoTitle: 'Wandmeubels op maat in Utrecht, Rotterdam & Amsterdam',
     metaDescription:
-      'Wandmeubels en TV-meubels op maat in Utrecht. Ontworpen en gemaakt door Nederdam Bouw.',
+      'Wandmeubels en TV-meubels op maat in Utrecht, Rotterdam, Amsterdam en heel Nederland. Ontworpen en gemaakt door Nederdam Bouw.',
   },
 ];
 

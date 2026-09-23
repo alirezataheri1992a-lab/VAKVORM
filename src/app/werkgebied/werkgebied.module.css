@@ -1,0 +1,228 @@
+.open {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 24px;
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+.kicker {
+  margin-top: clamp(24px, 4vw, 48px);
+  color: var(--bronze-text);
+}
+.title {
+  max-width: 16ch;
+}
+.open > .title:nth-child(2) {
+  margin-top: clamp(24px, 4vw, 48px);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 8px;
+}
+.phone {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.phone:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------------------------------------------------------------- overview: cities */
+.cities {
+  padding-bottom: var(--section);
+}
+.cityList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+.city {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding-top: 20px;
+  border-top: 3px solid var(--bronze);
+}
+.cityName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.cityText {
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.cityMore {
+  margin-top: auto;
+  font-weight: 600;
+}
+.city:hover .cityName {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.rest {
+  padding-bottom: var(--section);
+}
+.restGrid,
+.localGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--col-gap);
+  padding-top: 24px;
+  border-top: 1.5px solid var(--ink);
+}
+.provinces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-top: 24px;
+}
+.provinces li {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-size: 0.92rem;
+}
+.services {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.services ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.services a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+}
+.services a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ---------------------------------------------------------------- city page */
+.block {
+  padding-bottom: var(--section);
+}
+.block > :global(.heading) {
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.serviceCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--col-gap);
+}
+.colTitle {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+.colTitle::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin-bottom: 14px;
+  background: var(--accent);
+}
+.serviceList {
+  border-top: 1.5px solid var(--ink);
+}
+.serviceLink {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.serviceLink:hover span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.band {
+  padding-block: var(--section);
+  margin-bottom: var(--section);
+}
+.localIntro {
+  margin-top: 16px;
+}
+.notes {
+  display: flex;
+  flex-direction: column;
+}
+.notes li {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--stone-deep);
+}
+.notes li:first-child {
+  padding-top: 0;
+}
+.notes p {
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 58ch;
+}
+.noteTitle {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.projectName {
+  font-weight: 600;
+}
+.nearby {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.nearby li {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-size: 0.95rem;
+}
+.otherCities {
+  margin-top: 24px;
+  color: var(--ink-soft);
+}
+.otherCities a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .cityList,
+  .projects {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+  .restGrid,
+  .localGrid,
+  .serviceCols {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+}

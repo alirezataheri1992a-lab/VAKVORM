@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { heroVideo } from '@/lib/site';
+import { areas } from '@/lib/areas';
 import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
 import { Placeholder } from '@/components/primitives/Placeholder';
 import { CertificationMark } from '@/components/primitives/CertificationMark';
@@ -47,13 +48,14 @@ export default async function HomePage() {
         <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
         <div className={styles.heroScrim} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
-          <p className={`label ${styles.heroKicker}`}>Aannemer · Bouw &amp; interieur · {site.serviceArea}</p>
+          <p className={`label ${styles.heroKicker}`}>Aannemer · Bouw &amp; interieur · Heel Nederland</p>
           <h1 className={`display ${styles.heroTitle}`}>
-            Verbouw, renovatie en maatwerk interieur in {site.city}.
+            Aannemer voor verbouw, renovatie en maatwerk interieur.
           </h1>
           <p className={`lede ${styles.heroLede}`}>
             Eén bouwbedrijf voor het hele traject: van sloop en constructie tot de kast op maat uit
-            onze eigen werkplaats. Met één vast aanspreekpunt.
+            onze eigen werkplaats. Met één vast aanspreekpunt — in Utrecht, Rotterdam, Amsterdam en
+            heel Nederland.
           </p>
           <div className={styles.heroActions}>
             <Link href="/start-uw-project" className="btn btn--bronze">
@@ -64,6 +66,14 @@ export default async function HomePage() {
               <span className={styles.heroPhoneNumber}>{site.phoneDisplay}</span>
             </a>
           </div>
+          <nav className={styles.heroAreas} aria-label="Werkgebied">
+            {areas.map((a) => (
+              <Link key={a.slug} href={`/werkgebied/${a.slug}`}>
+                {a.name}
+              </Link>
+            ))}
+            <Link href="/werkgebied">Heel Nederland</Link>
+          </nav>
         </div>
       </section>
 

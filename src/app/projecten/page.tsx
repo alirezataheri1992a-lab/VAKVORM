@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { workSlots } from '@/lib/projects';
-import { getPublishedProjects, getServiceTitle, getSiteSettings } from '@/lib/content';
+import { getPublishedProjects, getServiceTitle } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { ContactPanel } from '@/components/sections/ContactPanel';
@@ -10,7 +10,7 @@ import styles from './projecten.module.css';
 export const metadata: Metadata = {
   title: 'Projecten',
   description:
-    'Gerealiseerde bouw-, renovatie- en interieurprojecten van Nederdam Bouw in Utrecht en omgeving.',
+    'Gerealiseerde bouw-, renovatie- en interieurprojecten van Nederdam Bouw in Utrecht, Rotterdam, Amsterdam en heel Nederland.',
   alternates: { canonical: '/projecten' },
 };
 
@@ -21,7 +21,7 @@ export const revalidate = 60;
 const PATTERN = ['wide', 'portrait', 'pair', 'pair'] as const;
 
 export default async function ProjectenPage() {
-  const [projects, site] = await Promise.all([getPublishedProjects(), getSiteSettings()]);
+  const projects = await getPublishedProjects();
   const items = await Promise.all(
     projects.map(async (p) => ({ p, svcTitle: await getServiceTitle(p.meta.services[0] ?? '') })),
   );
@@ -33,8 +33,8 @@ export default async function ProjectenPage() {
         <div className={`grid12 ${styles.openGrid}`}>
           <h1 className={`display ${styles.title}`}>Projecten</h1>
           <p className={`lede ${styles.lede}`}>
-            Elk project als volledige case: de opgave, onze aanpak en het resultaat — in {site.city} en
-            omgeving.
+            Elk project als volledige case: de opgave, onze aanpak en het resultaat — in Utrecht,
+            Rotterdam, Amsterdam en de rest van Nederland.
           </p>
         </div>
       </section>

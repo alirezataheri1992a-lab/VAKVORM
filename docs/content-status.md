@@ -14,7 +14,7 @@ The site is built to run before all real content exists. This tracks what is
 | **Own workshop** | homepage trust bar, hero | Confirmed: eigen werkplaats | — |
 | **KvK number** | footer | Not yet supplied | Replace `<Placeholder>00000000</Placeholder>` in `SiteFooter.tsx`. |
 | **Example project (voor/na)** | homepage "Recent werk" | Layout example, marked | Disappears automatically when the first project is published. |
-| **Contact details** | `src/lib/site.ts` / Sanity `siteSettings` | Owner's temporary email/phone | Confirm final Nederdam Bouw-branded email + phone; add a public address only if confirmed. |
+| **Contact details** | `src/lib/site.ts` / Sanity `siteSettings` | Email set to `info@nederdambouw.nl`; phone `06 42241075` | Make sure the mailbox `info@nederdambouw.nl` exists and receives mail (also set `INQUIRY_TO` in the host); add a public address only if confirmed. |
 
 ## Testimonial placeholder — important
 
