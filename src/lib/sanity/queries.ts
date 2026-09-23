@@ -2,7 +2,7 @@
 // `perspective: 'published'` also excludes drafts globally, so drafts can never leak.
 
 export const settingsQuery = `*[_type == "siteSettings"][0]{
-  name, wordmark, shortName, descriptor, email, phoneDisplay, phoneHref, city, serviceArea, addressText
+  name, wordmark, shortName, descriptor, email, phoneDisplay, phoneHref, city, serviceArea, addressText, instagram
 }`;
 
 export const servicesQuery = `*[_type == "service"] | order(pillar asc, index asc){

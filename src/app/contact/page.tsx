@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { InstagramLink } from '@/components/primitives/InstagramLink';
 import { getSiteSettings } from '@/lib/content';
 import { Breadcrumbs } from '@/components/primitives/Breadcrumbs';
 import { ContactForm } from '@/components/sections/ContactForm';
@@ -49,6 +50,12 @@ export default async function ContactPage() {
               <div>
                 <dt className="label">Werkgebied</dt>
                 <dd>{site.serviceArea}</dd>
+              </div>
+              <div>
+                <dt className="label">Instagram</dt>
+                <dd>
+                  <InstagramLink handle={site.instagram} label="Volg ons werk" />
+                </dd>
               </div>
             </dl>
 

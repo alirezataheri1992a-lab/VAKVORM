@@ -5,6 +5,7 @@ import { areas } from '@/lib/areas';
 import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
 import { Placeholder } from '@/components/primitives/Placeholder';
 import { CertificationMark } from '@/components/primitives/CertificationMark';
+import { InstagramLink } from '@/components/primitives/InstagramLink';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import { HeroVideo } from '@/components/sections/HeroVideo';
 import { ServiceCards } from '@/components/sections/ServiceCards';
@@ -157,9 +158,12 @@ export default async function HomePage() {
         <div className="container">
           <header className={styles.head}>
             <h2 className="heading">Recent werk</h2>
-            <Link href="/projecten" className="textlink">
-              Alle projecten
-            </Link>
+            <div className={styles.headLinks}>
+              <InstagramLink handle={site.instagram} label="Meer werk op Instagram" showHandle={false} />
+              <Link href="/projecten" className="textlink">
+                Alle projecten
+              </Link>
+            </div>
           </header>
 
           {featured ? (

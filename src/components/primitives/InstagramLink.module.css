@@ -1,0 +1,19 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px; /* comfortable touch target */
+  font-weight: 600;
+  color: inherit;
+}
+.glyph {
+  flex: none;
+}
+.handle {
+  font-weight: 400;
+  opacity: 0.75;
+}
+a.link:hover > span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

@@ -74,5 +74,7 @@ export interface SiteSettings {
   serviceArea: string;
   /** Address is intentionally omitted until confirmed by the owner. */
   addressText?: string;
+  /** Instagram account name without "@". Empty until the account is confirmed. */
+  instagram?: string;
   baseUrl: string;
 }

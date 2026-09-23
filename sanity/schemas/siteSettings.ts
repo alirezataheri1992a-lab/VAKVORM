@@ -22,8 +22,17 @@ export const siteSettings = defineType({
     defineField({ name: 'phoneDisplay', title: 'Telefoon (weergave)', type: 'string', group: 'contact', description: 'Zoals getoond, bijv. "06 42241075".' }),
     defineField({ name: 'phoneHref', title: 'Telefoon (voor bel-link)', type: 'string', group: 'contact', description: 'Internationaal formaat, bijv. "+31642241075".' }),
 
+    defineField({
+      name: 'instagram',
+      title: 'Instagram-account',
+      type: 'string',
+      group: 'contact',
+      description: 'Alleen de accountnaam, zonder @ — bijv. "nederdambouw". Leeg laten tot het account bestaat.',
+      validation: (r) => r.regex(/^[A-Za-z0-9._]{1,30}$/, { name: 'accountnaam' }),
+    }),
+
     defineField({ name: 'city', title: 'Vestigingsplaats', type: 'string', group: 'locatie', initialValue: 'Utrecht' }),
-    defineField({ name: 'serviceArea', title: 'Werkgebied', type: 'string', group: 'locatie', initialValue: 'Utrecht en omgeving' }),
+    defineField({ name: 'serviceArea', title: 'Werkgebied', type: 'string', group: 'locatie', initialValue: 'Heel Nederland' }),
     defineField({
       name: 'addressText',
       title: 'Adres (optioneel)',

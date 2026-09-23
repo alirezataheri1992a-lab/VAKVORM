@@ -46,6 +46,11 @@
 .colLink:hover {
   color: var(--on-dark);
 }
+.social {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: var(--on-dark);
+}
 .area a {
   color: var(--on-dark);
   text-decoration: underline;

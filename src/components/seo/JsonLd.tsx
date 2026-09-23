@@ -37,6 +37,7 @@ export async function OrganizationJsonLd() {
         telephone: `+${site.phoneHref.replace('+', '')}`,
         logo: `${site.baseUrl}/brand/nederdam-logo.svg`,
         areaServed,
+        ...(site.instagram ? { sameAs: [`https://www.instagram.com/${site.instagram}/`] } : {}),
       }}
     />
   );

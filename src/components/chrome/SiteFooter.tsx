@@ -3,6 +3,7 @@ import { pages } from '@/lib/site';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { Logo } from './Logo';
 import { areas } from '@/lib/areas';
+import { InstagramLink } from '@/components/primitives/InstagramLink';
 import { Placeholder } from '@/components/primitives/Placeholder';
 import { CertificationMark } from '@/components/primitives/CertificationMark';
 import styles from './SiteFooter.module.css';
@@ -82,6 +83,9 @@ export async function SiteFooter() {
                   </span>
                 ))}
                 <Link href="/werkgebied">heel Nederland</Link>
+              </li>
+              <li className={styles.social}>
+                <InstagramLink handle={site.instagram} />
               </li>
             </ul>
             <ul className={styles.pages}>

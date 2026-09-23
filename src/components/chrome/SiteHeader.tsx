@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { nav, pages } from '@/lib/site';
 import type { Service, SiteSettings } from '@/lib/types';
 import { Logo } from './Logo';
+import { InstagramLink } from '@/components/primitives/InstagramLink';
 import styles from './SiteHeader.module.css';
 
 interface Props {
@@ -218,6 +219,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
             <div className={styles.sheetContact}>
               <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>
               <a href={`mailto:${site.email}`}>{site.email}</a>
+              <InstagramLink handle={site.instagram} />
             </div>
           </div>
         </nav>

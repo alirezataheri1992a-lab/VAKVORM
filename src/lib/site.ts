@@ -21,6 +21,9 @@ export const site: SiteSettings = {
   city: 'Utrecht',
   serviceArea: 'Heel Nederland',
   addressText: undefined,
+  // Instagram account name (without @). Not yet supplied — the site shows a marked
+  // placeholder until it is set; never guess it, it could be someone else's account.
+  instagram: undefined,
   baseUrl: 'https://www.nederdambouw.nl',
 };
 
