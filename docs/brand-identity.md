@@ -62,8 +62,11 @@ lockup so its art aligns with the column edge — the file itself is untouched.
 | `--bronze` | `#B08B6F` | Bouw accent — marks, labels on dark; `--bronze-deep #7E5F45` as text on light |
 | `--olive` | `#4A5A46` | Interieur accent — marks, labels; `--olive-on-dark #8C9C84` on charcoal |
 
-The page is a warm white (`--canvas #F5F2EC`) with charcoal type; charcoal carries the
-closing call to action, the mobile menu and the footer. Derived values (`--canvas-raised`,
+The light ground is paper (`--canvas #F4F0E8`, the off-white of the logo files) with charcoal
+type. The page alternates grounds as the huisstijl asks: the hero footage and a charcoal trust
+band, paper for services and process, a taupe band for recent work, stone for the review,
+charcoal for the close and footer. Bronze marks the trust items, the process steps and the
+hero kicker; olive marks Interieur. Derived values (`--canvas-raised`,
 `--panel`, `--ink-soft`, `--muted`, `--line`) are in `src/app/globals.css` with their
 contrast notes. Raw bronze fails as small text on the canvas, which is why `--bronze-text`
 exists; raw olive fails on charcoal, which is why `--olive-on-dark` exists.

@@ -25,7 +25,7 @@
   padding-bottom: clamp(48px, 7vw, 88px);
 }
 .heroKicker {
-  color: var(--stone);
+  color: var(--bronze);
 }
 .heroTitle {
   max-width: 17ch;
@@ -84,34 +84,41 @@
 }
 
 /* ================================================================ trust */
+/* a charcoal band straight under the footage: the dark ground carries on */
 .trust {
-  padding-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--line-dark);
 }
 .trustList {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1.5px solid var(--ink);
-  border-bottom: 1px solid var(--line);
 }
 .trustItem {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  padding: 24px 24px 26px 0;
+  padding: 32px 24px 34px 0;
   font-size: 0.95rem;
   line-height: 1.45;
-  color: var(--ink-soft);
+  color: var(--on-dark-soft);
 }
 .trustItem + .trustItem {
   padding-left: 24px;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--line-dark);
 }
 .trustItem strong {
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.012em;
-  color: var(--ink);
+  color: var(--on-dark);
+}
+.trustItem strong::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-bottom: 14px;
+  background: var(--bronze);
 }
 /* the certification logo sits under its text, so the four headings stay on one line */
 .trustItem > [title] {
@@ -183,7 +190,7 @@
   gap: 12px;
   width: 100%;
   padding: 28px;
-  background: var(--charcoal);
+  background: var(--taupe);
   color: var(--on-dark);
 }
 .comboTitle {
@@ -231,10 +238,10 @@
   flex-direction: column;
   gap: 20px;
   padding-top: 20px;
-  border-top: 1.5px solid var(--ink);
+  border-top: 1.5px solid var(--on-dark);
 }
 .example {
-  color: var(--bronze-text);
+  color: var(--bronze);
 }
 .projectFacts dl {
   display: flex;
@@ -245,11 +252,11 @@
   grid-template-columns: 120px 1fr;
   gap: 16px;
   padding: 12px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(244, 240, 232, 0.16);
   font-size: 0.98rem;
 }
 .projectFacts dt {
-  color: var(--muted);
+  color: var(--on-dark-soft);
 }
 
 /* ================================================================ process */
@@ -272,8 +279,8 @@
   width: 32px;
   height: 32px;
   margin-bottom: 8px;
-  background: var(--charcoal);
-  color: var(--on-dark);
+  background: var(--bronze);
+  color: var(--charcoal);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -298,7 +305,7 @@
     border-left: 0;
   }
   .trustItem:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--line-dark);
   }
   .discipline {
     grid-template-columns: 1fr;
@@ -332,7 +339,7 @@
     border-left: 0;
   }
   .trustItem + .trustItem {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--line-dark);
   }
   .head {
     flex-direction: column;

@@ -37,14 +37,14 @@
   flex-direction: column;
   gap: 8px;
   padding-top: 24px;
-  border-top: 1px solid var(--stone-deep);
+  border-top: 1px solid var(--taupe);
   max-width: 320px;
 }
 .name {
   font-weight: 500;
 }
 .placeholderTag {
-  color: var(--bronze-deep);
+  color: var(--ink-soft);
 }
 .media {
   grid-column: 3;

@@ -80,14 +80,14 @@ export default async function HomePage() {
 
       {/* ---------------------------------------------------------------- trust
           Four confirmed facts. Details that still need supplying are marked. */}
-      <section className={`container ${styles.trust}`} aria-label="Waarom Nederdam">
-        <ul className={styles.trustList}>
+      <section className={`on-dark ${styles.trust}`} aria-label="Waarom Nederdam">
+        <ul className={`container ${styles.trustList}`}>
           <li className={styles.trustItem}>
             <strong>Erkend bouwbedrijf</strong>
             <span>
               Aangesloten bij <Placeholder>naam erkenning</Placeholder>
             </span>
-            <CertificationMark />
+            <CertificationMark tone="dark" />
           </li>
           <li className={styles.trustItem}>
             <strong>Garantie op ons werk</strong>
@@ -154,7 +154,7 @@ export default async function HomePage() {
       {/* ---------------------------------------------------------------- project
           Before and after, with the facts of the job. Until the first case is
           published this shows the layout, clearly marked as an example. */}
-      <section className={`on-sand ${styles.section} ${styles.projectBand}`}>
+      <section className={`on-taupe ${styles.section} ${styles.projectBand}`}>
         <div className="container">
           <header className={styles.head}>
             <h2 className="heading">Recent werk</h2>
@@ -189,7 +189,7 @@ export default async function HomePage() {
             <div className={styles.project}>
               <div className={styles.beforeAfter}>
                 <ProjectMedia media={{ alt: 'Situatie vooraf — foto volgt', ratio: '4:3', slot: 'Voor' }} tone="stone" sizes="(max-width: 900px) 100vw, 33vw" />
-                <ProjectMedia media={{ alt: 'Resultaat — foto volgt', ratio: '4:3', slot: 'Na' }} tone="taupe" sizes="(max-width: 900px) 100vw, 33vw" />
+                <ProjectMedia media={{ alt: 'Resultaat — foto volgt', ratio: '4:3', slot: 'Na' }} tone="dark" sizes="(max-width: 900px) 100vw, 33vw" />
               </div>
               <div className={styles.projectFacts}>
                 <p className={`label ${styles.example}`}>Voorbeeldindeling — eerste project volgt</p>

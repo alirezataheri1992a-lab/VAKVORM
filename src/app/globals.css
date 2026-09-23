@@ -1,10 +1,10 @@
 /* ============================================================
    NEDERDAM — global styles & design tokens
-   A builder's site: a warm white page, charcoal type in one sturdy
-   grotesk, a strict grid, straight edges. Bronze is the colour of
-   the action; olive marks Interieur. Nothing decorative.
+   Colours follow the huisstijl (docs/huisstijl.md): the five brand
+   colours exactly, paper #F4F0E8 from the logo files as the light
+   ground, charcoal and taupe as the dark grounds, bronze and olive as
+   accents. A strict grid, straight edges, nothing decorative.
    Custom CSS architecture — no component-library visual system.
-   Rules: /docs/brand-identity.md
    ============================================================ */
 
 :root {
@@ -16,25 +16,25 @@
   --taupe: #3a3a36;
 
   /* --- Surfaces --- */
-  --canvas: #f5f2ec; /* the page: warm white */
-  --canvas-raised: #ece8e0; /* a quiet band */
-  --panel: #fbfaf7; /* tiles, inputs */
+  --canvas: #f4f0e8; /* paper — the light ground, the off-white of the logo files */
+  --canvas-raised: #ebe6de; /* surface-raised (huisstijl) — a quiet band */
+  --panel: #faf8f3; /* inputs and tiles, a step lighter than paper */
   --charcoal-soft: #1a1a18;
 
   /* --- Text --- */
   --ink: #0e0e0e;
-  --ink-soft: #3a3a36;
-  --muted: #6b655d; /* 5.1:1 on the canvas */
-  --on-dark: #f4f0e8;
-  --on-dark-soft: #aaa298;
+  --ink-soft: #3a3a36; /* taupe */
+  --muted: #5f5a53; /* ink-muted (huisstijl) — 6:1 on paper */
+  --on-dark: #f4f0e8; /* paper */
+  --on-dark-soft: #a39c93; /* ink-muted on dark — 7:1 on charcoal, 5:1 on taupe */
 
   /* --- Accents in a usable text weight --- */
-  --bronze-text: #7e5f45; /* bronze as text on the canvas — 5.6:1 */
-  --olive-text: #4a5a46; /* 6.6:1 on the canvas */
+  --bronze-text: #7e5f45; /* accent-text (huisstijl) — bronze as text on paper, 5.1:1 */
+  --olive-text: #4a5a46; /* olive as text on paper, 6.5:1 */
   --olive-on-dark: #8c9c84;
 
   /* --- Lines --- */
-  --line: #dcd6cc;
+  --line: #d3ccc1;
   --line-strong: #0e0e0e;
   --line-dark: #2c2b28;
 
@@ -335,7 +335,8 @@ em {
   box-decoration-break: clone;
 }
 .on-dark .ph,
-.on-ink .ph {
+.on-ink .ph,
+.on-taupe .ph {
   background: rgba(176, 139, 111, 0.16);
 }
 
