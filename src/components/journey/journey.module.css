@@ -583,21 +583,21 @@
   align-items: center;
   min-height: 52px;
   padding: 0 30px;
-  background: var(--bronze);
-  color: var(--charcoal);
+  background: var(--charcoal);
+  color: var(--on-dark);
   border-radius: 0;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.005em;
   text-transform: none;
   cursor: pointer;
-  border: 1px solid var(--bronze);
+  border: 1.5px solid var(--on-dark);
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .introPrimary:hover {
-  background: transparent;
-  border-color: var(--bronze);
-  color: var(--bronze);
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--charcoal);
 }
 .introPhone {
   color: var(--on-ink-soft);

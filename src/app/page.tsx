@@ -45,7 +45,7 @@ export default async function HomePage() {
       {/* ---------------------------------------------------------------- hero
           The moving footage full width, with what we are, where, and how to reach
           us set on it. */}
-      <section className={`on-footage ${styles.hero}`}>
+      <section className={styles.hero}>
         <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
         <div className={styles.heroScrim} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>

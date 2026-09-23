@@ -268,10 +268,9 @@ em {
   background: var(--taupe);
   border-color: var(--taupe);
 }
-/* The primary action ("Offerte aanvragen"): the strongest contrast with its ground.
-   On the warm white page it is charcoal, with bronze as its hover; on dark grounds
-   (footage, the charcoal close, the mobile menu) it turns bronze with charcoal text —
-   off-white on bronze would fail contrast. */
+/* The primary action ("Offerte aanvragen"): charcoal everywhere, so it is always the same
+   button. Bronze is its hover. On charcoal grounds (the close, the mobile menu) it keeps
+   its fill and gains a light hairline so it stays visible. */
 .btn--primary {
   background: var(--charcoal);
   border-color: var(--charcoal);
@@ -310,16 +309,14 @@ em {
 }
 .on-dark .btn--primary,
 .on-ink .btn--primary,
-.on-taupe .btn--primary,
-.on-footage .btn--primary {
-  background: var(--bronze);
-  border-color: var(--bronze);
-  color: var(--charcoal);
+.on-taupe .btn--primary {
+  background: var(--charcoal);
+  border-color: var(--on-dark);
+  color: var(--on-dark);
 }
 .on-dark .btn--primary:hover,
 .on-ink .btn--primary:hover,
-.on-taupe .btn--primary:hover,
-.on-footage .btn--primary:hover {
+.on-taupe .btn--primary:hover {
   background: var(--on-dark);
   border-color: var(--on-dark);
   color: var(--charcoal);

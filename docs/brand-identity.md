@@ -96,9 +96,9 @@ close.
 ## UI
 
 - Buttons: square, sentence case, 52px. `.btn--primary` is the primary action ("Offerte
-  aanvragen"): charcoal with a bronze hover on the warm white page; bronze with charcoal
-  text on dark grounds (`.on-dark`, `.on-footage`, the mobile menu). `.btn` is a charcoal
-  outline.
+  aanvragen"): charcoal everywhere, with a bronze hover. On charcoal grounds (the close, the
+  mobile menu, the intake's opening) it keeps its fill and gains a light hairline. `.btn` is
+  a charcoal outline.
 - Header: logo, Bouw and Interieur (each opens its services), the pages; then, after one
   hairline, the phone number (icon + number, the secondary action) and "Offerte aanvragen →"
   (primary). Below 1240px the number collapses to its icon; on mobile a 44px call button sits

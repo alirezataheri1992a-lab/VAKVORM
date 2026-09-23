@@ -287,8 +287,10 @@
   color: var(--bronze);
 }
 .sheetFoot :global(.btn--primary) {
-  background: var(--bronze);
-  border-color: var(--bronze);
+  border-color: var(--on-dark);
+}
+.sheetFoot :global(.btn--primary:hover) {
+  background: var(--on-dark);
   color: var(--charcoal);
 }
 .sheetFoot {
