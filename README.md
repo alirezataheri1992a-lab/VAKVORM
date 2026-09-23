@@ -64,6 +64,11 @@ In `npm run dev` the guided project intake at `/start-uw-project` runs through t
 screen and logs the submission to the terminal instead of emailing it — no mail provider
 needed to click through the whole journey.
 
+## Deploy
+
+Putting the site on a real URL, and the branch-per-preview workflow that goes with it:
+[`/docs/deploy.md`](docs/deploy.md).
+
 ## Content
 
 The site currently reads typed seed data from `src/lib/*` (so it runs before Sanity is
