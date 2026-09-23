@@ -47,7 +47,8 @@ export default async function NieuwbouwPage() {
             <p className={`lede ${styles.lede}`}>
               Een nieuwbouwwoning wordt vaak kaal opgeleverd. Daarna begint het zoeken: een stukadoor,
               een vloerlegger, een tegelzetter, een keukenmonteur. Nederdam neemt dat hele traject van u
-              over — van de tekening tot de dag dat u erin woont.
+              over — van de tekening tot de dag dat u erin woont. U kiest zelf wat u bij ons afneemt:
+              één onderdeel, een paar stappen of het hele traject.
             </p>
             <div className={styles.actions}>
               <Link href="/start-uw-project?type=nieuwbouw" className="btn btn--primary">
@@ -85,8 +86,8 @@ export default async function NieuwbouwPage() {
             Het traject, stap voor stap
           </h2>
           <p className={styles.headText}>
-            Scroll door de stappen: de woning wordt afgewerkt terwijl u leest. Brons is Bouw, olijf is
-            Interieur — één partij voor allebei.
+            Stel uw eigen traject samen. Alleen inmeten en oplevering horen bij elk project; de rest is
+            naar keuze. Zet aan wat u wilt — wat u niet kiest, ziet u gestippeld in de tekening.
           </p>
         </div>
         <NieuwbouwJourney steps={journey} />

@@ -33,10 +33,22 @@ interface Props {
   email: string;
   /** Services preselected by the page that linked here (e.g. ?type=nieuwbouw). */
   initialServices?: string[];
+  /** Answers preselected by the linking page (e.g. the steps chosen on /nieuwbouw). */
+  initialCond?: Record<string, string[]>;
 }
 
-export function ProjectJourney({ phoneDisplay, phoneHref, email, initialServices = [] }: Props) {
-  const fresh = (): JourneyData => ({ ...emptyJourney(), services: [...initialServices] });
+export function ProjectJourney({
+  phoneDisplay,
+  phoneHref,
+  email,
+  initialServices = [],
+  initialCond = {},
+}: Props) {
+  const fresh = (): JourneyData => ({
+    ...emptyJourney(),
+    services: [...initialServices],
+    cond: structuredClone(initialCond),
+  });
   const [mode, setMode] = useState<'intro' | 'journey' | 'success'>('intro');
   const [data, setData] = useState<JourneyData>(fresh);
   const [index, setIndex] = useState(0);

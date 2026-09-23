@@ -3,6 +3,9 @@
 // lists the step titles. It is told from the buyer's side (what happens, what you would
 // otherwise arrange yourself, what Nederdam takes over) — the general method is /werkwijze.
 //
+// Only measuring and the handover belong to every project; every other step is the client's
+// choice — the page lets visitors compose their own route and passes it to the intake.
+//
 // Confirmed by the owner: much is done in-house, the rest through a fixed network of trusted
 // specialists; design is arranged by Nederdam; Nederdam can advise on meer- en minderwerk
 // before the keys; own workshop; warranty. The moving step is an idea still in development
@@ -15,6 +18,12 @@ export type PlanLayer = 'drawing' | 'design' | 'measure' | 'finish' | 'wet' | 'j
 
 export interface JourneyStep {
   id: string;
+  /** True for the steps that belong to every project; the others are the client's choice. */
+  required: boolean;
+  /** Answers of the intake's 'Waar kunnen we u mee helpen?' question this step stands for. */
+  scope: string[];
+  /** Optional extra line that makes the choice explicit. */
+  note?: string;
   /** Short name, used in the progress rail and on the homepage. */
   title: string;
   /** Which discipline leads this step — sets the accent colour. */
@@ -33,6 +42,8 @@ export interface JourneyStep {
 export const journey: JourneyStep[] = [
   {
     id: 'voor-de-sleutel',
+    required: false,
+    scope: ['meer-minderwerk'],
     title: 'Voor de sleutel',
     discipline: 'bouw',
     layer: 'drawing',
@@ -44,6 +55,8 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'ontwerp',
+    required: false,
+    scope: ['ontwerp'],
     title: 'Ontwerp & plan',
     discipline: 'interieur',
     layer: 'design',
@@ -56,6 +69,8 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'sleutel',
+    required: true,
+    scope: [],
     title: 'Sleutel & inmeten',
     discipline: 'bouw',
     layer: 'measure',
@@ -65,6 +80,9 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'afbouw',
+    required: false,
+    scope: ['wanden-plafonds', 'vloeren', 'schilder-behang', 'elektra'],
+    note: 'Ook per onderdeel: alleen de vloeren of alleen het stucwerk kan ook.',
     title: 'Afbouw',
     discipline: 'bouw',
     layer: 'finish',
@@ -76,6 +94,8 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'badkamer-keuken',
+    required: false,
+    scope: ['badkamer', 'keuken'],
     title: 'Badkamer & keuken',
     discipline: 'bouw',
     layer: 'wet',
@@ -86,6 +106,9 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'interieur',
+    required: false,
+    scope: ['maatwerk'],
+    note: 'Los af te nemen, of helemaal niet. Uw woning is ook zonder maatwerk klaar.',
     title: 'Interieur op maat',
     discipline: 'interieur',
     layer: 'joinery',
@@ -99,6 +122,8 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'oplevering',
+    required: true,
+    scope: [],
     title: 'Oplevering & garantie',
     discipline: 'bouw',
     layer: 'handover',
@@ -108,6 +133,8 @@ export const journey: JourneyStep[] = [
   },
   {
     id: 'verhuizen',
+    required: false,
+    scope: ['verhuizing'],
     title: 'Verhuizen & thuis',
     discipline: 'interieur',
     layer: 'home',

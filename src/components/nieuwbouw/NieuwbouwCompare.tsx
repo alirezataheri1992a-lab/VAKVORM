@@ -54,8 +54,8 @@ export function NieuwbouwCompare({ trades }: { trades: string[] }) {
         <div className={`on-dark ${styles.one}`}>
           <Logo variant="horizontal" tone="light" height={56} decorative />
           <p className={styles.oneText}>
-            Eén aanspreekpunt, één offerte en één planning. Wij stemmen alle vakmensen op elkaar af —
-            met onze eigen mensen en ons vaste netwerk.
+            Eén aanspreekpunt, één offerte en één planning — voor wat u bij ons kiest. Wij stemmen de
+            vakmensen op elkaar af, met onze eigen mensen en ons vaste netwerk.
           </p>
           <ul className={styles.oneTrades} aria-label="Geregeld via Nederdam">
             {trades.map((t) => (

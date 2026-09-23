@@ -2,8 +2,11 @@ import type { Discipline, PlanLayer } from '@/lib/nieuwbouw';
 import styles from './nieuwbouw.module.css';
 
 interface Props {
-  /** The layers in journey order; each step of the journey adds one. */
-  layers: { layer: PlanLayer; discipline: Discipline }[];
+  /**
+   * The layers in journey order; each step of the journey adds one. A skipped layer belongs to
+   * an optional step the visitor has not chosen — it is drawn as a faint dashed outline.
+   */
+  layers: { layer: PlanLayer; discipline: Discipline; skipped?: boolean }[];
   /** Index of the current step. -1 draws the finished home (no script, or a static view). */
   active: number;
   className?: string;
@@ -14,7 +17,8 @@ interface Props {
  * the design, the measurements, the finishing, bathroom and kitchen, the joinery, the
  * handover and finally a home to live in. An illustration — not a real Nederdam project.
  * Past layers stay in the ground's line colour; the current layer takes its discipline's
- * accent (bronze for Bouw, olive for Interieur); future layers are hidden.
+ * accent (bronze for Bouw, olive for Interieur); future layers are hidden; skipped layers are
+ * dashed.
  */
 export function NieuwbouwPlan({ layers, active, className }: Props) {
   const state = (layer: PlanLayer) => {
@@ -24,11 +28,12 @@ export function NieuwbouwPlan({ layers, active, className }: Props) {
     if (i === active) return 'current';
     return 'future';
   };
-  const pillar = (layer: PlanLayer) => layers.find((l) => l.layer === layer)?.discipline ?? 'bouw';
+  const find = (layer: PlanLayer) => layers.find((l) => l.layer === layer);
   const g = (layer: PlanLayer) => ({
     className: styles.layer,
     'data-state': state(layer),
-    'data-pillar': pillar(layer),
+    'data-pillar': find(layer)?.discipline ?? 'bouw',
+    'data-skipped': find(layer)?.skipped || undefined,
   });
 
   return (

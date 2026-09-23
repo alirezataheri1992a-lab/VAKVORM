@@ -226,8 +226,8 @@ export default async function HomePage() {
             <h2 className="heading">Net de sleutel van uw nieuwbouwwoning?</h2>
             <p>
               Een nieuwbouwwoning wordt vaak kaal opgeleverd. Daarna zoekt u voor ieder onderdeel een
-              aparte vakman. Wij nemen het hele traject over — van de tekening tot de dag dat u erin
-              woont.
+              aparte vakman. Wij kunnen het hele traject overnemen — van de tekening tot de dag dat u
+              erin woont. U kiest zelf welke stappen: alleen de vloeren kan ook.
             </p>
             <div className={styles.nieuwbouwLinks}>
               <Link href="/nieuwbouw" className="btn btn--primary">
