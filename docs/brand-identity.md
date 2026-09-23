@@ -1,5 +1,7 @@
 # NEDERDAM — Brand identity, as implemented
 
+> The canonical brand guide is **`docs/huisstijl.md`** (from the KADER board; online: https://claude.ai/artifact/JcV8kyjAY2DY495Pe2Fssi). This file describes how the current website implements it and may lag behind.
+
 The single source of truth for the visual identity is the NEDERDAM brand board
 ("Concept 06 — Kader"). This document records how that board was translated into the
 website: what is faithful, what is substituted, and where the substitutions are swapped out
