@@ -26,7 +26,7 @@ export default async function DienstenPage() {
         <Breadcrumbs items={[{ name: 'Diensten', path: '/diensten' }]} />
         <div className={styles.center}>
           <span className="label">Bouw &amp; Interieur</span>
-          <h1 className="display rule-under rule-under--center">Onze diensten</h1>
+          <h1 className="display">Onze diensten</h1>
           <p className="lede">
             Twee disciplines, één aanspreekpunt. Van bouwkundige ingreep tot het laatste stuk maatwerk —
             wij plannen, coördineren en leveren op.
@@ -45,7 +45,7 @@ export default async function DienstenPage() {
             Over Bouw
           </Link>
         </header>
-        <ServiceCards items={bouw} columns={3} />
+        <ServiceCards items={bouw} />
       </section>
 
       <section className={`on-sand ${styles.band}`}>

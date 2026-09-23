@@ -8,7 +8,7 @@ One professional partner for complete bouw-, renovatie- and maatwerk interieur p
 - **Next.js (App Router) + TypeScript**, React Server Components
 - **Custom CSS architecture** (CSS Modules + design tokens) — deliberately no Tailwind/
   shadcn/component-library visual system
-- Fonts (Hanken Grotesk + Newsreader, standing in for Söhne + Canela) via `next/font`
+- Font (Hanken Grotesk, standing in for Söhne) via `next/font`
 - **Sanity** content studio in `/sanity` (see its README to provision)
 - SEO built in: metadata, canonical, sitemap, robots, JSON-LD, breadcrumbs
 

@@ -1,28 +1,15 @@
-import { Hanken_Grotesk, Newsreader } from 'next/font/google';
+import { Hanken_Grotesk } from 'next/font/google';
 
-// The brand board specifies Söhne (functional layer) and Canela (editorial layer). Both
-// are commercially licensed and not bundled here. These are the closest open faces to the
-// board: Hanken Grotesk carries Söhne's light, wide-tracked grotesk voice, and Newsreader
-// (display optical size, light weight) Canela's open, high-contrast serif. Swapping in the
-// licensed faces later is a change to this file only: the rest of the system reads
-// `--font-sans` and `--font-serif`, which globals.css builds from the `*-src` variables
-// these fonts expose (the names differ on purpose — a token that references itself
-// is invalid CSS and silently drops the whole font stack).
-
-// Functional layer — navigation, body, labels, buttons, metadata.
+// One typeface for the whole site. The brand board names Söhne, which is commercially
+// licensed and not bundled; Hanken Grotesk is the closest open grotesk and is set in
+// sturdy weights (medium/semibold for headings) so the site reads as a builder, not a
+// boutique. Swapping in Söhne later is a change to this file only: every stylesheet reads
+// `--font-sans`, which globals.css builds from `--font-sans-src` (the names differ on
+// purpose — a token that references itself is invalid CSS and drops the whole stack).
 export const sans = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['300', '400', '500'],
-  variable: '--font-sans-src',
-});
-
-// Editorial layer — statements and headings. Variable, with the optical-size axis so large
-// settings get the fine display cut automatically.
-export const serif = Newsreader({
-  subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  axes: ['opsz'],
-  variable: '--font-serif-src',
+  variable: '--font-sans-src',
 });

@@ -28,7 +28,8 @@
   gap: 28px;
 }
 .phone {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
 }
 .email {
   font-size: 0.9rem;

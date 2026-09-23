@@ -3,8 +3,8 @@ import { ProjectMedia } from '@/components/primitives/ProjectMedia';
 import styles from './Testimonial.module.css';
 
 /**
- * A client's words as an editorial pull-quote — serif, on stone, with the project image
- * set off-grid beside it. Not a testimonial card.
+ * A client's words as a large quote on stone, with the project photo beside it once one
+ * exists. Not a testimonial card.
  *
  * When `placeholder` is set, a visible marker says so: sample content is never
  * presented as a genuine review.
@@ -28,7 +28,10 @@ export function Testimonial({ testimonial }: { testimonial: TestimonialData }) {
             </span>
           )}
         </div>
-        <ProjectMedia className={styles.media} media={t.media} tone="linen" sizes="(max-width: 900px) 100vw, 32vw" />
+        {/* the project photo appears only once it exists — never an empty frame */}
+        {t.media.src && (
+          <ProjectMedia className={styles.media} media={t.media} sizes="(max-width: 900px) 100vw, 32vw" />
+        )}
       </div>
     </section>
   );

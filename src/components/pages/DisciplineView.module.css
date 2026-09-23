@@ -51,7 +51,8 @@
 .aboutText {
   grid-column: 5 / span 7;
   font-family: var(--font-serif);
-  font-weight: 300;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   font-size: clamp(1.5rem, 2.3vw, 2.2rem);
   line-height: 1.28;
   letter-spacing: -0.005em;

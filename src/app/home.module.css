@@ -1,313 +1,329 @@
-/* ================================================================ hero
-   A framed image inside the page margins, as on the board: never edge to edge. */
-.heroWrap {
-  padding-top: clamp(16px, 2.4vw, 32px);
-}
+/* ================================================================ hero */
 .hero {
-  position: relative;
-  min-height: min(80svh, 780px);
-  display: flex;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--charcoal-soft);
-}
-/* a flat veil so the statement holds on any frame of the footage */
-.heroScrim {
-  position: absolute;
-  inset: 0;
-  background: rgba(14, 14, 14, 0.52);
-}
-.heroInner {
-  position: relative;
-  flex: 1 1 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 40px;
-  padding: clamp(32px, 5vw, 80px);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--col-gap);
+  align-items: stretch;
+  padding-top: clamp(32px, 5vw, 64px);
 }
 .heroText {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  gap: 28px;
+  gap: 24px;
+  padding-block: clamp(16px, 3vw, 48px);
+  padding-right: clamp(0px, 3vw, 48px);
 }
-.heroLabel {
-  color: var(--ink-soft);
+.heroKicker {
+  color: var(--bronze-text);
 }
 .heroTitle {
-  max-width: 13ch;
-  font-size: clamp(2.7rem, 5.6vw, 5.6rem);
+  max-width: 17ch;
+  font-size: clamp(2.3rem, 4.2vw, 3.9rem);
+}
+.heroLede {
+  max-width: 44ch;
 }
 .heroActions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px 32px;
-  margin-top: 6px;
+  gap: 16px 32px;
+  margin-top: 8px;
 }
-.heroStack {
-  align-self: center;
-  color: var(--ink);
-  padding-right: clamp(0px, 3vw, 48px);
+.heroPhone {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+.heroPhoneLabel {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.heroPhoneNumber {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.heroPhone:hover .heroPhoneNumber {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.heroMedia {
+  position: relative;
+  min-height: clamp(420px, 44vw, 640px);
+  background: var(--charcoal);
 }
 
-/* ================================================================ chapters
-   Every chapter opens with the board's marker: index, label, hairline. */
-.chapter {
-  padding-top: clamp(80px, 12vh, 144px);
+/* ================================================================ trust */
+.trust {
+  padding-top: clamp(40px, 5vw, 64px);
 }
-.chapter > :first-child {
-  margin-bottom: clamp(40px, 6vh, 72px);
-}
-
-/* ---------------------------------------------------------------- 01 intro */
-.intro {
+.trustList {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 2.5fr) minmax(0, 2.5fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 24px 24px 26px 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.trustItem + .trustItem {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+.trustItem strong {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+/* the certification logo sits under its text, so the four headings stay on one line */
+.trustItem > [title] {
+  margin-top: 12px;
+}
+
+/* ================================================================ shared */
+.section {
+  padding-block: var(--section);
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+/* ================================================================ services */
+.discipline {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: var(--col-gap);
+  padding-top: 24px;
+  border-top: 1.5px solid var(--ink);
+}
+.discipline + .discipline {
+  margin-top: clamp(56px, 7vw, 96px);
+}
+.disciplineHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-right: 16px;
+}
+.disciplineTitle {
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.disciplineTitle::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin-bottom: 16px;
+  background: var(--accent);
+}
+.disciplineHead p {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+.disciplineHead :global(.textlink) {
+  margin-top: 4px;
+  color: var(--accent-text);
+}
+.comboTile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 28px;
+  background: var(--charcoal);
+  color: var(--on-dark);
+}
+.comboTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.comboText {
+  color: var(--on-dark-soft);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.comboAction {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--bronze);
+}
+.comboTile:hover .comboAction {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ================================================================ project */
+.projectBand {
+  padding-block: var(--section);
+}
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: var(--col-gap);
   align-items: start;
 }
-.introMain {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
-  max-width: 620px;
-}
-.introStatement {
-  color: var(--ink);
-}
-.introText {
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  font-weight: 300;
-  line-height: 1.6;
-  color: var(--ink-soft);
-}
-.introStack {
-  padding-top: 6px;
-}
-
-/* ---------------------------------------------------------------- 02 disciplines */
-.split {
+.beforeAfter,
+.projectMedia {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  gap: 8px;
 }
-.discipline {
+.projectMedia {
+  grid-template-columns: 1fr;
+}
+.projectFacts {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
-  padding: clamp(40px, 6vh, 72px) clamp(24px, 4vw, 72px) clamp(40px, 6vh, 64px) 0;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1.5px solid var(--ink);
 }
-.discipline + .discipline {
-  border-left: 1px solid var(--line);
-  padding-left: clamp(24px, 4vw, 72px);
-  padding-right: 0;
+.example {
+  color: var(--bronze-text);
 }
-/* the lockups are centred in their own 620×360 canvas; centre them in the column too */
-.lockup {
-  align-self: center;
-  margin-block: -24px 0;
-}
-.disciplineText {
-  max-width: 46ch;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
-.serviceList {
-  width: 100%;
-  border-top: 1px solid var(--line);
-}
-.serviceRow {
+.projectFacts dl {
   display: flex;
-  align-items: baseline;
-  gap: 24px;
-  padding: 15px 0;
+  flex-direction: column;
+}
+.projectFacts dl > div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
-  transition: padding-left var(--dur) var(--ease);
+  font-size: 0.98rem;
 }
-.serviceRow :global(.label) {
-  color: var(--accent-text);
-  min-width: 2.4em;
-}
-.serviceName {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
-  line-height: 1.2;
-}
-.serviceRow:hover {
-  padding-left: 6px;
-}
-.disciplineLink {
-  color: var(--accent-text);
+.projectFacts dt {
+  color: var(--muted);
 }
 
-/* ---------------------------------------------------------------- 03 process */
-.process {
-  display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 2fr);
-  gap: clamp(32px, 4vw, 72px);
-  align-items: start;
-}
-.processIntro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
-}
-.processStatement {
-  color: var(--ink);
-}
-.processText {
-  max-width: 42ch;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
+/* ================================================================ process */
 .steps {
-  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--col-gap);
 }
 .step {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.3fr);
-  align-items: baseline;
-  gap: 24px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--line);
-}
-.stepNum {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--bronze);
-}
-.stepName {
-  font-size: 0.72rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-}
-.stepDesc {
-  font-size: 0.92rem;
-  font-weight: 300;
-  line-height: 1.6;
-  color: var(--ink-soft);
-}
-.processStack {
-  justify-self: end;
-}
-
-/* ---------------------------------------------------------------- 04 work */
-.work {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.4vw, 24px);
-  align-items: start;
-}
-.workItem {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1.5px solid var(--ink);
 }
-.workCaption {
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+  background: var(--charcoal);
+  color: var(--on-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.stepTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.stepText {
   color: var(--ink-soft);
-}
-.workFoot {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 32px;
-  margin-top: 36px;
-}
-.workNote {
-  max-width: 62ch;
-  font-size: 0.92rem;
-  font-weight: 300;
-  line-height: 1.6;
-  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
 /* ================================================================ responsive */
 @media (max-width: 1100px) {
-  .intro {
+  .trustList {
     grid-template-columns: 1fr 1fr;
-    row-gap: 48px;
   }
-  .introMain {
-    grid-column: 1 / -1;
+  .trustItem:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
   }
-  .process {
+  .trustItem:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+  .discipline {
     grid-template-columns: 1fr;
+    row-gap: 28px;
   }
-  .processStack {
-    justify-self: start;
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
   }
 }
 @media (max-width: 900px) {
-  .heroInner {
+  .hero {
     grid-template-columns: 1fr;
   }
-  .heroStack {
-    display: none;
+  .heroText {
+    padding-right: 0;
   }
-  .split {
+  .heroMedia {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+  .project {
     grid-template-columns: 1fr;
-  }
-  .discipline,
-  .discipline + .discipline {
-    padding-inline: 0;
-    border-left: 0;
-  }
-  .discipline + .discipline {
-    border-top: 1px solid var(--line);
-  }
-  .work {
-    grid-template-columns: 1fr 1fr;
-  }
-  .work > li:first-child {
-    grid-column: 1 / -1;
   }
 }
-@media (max-width: 640px) {
-  .heroWrap {
-    padding-inline: 0;
-    padding-top: 0;
-  }
+@media (max-width: 620px) {
   .hero {
-    min-height: 88svh;
-    border-inline: 0;
-    border-top: 0;
-  }
-  .heroInner {
-    padding: 28px var(--gutter) 40px;
+    padding-top: 24px;
   }
   .heroActions {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
   }
-  .heroActions :global(.textlink) {
-    align-self: flex-start;
-  }
-  .lockup img {
-    height: 190px !important;
-  }
-  .step {
-    grid-template-columns: 48px minmax(0, 1fr);
-  }
-  .stepDesc {
-    grid-column: 2;
-  }
-  .work {
+  .trustList {
     grid-template-columns: 1fr;
   }
-  .workFoot {
+  .trustItem,
+  .trustItem + .trustItem {
+    padding: 20px 0;
+    border-left: 0;
+  }
+  .trustItem + .trustItem {
+    border-top: 1px solid var(--line);
+  }
+  .head {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .beforeAfter {
+    grid-template-columns: 1fr;
+  }
+  .projectFacts dl > div {
+    grid-template-columns: 110px 1fr;
   }
 }

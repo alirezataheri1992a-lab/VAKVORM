@@ -18,10 +18,10 @@ interface Props {
 type MenuKey = 'bouw' | 'interieur';
 
 /**
- * Header, as on the KADER board: the logo left, the navigation right in small tracked
- * capitals, one bronze action. Bouw and Interieur each open a panel with their services
- * (hover, focus or click; Escape and an outside click close it). The mobile menu is a
- * charcoal sheet with the two disciplines leading.
+ * Header: the logo left, the navigation, the phone number and one bronze action right.
+ * Bouw and Interieur each open a panel with their services (hover, focus or click; Escape
+ * and an outside click close it). The mobile menu is a charcoal sheet with the two
+ * disciplines leading.
  */
 export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
@@ -80,10 +80,9 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
   const isActive = (path: string) =>
     path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
 
-  const groups: Record<MenuKey, { index: string; title: string; href: string; items: Service[] }> = {
-    bouw: { index: '01', title: 'Bouw', href: '/bouw', items: bouwServices },
+  const groups: Record<MenuKey, { title: string; href: string; items: Service[] }> = {
+    bouw: { title: 'Bouw', href: '/bouw', items: bouwServices },
     interieur: {
-      index: '02',
       title: 'Interieur',
       href: interieurService?.path ?? '/interieur',
       items: interieurSubServices,
@@ -95,7 +94,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
       <header className={styles.header} data-open={open}>
         <div className={`container ${styles.bar}`}>
           <Link href="/" className={styles.brand} aria-label="Nederdam — home">
-            <Logo variant="horizontal" tone="light" height={54} decorative />
+            <Logo variant="horizontal" tone={open ? 'light' : 'dark'} height={52} decorative />
           </Link>
 
           <nav className={styles.nav} aria-label="Hoofdmenu" ref={navRef}>
@@ -136,8 +135,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
 
                     <div id={`${panelId}-${key}`} className={styles.panel} data-open={expanded}>
                       <Link href={g.href} className={styles.panelHead}>
-                        <span className="label">{g.index}</span>
-                        <span className={styles.panelTitle}>{g.title}</span>
+                        {g.title}
                       </Link>
                       <ul className={styles.panelList}>
                         {g.items.map((s) => (
@@ -158,9 +156,14 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
             </ul>
           </nav>
 
-          <Link href="/start-uw-project" className={`btn btn--bronze ${styles.cta}`}>
-            Start uw project
-          </Link>
+          <div className={styles.actions}>
+            <a href={`tel:${site.phoneHref}`} className={styles.phone}>
+              {site.phoneDisplay}
+            </a>
+            <Link href="/start-uw-project" className={`btn btn--bronze ${styles.cta}`}>
+              Offerte aanvragen
+            </Link>
+          </div>
 
           <button
             className={styles.toggle}
@@ -186,7 +189,6 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
               const g = groups[key];
               return (
                 <Link key={key} href={g.href} className={styles.discipline} data-pillar={key}>
-                  <span className="label">{g.index}</span>
                   <span className={styles.disciplineName}>{g.title}</span>
                   <span className={styles.disciplineList}>{g.items.map((s) => s.navLabel).join(' · ')}</span>
                 </Link>
@@ -211,7 +213,7 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
 
           <div className={styles.sheetFoot}>
             <Link href="/start-uw-project" className="btn btn--bronze">
-              Start uw project
+              Offerte aanvragen
             </Link>
             <div className={styles.sheetContact}>
               <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>

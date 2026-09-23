@@ -1,24 +1,20 @@
 .marker {
   display: flex;
-  align-items: center;
-  gap: 22px;
+  align-items: baseline;
+  gap: 16px;
   width: 100%;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-strong);
 }
-.marker[data-align='end'] {
-  flex-direction: row-reverse;
+.marker[data-tone='ink'] {
+  border-top-color: var(--on-dark-soft);
+}
+.marker :global(.label) {
+  color: var(--ink);
+}
+.marker[data-tone='ink'] :global(.label) {
+  color: var(--on-dark);
 }
 .index {
-  color: var(--muted);
-  letter-spacing: 0.12em;
-  min-width: 2.2em;
-}
-.name {
-  color: var(--ink);
-  letter-spacing: 0.32em;
-}
-.rule {
-  flex: 1 1 auto;
-  height: 1px;
-  background: var(--line);
-  min-width: 32px;
+  opacity: 0.55;
 }

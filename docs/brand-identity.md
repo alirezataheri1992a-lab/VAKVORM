@@ -20,9 +20,9 @@ gone; the navigation is `Bouw · Interieur · Projecten · Werkwijze · Over ons
 never a third pillar beside them. Routes follow the architecture: `/bouw/<service>` and
 `/interieur/<service>`.
 
-The accents are subtle by design: the colour of small tracked labels and index numbers, the
-top edge of a navigation panel, the tone of a hairline — and bronze for the one primary
-action. The site's dominant colours are charcoal and warm off-white.
+The accents are subtle by design: a short bar above a discipline's name, the top edge of a
+navigation panel, the line under a service tile — and bronze for the one primary action
+("Offerte aanvragen"). The site's dominant colours are warm white and charcoal.
 
 ## Logo
 
@@ -38,11 +38,13 @@ to show and at what height.
 | `nederdam-interieur-dark.svg` / `-light.svg` | sub-brand lockup, olive |
 | `nederdam-mark-bronze.svg` / `-olive.svg` / `-white.svg` | the symbol alone; bronze is also the favicon (`src/app/icon.svg`, an exact copy) |
 
-Placement: the header always carries the master (horizontal) logo, light colourway on the
-charcoal bar. The footer carries the stacked master lockup, reversed. The homepage shows the
-two sub-brand lockups side by side (light colourway), as on the board; the discipline pages
-introduce the sub-brand with its own mark (bronze on Bouw, olive on Interieur) beside the
-opening label. The primary logo never changes per page.
+Placement: the header carries the master (horizontal) logo — dark colourway on the warm
+white bar, light colourway when the mobile menu is open. The footer carries the stacked
+master lockup, reversed. The discipline pages introduce the sub-brand with its own mark
+(bronze on Bouw, olive on Interieur). The primary logo never changes per page.
+
+The certification logo ("erkend bouwbedrijf") has not been supplied yet;
+`CertificationMark` renders a marked empty slot until the file is added to `/public/brand/`.
 
 The files carry their own clear space inside the viewBox. Sizing is by height; width follows
 the file's aspect ratio. The one layout adjustment is a negative left margin on the footer
@@ -52,68 +54,55 @@ lockup so its art aligns with the column edge — the file itself is untouched.
 
 | Token | Hex | Use |
 |---|---|---|
-| `--charcoal` | `#0E0E0E` | the canvas — every page, header and footer |
-| (off-white) | `#F4F0E8` | type (`--ink`) — the same tone the reversed logos use |
-| `--stone` | `#C9C2B8` | reserved for material and print; not a web surface |
-| `--taupe` | `#3A3A36` | a warm-dark band (werkwijze close) and reserved image fields |
+| `--charcoal` | `#0E0E0E` | type; the closing call to action, the mobile menu, the footer |
+| `--stone` | `#C9C2B8` | the review band and reserved image fields |
+| `--taupe` | `#3A3A36` | secondary text; a warm-dark band |
 | `--bronze` | `#B08B6F` | Bouw accent — marks, labels on dark; `--bronze-deep #7E5F45` as text on light |
 | `--olive` | `#4A5A46` | Interieur accent — marks, labels; `--olive-on-dark #8C9C84` on charcoal |
 
-The site follows the KADER board: the page is **charcoal**, type is the warm off-white
-`#F4F0E8` the reversed logos use, and structure is drawn in hairlines. Derived values
-(`--canvas-raised`, `--panel`, `--ink-soft`, `--muted`, `--line`, `--line-strong`) are in
-`src/app/globals.css` with their contrast notes. Bronze reads as text on charcoal (6.3:1);
-raw olive does not, which is why `--olive-on-dark` exists. Older names (`--linen`,
-`--paper`, `--sand`) are kept as aliases of the dark surfaces.
+The page is a warm white (`--canvas #F5F2EC`) with charcoal type; charcoal carries the
+closing call to action, the mobile menu and the footer. Derived values (`--canvas-raised`,
+`--panel`, `--ink-soft`, `--muted`, `--line`) are in `src/app/globals.css` with their
+contrast notes. Raw bronze fails as small text on the canvas, which is why `--bronze-text`
+exists; raw olive fails on charcoal, which is why `--olive-on-dark` exists.
 
 No gradients (the hero scrim excepted — it is a legibility device over footage, not a
 decoration), no shadows, no border radius on anything structural.
 
 ## Typography
 
-The board specifies **Söhne** (functional) and **Canela** (editorial). Both are
-commercially licensed and not bundled. The site ships the closest open pairing:
-
-| Role | Board | Implemented | Where |
-|---|---|---|---|
-| Functional — nav, body, labels, buttons, metadata, functional headings | Söhne | **Hanken Grotesk** 300/400/500 | `--font-sans` |
-| Editorial — statements, hero, chapter openings, the closing invitation | Canela | **Newsreader** 300 (display optical size) + italic | `--font-serif` |
-
-Chosen side by side against the board: Hanken Grotesk carries Söhne's light, wide-tracked
-capitals; Newsreader at display size has Canela's open, light serif. Swapping in the
-licensed faces is a change to `src/lib/fonts.ts` only; every stylesheet reads the two
-variables.
+The board specifies **Söhne**, which is commercially licensed and not bundled. The site uses
+one typeface, **Hanken Grotesk** (400/500/600/700), the closest open grotesk, via
+`--font-sans`. Swapping in Söhne is a change to `src/lib/fonts.ts` only. There is no serif:
+a builder's site reads sturdier in one grotesk, and the logo itself is a sans.
 
 Rules the system enforces:
 
-- The serif is set light (300), never bold and never used for UI. It appears in
-  `.display`, `.heading`, service names and a few statements.
-- Metadata is small, uppercase, tracked `0.28em` (`.label`). It is the site's labelling
-  layer: eyebrows, captions, index numbers, column heads, breadcrumbs, navigation.
-- Board devices: `.tracked` (a statement in tracked capitals — "Eén merk. Twee
-  disciplines."), `.stack` (a vertical column of tracked words closed by a short rule),
-  `.rule-under` (the 2px bronze rule under the hero statement, as under the logo) and
-  `SectionMarker` (index, label, hairline: `01  NEDERDAM ─────`).
-- The scale is short on purpose: `.display`, `.heading`, `.title`, `.lede`, body, `.label`.
+- Hierarchy by size and weight, not ornament: `.display`, `.heading`, `.title`, `.lede`,
+  body, `.label`. Headings are semibold with tight tracking.
+- Capitals only for small labels (`.label`, tracked `0.08em`). Navigation, buttons and links
+  are in sentence case.
+- No decorative devices: no rules under headings, no numbered chapters, no word stacks, no
+  veils over photographs.
 
 ## Layout
 
-A 12-column grid (`.grid12`) inside a 1520px container with a fluid gutter. Compositions are
-deliberately unequal: a statement in columns 3–8 with facts in 10–12; an image in 9–12 beside
-text in 1–7 (mirrored on Interieur); a landscape in 1–8 with a portrait in 10–12 set lower.
-Chapters open with a numbered `SectionMarker` and are separated by hairlines, as on the
-board. Images sit framed inside the margins with small tracked captions beneath.
+A 12-column grid inside a 1440px container. Sections open with a heading and, where useful,
+one link on the same line; groups are separated by a 1.5px charcoal rule. The homepage runs:
+hero (statement, offer, phone — and the work beside it), four confirmed facts, services by
+discipline as photo tiles, a before/after project, the process in four steps, a review, the
+close.
 
 ## UI
 
-- Text links: `.textlink` — tracked capitals, an arrow, a hairline that appears on hover.
-- Buttons: square, tracked capitals, 50px. `.btn--bronze` is the primary action
-  ("Start uw project"); `.btn` is a hairline outline; `.btn--solid` is off-white.
-- Navigation: logo left, the two disciplines first (each opens its services), then the
-  pages, in tracked capitals; one bronze action.
-- Forms: square fields on `--panel` with a hairline border.
-- Motion: slow (`640ms`, `cubic-bezier(0.22, 1, 0.36, 1)`). Light content settles into
-  place, photography reveals with a crop, dark chapters stay still. Nothing bounces.
+- Buttons: square, sentence case, 52px. `.btn--bronze` is the primary action; `.btn` is a
+  charcoal outline; `.btn--solid` is charcoal.
+- Header: logo, Bouw and Interieur (each opens its services), the pages, the phone number,
+  "Offerte aanvragen".
+- Placeholders: `<Placeholder>` marks any detail still to be supplied (KvK number,
+  certification name, warranty terms, insurance) with a dashed bronze frame, so nothing
+  reads as a claim before it is confirmed.
+- Motion: short (240ms). Nothing bounces.
 
 ## Photography
 

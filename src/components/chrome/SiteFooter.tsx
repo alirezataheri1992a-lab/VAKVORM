@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { pages } from '@/lib/site';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { Logo } from './Logo';
+import { Placeholder } from '@/components/primitives/Placeholder';
+import { CertificationMark } from '@/components/primitives/CertificationMark';
 import styles from './SiteFooter.module.css';
 
 export async function SiteFooter() {
@@ -17,7 +19,15 @@ export async function SiteFooter() {
         <div className={styles.top}>
           <div className={styles.brandCol}>
             <Logo variant="master" tone="light" height={168} className={styles.logo} />
-            <p className={`serif ${styles.statement}`}>Bouwen aan wat blijft.</p>
+            <ul className={styles.credentials}>
+              <li>
+                <CertificationMark tone="dark" />
+              </li>
+              <li>Erkend bouwbedrijf · verzekerd · garantie op ons werk</li>
+              <li>
+                KvK <Placeholder>00000000</Placeholder>
+              </li>
+            </ul>
           </div>
 
           <nav className={styles.col} aria-label="Bouw" data-pillar="bouw">

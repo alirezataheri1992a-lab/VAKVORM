@@ -1,0 +1,17 @@
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  height: 52px;
+  border: 1px dashed var(--bronze);
+  background: rgba(176, 139, 111, 0.1);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bronze-text);
+}
+.slot[data-tone='dark'] {
+  color: var(--bronze);
+}

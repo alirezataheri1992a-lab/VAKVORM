@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { sans, serif } from '@/lib/fonts';
+import { sans } from '@/lib/fonts';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { SiteHeader } from '@/components/chrome/SiteHeader';
 import { SiteFooter } from '@/components/chrome/SiteFooter';
@@ -34,14 +34,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const viewport: Viewport = {
   themeColor: '#0e0e0e',
-  colorScheme: 'dark',
+  colorScheme: 'light',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const [site, groups] = await Promise.all([getSiteSettings(), getServiceGroups()]);
 
   return (
-    <html lang="nl" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="nl" className={sans.variable}>
       <body>
         <a href="#main" className="visually-hidden">
           Naar hoofdinhoud

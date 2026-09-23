@@ -27,8 +27,8 @@ export async function ContactPanel({
           <div className={styles.right}>
             <p className={styles.body}>{body}</p>
             <div className={styles.actions}>
-              <Link href="/start-uw-project" className="btn">
-                Start een project
+              <Link href="/start-uw-project" className="btn btn--bronze">
+                Offerte aanvragen
               </Link>
               <a href={`tel:${site.phoneHref}`} className={`textlink ${styles.phone}`}>
                 {site.phoneDisplay}
