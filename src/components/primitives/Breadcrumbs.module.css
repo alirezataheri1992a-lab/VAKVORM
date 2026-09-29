@@ -22,3 +22,12 @@
 .crumb [aria-current='page'] {
   color: var(--ink);
 }
+/* on dark grounds the current page and hover read in paper */
+:global(.on-dark) .crumb [aria-current='page'],
+:global(.on-dark) .link:hover,
+:global(.on-taupe) .crumb [aria-current='page'] {
+  color: var(--on-dark);
+}
+:global(.on-dark) .sep {
+  color: var(--line-dark);
+}

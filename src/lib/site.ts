@@ -21,8 +21,8 @@ export const site: SiteSettings = {
   city: 'Utrecht',
   serviceArea: 'Heel Nederland',
   addressText: undefined,
-  // Instagram account name (without @). Not yet supplied — the site shows a marked
-  // placeholder until it is set; never guess it, it could be someone else's account.
+  // Instagram account name (without @). Not yet supplied — every Instagram link stays
+  // hidden until it is set; never guess it, it could be someone else's account.
   instagram: undefined,
   baseUrl: 'https://www.nederdambouw.nl',
 };
@@ -36,9 +36,13 @@ export const nav = [
   { label: 'Interieur', path: '/interieur', menu: 'interieur' },
   { label: 'Nieuwbouw', path: '/nieuwbouw' },
   { label: 'Projecten', path: '/projecten' },
+  { label: 'Over ons', path: '/over-ons' },
   { label: 'Werkwijze', path: '/werkwijze' },
   { label: 'Contact', path: '/contact' },
 ] as const;
+
+// The one primary action, everywhere: it opens the project intake.
+export const primaryCta = { label: 'Project bespreken', path: '/start-uw-project' } as const;
 
 // Page list for the footer and the mobile menu.
 export const pages = [

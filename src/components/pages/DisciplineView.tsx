@@ -25,9 +25,9 @@ const COPY = {
     lede: 'Complete renovaties, verbouwingen, badkamers, aan- en uitbouw, opbouw en stucwerk — één partij die plant, coördineert en oplevert.',
     body: 'Bouwen is precisiewerk met veel disciplines. Nederdam neemt het volledige traject op zich: van constructieve voorbereiding en vergunning tot de coördinatie van alle vakmensen en de uiteindelijke oplevering. Eén aanspreekpunt, één verantwoordelijke partij.',
     materials: [
-      { slot: 'Beton — ruwbouw', ratio: '4:5' as const },
-      { slot: 'Metselwerk — detail', ratio: '1:1' as const },
-      { slot: 'Constructie — dak', ratio: '3:2' as const },
+      { slot: 'Beton — ruwbouw', ratio: '4:5' as const, drawing: 'stone' as const },
+      { slot: 'Metselwerk — detail', ratio: '1:1' as const, drawing: 'plaster' as const },
+      { slot: 'Constructie — dak', ratio: '3:2' as const, drawing: 'wood' as const },
     ],
     other: { label: 'Ook een interieur op maat?', path: '/interieur', link: 'Naar Interieur' },
     contact: 'Een bouwproject bespreken?',
@@ -39,9 +39,9 @@ const COPY = {
     lede: 'Maatwerkkasten, wandmeubels en complete interieurs — ontworpen en in eigen beheer gemaakt, in hout, fineer en zorgvuldig afgewerkte verbindingen.',
     body: '',
     materials: [
-      { slot: 'Eiken — fineer', ratio: '4:5' as const },
-      { slot: 'Verbinding — detail', ratio: '1:1' as const },
-      { slot: 'Kastwand — ruimte', ratio: '3:2' as const },
+      { slot: 'Eiken — fineer', ratio: '4:5' as const, drawing: 'wood' as const },
+      { slot: 'Verbinding — detail', ratio: '1:1' as const, drawing: 'joint' as const },
+      { slot: 'Kastwand — ruimte', ratio: '3:2' as const, drawing: 'plaster' as const },
     ],
     other: { label: 'Ook bouwkundig werk nodig?', path: '/bouw', link: 'Naar Bouw' },
     contact: 'Een interieur op maat?',
@@ -77,6 +77,7 @@ export async function DisciplineView({ pillar, services, hub, site }: Props) {
           <ProjectMedia
             className={styles.openMedia}
             media={{ alt: `${c.name} door Nederdam`, ratio: '4:5', slot: pillar === 'bouw' ? 'Bouw — uitvoering' : 'Interieur — kastwand' }}
+            drawing={pillar === 'bouw' ? 'section' : 'joinery'}
             priority
             sizes="(max-width: 900px) 100vw, 40vw"
           />
@@ -108,6 +109,7 @@ export async function DisciplineView({ pillar, services, hub, site }: Props) {
                 key={m.slot}
                 media={{ alt: m.slot, ratio: m.ratio, slot: m.slot }}
                 tone={pillar === 'bouw' ? 'taupe' : 'linen'}
+                drawing={m.drawing}
                 sizes="(max-width: 700px) 100vw, 33vw"
               />
             ))}
@@ -120,7 +122,7 @@ export async function DisciplineView({ pillar, services, hub, site }: Props) {
         <div className={styles.indexHead}>
           <SectionMarker label={pillar === 'bouw' ? 'Diensten' : 'Specialisaties'} />
         </div>
-        <ServiceIndex items={services} />
+        <ServiceIndex items={services} drawing={pillar === 'bouw' ? 'joint' : 'stone'} />
       </section>
 
       {/* the other discipline, one line */}

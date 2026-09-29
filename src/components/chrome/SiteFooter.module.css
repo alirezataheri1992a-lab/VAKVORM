@@ -1,11 +1,10 @@
 .footer {
-  border-top: 1px solid var(--line);
-  padding-block: clamp(64px, 9vh, 120px) 36px;
+  padding-block: clamp(80px, 9vw, 128px) var(--space-6);
 }
 .top {
   display: grid;
-  grid-template-columns: 1.7fr 1fr 1fr 1.2fr;
-  gap: clamp(32px, 4vw, 80px);
+  grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr));
+  gap: var(--space-7) clamp(24px, 3vw, 56px);
   padding-bottom: clamp(48px, 7vh, 88px);
   border-bottom: 1px solid var(--line-dark);
 }
@@ -18,15 +17,20 @@
 .logo {
   margin-left: -72px;
 }
-.credentials {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 0.92rem;
-  color: var(--on-dark-soft);
+.motto {
+  max-width: 24ch;
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: var(--on-dark);
 }
-.credentials li:first-child {
-  margin-bottom: 8px;
+.credentials {
+  max-width: 32ch;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--on-dark-soft);
 }
 .col ul {
   display: flex;
@@ -65,17 +69,14 @@
   color: var(--on-dark-soft);
   padding-top: 6px;
 }
-.pages {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line-dark);
-}
 .bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
   padding-top: 28px;
+  font-size: var(--text-sm);
+  color: var(--on-dark-soft);
 }
 .legal {
   display: flex;
@@ -88,9 +89,9 @@
   color: var(--on-dark);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 52px;
   }
   .brandCol {

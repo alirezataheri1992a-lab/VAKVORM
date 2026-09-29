@@ -1,0 +1,46 @@
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--stone);
+  color: var(--charcoal);
+  --kader-line: rgba(14, 14, 14, 0.18);
+}
+.frame[data-tone='paper'] {
+  background: var(--canvas-raised);
+}
+.frame[data-tone='dark'] {
+  background: var(--charcoal-soft);
+  color: var(--stone);
+  --kader-line: rgba(244, 240, 232, 0.2);
+}
+.img {
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+  transition: transform 900ms var(--ease-out);
+}
+a:hover .img {
+  transform: scale(1.02);
+}
+/* drawings sit with generous clear space, like a sheet on a drawing board */
+.drawing {
+  position: absolute;
+  inset: 11%;
+  opacity: 0.8;
+  transition: transform 900ms var(--ease-out);
+}
+.drawing[data-drawing='wood'],
+.drawing[data-drawing='stone'],
+.drawing[data-drawing='plaster'] {
+  inset: 0;
+  opacity: 0.5;
+}
+.drawing[data-drawing='wood'] :global(svg),
+.drawing[data-drawing='stone'] :global(svg),
+.drawing[data-drawing='plaster'] :global(svg) {
+  width: 100%;
+  height: 100%;
+}
+a:hover .drawing {
+  transform: scale(1.02);
+}

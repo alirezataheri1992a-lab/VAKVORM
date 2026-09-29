@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { Service } from '@/lib/types';
 import { ProjectMedia } from '@/components/primitives/ProjectMedia';
+import type { DrawingVariant } from '@/components/primitives/ArchDrawing';
 import styles from './ServiceIndex.module.css';
 
 /**
@@ -11,7 +12,15 @@ import styles from './ServiceIndex.module.css';
  * screens, the row under the cursor shows its image in a still column on the right.
  * Rows are plain links and work without JS.
  */
-export function ServiceIndex({ items, tone }: { items: Service[]; tone?: 'stone' | 'dark' }) {
+export function ServiceIndex({
+  items,
+  tone,
+  drawing,
+}: {
+  items: Service[];
+  tone?: 'stone' | 'dark';
+  drawing?: DrawingVariant;
+}) {
   const [active, setActive] = useState<Service>(items[0]);
 
   return (
@@ -40,7 +49,7 @@ export function ServiceIndex({ items, tone }: { items: Service[]; tone?: 'stone'
       <div className={styles.preview} aria-hidden="true">
         {items.map((s) => (
           <div key={s.slug} className={styles.previewItem} data-active={active.slug === s.slug}>
-            <ProjectMedia media={{ ...s.hero, ratio: '4:5' }} tone={tone ?? 'stone'} sizes="(max-width: 1040px) 0px, 30vw" />
+            <ProjectMedia media={{ ...s.hero, ratio: '4:5' }} tone={tone ?? 'stone'} drawing={drawing} sizes="(max-width: 1040px) 0px, 30vw" />
           </div>
         ))}
       </div>

@@ -24,7 +24,7 @@
   margin-top: 8px;
 }
 .phone {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1rem;
 }
 .phone:hover {
@@ -51,7 +51,7 @@
 }
 .cityName {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 .cityText {
@@ -60,7 +60,7 @@
 }
 .cityMore {
   margin-top: auto;
-  font-weight: 600;
+  font-weight: 500;
 }
 .city:hover .cityName {
   text-decoration: underline;
@@ -101,7 +101,7 @@
   gap: 6px 20px;
 }
 .services a {
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: underline;
   text-decoration-color: var(--line);
   text-underline-offset: 4px;
@@ -144,7 +144,7 @@
   padding: 15px 0;
   border-bottom: 1px solid var(--line);
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 .serviceLink:hover span:first-child {
@@ -189,7 +189,7 @@
   gap: 12px;
 }
 .projectName {
-  font-weight: 600;
+  font-weight: 500;
 }
 .nearby {
   display: flex;
@@ -207,7 +207,7 @@
   color: var(--ink-soft);
 }
 .otherCities a {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 4px;

@@ -1,4 +1,3 @@
-import { Placeholder } from './Placeholder';
 import styles from './InstagramLink.module.css';
 
 /**
@@ -26,7 +25,7 @@ export function InstagramGlyph({ size = 20 }: { size?: number }) {
 }
 
 interface Props {
-  /** Account name without "@"; when missing a marked placeholder is shown instead of a link. */
+  /** Account name without "@"; when missing, nothing is rendered. */
   handle?: string;
   /** Visible text before the handle, e.g. "Volg ons op Instagram". */
   label?: string;
@@ -41,16 +40,7 @@ interface Props {
  * screen readers.
  */
 export function InstagramLink({ handle, label = 'Volg ons op Instagram', showHandle = true, className }: Props) {
-  if (!handle) {
-    return (
-      <span className={`${styles.link} ${className ?? ''}`}>
-        <InstagramGlyph />
-        <span>
-          {label} <Placeholder>@account</Placeholder>
-        </span>
-      </span>
-    );
-  }
+  if (!handle) return null; // never guess an account — it could be someone else's
   return (
     <a
       href={`https://www.instagram.com/${handle}/`}

@@ -1,18 +1,17 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { heroVideo } from '@/lib/site';
+import { heroVideo, primaryCta } from '@/lib/site';
 import { areas } from '@/lib/areas';
 import { journey } from '@/lib/nieuwbouw';
-import { getServiceGroups, getPublishedProjects, getSiteSettings } from '@/lib/content';
-import { Placeholder } from '@/components/primitives/Placeholder';
-import { CertificationMark } from '@/components/primitives/CertificationMark';
-import { InstagramLink } from '@/components/primitives/InstagramLink';
-import { ProjectMedia } from '@/components/primitives/ProjectMedia';
+import { homeImages } from '@/lib/media';
+import { getServiceGroups, getPublishedProjects } from '@/lib/content';
+import { homeTestimonial } from '@/lib/testimonials';
+import { ImageFrame } from '@/components/primitives/ImageFrame';
 import { HeroVideo } from '@/components/sections/HeroVideo';
-import { ServiceCards } from '@/components/sections/ServiceCards';
+import { HeroFrame } from '@/components/sections/HeroFrame';
 import { ContactPanel } from '@/components/sections/ContactPanel';
 import { Testimonial } from '@/components/sections/Testimonial';
-import { homeTestimonial } from '@/lib/testimonials';
+import { NieuwbouwPlan } from '@/components/nieuwbouw/NieuwbouwPlan';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo/JsonLd';
 import styles from './home.module.css';
 
@@ -22,14 +21,32 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
+// The two processes on this page answer different questions: the nieuwbouw steps are what
+// happens to a bare new home; the werkwijze is how working with Nederdam goes, for any job.
+const nieuwbouwSteps = [
+  { title: 'Plan & ontwerp', text: 'Samen vertalen we uw wensen naar een doordacht plan.' },
+  { title: 'Realisatie', text: 'We bouwen met vakmanschap en betrouwbare partners.' },
+  { title: 'Interieur', text: 'Maatwerk dat aansluit op de architectuur.' },
+  { title: 'Oplevering', text: 'Een thuis dat klopt, tot in het kleinste detail.' },
+];
+
+const werkwijze = [
+  { title: 'Kennismaken', text: 'Uw wensen en de mogelijkheden van uw woning.' },
+  { title: 'Ontwerp & advies', text: 'Een helder plan op maat, met één offerte.' },
+  { title: 'Realisatie', text: 'Vakkundige uitvoering in één planning.' },
+  { title: 'Oplevering', text: 'Samen nagelopen, tot en met de laatste details.' },
+];
+
+const trust = [
+  { strong: 'Bouw & interieur', text: 'onder één dak', icon: 'frames' },
+  { strong: 'Eén vast', text: 'aanspreekpunt', icon: 'point' },
+  { strong: 'Vakmanschap', text: 'tot in detail', icon: 'detail' },
+] as const;
+
 export default async function HomePage() {
-  const [groups, published, site] = await Promise.all([
-    getServiceGroups(),
-    getPublishedProjects(),
-    getSiteSettings(),
-  ]);
+  const [groups, published] = await Promise.all([getServiceGroups(), getPublishedProjects()]);
   const { bouw, interieurHub, interieurSubs } = groups;
-  const featured = published[0];
+  const [lead, ...more] = published;
 
   return (
     <>
@@ -37,226 +54,298 @@ export default async function HomePage() {
       <WebSiteJsonLd />
 
       {/* ---------------------------------------------------------------- hero
-          The moving footage full width, with what we are, where, and how to reach
-          us set on it. */}
-      <section className={styles.hero}>
-        <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
-        <div className={styles.heroScrim} aria-hidden="true" />
+          The moving footage, full-bleed; on the first scroll it comes to rest in a kader. */}
+      <section className={styles.hero} aria-labelledby="hero-title">
+        <HeroFrame>
+          <HeroVideo src={heroVideo.src} poster={heroVideo.poster} objectPosition={heroVideo.objectPosition} />
+          <div className={styles.heroScrim} />
+        </HeroFrame>
         <div className={`container ${styles.heroInner}`}>
-          <p className={`label ${styles.heroKicker}`}>Aannemer · Bouw &amp; interieur · Heel Nederland</p>
-          <h1 className={`display ${styles.heroTitle}`}>
-            Aannemer voor verbouw, renovatie en maatwerk interieur.
-          </h1>
-          <p className={`lede ${styles.heroLede}`}>
-            Van ontwerp en vergunning tot oplevering: één bouwbedrijf dat alles regelt, met eigen
-            vakmensen, een vast netwerk en een eigen werkplaats. U heeft er geen omkijken naar — in
-            Utrecht, Rotterdam, Amsterdam en heel Nederland.
-          </p>
-          <div className={styles.heroActions}>
-            <Link href="/start-uw-project" className="btn btn--primary">
-              Vraag een offerte aan
-            </Link>
-            <a href={`tel:${site.phoneHref}`} className={styles.heroPhone}>
-              <span className={styles.heroPhoneLabel}>Of bel direct</span>
-              <span className={styles.heroPhoneNumber}>{site.phoneDisplay}</span>
-            </a>
+          <div className={styles.heroText}>
+            <h1 id="hero-title" className={styles.heroTitle}>
+              <span className={`label ${styles.heroKicker}`}>Bouw en interieur</span>
+              <span className={styles.heroLine}>Van eerste plan tot laatste detail.</span>
+            </h1>
+            <p className={styles.heroLede}>
+              Nederdam bouwt aan wat blijft. Met vakmanschap, oog voor detail en een integrale
+              benadering van bouw en interieur realiseren we ruimtes die mensen, bedrijven en
+              omgevingen versterken.
+            </p>
+            <div className={styles.heroActions}>
+              <Link href={primaryCta.path} className="btn btn--primary">
+                {primaryCta.label}
+                <span className="btn-arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+              <Link href="/werkwijze" className="textlink">
+                Onze werkwijze
+              </Link>
+            </div>
           </div>
+          <p className={styles.wordColumn} aria-hidden="true">
+            Ruimte
+            <br />
+            maakt
+            <br />
+            mogelijk.
+          </p>
           <nav className={styles.heroAreas} aria-label="Werkgebied">
+            <span>Aannemer in</span>
             {areas.map((a) => (
               <Link key={a.slug} href={`/werkgebied/${a.slug}`}>
                 {a.name}
               </Link>
             ))}
-            <Link href="/werkgebied">Heel Nederland</Link>
+            <Link href="/werkgebied">heel Nederland</Link>
           </nav>
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- trust
-          Four confirmed facts. Details that still need supplying are marked. */}
-      <section className={`on-dark ${styles.trust}`} aria-label="Waarom Nederdam">
+      {/* ---------------------------------------------------------------- trust */}
+      <section className={styles.trust} aria-label="Waarom Nederdam">
         <ul className={`container ${styles.trustList}`}>
-          <li className={styles.trustItem}>
-            <strong>Erkend bouwbedrijf</strong>
-            <span>
-              Aangesloten bij <Placeholder>naam erkenning</Placeholder>
-            </span>
-            <CertificationMark tone="dark" />
-          </li>
-          <li className={styles.trustItem}>
-            <strong>Garantie op ons werk</strong>
-            <span>
-              <Placeholder>Garantievoorwaarden en termijn</Placeholder>
-            </span>
-          </li>
-          <li className={styles.trustItem}>
-            <strong>Eigen werkplaats</strong>
-            <span>Maatwerk interieur maken we zelf, van tekening tot montage.</span>
-          </li>
-          <li className={styles.trustItem}>
-            <strong>Verzekerd</strong>
-            <span>
-              <Placeholder>Soort verzekering, bijv. CAR en aansprakelijkheid</Placeholder>
-            </span>
-          </li>
+          {trust.map((t) => (
+            <li key={t.strong} className={styles.trustItem}>
+              <TrustIcon kind={t.icon} />
+              <p>
+                <strong>{t.strong}</strong>
+                <span>{t.text}</span>
+              </p>
+            </li>
+          ))}
         </ul>
       </section>
 
-      {/* ---------------------------------------------------------------- services */}
-      <section className={`container ${styles.section}`}>
-        <header className={styles.head}>
-          <h2 className="heading">Wat we voor u doen</h2>
-          <Link href="/diensten" className="textlink">
-            Alle diensten
-          </Link>
+      {/* ---------------------------------------------------------------- disciplines
+          One brand, two disciplines — equal weight, mirrored, the same visual language. */}
+      <section className={`container ${styles.section}`} aria-labelledby="disciplines">
+        <header className={styles.intro}>
+          <p className="label">Eén merk. Twee disciplines.</p>
+          <h2 id="disciplines" className={`heading ${styles.introTitle}`}>
+            De bouwkundige kant en het interieur, ontworpen en uitgevoerd als één geheel.
+          </h2>
         </header>
 
-        <div className={styles.discipline} data-pillar="bouw">
-          <div className={styles.disciplineHead}>
-            <h3 className={styles.disciplineTitle}>Bouw</h3>
-            <p>Renovatie, verbouw, badkamers, aan- en uitbouw, opbouw en stucwerk.</p>
-            <Link href="/bouw" className="textlink">
-              Over Bouw
-            </Link>
-          </div>
-          <ServiceCards
-            items={bouw}
-            extra={
-              <Link href="/start-uw-project" className={styles.comboTile}>
-                <span className={styles.comboTitle}>Meerdere klussen tegelijk?</span>
-                <span className={styles.comboText}>
-                  Eén offerte, één planning en één aanspreekpunt voor het hele project.
-                </span>
-                <span className={styles.comboAction}>Vraag een offerte aan →</span>
-              </Link>
-            }
-          />
-        </div>
-
-        <div className={styles.discipline} data-pillar="interieur">
-          <div className={styles.disciplineHead}>
-            <h3 className={styles.disciplineTitle}>Interieur</h3>
-            <p>Kasten, wandmeubels en complete interieurs op maat, gemaakt in onze eigen werkplaats.</p>
-            <Link href={interieurHub?.path ?? '/interieur'} className="textlink">
-              Over Interieur
-            </Link>
-          </div>
-          <ServiceCards items={interieurSubs} />
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------------------- project
-          Before and after, with the facts of the job. Until the first case is
-          published this shows the layout, clearly marked as an example. */}
-      <section className={`on-taupe ${styles.section} ${styles.projectBand}`}>
-        <div className="container">
-          <header className={styles.head}>
-            <h2 className="heading">Recent werk</h2>
-            <div className={styles.headLinks}>
-              <InstagramLink handle={site.instagram} label="Meer werk op Instagram" showHandle={false} />
-              <Link href="/projecten" className="textlink">
-                Alle projecten
-              </Link>
-            </div>
-          </header>
-
-          {featured ? (
-            <Link href={`/projecten/${featured.slug}`} className={styles.project}>
-              <div className={styles.projectMedia}>
-                <ProjectMedia media={{ ...featured.hero, ratio: '4:3' }} sizes="(max-width: 900px) 100vw, 66vw" />
-              </div>
-              <div className={styles.projectFacts}>
-                <h3 className="title">{featured.title}</h3>
-                <dl>
-                  <div>
-                    <dt>Locatie</dt>
-                    <dd>{featured.meta.location}</dd>
-                  </div>
-                  <div>
-                    <dt>Soort klus</dt>
-                    <dd>{featured.meta.projectType}</dd>
-                  </div>
-                </dl>
-              </div>
-            </Link>
-          ) : (
-            <div className={styles.project}>
-              <div className={styles.beforeAfter}>
-                <ProjectMedia media={{ alt: 'Situatie vooraf — foto volgt', ratio: '4:3', slot: 'Voor' }} tone="stone" sizes="(max-width: 900px) 100vw, 33vw" />
-                <ProjectMedia media={{ alt: 'Resultaat — foto volgt', ratio: '4:3', slot: 'Na' }} tone="dark" sizes="(max-width: 900px) 100vw, 33vw" />
-              </div>
-              <div className={styles.projectFacts}>
-                <p className={`label ${styles.example}`}>Voorbeeldindeling — eerste project volgt</p>
-                <h3 className="title">
-                  <Placeholder>Projectnaam</Placeholder>
-                </h3>
-                <dl>
-                  <div>
-                    <dt>Locatie</dt>
-                    <dd>
-                      <Placeholder>Plaats</Placeholder>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Soort klus</dt>
-                    <dd>
-                      <Placeholder>Bijv. badkamerrenovatie</Placeholder>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Doorlooptijd</dt>
-                    <dd>
-                      <Placeholder>Aantal weken</Placeholder>
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------------------- nieuwbouw
-          A doorway to the buyer's journey. Only the step names appear here; the journey
-          itself lives on /nieuwbouw, the method on /werkwijze. */}
-      <section className={`container ${styles.section}`}>
-        <div className={styles.nieuwbouw}>
-          <div className={styles.nieuwbouwText}>
-            <p className={`label ${styles.nieuwbouwKicker}`}>Nieuwbouw</p>
-            <h2 className="heading">Net de sleutel van uw nieuwbouwwoning?</h2>
-            <p>
-              Een nieuwbouwwoning wordt vaak kaal opgeleverd. Daarna zoekt u voor ieder onderdeel een
-              aparte vakman. Wij kunnen het hele traject overnemen — van de tekening tot de dag dat u
-              erin woont. U kiest zelf welke stappen: alleen de vloeren kan ook.
+        <div className={styles.division} data-pillar="bouw">
+          <Link href="/bouw" className={styles.divisionMedia} aria-hidden="true" tabIndex={-1}>
+            <ImageFrame {...homeImages.bouw} ratio={4 / 5} tone="stone" kader sizes="(max-width: 900px) 100vw, 45vw" />
+          </Link>
+          <div className={styles.divisionText}>
+            <p className={`label ${styles.divisionLabel}`}>
+              <span>01</span> Bouw
             </p>
-            <div className={styles.nieuwbouwLinks}>
+            <h3 className={styles.divisionTitle}>Nieuwbouw, verbouw en renovatie.</h3>
+            <p className={styles.divisionBody}>Een solide basis, doordacht van eerste schets tot oplevering.</p>
+            <ul className={styles.services}>
+              {bouw.map((s) => (
+                <li key={s.slug}>
+                  <Link href={s.path}>{s.navLabel}</Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/nieuwbouw">Nieuwbouw afwerken</Link>
+              </li>
+            </ul>
+            <Link href="/bouw" className="textlink">
+              Ontdek Nederdam Bouw
+            </Link>
+          </div>
+        </div>
+
+        <div className={`${styles.division} ${styles.divisionMirror}`} data-pillar="interieur">
+          <Link
+            href={interieurHub?.path ?? '/interieur'}
+            className={styles.divisionMedia}
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <ImageFrame {...homeImages.interieur} ratio={4 / 3} tone="paper" kader sizes="(max-width: 900px) 100vw, 55vw" />
+          </Link>
+          <div className={styles.divisionText}>
+            <p className={`label ${styles.divisionLabel}`}>
+              <span>02</span> Interieur
+            </p>
+            <h3 className={styles.divisionTitle}>Interieurs die kloppen.</h3>
+            <p className={styles.divisionBody}>
+              Maatwerk waarin rust, functionaliteit en karakter samenkomen — gemaakt in onze eigen
+              werkplaats.
+            </p>
+            <ul className={styles.services}>
+              {interieurSubs.map((s) => (
+                <li key={s.slug}>
+                  <Link href={s.path}>{s.navLabel}</Link>
+                </li>
+              ))}
+            </ul>
+            <Link href={interieurHub?.path ?? '/interieur'} className="textlink">
+              Ontdek Nederdam Interieur
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- projects
+          Only real, published work. Until the first case is published this section is left
+          out entirely — no sample project stands in for one. */}
+      {lead && (
+        <section className={`container ${styles.section}`} aria-labelledby="projecten">
+          <header className={styles.sectionHead}>
+            <div>
+              <p className="label">Uitgelichte projecten</p>
+              <h2 id="projecten" className={`heading ${styles.headTitle}`}>
+                Werk waarin bouw, materiaal en detail samenkomen.
+              </h2>
+            </div>
+            <Link href="/projecten" className="textlink">
+              Alle projecten
+            </Link>
+          </header>
+          <div className={styles.projects} data-count={Math.min(published.length, 3)}>
+            {[lead, ...more.slice(0, 2)].map((p, i) => (
+              <Link key={p.slug} href={`/projecten/${p.slug}`} className={styles.project} data-pillar={p.pillar}>
+                <ImageFrame
+                  src={p.hero.src}
+                  alt={p.hero.alt}
+                  drawing={p.pillar === 'interieur' ? 'joinery' : 'section'}
+                  ratio={i === 0 ? 3 / 2 : 4 / 3}
+                  sizes={i === 0 ? '(max-width: 900px) 100vw, 62vw' : '(max-width: 900px) 100vw, 34vw'}
+                />
+                <div className={styles.projectMeta}>
+                  <h3 className={styles.projectTitle}>{p.title}</h3>
+                  <p className="label">
+                    {[p.meta.location, p.pillar === 'interieur' ? 'Interieur' : 'Bouw', p.meta.projectType]
+                      .filter(Boolean)
+                      .join(' · ')}
+                  </p>
+                  <span className={styles.projectArrow} aria-hidden="true">
+                    →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ---------------------------------------------------------------- material */}
+      <section className={`container ${styles.section}`} aria-labelledby="materiaal">
+        <div className={styles.material}>
+          <div className={styles.materialText}>
+            <p className="label">Detail maakt het verschil</p>
+            <h2 id="materiaal" className="heading">
+              Pure materialen.
+              <br />
+              Echte kwaliteit.
+            </h2>
+            <p className={styles.materialBody}>
+              Wij werken met natuurlijke, duurzame materialen die mooi ouder worden en hun karakter
+              houden. Het maatwerk maken we in onze eigen werkplaats.
+            </p>
+            <p className={`serif ${styles.statement}`}>
+              Vakmanschap zit in wat u ziet. En in wat u niet ziet.
+            </p>
+            <Link href="/over-ons" className="textlink">
+              Over ons vakmanschap
+            </Link>
+          </div>
+          <div className={styles.materialGrid}>
+            {homeImages.materials.map((m, i) => (
+              <figure key={m.alt} className={styles.materialItem} data-i={i}>
+                <ImageFrame {...m} ratio={i === 0 ? 3 / 4 : 1} tone={i === 1 ? 'paper' : 'stone'} sizes="(max-width: 900px) 50vw, 22vw" />
+                <figcaption className="label">{m.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- nieuwbouw */}
+      <section className={`on-sand ${styles.band}`} aria-labelledby="nieuwbouw">
+        <div className={`container ${styles.nieuwbouw}`}>
+          <div className={`on-dark ${styles.nieuwbouwPlan}`}>
+            <NieuwbouwPlan layers={journey.map((j) => ({ layer: j.layer, discipline: j.discipline }))} active={-1} />
+            <p className="label">Van casco tot thuis</p>
+          </div>
+          <div className={styles.nieuwbouwText}>
+            <p className="label">Nieuwbouw</p>
+            <h2 id="nieuwbouw" className="heading">
+              Van casco naar een thuis dat klopt.
+            </h2>
+            <p className={styles.nieuwbouwBody}>
+              Wij begeleiden het volledige traject — van eerste schets tot de laatste afwerking. U kiest
+              zelf welke stappen u bij ons afneemt.
+            </p>
+            <ol className={styles.steps}>
+              {nieuwbouwSteps.map((s, i) => (
+                <li key={s.title}>
+                  <span className={styles.stepNum}>{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className={styles.stepTitle}>{s.title}</h3>
+                  <p>{s.text}</p>
+                </li>
+              ))}
+            </ol>
+            <div className={styles.actionsRow}>
               <Link href="/nieuwbouw" className="btn btn--primary">
-                Van sleutel tot thuis
+                Bekijk nieuwbouw
+                <span className="btn-arrow" aria-hidden="true">
+                  →
+                </span>
               </Link>
               <Link href="/nieuwbouw/traject-samenstellen" className="textlink">
                 Stel uw traject samen
               </Link>
             </div>
           </div>
-          <ol className={styles.nieuwbouwRail} aria-label="Het nieuwbouwtraject in stappen">
-            {journey.map((j, i) => (
-              <li key={j.id} data-pillar={j.discipline}>
-                <span className={styles.railNum}>{String(i + 1).padStart(2, '0')}</span>
-                <span className={styles.railTitle}>{j.title}</span>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
-      {/* A client's words — marked as sample until a real review exists */}
-      <Testimonial testimonial={homeTestimonial} />
+      {/* ---------------------------------------------------------------- method
+          An architectural timeline: one line drawn across, four points on it. */}
+      <section className={`container ${styles.section} ${styles.sectionLast}`} aria-labelledby="werkwijze">
+        <header className={styles.sectionHead}>
+          <div>
+            <p className="label">Onze werkwijze</p>
+            <h2 id="werkwijze" className={`heading ${styles.headTitle}`}>
+              Van idee tot leefbare werkelijkheid.
+            </h2>
+            <p className={styles.headText}>Een helder proces, korte lijnen en één vast aanspreekpunt.</p>
+          </div>
+          <Link href="/werkwijze" className="textlink">
+            Hoe wij werken
+          </Link>
+        </header>
+        <ol className={styles.timeline}>
+          {werkwijze.map((s, i) => (
+            <li key={s.title}>
+              <span className={styles.timelineNum}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 className={styles.timelineTitle}>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-      {/* ---------------------------------------------------------------- close */}
-      <ContactPanel
-        heading="Plannen voor een verbouwing of maatwerk interieur?"
-        body="Vertel kort wat u wilt laten doen. We nemen contact op om uw project vrijblijvend te bespreken."
-      />
+      {/* A client's words — only once a real review exists; there is no sample stand-in. */}
+      {!homeTestimonial.placeholder && <Testimonial testimonial={homeTestimonial} />}
+
+      <ContactPanel />
     </>
+  );
+}
+
+/** Three small line marks for the trust strip, drawn in the geometry of the logo's kader. */
+function TrustIcon({ kind }: { kind: 'frames' | 'point' | 'detail' }) {
+  return (
+    <svg viewBox="0 0 32 32" width="32" height="32" className={styles.trustIcon} aria-hidden="true" focusable="false">
+      {kind === 'frames' && <path d="M4 10 V28 H22 M10 4 H28 V22 H10 Z" />}
+      {kind === 'point' && (
+        <>
+          <path d="M4 16 H12 M20 16 H28 M16 4 V12 M16 20 V28" />
+          <rect x="12.5" y="12.5" width="7" height="7" />
+        </>
+      )}
+      {kind === 'detail' && <path d="M16 3 L29 16 L16 29 L3 16 Z M16 10 L22 16 L16 22 L10 16 Z" />}
+    </svg>
   );
 }

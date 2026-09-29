@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { MediaSlot } from '@/lib/types';
+import { ArchDrawing, type DrawingVariant } from './ArchDrawing';
 import styles from './ProjectMedia.module.css';
 
 interface Props {
@@ -13,7 +14,16 @@ interface Props {
   fill?: boolean;
   /** Tone of the reserved field while no photograph exists. */
   tone?: 'stone' | 'linen' | 'dark' | 'taupe';
+  /** The drawing that holds the place until a photograph exists. */
+  drawing?: DrawingVariant;
 }
+
+const DEFAULT_DRAWING: Record<NonNullable<Props['tone']>, DrawingVariant> = {
+  stone: 'section',
+  linen: 'joinery',
+  dark: 'joint',
+  taupe: 'wood',
+};
 
 function ratioValue(ratio: `${number}:${number}`): number {
   const [w, h] = ratio.split(':').map(Number);
@@ -22,9 +32,9 @@ function ratioValue(ratio: `${number}:${number}`): number {
 
 /**
  * Renders a real, optimised photograph when a src exists — with the brand's warm, neutral
- * treatment — otherwise a flat material field that holds the composition. The field is
- * honest (its label says what belongs there) but it is designed as part of the page, not
- * as a wireframe: a tone from the palette, one small label, nothing else.
+ * treatment — otherwise a material field with an architectural line drawing that holds the
+ * composition. No "photo follows" label: the field is part of the design, and it is
+ * decorative, so assistive technology skips it.
  */
 export function ProjectMedia({
   media,
@@ -34,6 +44,7 @@ export function ProjectMedia({
   className,
   fill,
   tone = 'stone',
+  drawing,
 }: Props) {
   const ar = ratioValue(media.ratio);
 
@@ -50,8 +61,8 @@ export function ProjectMedia({
             className={styles.img}
           />
         ) : (
-          <div className={styles.field} data-tone={tone} role="img" aria-label={media.alt}>
-            <span className={`label ${styles.fieldLabel}`}>{media.slot ?? 'Projectfoto'}</span>
+          <div className={styles.field} data-tone={tone} aria-hidden="true">
+            <ArchDrawing variant={drawing ?? DEFAULT_DRAWING[tone]} className={styles.fieldDrawing} />
           </div>
         )}
       </div>

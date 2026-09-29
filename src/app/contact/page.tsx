@@ -51,12 +51,14 @@ export default async function ContactPage() {
                 <dt className="label">Werkgebied</dt>
                 <dd>{site.serviceArea}</dd>
               </div>
-              <div>
-                <dt className="label">Instagram</dt>
-                <dd>
-                  <InstagramLink handle={site.instagram} label="Volg ons werk" />
-                </dd>
-              </div>
+              {site.instagram && (
+                <div>
+                  <dt className="label">Instagram</dt>
+                  <dd>
+                    <InstagramLink handle={site.instagram} label="Volg ons werk" />
+                  </dd>
+                </div>
+              )}
             </dl>
 
             <p className={styles.journey}>

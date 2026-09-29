@@ -1,15 +1,22 @@
-import { Hanken_Grotesk } from 'next/font/google';
+import { Hanken_Grotesk, Newsreader } from 'next/font/google';
 
-// One typeface for the whole site. The brand board names Söhne, which is commercially
-// licensed and not bundled; Hanken Grotesk is the closest open grotesk and is set in
-// sturdy weights (medium/semibold for headings) so the site reads as a builder, not a
-// boutique. Swapping in Söhne later is a change to this file only: every stylesheet reads
-// `--font-sans`, which globals.css builds from `--font-sans-src` (the names differ on
-// purpose — a token that references itself is invalid CSS and drops the whole stack).
+// Two voices, as in the huisstijl: a grotesk for nearly everything and a serif for one
+// statement per page at most. The brand names Söhne and Canela; both are commercially
+// licensed and not bundled, so Hanken Grotesk and Newsreader Light stand in. Swapping in
+// the real fonts is a change to this file only (next/font/local with the licensed files):
+// every stylesheet reads `--font-sans` / `--font-serif`, which globals.css builds from the
+// `-src` variables below (a token that references itself is invalid CSS).
 export const sans = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600'],
   variable: '--font-sans-src',
+});
+
+export const serif = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif-src',
 });

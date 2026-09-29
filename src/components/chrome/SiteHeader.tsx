@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
-import { nav, pages } from '@/lib/site';
+import { nav, pages, primaryCta } from '@/lib/site';
 import type { Service, SiteSettings } from '@/lib/types';
 import { Logo } from './Logo';
 import { InstagramLink } from '@/components/primitives/InstagramLink';
-import { PhoneIcon } from '@/components/primitives/PhoneIcon';
 import styles from './SiteHeader.module.css';
 
 interface Props {
@@ -20,10 +19,11 @@ interface Props {
 type MenuKey = 'bouw' | 'interieur';
 
 /**
- * Header: the logo left, the navigation, the phone number and one bronze action right.
- * Bouw and Interieur each open a panel with their services (hover, focus or click; Escape
- * and an outside click close it). The mobile menu is a charcoal sheet with the two
- * disciplines leading.
+ * Header: the logo left, the navigation, one bronze action right. Bouw and Interieur each
+ * open a panel with their services (hover, focus or click; Escape and an outside click close
+ * it). On the homepage the header starts transparent over the moving hero and turns paper
+ * once the hero has passed. The mobile menu is a charcoal sheet with the two disciplines
+ * leading.
  */
 export function SiteHeader({ settings: site, bouwServices, interieurService, interieurSubServices }: Props) {
   const pathname = usePathname();
@@ -34,6 +34,17 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
   const navRef = useRef<HTMLElement | null>(null);
   const closeTimer = useRef<number | undefined>(undefined);
   const openedAt = useRef(0);
+  const overlayPage = pathname === '/';
+  const [overHero, setOverHero] = useState(overlayPage);
+
+  // over the hero until most of it has scrolled away
+  useEffect(() => {
+    if (!overlayPage) return setOverHero(false);
+    const update = () => setOverHero(window.scrollY < window.innerHeight * 0.55);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [overlayPage]);
 
   useEffect(() => {
     setOpen(false);
@@ -93,10 +104,20 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
 
   return (
     <>
-      <header className={styles.header} data-open={open}>
+      <header
+        className={styles.header}
+        data-open={open}
+        data-overlay={overlayPage || undefined}
+        data-over-hero={(overlayPage && overHero && !menu) || undefined}
+      >
         <div className={`container ${styles.bar}`}>
           <Link href="/" className={styles.brand} aria-label="Nederdam — home">
-            <Logo variant="horizontal" tone={open ? 'light' : 'dark'} height={52} decorative />
+            <Logo
+              variant="horizontal"
+              tone={open || (overlayPage && overHero && !menu) ? 'light' : 'dark'}
+              height={52}
+              decorative
+            />
           </Link>
 
           <nav className={styles.nav} aria-label="Hoofdmenu" ref={navRef}>
@@ -158,23 +179,12 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
             </ul>
           </nav>
 
-          <div className={styles.actions}>
-            <a href={`tel:${site.phoneHref}`} className={styles.phone} aria-label={`Bel ${site.phoneDisplay}`}>
-              <PhoneIcon />
-              <span>{site.phoneDisplay}</span>
-            </a>
-            <Link href="/start-uw-project" className={`btn btn--primary ${styles.cta}`}>
-              Offerte aanvragen
-              <span className="btn-arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </div>
-
-          {/* mobile: tap-to-call next to the menu — the quickest route to a builder */}
-          <a href={`tel:${site.phoneHref}`} className={styles.callMobile} aria-label={`Bel ${site.phoneDisplay}`}>
-            <PhoneIcon size={20} />
-          </a>
+          <Link href={primaryCta.path} className={`btn btn--primary ${styles.cta}`}>
+            {primaryCta.label}
+            <span className="btn-arrow" aria-hidden="true">
+              →
+            </span>
+          </Link>
 
           <button
             className={styles.toggle}
@@ -223,8 +233,11 @@ export function SiteHeader({ settings: site, bouwServices, interieurService, int
           </ul>
 
           <div className={styles.sheetFoot}>
-            <Link href="/start-uw-project" className="btn btn--primary">
-              Offerte aanvragen
+            <Link href={primaryCta.path} className="btn btn--primary">
+              {primaryCta.label}
+              <span className="btn-arrow" aria-hidden="true">
+                →
+              </span>
             </Link>
             <div className={styles.sheetContact}>
               <a href={`tel:${site.phoneHref}`}>{site.phoneDisplay}</a>

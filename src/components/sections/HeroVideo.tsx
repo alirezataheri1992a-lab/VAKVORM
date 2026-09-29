@@ -25,6 +25,10 @@ export function HeroVideo({ src, poster, objectPosition }: Props) {
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mq.matches) return; // reduced motion → keep the still poster, never autoplay
+    // a data saver or a slow connection keeps the poster too — the clip is ~6 MB
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+      .connection;
+    if (conn?.saveData || /(^|-)2g$|^3g$/.test(conn?.effectiveType ?? '')) return;
     setPlay(true);
   }, []);
 
@@ -37,7 +41,7 @@ export function HeroVideo({ src, poster, objectPosition }: Props) {
   return (
     <div className={styles.media} aria-hidden="true">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={poster} alt="" className={styles.layer} style={style} />
+      <img src={poster} alt="" className={styles.layer} style={style} fetchPriority="high" />
       {play && (
         <video
           ref={ref}

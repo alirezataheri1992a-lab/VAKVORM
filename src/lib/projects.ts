@@ -17,9 +17,8 @@ export function getProject(slug: string): Project | undefined {
 }
 
 /**
- * Placeholder composition slots for surfaces that showcase work before real projects
- * exist. These are clearly-temporary layout holders — NOT claimed as completed projects.
- * Each describes the *kind* of work (truthful) and holds an aspect ratio.
+ * Composition slots (aspect ratios) for surfaces that show work before real projects exist.
+ * They render as drawings without captions — never as a project, a place or a result.
  */
 export const workSlots = [
   { slot: 'WONINGRENOVATIE', label: 'Woningrenovatie', place: 'Utrecht', ratio: '4:3' as const },

@@ -54,80 +54,82 @@ lockup so its art aligns with the column edge — the file itself is untouched.
 
 ## Colour
 
-| Token | Hex | Use |
-|---|---|---|
-| `--charcoal` | `#0E0E0E` | type; the closing call to action, the mobile menu, the footer |
-| `--stone` | `#C9C2B8` | the review band and reserved image fields |
-| `--taupe` | `#3A3A36` | secondary text; a warm-dark band |
-| `--bronze` | `#B08B6F` | Bouw accent — marks, labels on dark; `--bronze-deep #7E5F45` as text on light |
-| `--olive` | `#4A5A46` | Interieur accent — marks, labels; `--olive-on-dark #8C9C84` on charcoal |
+The five brand colours stay exact (`--charcoal #0E0E0E`, `--bronze #B08B6F`, `--stone #C9C2B8`,
+`--olive #4A5A46`, `--taupe #3A3A36`, plus `--canvas` paper `#F4F0E8`). The website reads them
+**light**: paper is the ground, charcoal is used strategically — type, the hero veil, the
+nieuwbouw drawing, the footer.
 
-The light ground is paper (`--canvas #F4F0E8`, the off-white of the logo files) with charcoal
-type. The page alternates grounds as the huisstijl asks: the hero footage and a charcoal trust
-band, paper for services and process, a taupe band for recent work, stone for the review,
-charcoal for the close and footer. Bronze marks the trust items, the process steps and the
-hero kicker; olive marks Interieur. Derived values (`--canvas-raised`,
-`--panel`, `--ink-soft`, `--muted`, `--line`) are in `src/app/globals.css` with their
-contrast notes. Raw bronze fails as small text on the canvas, which is why `--bronze-text`
-exists; raw olive fails on charcoal, which is why `--olive-on-dark` exists.
+| Where | Ground |
+|---|---|
+| Hero | the moving footage under a charcoal veil |
+| Content | paper; `--canvas-raised` for one quiet band (nieuwbouw) |
+| Image positions | stone or raised paper, with a drawing until photos exist |
+| Closing call to action | taupe — the second dark ground, apart from the footer |
+| Footer | charcoal |
 
-No gradients (the hero scrim excepted — it is a legibility device over footage, not a
-decoration), no shadows, no border radius on anything structural.
+Bronze: the primary button, active navigation, numbering, the hairline under the word
+column, the trust marks. As text on paper use `--bronze-text` (5.1:1). Olive only marks
+Interieur, never a background. The brief's approximate tokens (`#A67C52`, `#6F7563`,
+`#A89B8A`) are not brand colours and are not used.
 
 ## Typography
 
-The board specifies **Söhne**, which is commercially licensed and not bundled. The site uses
-one typeface, **Hanken Grotesk** (400/500/600/700), the closest open grotesk, via
-`--font-sans`. Swapping in Söhne is a change to `src/lib/fonts.ts` only. There is no serif:
-a builder's site reads sturdier in one grotesk, and the logo itself is a sans.
+**Söhne** and **Canela** are licensed and not bundled; **Hanken Grotesk** and **Newsreader
+Light** stand in (`src/lib/fonts.ts` — the only file to change when the licences arrive).
 
-Rules the system enforces:
-
-- Hierarchy by size and weight, not ornament: `.display`, `.heading`, `.title`, `.lede`,
-  body, `.label`. Headings are semibold with tight tracking.
-- Capitals only for small labels (`.label`, tracked `0.08em`). Navigation, buttons and links
-  are in sentence case.
-- No decorative devices: no rules under headings, no numbered chapters, no word stacks, no
-  veils over photographs.
+- About 90% grotesk: headings, text, navigation, buttons, labels, forms, footer.
+- Headings are **regular/medium, never heavy**: `.display` and `.heading` at 400, `.title`
+  at 500, sizes from the `--text-*` scale.
+- The hero headline is the one uppercase headline: regular, barely tracked.
+- Labels: small capitals, 500, tracked `0.14em` (`--tracking-label`).
+- The serif (`.serif`): at most one statement or quote per page, light, never bold —
+  on the homepage *"Vakmanschap zit in wat u ziet. En in wat u niet ziet."*, in the footer
+  the motto.
 
 ## Layout
 
-A 12-column grid inside a 1440px container. Sections open with a heading and, where useful,
-one link on the same line; groups are separated by a 1.5px charcoal rule. The homepage runs:
-hero (statement, offer, phone — and the work beside it), four confirmed facts, services by
-discipline as photo tiles, a before/after project, the process in four steps, a review, the
-close.
+12 columns inside 1440px, gutter `clamp(20px, 4.4vw, 72px)`, sections `clamp(88px, 10.5vw,
+152px)` apart, spacing from one scale (`--space-1` … `--space-12`: 4 → 160). Sections open
+with a hairline in charcoal, a label and a heading; asymmetric compositions (7/4, 4/7, 8/4,
+5/6) instead of rows of identical cards.
+
+Homepage: hero → trust strip (three statements, hairlines) → Bouw / Interieur mirrored →
+projects (only real ones) → materials → nieuwbouw → werkwijze timeline → (real review) →
+close → footer.
+
+## KADER in the interface
+
+- **Hero framing**: the footage starts full-bleed; over the first half-screen of scroll,
+  margins open, the image settles from a 1.04 scale and a hairline frame appears inside it
+  (`HeroFrame`). Scroll is only read — no pinning — and nothing moves with reduced motion.
+- `.kader`: a hairline set a fixed step inside an image.
+- Hairlines open sections; the werkwijze is a drawn line with four points.
 
 ## UI
 
-- Buttons: square, sentence case, 52px. `.btn--primary` is the primary action ("Offerte
-  aanvragen"): charcoal everywhere, with a bronze hover. On charcoal grounds (the close, the
-  mobile menu, the intake's opening) it keeps its fill and gains a light hairline. `.btn` is
-  a charcoal outline.
-- Header: logo, Bouw and Interieur (each opens its services), the pages; then, after one
-  hairline, the phone number (icon + number, the secondary action) and "Offerte aanvragen →"
-  (primary). Below 1240px the number collapses to its icon; on mobile a 44px call button sits
-  next to "Menu". Werkgebied is linked from the hero, service pages, mobile menu and footer,
-  not the top bar, to keep it calm.
-- Placeholders: `<Placeholder>` marks any detail still to be supplied (KvK number,
-  certification name, warranty terms, insurance) with a dashed bronze frame, so nothing
-  reads as a claim before it is confirmed.
-- Motion: short (240ms). Nothing bounces.
+- **Primary button**: bronze with charcoal text (6.2:1), square, 50px, arrow moves 3px;
+  hover charcoal (on dark grounds: paper). One label everywhere: **"Project bespreken"**
+  → the project intake (`primaryCta` in `src/lib/site.ts`).
+- Secondary: a text link with an underline that grows from the left.
+- **Header**: logo; Bouw, Interieur (panels with their services), Nieuwbouw, Projecten, Over
+  ons, Werkwijze, Contact; the primary button. On the homepage it is transparent over the
+  hero and turns paper (slight blur) once the hero has passed. Mobile: logo and "Menu".
+- **Missing content is hidden**, never marked: no placeholders on the page
+  (`docs/content-status.md` tracks what is missing).
+- Motion: 240ms for UI, 400–900ms for reveals and images, eased out. No bounces, no loops
+  other than the hero footage.
 
 ## Photography
 
-Photography is the missing ingredient and the one that matters most. Until it exists, every
-image slot is a flat field from the palette with one small label saying what belongs there
-(`ProjectMedia`, `tone` prop) — designed as part of the page, not a wireframe. Real
-photographs get a warm, neutral treatment (`saturate(0.9) contrast(1.02)`) and a slow
-settle on hover when linked.
+There is no real Nederdam photography yet, and stock must not stand in for the company's
+work. Image positions therefore show **architectural line drawings** (`ArchDrawing`: a wall
+section for Bouw, a cabinet-wall elevation for Interieur, wood/stone/plaster details, a
+mitred joint) on stone or paper. They are decorative (hidden from screen readers) and are
+replaced by setting a photo in `src/lib/media.ts` or Sanity — the frame keeps its ratio.
 
-Brief for the shoot, per discipline — see the board and `/docs/image-sources.md`:
-
-- **Bouw**: concrete, stone, brick, raw structure, construction detail, hands at work.
-- **Interieur**: timber, cabinetry, joinery, natural materials, tactile finishes, furniture.
-- Both: natural light, shadow, close material detail, finished spaces. Warm, quiet,
-  unsaturated. No stock, no obviously generated people.
+Brief for the shoot: Bouw — structure, brick, stone, plaster, construction detail;
+Interieur — timber, cabinetry, joinery, hardware, light. Natural light, warm and
+unsaturated, no HDR, no people posing for the camera.
 
 ## What was removed
 

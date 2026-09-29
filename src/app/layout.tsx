@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { sans } from '@/lib/fonts';
+import { sans, serif } from '@/lib/fonts';
 import { getSiteSettings, getServiceGroups } from '@/lib/content';
 import { SiteHeader } from '@/components/chrome/SiteHeader';
 import { SiteFooter } from '@/components/chrome/SiteFooter';
@@ -41,7 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const [site, groups] = await Promise.all([getSiteSettings(), getServiceGroups()]);
 
   return (
-    <html lang="nl" className={sans.variable}>
+    <html lang="nl" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <a href="#main" className="visually-hidden">
           Naar hoofdinhoud

@@ -58,7 +58,7 @@
 .room {
   fill: currentColor;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -122,7 +122,7 @@
   gap: 14px;
   min-height: 1.4em;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 .stageNum {
@@ -244,7 +244,7 @@
   min-height: 48px;
   padding: 0 22px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 .toggle button[aria-pressed='true'] {
@@ -268,7 +268,7 @@
 }
 .tally dd {
   font-size: clamp(2.4rem, 4vw, 3.4rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
@@ -291,7 +291,7 @@
   animation: tradeIn 420ms var(--ease) both;
 }
 .tradeName {
-  font-weight: 600;
+  font-weight: 500;
 }
 .tradeMeta {
   font-size: 0.82rem;

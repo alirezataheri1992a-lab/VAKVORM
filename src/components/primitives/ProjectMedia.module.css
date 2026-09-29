@@ -28,13 +28,15 @@ a:hover .img {
   transform: scale(1.03);
 }
 
-/* reserved field: a flat stone tone and one label, bottom-left, until a photograph exists */
+/* reserved field: a palette tone with a line drawing, until a photograph exists */
 .field {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 16px 18px;
+  padding: 11%;
+  color: var(--charcoal);
+}
+.fieldDrawing {
+  opacity: 0.7;
 }
 .field[data-tone='stone'] {
   background: var(--stone);
@@ -48,13 +50,9 @@ a:hover .img {
 .field[data-tone='taupe'] {
   background: var(--taupe);
 }
-.fieldLabel {
-  color: var(--ink-soft);
-  font-size: 0.7rem;
-}
-.field[data-tone='dark'] .fieldLabel,
-.field[data-tone='taupe'] .fieldLabel {
-  color: var(--on-dark-soft);
+.field[data-tone='dark'],
+.field[data-tone='taupe'] {
+  color: var(--stone);
 }
 
 .caption {

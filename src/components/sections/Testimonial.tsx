@@ -6,8 +6,8 @@ import styles from './Testimonial.module.css';
  * A client's words as a large quote on stone, with the project photo beside it once one
  * exists. Not a testimonial card.
  *
- * When `placeholder` is set, a visible marker says so: sample content is never
- * presented as a genuine review.
+ * Rendered only for a real review: pages leave it out while `placeholder` is set, so
+ * sample content is never presented as a genuine review.
  */
 export function Testimonial({ testimonial }: { testimonial: TestimonialData }) {
   const t = testimonial;
@@ -22,11 +22,6 @@ export function Testimonial({ testimonial }: { testimonial: TestimonialData }) {
               <span className="label">{t.context}</span>
             </footer>
           </blockquote>
-          {t.placeholder && (
-            <span className={`label ${styles.placeholderTag}`}>
-              Voorbeeldreview — wordt vervangen door een echte klantreview
-            </span>
-          )}
         </div>
         {/* the project photo appears only once it exists — never an empty frame */}
         {t.media.src && (

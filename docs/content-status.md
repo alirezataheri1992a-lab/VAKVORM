@@ -1,27 +1,24 @@
-# Nederdam Bouw — Content status (placeholders to replace before launch)
+# Nederdam Bouw — Content status (what is still missing)
 
-The site is built to run before all real content exists. This tracks what is
-**placeholder** and must be replaced with real, verified content prior to launch.
+Rule: **missing content is hidden, never shown as a placeholder.** No "foto volgt", no
+sample review, no KvK 00000000, no @account. Each item below switches on by itself (or with
+one small edit) once the real content is supplied.
 
-| Item | Where | Status | Action before launch |
+| Item | Where | Status | What switches it on |
 |---|---|---|---|
-| **Homepage testimonial** | `src/lib/testimonials.ts` (`homeTestimonial`) | ⚠️ **Fictional placeholder** ("Mark de Vries") | Replace quote/author/context with a real, consent-given review and set `placeholder: false`; or remove the `<Testimonial>` section from `src/app/page.tsx` until a real review exists. |
-| **Projects** | Sanity / `src/lib/projects.ts` (empty) | No real projects yet | Add ~5 real projects via the CMS (`published: true`). Surfaces show honest "binnenkort" states until then. |
-| **Photography** | all `ProjectMedia` slots + hero video | Placeholders / stock | Replace with real Nederdam Bouw photography (see `docs/image-sources.md`) and the real hero edit (see `docs/video-sources.md`). |
-| **Certification** | `CertificationMark` (homepage, footer) + `<Placeholder>naam erkenning</Placeholder>` in `src/app/page.tsx` | Confirmed: Nederdam is an erkend bouwbedrijf. Name and logo not yet supplied | Add the logo file to `/public/brand/`, render it in `CertificationMark`, fill in the name. |
-| **Warranty** | homepage trust bar | Confirmed: garantie op het werk. Terms not yet supplied | Replace `<Placeholder>Garantievoorwaarden en termijn</Placeholder>` with the real terms. |
-| **Insurance** | homepage trust bar | Confirmed: verzekerd. Type not yet supplied | Replace the insurance placeholder with the actual cover. |
-| **Own workshop** | homepage trust bar, hero | Confirmed: eigen werkplaats | — |
-| **Instagram account** | `instagram` in `src/lib/site.ts` (or Sanity site settings) | Not yet supplied — placeholder shown in footer, mobile menu, contact page and "Recent werk" | Set the account name (without @); the links, and `sameAs` in structured data, switch on automatically. |
-| **Verhuizing (nieuwbouw)** | `src/lib/nieuwbouw.ts` (step "Verhuizen & thuis", trade list, intake option) | **Idea in development** — placed on the site at the owner's request | Confirm before launch that Nederdam (or a partner) actually arranges the move; otherwise remove the step, the trade and the intake option. |
-| **KvK number** | footer | Not yet supplied | Replace `<Placeholder>00000000</Placeholder>` in `SiteFooter.tsx`. |
-| **Example project (voor/na)** | homepage "Recent werk" | Layout example, marked | Disappears automatically when the first project is published. |
-| **Contact details** | `src/lib/site.ts` / Sanity `siteSettings` | Email set to `info@nederdambouw.nl`; phone `06 42241075` | Make sure the mailbox `info@nederdambouw.nl` exists and receives mail (also set `INQUIRY_TO` in the host); add a public address only if confirmed. |
+| **Photography** | homepage slots in `src/lib/media.ts`; `ProjectMedia` on other pages; hero video | No real photography yet. Image positions show architectural line drawings (`ArchDrawing`); the hero video is temporary Pexels stock | Add real Nederdam photos: set `src` + `alt` in `src/lib/media.ts` (homepage) or in Sanity. Replace the hero clip (see `docs/video-sources.md`). |
+| **Projects** | Sanity / `src/lib/projects.ts` (empty) | No real projects yet — the homepage section is hidden, /projecten shows "in voorbereiding" | Publish a project (`published: true`, real photos). The homepage "Uitgelichte projecten" appears automatically. |
+| **Review** | `src/lib/testimonials.ts` (`homeTestimonial`) | No real review — the section is not rendered while `placeholder: true` | Replace with a real review (with permission) and set `placeholder: false`. |
+| **Certification** | footer line "Erkend bouwbedrijf" | Confirmed; name and logo not supplied | Add the logo to `/public/brand/` and name it where useful (footer, over-ons). |
+| **Warranty / insurance** | footer line | Confirmed; terms and cover not supplied | Add the terms to /over-ons once known. |
+| **Own workshop** | homepage, footer | Confirmed | — |
+| **Instagram account** | `instagram` in `src/lib/site.ts` (or Sanity) | Not supplied — every Instagram link is hidden | Set the account name (without @); links and `sameAs` switch on. |
+| **KvK number** | footer | Not supplied — not shown | Add it to the footer bottom row. |
+| **Verhuizing (nieuwbouw)** | `src/lib/nieuwbouw.ts` (step "Verhuizen & thuis", trade list, intake option) | **Idea in development** — on the site at the owner's request | Confirm before launch that Nederdam (or a partner) arranges the move; otherwise remove the step, trade and intake option. |
+| **Söhne / Canela** | `src/lib/fonts.ts` | Licensed fonts not in the repo; Hanken Grotesk and Newsreader stand in | Add the licensed files and switch to `next/font/local` in that one file. |
+| **Contact details** | `src/lib/site.ts` / Sanity `siteSettings` | `info@nederdambouw.nl`, `06 42241075` | Make sure the mailbox exists (also `INQUIRY_TO` in the host); add an address only if confirmed. |
 
-## Testimonial placeholder — important
+## Testimonial — important
 
-`homeTestimonial` is **not a real customer review**. While `placeholder: true`, the
-section renders a visible **"voorbeeldreview"** marker so it can never be mistaken for a
-genuine, verified review, and the supporting image is a project result (not a photo of a
-real person). Nederdam Bouw never publishes fabricated reviews — this exists only to develop and
-preview the layout. Swap in a real quote (with the client's permission) before going live.
+`homeTestimonial` is **not a real customer review**. While `placeholder: true` the homepage
+does not render it at all. Nederdam Bouw never publishes fabricated reviews.

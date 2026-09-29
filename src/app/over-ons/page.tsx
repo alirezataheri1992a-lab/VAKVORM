@@ -31,8 +31,9 @@ export default async function OverPage() {
 
       <section className={styles.heroSec}>
         <ProjectMedia
-          media={{ alt: 'Nederdam Bouw aan het werk — beeld volgt', ratio: '21:9', slot: 'Werkplaats — team' }}
-          tone="taupe"
+          media={{ alt: 'Nederdam Bouw aan het werk', ratio: '21:9', slot: 'Werkplaats — team' }}
+          tone="linen"
+          drawing="joinery"
           priority
           sizes="100vw"
         />

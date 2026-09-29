@@ -51,7 +51,8 @@
 .input:focus-visible,
 .textarea:focus-visible {
   outline: none;
-  border-color: var(--ink);
+  border-color: var(--bronze);
+  box-shadow: 0 0 0 1px var(--bronze);
 }
 .input[aria-invalid='true'],
 .textarea[aria-invalid='true'] {
@@ -94,8 +95,8 @@
   gap: 14px;
 }
 .doneText {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: 500;
   letter-spacing: -0.02em;
   font-size: 1.5rem;
   line-height: 1.25;

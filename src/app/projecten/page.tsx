@@ -79,14 +79,10 @@ export default async function ProjectenPage() {
             {workSlots.slice(0, 3).map((w, i) => (
               <ProjectMedia
                 key={w.slot}
-                media={{ alt: 'Projectfoto volgt', ratio: w.ratio, slot: w.label }}
+                media={{ alt: '', ratio: w.ratio }}
                 tone={i === 1 ? 'linen' : 'stone'}
+                drawing={(['section', 'joinery', 'joint'] as const)[i]}
                 sizes="(max-width: 900px) 100vw, 32vw"
-                caption={
-                  <span className="label">
-                    {w.label} · {w.place}
-                  </span>
-                }
               />
             ))}
           </div>

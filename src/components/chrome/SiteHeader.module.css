@@ -3,9 +3,24 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--canvas);
+  background: rgba(244, 240, 232, 0.94);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: var(--ink);
   border-bottom: 1px solid var(--line);
+  transition: background-color 400ms var(--ease), color 400ms var(--ease),
+    border-color 400ms var(--ease);
+}
+/* homepage: transparent over the moving hero, paper once the hero has passed */
+.header[data-over-hero] {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  color: var(--on-dark);
+  border-bottom-color: rgba(244, 240, 232, 0.22);
+}
+.header[data-over-hero] .link {
+  color: var(--on-dark);
 }
 .header[data-open='true'] {
   position: fixed;
@@ -20,7 +35,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: clamp(20px, 2.6vw, 40px);
-  height: 80px;
+  height: var(--header-h);
 }
 .brand {
   justify-self: start;
@@ -44,9 +59,10 @@
   align-items: center;
   gap: 7px;
   padding: 10px 0;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 400;
   color: var(--ink);
+  transition: color 400ms var(--ease);
 }
 .link::after {
   content: '';
@@ -54,7 +70,7 @@
   left: 0;
   right: 0;
   bottom: 2px;
-  height: 2px;
+  height: 1px;
   background: var(--bronze);
   transform: scaleX(0);
   transform-origin: left;
@@ -114,7 +130,7 @@
   margin-bottom: 6px;
   border-bottom: 1px solid var(--line);
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.015em;
 }
 .panelList {
@@ -139,47 +155,10 @@
   color: var(--accent-text);
 }
 
-/* ---------------------------------------------------------------- actions
-   Navigation and actions are separated by one hairline. The phone number is the
-   secondary action (icon + number, reads as a link); the charcoal button is primary. */
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.actions::before {
-  content: '';
-  width: 1px;
-  height: 28px;
-  margin-right: clamp(0px, 0.5vw, 8px);
-  background: var(--line);
-}
-.phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-.phone:hover span {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
 .cta {
-  min-height: 46px;
-  padding: 0 20px;
-  font-size: 0.95rem;
-}
-.callMobile {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid currentColor;
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 0.925rem;
 }
 .toggle {
   display: none;
@@ -187,7 +166,7 @@
   gap: 12px;
   padding: 12px 0 12px 12px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .toggleLines {
   display: flex;
@@ -252,7 +231,7 @@
 }
 .disciplineName {
   font-size: 1.9rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1;
   color: var(--on-dark);
@@ -279,19 +258,12 @@
   display: block;
   padding: 14px 0;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.015em;
   border-bottom: 1px solid var(--line-dark);
 }
 .sheetLink[data-active='true'] {
   color: var(--bronze);
-}
-.sheetFoot :global(.btn--primary) {
-  border-color: var(--on-dark);
-}
-.sheetFoot :global(.btn--primary:hover) {
-  background: var(--on-dark);
-  color: var(--charcoal);
 }
 .sheetFoot {
   margin-top: auto;
@@ -309,28 +281,21 @@
 }
 
 /* ---------------------------------------------------------------- responsive */
-@media (max-width: 1240px) {
-  .phone span {
-    display: none;
-  }
-  .actions {
-    gap: 16px;
+@media (max-width: 1180px) {
+  .list {
+    gap: 18px;
   }
 }
 @media (max-width: 1100px) {
   .bar {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     gap: 16px;
-    height: 68px;
-  }
-  .callMobile {
-    display: inline-flex;
   }
   .brand img {
     height: 44px !important;
   }
   .nav,
-  .actions {
+  .cta {
     display: none;
   }
   .toggle {
