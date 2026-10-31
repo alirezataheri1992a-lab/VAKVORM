@@ -47,7 +47,8 @@ The website of Nederdam Bouw (brand: NEDERDAM — Bouw & Interieur), a Dutch con
 ## Brand Commitments
 
 - **Logo:** only the supplied files in `public/brand/`, rendered through `src/components/chrome/Logo.tsx`. Never redrawn, approximated or recoloured.
-- **Huisstijl is binding** (`docs/huisstijl.md`, KADER board): the five brand colours, Söhne + Canela (stand-ins Hanken Grotesk + Newsreader until licensed), the graphic elements, and the tone of voice. Confirmed by the owner for the redesign: logo + full huisstijl stay; layout, imagery and experience are redesigned within it.
+- **Only the logo is binding** (owner, full redesign): the supplied logo files stay exactly as they are. Colours, typography, graphic language and layout are open for redesign; the earlier KADER huisstijl (`docs/huisstijl.md`) is reference, no longer a constraint. Any new palette must sit well with the logo's own colours (bronze symbol, charcoal or off-white wordmark).
+- Rejected so far (owner feedback): dark/charcoal-heavy pages, conceptual devices (line drawings, the window metaphor), and the generic "AI" look of warm cream + bronze accent + thin serif/grotesk editorial layouts.
 - Voice: short, sure, restrained; the client is "u", the company is "we"; no superlatives, emoji or exclamation marks. Fixed lines from the board: *Eén merk. Twee disciplines.* · *Ruimte maakt mogelijk.* · *Van idee tot leefbare werkelijkheid.* · *Van fundering tot afwerking.* · *De juiste dingen duurzaam goed doen.*
 
 ## Evidence on Hand
