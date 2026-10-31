@@ -48,3 +48,6 @@ next-env.d.ts
 **/.impeccable/live/sessions/
 **/.impeccable/live/previews/
 # impeccable-ignore-end
+
+# taste-skill working files
+.taste-skill/
