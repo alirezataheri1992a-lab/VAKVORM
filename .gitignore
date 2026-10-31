@@ -35,3 +35,16 @@ next-env.d.ts
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# impeccable-ignore-start
+# Ephemeral output, runtime state, and per-dev overrides.
+**/.impeccable/config.local.json
+**/.impeccable/hook.cache.json
+**/.impeccable/hook.pending.json
+**/.impeccable/*.png
+**/.impeccable/review/
+**/.impeccable/questions/
+**/.impeccable/live/server.json
+**/.impeccable/live/sessions/
+**/.impeccable/live/previews/
+# impeccable-ignore-end
