@@ -20,7 +20,7 @@ Service area: Utrecht, Rotterdam, Amsterdam and the rest of the Netherlands.
 
 ## Product Purpose
 
-The website of Nederdam Bouw (brand: NEDERDAM — Bouw & Interieur), a Dutch contractor that also makes custom interiors. Its job is to turn the right visitors into qualified project requests: through the step-by-step project intake (`/start-uw-project`), the nieuwbouw route builder (`/nieuwbouw/traject-samenstellen`), the contact form, or a phone call. Success is more well-described, relevant project requests from the three audiences above, and being found in search for the services and cities Nederdam works in.
+The website of Nederdam Bouw (brand: NEDERDAM — Bouw & Interieur), a Dutch contractor that also makes custom interiors. Its job is to turn the right visitors into qualified project requests: through the step-by-step project intake (`/start-uw-project`), the contact form, or a phone call. Success is more well-described, relevant project requests from the three audiences above, and being found in search for the services and cities Nederdam works in.
 
 ## Positioning
 
@@ -31,7 +31,8 @@ The website of Nederdam Bouw (brand: NEDERDAM — Bouw & Interieur), a Dutch con
 ## Operating Context
 
 - Visitors research and compare online, frequently on mobile, before calling or sending a request.
-- Routes: home, Bouw and Interieur discipline pages with service pages, Nieuwbouw (explanation) and the route builder, Projecten, Werkwijze, Werkgebied (+ Utrecht, Rotterdam, Amsterdam), Over ons, Contact, the project intake, privacy and terms.
+- Routes: home, Bouw and Interieur discipline pages with service pages, Projecten, Werkwijze, Kennisbank, Werkgebied (+ Utrecht, Rotterdam, Amsterdam), Over ons, Contact, the project intake, privacy and terms.
+- **Nieuwbouw afwerken is a service under Bouw** (owner, 2026-10-31), reached via Bouw and via the combined Bouw + Interieur path. There is no separate nieuwbouw route or route builder.
 - Contact: info@nederdambouw.nl, 06 42241075. No public address until confirmed.
 - Project requests are sent by e-mail (Resend); they are not stored in the CMS.
 
@@ -40,23 +41,24 @@ The website of Nederdam Bouw (brand: NEDERDAM — Bouw & Interieur), a Dutch con
 - Stack: Next.js 15 App Router, React 19, TypeScript, CSS Modules with global tokens; Sanity CMS optional (falls back to local data); hosted on Vercel.
 - Services — Bouw: renovatie & verbouwing, badkamerrenovatie, aanbouw & uitbouw, opbouw, stucwerk; nieuwbouw afwerken. Interieur: maatwerkkasten, wandmeubels, interieur op maat.
 - Project intake: no budget question; uploads validated server-side; no personal data in URLs or analytics; no provider credentials in the browser.
-- Nieuwbouw "Verhuizen & thuis" (moving) is an idea still in development — confirm before launch or remove.
 - Existing SEO must be preserved: titles, descriptions, canonicals, sitemap, JSON-LD (Organization, GeneralContractor per city, Service, FAQPage), city pages.
 - Work happens on branch `claude/vakvorm-discovery-architecture-rbcju2`; changes reach `main` only when the owner asks.
 
 ## Brand Commitments
 
 - **Logo:** only the supplied files in `public/brand/`, rendered through `src/components/chrome/Logo.tsx`. Never redrawn, approximated or recoloured.
-- **Only the logo is binding** (owner, full redesign): the supplied logo files stay exactly as they are. Colours, typography, graphic language and layout are open for redesign; the earlier KADER huisstijl (`docs/huisstijl.md`) is reference, no longer a constraint. Any new palette must sit well with the logo's own colours (bronze symbol, charcoal or off-white wordmark).
-- Rejected so far (owner feedback): dark/charcoal-heavy pages, conceptual devices (line drawings, the window metaphor), and the generic "AI" look of warm cream + bronze accent + thin serif/grotesk editorial layouts.
-- **Standing preference: the familiar contractor site, done at premium level** (owner, full-redesign direction round). Of three directions (home-magazine reportage, Dutch modernist grid, category standard) the owner chose the category standard: photo hero with a clear headline and two actions, a bar of confirmed facts, service cards, a clear way of working. The craft bar is the sites of Dutch premium builders and interior firms. Execute it straight, without irony or conceptual devices.
+- **The KADER huisstijl is binding** (owner, 2026-10-31; supersedes the earlier "only the logo is binding" round): `docs/huisstijl.md` and CLAUDE.md lead. Bronze #B08B6F marks Nederdam Bouw, olive #4A5A46 marks Nederdam Interieur, charcoal #0E0E0E for type, warm paper as ground, stone and taupe in support. No new trendy colours.
+- Two disciplines under one name: Nederdam Bouw and Nederdam Interieur are distinct entrances; Bouw + Interieur together is the combined path.
+- Rejected (owner feedback): dark/charcoal-heavy pages; thin or light display type; black block buttons; pills; prices anywhere; and the generic AI "premium architecture/interior" UI layer: three-column mega menus with brand copy + links + lifestyle image, micro-labels, spaced uppercase, decorative coloured squares and arrows, underlined links as decoration, explanatory micro-captions, architecture-style metadata that says nothing, and premium-by-beige surfaces.
+- Wanted: navigation and pages that feel calm, established, architectural, direct and specific to Nederdam; stronger composition and less UI; colour from real photography, materials, Bouw bronze and Interieur olive.
+- Primary action everywhere: "Start uw project"; secondary: call 06 42241075.
 - Voice: short, sure, restrained; the client is "u", the company is "we"; no superlatives, emoji or exclamation marks. Fixed lines from the board: *Eén merk. Twee disciplines.* · *Ruimte maakt mogelijk.* · *Van idee tot leefbare werkelijkheid.* · *Van fundering tot afwerking.* · *De juiste dingen duurzaam goed doen.*
 
 ## Evidence on Hand
 
 - Confirmed facts: erkend bouwbedrijf (certification name and logo not yet supplied), verzekerd (cover not yet specified), garantie op het werk (terms not yet supplied), eigen werkplaats.
 - Real project photos, case details and customer reviews: **promised by the owner, not yet supplied.**
-- Until they arrive, the owner asked for development stand-ins: Dutch sample reviews, sample case details and photo placeholders. These are **sample content only**: kept apart from real data, visibly marked, never rendered on the production site and never emitted as structured data (Review/AggregateRating). Real items replace them one by one.
+- Until they arrive, missing content is a clearly marked development placeholder ("Placeholder: … volgt"); no sample reviews, invented projects, numbers, durations or certifications. Stock images used in design studies carry a "Studiebeeld" tag and are never presented as Nederdam work. Whether placeholders are hidden or shown on production is still open (CLAUDE.md currently says hidden).
 - Hero video: temporary Pexels stock, not Nederdam work (`docs/video-sources.md`).
 - Missing items are tracked in `docs/content-status.md`.
 
